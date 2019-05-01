@@ -1,0 +1,91 @@
+<div class="bg-gradient-primary">
+
+  <div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block" style="background: url(../../assets/images/register-bg.jpg); background-position: center; background-size: cover;"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+              </div>
+              <form #formCtrl="ngForm" (ngSubmit)="register(formCtrl.value)" class="user">
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" #firstnameCtrl="ngModel" [(ngModel)]="firstname" name="FirstName" 
+                    class="form-control form-control-user" id="exampleFirstName" placeholder="First Name"
+                    required [class.is-invalid]="firstnameCtrl.invalid && (firstnameCtrl.touched || submmited)">
+                    <div *ngIf="firstnameCtrl.invalid && (firstnameCtrl.touched || submmited)" class="invalid-feedback">
+                      First Name is required field
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" #lastnameCtrl="ngModel" [(ngModel)]="lastname" name="LastName"
+                     class="form-control form-control-user" id="exampleLastName" placeholder="Last Name"
+                     required [class.is-invalid]="lastnameCtrl.invalid && (lastnameCtrl.touched || submmited)">
+                     <div *ngIf="lastnameCtrl.invalid && (lastnameCtrl.touched || submmited)" class="invalid-feedback">
+                      Last Name is required field
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="email" #emailCtrl="ngModel" [(ngModel)]="email" name="Email"
+                  class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address"
+                  required email [class.is-invalid]="emailCtrl.invalid && (emailCtrl.touched || submmited)">
+                  <div *ngIf="emailCtrl.invalid && (emailCtrl.touched || submmited)" class="invalid-feedback">
+                    <div *ngIf="emailCtrl.errors?.required">Email is required field</div>
+                    <div *ngIf="emailCtrl.errors?.email">Please enter valid email</div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" #passwordCtrl="ngModel" [(ngModel)]="password" name="Password" 
+                    class="form-control form-control-user" id="exampleInputPassword" placeholder="Password"
+                    required minlength="4" [class.is-invalid]="passwordCtrl.invalid && (passwordCtrl.touched || submmited)">
+                    <div *ngIf="passwordCtrl.invalid && (passwordCtrl.touched || submmited)" class="invalid-feedback">
+                      <div *ngIf="passwordCtrl.errors?.required">Password is required field</div>
+                      <div *ngIf="passwordCtrl.errors?.minlength">4 Characters is required</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" #confirmpasswordCtrl="ngModel" [(ngModel)]="confirmpassword" name="ConfirmPassword" (input)="checkEqualPassword(password,confirmpassword)"
+                     class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Confirm Password"
+                     required minlength="4" [class.is-invalid]="confirmpasswordCtrl.invalid && (confirmpasswordCtrl.touched || submmited)">
+                     <div *ngIf="confirmpasswordCtrl.invalid && (confirmpasswordCtrl.touched || submmited)" class="invalid-feedback">
+                      <div *ngIf="confirmpasswordCtrl.errors?.required">Confirm Password is required field</div>
+                      <div *ngIf="confirmpasswordCtrl.errors?.minlength">4 Characters is required</div>
+                    </div>
+                    <div *ngIf="confirmpasswordCtrl.touched || submmited">
+                      <div *ngIf="showErrMsg" class="text-danger">Password Mismatch</div>
+                    </div>
+                    
+                  </div>
+                </div>
+                <a>
+                  <button type="submit" class="btn btn-primary btn-user btn-block">Register Account</button>
+                </a>
+                <hr>
+                <a href="index.html" class="btn btn-google btn-user btn-block">
+                  <i class="fab fa-google fa-fw"></i> Register with Google
+                </a>
+                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                  <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                </a>
+              </form>
+              <hr>
+              <div class="text-center">
+                <a class="small" routerLink="../forgot">Forgot Password?</a>
+              </div>
+              <div class="text-center"> 
+                <a class="small" routerLink="../login">Already have an account? Login!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+  </div>
+</div>

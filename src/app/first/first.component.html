@@ -1,0 +1,93 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <app-topnavbar></app-topnavbar>
+      <div class="container-fluid">
+        <!-- Begin Main Content -->
+
+            <div class="card shadow mb-4">
+            <div class="card-header "> 
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5 class="m-0 font-weight-bold text-primary"> Application Form</h5>
+                    </div>
+                    <!-- <div class="col-md-7"></div>
+                    <div class="col-md-2">
+                        <a routerLink="../../dashboard"><button class="btn btn-primary btn-sm btn-block">Back</button> </a>
+                    </div>  -->
+                </div>
+            </div>
+                <form [formGroup]="firstForm" (ngSubmit)="onSubmit(firstForm.value)">
+                <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="Vendor" class="col-md-4 col-form-label text-md-right"> First Name: <span
+                                            class="text-danger">*</span> </label>
+                                    <div class="col-md-6">
+                                        <input type="text" formControlName="FirstName" class="form-control" (blur)="logValidationMessages(firstForm)"
+                                          [class.is-invalid]="formErrors.FirstName" placeholder="First Name *">
+                                        <div *ngIf="formErrors.FirstName" class="invalid-feedback">{{formErrors.FirstName}}</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="FirstName" class="col-md-4 col-form-label text-md-right"> LastName: <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" formControlName="LastName" class="form-control" (blur)="logValidationMessages(firstForm)"
+                                          [class.is-invalid]="formErrors.LastName" placeholder="Last Name *">
+                                        <div *ngIf="formErrors.LastName" class="invalid-feedback">{{formErrors.LastName}}</div>
+                                    </div>
+                                </div>
+                                            
+                                <div class="form-group row">
+                                    <label for="DateOfBirth" class="col-md-4 col-form-label text-md-right"> Upload File: <span
+                                            class="text-danger">*</span> </label>
+                                    <div class="col-md-6">
+                                        <input type="file" ngf formControlName="File" class="form-control" placeholder="Upload File *" [class.is-invalid]="formErrors.File" />
+                                        <div *ngIf="formErrors.File" class="invalid-feedback">{{formErrors.File}}</div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group row">
+                                    <label for="Employer" class="col-md-4 col-form-label text-md-right"> MiddleName: <span
+                                            class="text-danger">*</span> </label>
+                                    <div class="col-md-6">
+                                        <input type="text" formControlName="MiddleName" class="form-control" (blur)="logValidationMessages(firstForm)" 
+                                        [class.is-invalid]="formErrors.MiddleName" placeholder="Middle Name *">
+                                      <div *ngIf="formErrors.MiddleName" class="invalid-feedback">{{formErrors.MiddleName}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="EmployeeType" class="col-md-4 col-form-label text-md-right"> AddmissionDate: <span
+                                            class="text-danger">*</span> </label>
+                                    <div class="col-md-6">
+                                        <input type="text" formControlName="AddmissionDate" bsDatepicker [bsConfig]="datePickerConfig" (blur)="logValidationMessages()"
+                                          class="form-control" maxlength="8" placeholder="Enter Addmission Date" [class.is-invalid]="formErrors.AddmissionDate" >
+                                        <div *ngIf="formErrors.AddmissionDate" class="invalid-feedback">{{formErrors.AddmissionDate}}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>   
+                </div> 
+                <div class="card-footer">
+                    <div class="col-md-2 offset-md-10">
+                        <input type="submit" class="btn btn-primary btn-sm btn-block" value="Next" />
+                    </div>
+                </div>
+            </form>
+            </div> 
+
+        <!-- End of Main Content -->
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>
