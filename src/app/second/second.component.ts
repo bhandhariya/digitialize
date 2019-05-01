@@ -117,7 +117,7 @@ export class SecondComponent implements OnInit {
     this.logValidationMessages();
     if(this.persionalDataForm.valid){
       console.log(formData);
-      this.http.post('http://localhost:3000/api/pat/addPersonal',formData).subscribe(this.addpersonalCB)
+      this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPersonal',formData).subscribe(this.addpersonalCB)
     }
   }
   addpersonalCB=(dt)=>{
