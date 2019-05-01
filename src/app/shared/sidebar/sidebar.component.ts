@@ -28,5 +28,12 @@ export class SidebarComponent implements OnInit {
       this.router.navigate(['../../dashboard/second']);
     }
   }
+  goToform51Component(){
+    if(this.router.url == 'dashboard'){
+      this.router.navigate(['../dashboard/form1']);
+    }else{
+      this.router.navigate(['../../dashboard/form1']);
+    }
+  }
 
 }

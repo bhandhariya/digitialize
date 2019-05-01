@@ -15,11 +15,13 @@ import { DashboardComponent } from './dashboard.component';
 import { FirstComponent } from '../first/first.component';
 import { HttpErrorInterceptor } from '../services/httpErrorInterceptor';
 import { SecondComponent } from '../second/second.component';
+import { Form5FirstComponent } from '../form5-first/form5-first.component';
 
 const AppRoutes: Routes = [
   { path : '', component : DashboardComponent },
   { path : 'first', component : FirstComponent },
   { path : 'second', component : SecondComponent },
+  { path : 'form1', component : Form5FirstComponent },
   { path : '**', redirectTo :'', pathMatch : 'full'}
 ];
 
@@ -31,7 +33,8 @@ const AppRoutes: Routes = [
     TopnavbarComponent,
     DashboardComponent,
     FirstComponent,
-    SecondComponent
+    SecondComponent,
+    Form5FirstComponent
   ],
   imports: [
     CommonModule,

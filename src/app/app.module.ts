@@ -18,6 +18,7 @@ import { ForgotService } from './services/forgot.service';
 import { ChangepasswordService } from './services/changepassword.service';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { LoginGuard } from './shared/routeGuards/login.guard';
+import { Form5FirstComponent } from './form5-first/form5-first.component';
 
 const routes: Routes = [
   { path : 'login', component : LoginComponent, canActivate :[LoginGuard] },
