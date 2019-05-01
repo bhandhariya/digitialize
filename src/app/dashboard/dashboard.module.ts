@@ -16,12 +16,14 @@ import { FirstComponent } from '../first/first.component';
 import { HttpErrorInterceptor } from '../services/httpErrorInterceptor';
 import { SecondComponent } from '../second/second.component';
 import { Form5FirstComponent } from '../form5-first/form5-first.component';
+import { FamilydataComponent } from '../familydata/familydata.component';
 
 const AppRoutes: Routes = [
   { path : '', component : DashboardComponent },
   { path : 'first', component : FirstComponent },
   { path : 'second', component : SecondComponent },
   { path : 'form1', component : Form5FirstComponent },
+  { path : 'family', component : FamilydataComponent },
   { path : '**', redirectTo :'', pathMatch : 'full'}
 ];
 
@@ -34,7 +36,8 @@ const AppRoutes: Routes = [
     DashboardComponent,
     FirstComponent,
     SecondComponent,
-    Form5FirstComponent
+    Form5FirstComponent,
+    FamilydataComponent
   ],
   imports: [
     CommonModule,

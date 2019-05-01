@@ -20,6 +20,10 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
 import { LoginGuard } from './shared/routeGuards/login.guard';
 import { Form5FirstComponent } from './form5-first/form5-first.component';
 
+import { AngularFireModule } from "angularfire2";
+import { AngularFireStorageModule } from "angularfire2/storage";
+
+
 const routes: Routes = [
   { path : 'login', component : LoginComponent, canActivate :[LoginGuard] },
   { path : 'register', component : RegisterComponent, canActivate :[LoginGuard] },
@@ -43,7 +47,16 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyD0odymXr_m3OPJNtHYFH2cHeftpmfZu4U",
+      authDomain: "digitalapp-49c9e.firebaseapp.com",
+      databaseURL: "https://digitalapp-49c9e.firebaseio.com",
+      projectId: "digitalapp-49c9e",
+      storageBucket: "digitalapp-49c9e.appspot.com",
+      messagingSenderId: "937297135346"
+    }),
+    AngularFireStorageModule
   ],
   exports: [
     BrowserModule,

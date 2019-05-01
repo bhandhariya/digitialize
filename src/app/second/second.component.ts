@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Router, ActivatedRoute} from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-second',
@@ -9,6 +10,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
   styleUrls: ['./second.component.css']
 })
 export class SecondComponent implements OnInit {
+  id;
   datePickerConfig: Partial<BsDatepickerConfig>;
   persionalDataForm: any;
   validationMessages  = {
@@ -72,17 +74,23 @@ export class SecondComponent implements OnInit {
     'MaterialStatus' : '',
   };
   submmited: boolean = false;
-  constructor(private router:Router,private fb: FormBuilder) {
+  constructor(@Inject(HttpClient) public http, private router:Router,private fb: FormBuilder,private arout:ActivatedRoute) {
     this.datePickerConfig = Object.assign({},
       {
         containerClass: 'theme-dark-blue',
         showWeekNumbers: false,
         dateInputFormat: 'MM/DD/YYYY'
       });
+      this.arout.paramMap.subscribe(e=>{
+       this.id=e.get('id')    
+        console.log(this.id)
+        
+      })
    }
 
    ngOnInit() {
     this.persionalDataForm = this.fb.group({
+      id:[''],
       ParmentAddress : ['',[Validators.required,Validators.minLength(5)]],
       Mobile : ['',[Validators.required]],
       OfficeFax : ['',[Validators.required]],
@@ -105,10 +113,17 @@ export class SecondComponent implements OnInit {
 
   onSubmit(formData){
     this.submmited = true;
+    this.persionalDataForm.get('id').setValue(this.id)
     this.logValidationMessages();
     if(this.persionalDataForm.valid){
       console.log(formData);
-      this.router.navigate(['third']);
+      this.http.post('http://localhost:3000/api/pat/addPersonal',formData).subscribe(this.addpersonalCB)
+    }
+  }
+  addpersonalCB=(dt)=>{
+    console.log(dt)
+    if(dt.id){
+      this.router.navigate(['dashboard/family',{id:dt.id}])
     }
   }
 

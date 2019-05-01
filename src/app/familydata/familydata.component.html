@@ -1,0 +1,87 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <app-topnavbar></app-topnavbar>
+      <div class="container register">
+        <div class="row">
+            <!-- <div class="col-md-3 register-left">
+                <img src="../../assets/logo_white.png" alt=""/>
+                <h3>Welcome</h3> 
+            </div> -->
+            <div class="col-md-12 register-right">
+              <form [formGroup]="familyDataForm" (ngSubmit)="onSubmit(familyDataForm.value)">
+                <h3 class="register-heading">Family Data</h3>
+                <div class="row register-form">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" formControlName="SpouseName" class="form-control" (blur)="logValidationMessages()"
+                              [class.is-invalid]="formErrors.SpouseName" placeholder="Spouse Name *">
+                            <div *ngIf="formErrors.SpouseName" class="invalid-feedback">{{formErrors.SpouseName}}</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="SpouseAddress" class="form-control" (blur)="logValidationMessages()"
+                              [class.is-invalid]="formErrors.SpouseAddress" placeholder="Spouse Address *">
+                            <div *ngIf="formErrors.SpouseAddress" class="invalid-feedback">{{formErrors.SpouseAddress}}</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="GuardianName" class="form-control" (blur)="logValidationMessages()"
+                              [class.is-invalid]="formErrors.GuardianName" placeholder="Father/Mother/Guardian Name *">
+                            <div *ngIf="formErrors.GuardianName" class="invalid-feedback">{{formErrors.GuardianName}}</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="Address" class="form-control" (blur)="logValidationMessages()" 
+                              [class.is-invalid]="formErrors.Address" placeholder="Address *">
+                            <div *ngIf="formErrors.Address" class="invalid-feedback">{{formErrors.Address}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" formControlName="SpouseAge" class="form-control" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="1" MaxDigit="2"
+                              [class.is-invalid]="formErrors.SpouseAge" placeholder="Spouse Age *">
+                            <div *ngIf="formErrors.SpouseAge" class="invalid-feedback">{{formErrors.SpouseAge}}</div>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" formControlName="LivingStatus" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.LivingStatus">
+                                <option disabled value="">Living together or seperate </option>
+                                <option value="1" >Together</option>
+                                <option value="2" >Seperate</option>
+                            </select>
+                            <div *ngIf="formErrors.LivingStatus" class="invalid-feedback">{{formErrors.LivingStatus}}</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="ContactNo" class="form-control" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="10" MaxDigit="10"
+                              [class.is-invalid]="formErrors.ContactNo" placeholder="Contact No. *">
+                            <div *ngIf="formErrors.ContactNo" class="invalid-feedback">{{formErrors.ContactNo}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                          <input type="text" formControlName="SpouseOccupation" class="form-control" (blur)="logValidationMessages()" 
+                            [class.is-invalid]="formErrors.SpouseOccupation" placeholder="Spouse Occupation *">
+                          <div *ngIf="formErrors.SpouseOccupation" class="invalid-feedback">{{formErrors.SpouseOccupation}}</div>
+                      </div>
+                      <div class="form-group">
+                          <input type="text" formControlName="NoOfChildren" class="form-control" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="1" MaxDigit="2"
+                            [class.is-invalid]="formErrors.NoOfChildren" placeholder="No. Of Children *">
+                          <div *ngIf="formErrors.NoOfChildren" class="invalid-feedback">{{formErrors.NoOfChildren}}</div>
+                      </div>
+                      <div class="form-group">
+                          <input type="text" formControlName="Email" class="form-control" (blur)="logValidationMessages()"
+                            [class.is-invalid]="formErrors.Email" placeholder="Email *">
+                          <div *ngIf="formErrors.Email" class="invalid-feedback">{{formErrors.Email}}</div>
+                      </div>                      
+                      <!-- <input type="submit" class="btnRegister" value="Next" [disabled]="familyDataForm.invalid"/> -->
+                      <input type="submit" class="btnRegister" value="Next"/>
+                    </div>
+                </div>
+              </form>
+              <!-- <pre>{{familyDataForm.value |json}}</pre> -->
+            </div>
+        </div>
+      
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

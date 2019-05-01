@@ -46,7 +46,7 @@
                                     <label for="DateOfBirth" class="col-md-4 col-form-label text-md-right"> Upload File: <span
                                             class="text-danger">*</span> </label>
                                     <div class="col-md-6">
-                                        <input type="file" ngf formControlName="File" class="form-control" placeholder="Upload File *" [class.is-invalid]="formErrors.File" />
+                                        <input type="file" ngf formControlName="File" class="form-control" placeholder="Upload File *"  (change)="uploadImage($event)"  [class.is-invalid]="formErrors.File" />
                                         <div *ngIf="formErrors.File" class="invalid-feedback">{{formErrors.File}}</div>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                 </div> 
                 <div class="card-footer">
                     <div class="col-md-2 offset-md-10">
-                        <input type="submit" class="btn btn-primary btn-sm btn-block" value="Next" />
+                        <input type="submit" class="btn btn-primary btn-sm btn-block" value="Next"    />
                     </div>
                 </div>
             </form>

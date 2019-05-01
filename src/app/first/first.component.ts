@@ -1,9 +1,13 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 // import * as firebase from "firebase";
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { HttpClient } from '@angular/common/http';
+import { AngularFireStorage } from "angularfire2/storage";
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-first-form',
@@ -44,7 +48,7 @@ export class FirstComponent implements OnInit {
     };
   submmited: boolean = false;
 
-  constructor(private router:Router,private fb: FormBuilder) {
+  constructor(@Inject(HttpClient) public http,   private router:Router,private fb: FormBuilder,private storage:AngularFireStorage) {
     this.datePickerConfig = Object.assign({},
       {
         containerClass: 'theme-dark-blue',
@@ -59,7 +63,8 @@ export class FirstComponent implements OnInit {
         MiddleName : ['',[Validators.required]],
         LastName : ['',[Validators.required]],
         AddmissionDate : ['',[Validators.required]],
-        File : ['',[Validators.required]]
+        File : ['',[Validators.required]],
+        imageURL:['']
       });
 
       this.firstForm.valueChanges.subscribe(value =>{
@@ -73,7 +78,16 @@ export class FirstComponent implements OnInit {
       this.logValidationMessages();
       if(this.firstForm.valid){
         console.log(formData);
-        this.router.navigate(['second']);
+
+        // this.router.navigate(['dashboard/second']);
+        this.http.post('http://localhost:3000/api/pat/create',formData).subscribe(this.createCB)
+      }
+    }
+    createCB=(dt)=>{
+      console.log(dt);
+      console.log(dt._body)
+      if(dt.id){
+        this.router.navigate(['dashboard/second',{id:dt.id}]);
       }
     }
   
@@ -93,6 +107,31 @@ export class FirstComponent implements OnInit {
               this.logValidationMessages(abstractControl);
             } 
         });
+    }
+    downloadURL: Observable<string>;
+    uploadImage(event) {
+      const file = event.target.files[0];
+      var randomString=Math.floor(Date.now() / 1000);
+      //   var picName=randomString;
+      const filePath = 'mentcom'+randomString;
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, file);
+  
+      // observe percentage changes
+      // this.uploadPercent = task.percentageChanges();
+      // get notified when the download URL is available
+      task.snapshotChanges().pipe(
+          finalize(() =>{ this.downloadURL = fileRef.getDownloadURL()
+            this.downloadURL.subscribe(e=>{
+              console.log(e)
+              this.firstForm.get('imageURL').setValue(e)
+            })
+          } )
+       )
+      .subscribe(e=>{
+        
+      })
+      
     }
 
 }

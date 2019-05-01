@@ -131,8 +131,8 @@
                               <div class="col-md-6">
                                 <select class="form-control" formControlName="Gender" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.Gender">
                                   <option disabled value="">Select Gender </option>
-                                  <option value="1" >Male</option>
-                                  <option value="2" >Female</option>
+                                  <option value="Male" >Male</option>
+                                  <option value="Female" >Female</option>
                                 </select>
                                 <div *ngIf="formErrors.Gender" class="invalid-feedback">{{formErrors.Gender}}</div>
                               </div>
