@@ -1,0 +1,72 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <app-topnavbar></app-topnavbar>
+      
+
+
+
+
+      <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Patient List</h1>
+        <div class="input-group">
+          <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">
+              <i class="fas fa-search fa-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables </h6>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Addmission Date</th>
+                    <th>Address</th>
+                    <th>Age</th>
+                    <th>photo</th>
+                    <th>Mobile</th>
+                  </tr>
+                </thead>
+               
+                <tbody>
+                  <tr *ngFor="let i of Patient" >
+                    <td>{{i.first_name}}{{i.last_name}}</td>
+                    <td>{{i.addmission_date | date }}</td>
+                    <td>{{i.permanent_address}}</td>
+                    <td>{{i.age}}</td>
+                    <td>
+                      <img src="{{i.profile_image}}" height="100px" width="100px" >
+                    </td>
+                    <td>{{i.permanent_mobile}}</td>
+                  </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

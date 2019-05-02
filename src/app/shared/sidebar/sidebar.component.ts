@@ -35,5 +35,12 @@ export class SidebarComponent implements OnInit {
       this.router.navigate(['../../dashboard/form1']);
     }
   }
+  goTopatientTableComponent(){
+    if(this.router.url == 'dashboard'){
+      this.router.navigate(['../dashboard/patable']);
+    }else{
+      this.router.navigate(['../../dashboard/patable']);
+    }
+  }
 
 }

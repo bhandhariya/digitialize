@@ -19,6 +19,7 @@ import { SecondComponent } from '../second/second.component';
 import { Form5FirstComponent } from '../form5-first/form5-first.component';
 import { FamilydataComponent } from '../familydata/familydata.component';
 import { ChildrenComponent } from '../children/children.component';
+import { PatientTableComponent } from "../patient-table/patient-table.component";
 
 const AppRoutes: Routes = [
   { path : '', component : DashboardComponent },
@@ -27,6 +28,7 @@ const AppRoutes: Routes = [
   { path : 'form1', component : Form5FirstComponent },
   { path : 'family', component : FamilydataComponent },
   { path : 'children', component : ChildrenComponent },
+  { path : 'patable', component : PatientTableComponent },
   { path : '**', redirectTo :'', pathMatch : 'full'}
 ];
 
@@ -41,7 +43,8 @@ const AppRoutes: Routes = [
     SecondComponent,
     Form5FirstComponent,
     FamilydataComponent,
-    ChildrenComponent
+    ChildrenComponent,
+    PatientTableComponent
   ],
   imports: [
     CommonModule,
