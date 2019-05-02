@@ -85,7 +85,7 @@ export class FirstComponent implements OnInit {
     }
     createCB=(dt)=>{
       console.log(dt);
-      console.log(dt._body)
+     
       if(dt.id){
         this.router.navigate(['dashboard/second',{id:dt.id}]);
       }
