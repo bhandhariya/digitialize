@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-table',
@@ -7,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./patient-table.component.css']
 })
 export class PatientTableComponent implements OnInit {
-
-  constructor(private http:HttpClient) { }
+url="https://digitalapp001.herokuapp.com";
+  constructor(private http:HttpClient,private router:Router) { }
   Patient;
   ngOnInit() {
     this.http.get('https://digitalapp001.herokuapp.com/api/pat/getall').subscribe(this.cb)
@@ -16,6 +17,11 @@ export class PatientTableComponent implements OnInit {
   cb=(dt)=>{
     this.Patient=dt;
     console.log(this.Patient)
+  }
+  goToForm5(x){
+    console.log(x)
+    this.router.navigate(['dashboard/chiefComplain',{id:x}])
+
   }
 
 }

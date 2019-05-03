@@ -1,0 +1,143 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <app-topnavbar></app-topnavbar>
+      
+
+
+ <div class="container register">
+        <div class="row">
+            <div class="col-md-12 register-right">
+              <form [formGroup]="familyDataForm" (ngSubmit)="onSubmit(familyDataForm.value)">
+                <h3 class="register-heading">Illness</h3>
+                <div class="row register-form">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="">Duration of Currunt Illness</label>
+                                <select class="form-control" formControlName="DurationOfCurruntIllness" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.DurationOfCurruntIllness">
+                                    <option disabled value="">Select Your Option</option>
+                                    <option value="Last 2 days">Last 2 days</option>
+                                    <option value=" Last 2 weeks"> Last 2 weeks</option>
+                                    <option value="Less than 1 month">Less than 1 month</option>
+                                    <option value="1 to 3 months">1 to 3 months</option>
+                                    <option value="3 to 6 months">3 to 6 months</option>
+                                    <option value="More than 6 months">More than 6 months</option>
+                                    <option value="More than 1 year">More  than 1 year</option>
+                                    <option value="More than 5 years">More than 5 years</option>
+                                </select>
+                                  <div *ngIf="formErrors.DurationOfCurruntIllness" class="invalid-feedback">{{formErrors.DurationOfCurruntIllness}}</div>
+                              </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="">Current Episode Number</label>
+                              <select class="form-control" formControlName="CurruntEpisodeNumber" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.CurruntEpisodeNumber">
+                                  <option disabled value="">Select Your Option</option>
+                                  <option value="1">1</option>
+                                  <option value="2"> 2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  <option value="6">6</option>
+                                  <option value="7">7</option>
+                                 
+                              </select>
+                                <div *ngIf="formErrors.CurruntEpisodeNumber" class="invalid-feedback">{{formErrors.CurruntEpisodeNumber}}</div>
+                            </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">Mode of Onset </label>
+                            <select class="form-control" formControlName="ModeOfOnset" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.ModeOfOnset">
+                                <option disabled value="">Select Your Option</option>
+                                <option value="Abrupt (Within 48 Hours or less)">Abrupt (Within 48 Hours or less)</option>
+                                <option value="Acute (Within 2 Weeks or less)"> Acute (Within 2 Weeks or less)</option>
+                                <option value="Sub-Acute (2 Weeks - 1 Month)">Sub-Acute (2 Weeks - 1 Month)</option>
+                                <option value="Insidious (More than 1 Month)">Insidious (More than 1 Month)</option>
+                               
+                               
+                            </select>
+                              <div *ngIf="formErrors.ModeOfOnset" class="invalid-feedback">{{formErrors.ModeOfOnset}}</div>
+                          </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="">Course </label>
+                          <select class="form-control" formControlName="Course" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.Course">
+                              <option disabled value="">Select Your Option</option>
+                              <option value="Continous">Continous</option>
+                              <option value=" Episodic"> Episodic</option>
+                              <option value="Fluctuating">Fluctuating</option>
+                              
+                             
+                             
+                          </select>
+                            <div *ngIf="formErrors.Course" class="invalid-feedback">{{formErrors.Course}}</div>
+                        </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="">Predisposing Factors </label>
+                        <select class="form-control" formControlName="PredisposingFactors" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.PredisposingFactors">
+                            <option disabled value="">Select Your Option</option>
+                            <option value="Present">Present</option>
+                            <option value="Absent"> Absent</option>    
+                        </select>
+                          <div *ngIf="formErrors.PredisposingFactors" class="invalid-feedback">{{formErrors.PredisposingFactors}}</div>
+                      </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                      <label for="">Precipitating Factors</label>
+                      <select class="form-control" formControlName="PrecipatingFactors" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.PrecipatingFactors">
+                          <option disabled value="">Select Your Option</option>
+                          <option value="Present">Present</option>
+                          <option value="Absent"> Absent</option>    
+                      </select>
+                        <div *ngIf="formErrors.PrecipatingFactors" class="invalid-feedback">{{formErrors.PrecipatingFactors}}</div>
+                    </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Perpetuating Factors </label>
+                    <select class="form-control" formControlName="PrepetuatingFactors" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.PrepetuatingFactors">
+                        <option disabled value="">Select Your Option</option>
+                        <option value="Present">Present</option>
+                        <option value="Absent"> Absent</option>    
+                    </select>
+                      <div *ngIf="formErrors.PrepetuatingFactors" class="invalid-feedback">{{formErrors.PrepetuatingFactors}}</div>
+                  </div>
+            </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="">Action</label>
+                                  <input type="submit"  class="form-control btn btn-success" 
+                                   value="add" >
+                                 
+                        </div>
+                        </div>
+                                  
+                      <div class="offset-md-5 col-md-4"><input type="button" (click)="gotoHistory()" class="btn btn-danger" value="Next"/></div>
+                </div>
+              </form>
+              <pre>{{familyDataForm.value |json}}</pre>
+            </div>
+        </div>
+      
+      </div>
+
+
+
+
+
+
+
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

@@ -20,6 +20,9 @@ import { Form5FirstComponent } from '../form5-first/form5-first.component';
 import { FamilydataComponent } from '../familydata/familydata.component';
 import { ChildrenComponent } from '../children/children.component';
 import { PatientTableComponent } from "../patient-table/patient-table.component";
+import { ChiefComplainComponent } from '../chief-complain/chief-complain.component';
+import { IllnessComponent } from '../illness/illness.component';
+import { HistoryComponent } from '../history/history.component';
 
 const AppRoutes: Routes = [
   { path : '', component : DashboardComponent },
@@ -29,6 +32,9 @@ const AppRoutes: Routes = [
   { path : 'family', component : FamilydataComponent },
   { path : 'children', component : ChildrenComponent },
   { path : 'patable', component : PatientTableComponent },
+  { path : 'chiefComplain', component : ChiefComplainComponent },
+  { path : 'illness', component : IllnessComponent },
+  { path : 'history', component : HistoryComponent },
   { path : '**', redirectTo :'', pathMatch : 'full'}
 ];
 
@@ -44,7 +50,10 @@ const AppRoutes: Routes = [
     Form5FirstComponent,
     FamilydataComponent,
     ChildrenComponent,
-    PatientTableComponent
+    PatientTableComponent,
+    ChiefComplainComponent,
+    IllnessComponent,
+    HistoryComponent
   ],
   imports: [
     CommonModule,

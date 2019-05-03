@@ -20,7 +20,8 @@ import { ForgotService } from './services/forgot.service';
 import { ChangepasswordService } from './services/changepassword.service';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { LoginGuard } from './shared/routeGuards/login.guard';
-import { ChildrenComponent } from './children/children.component';
+
+
 
 
 
@@ -41,6 +42,8 @@ const routes: Routes = [
     RegisterComponent,
     ForgotpasswordComponent,
     ChangepasswordComponent
+   
+   
     
     
   ],
