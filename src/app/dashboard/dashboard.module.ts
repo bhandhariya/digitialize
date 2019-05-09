@@ -23,6 +23,7 @@ import { PatientTableComponent } from "../patient-table/patient-table.component"
 import { ChiefComplainComponent } from '../chief-complain/chief-complain.component';
 import { IllnessComponent } from '../illness/illness.component';
 import { HistoryComponent } from '../history/history.component';
+import { AccordianDemoComponent } from '../accordian-demo/accordian-demo.component';
 
 const AppRoutes: Routes = [
   { path : '', component : DashboardComponent },
@@ -35,6 +36,7 @@ const AppRoutes: Routes = [
   { path : 'chiefComplain', component : ChiefComplainComponent },
   { path : 'illness', component : IllnessComponent },
   { path : 'history', component : HistoryComponent },
+  { path : 'accordian', component : AccordianDemoComponent },
   { path : '**', redirectTo :'', pathMatch : 'full'}
 ];
 
@@ -53,7 +55,8 @@ const AppRoutes: Routes = [
     PatientTableComponent,
     ChiefComplainComponent,
     IllnessComponent,
-    HistoryComponent
+    HistoryComponent,
+    AccordianDemoComponent
   ],
   imports: [
     CommonModule,

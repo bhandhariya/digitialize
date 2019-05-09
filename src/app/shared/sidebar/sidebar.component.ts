@@ -42,5 +42,11 @@ export class SidebarComponent implements OnInit {
       this.router.navigate(['../../dashboard/patable']);
     }
   }
-
+  goaccordian(){
+    if(this.router.url == 'dashboard'){
+      this.router.navigate(['../dashboard/accordian']);
+    }else{
+      this.router.navigate(['../../dashboard/accordian']);
+    } 
+  }
 }

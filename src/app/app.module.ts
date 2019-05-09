@@ -20,6 +20,11 @@ import { ForgotService } from './services/forgot.service';
 import { ChangepasswordService } from './services/changepassword.service';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { LoginGuard } from './shared/routeGuards/login.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { DemoDashComponent } from './demo-dash/demo-dash.component';
+import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 
@@ -41,7 +46,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     ForgotpasswordComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    DemoDashComponent
    
    
     
@@ -65,6 +71,14 @@ const routes: Routes = [
     AngularFireStorageModule,
     RouterModule.forRoot(routes),
     NgxLoadingModule.forRoot({}),
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
    
   ],
   exports: [
@@ -73,7 +87,14 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    NgxLoadingModule
+    NgxLoadingModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
