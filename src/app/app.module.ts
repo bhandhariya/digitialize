@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxLoadingModule } from 'ngx-loading';
 
-import { AngularFireModule } from "angularfire2";
-import { AngularFireStorageModule } from "angularfire2/storage";
+// import { AngularFireModule } from "angularfire2";
+// import { AngularFireStorageModule } from "angularfire2/storage";
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login.service';
@@ -21,14 +21,9 @@ import { ChangepasswordService } from './services/changepassword.service';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { LoginGuard } from './shared/routeGuards/login.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatExpansionModule} from '@angular/material/expansion';
-import { DemoDashComponent } from './demo-dash/demo-dash.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
-
-
-
-
 
 
 const routes: Routes = [
@@ -46,29 +41,24 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     ForgotpasswordComponent,
-    ChangepasswordComponent,
-    DemoDashComponent
-   
-   
-    
-    
+    ChangepasswordComponent
   ],
   imports: [
     BrowserModule,
     FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
-    AngularFireModule.initializeApp({
+    // AngularFireModule.initializeApp({
       
-        apiKey: "AIzaSyD0odymXr_m3OPJNtHYFH2cHeftpmfZu4U",
-        authDomain: "digitalapp-49c9e.firebaseapp.com",
-        databaseURL: "https://digitalapp-49c9e.firebaseio.com",
-        projectId: "digitalapp-49c9e",
-        storageBucket: "digitalapp-49c9e.appspot.com",
-        messagingSenderId: "937297135346"
+    //     apiKey: "AIzaSyD0odymXr_m3OPJNtHYFH2cHeftpmfZu4U",
+    //     authDomain: "digitalapp-49c9e.firebaseapp.com",
+    //     databaseURL: "https://digitalapp-49c9e.firebaseio.com",
+    //     projectId: "digitalapp-49c9e",
+    //     storageBucket: "digitalapp-49c9e.appspot.com",
+    //     messagingSenderId: "937297135346"
       
-    }),
-    AngularFireStorageModule,
+    // }),
+    // AngularFireStorageModule,
     RouterModule.forRoot(routes),
     NgxLoadingModule.forRoot({}),
     BrowserAnimationsModule,

@@ -6,7 +6,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxLoadingModule } from 'ngx-loading'; 
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { LayoutModule } from '@angular/cdk/layout';
 
     // Components
 import { FooterComponent } from '../shared/footer/footer.component';
@@ -24,6 +26,7 @@ import { ChiefComplainComponent } from '../chief-complain/chief-complain.compone
 import { IllnessComponent } from '../illness/illness.component';
 import { HistoryComponent } from '../history/history.component';
 import { AccordianDemoComponent } from '../accordian-demo/accordian-demo.component';
+import { DemoDashComponent } from '../demo-dash/demo-dash.component';
 
 const AppRoutes: Routes = [
   { path : '', component : DashboardComponent },
@@ -37,6 +40,7 @@ const AppRoutes: Routes = [
   { path : 'illness', component : IllnessComponent },
   { path : 'history', component : HistoryComponent },
   { path : 'accordian', component : AccordianDemoComponent },
+  { path : 'demo', component : DemoDashComponent },
   { path : '**', redirectTo :'', pathMatch : 'full'}
 ];
 
@@ -56,7 +60,8 @@ const AppRoutes: Routes = [
     ChiefComplainComponent,
     IllnessComponent,
     HistoryComponent,
-    AccordianDemoComponent
+    AccordianDemoComponent,
+    DemoDashComponent
   ],
   imports: [
     CommonModule,
@@ -66,6 +71,13 @@ const AppRoutes: Routes = [
     RouterModule.forChild(AppRoutes),
     NgxLoadingModule.forRoot({}),
     BsDatepickerModule.forRoot(),
+    MatExpansionModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
   ],
   providers :[
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
