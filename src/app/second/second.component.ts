@@ -81,11 +81,11 @@ export class SecondComponent implements OnInit {
         showWeekNumbers: false,
         dateInputFormat: 'MM/DD/YYYY'
       });
-      this.arout.paramMap.subscribe(e=>{
-       this.id=e.get('id')    
-        console.log(this.id)
+      // this.arout.paramMap.subscribe(e=>{
+      //  this.id=e.get('id')    
+      //   console.log(this.id)
         
-      })
+      // })
    }
 
    ngOnInit() {
@@ -109,15 +109,20 @@ export class SecondComponent implements OnInit {
     this.persionalDataForm.valueChanges.subscribe(value =>{
       this.logValidationMessages();
     });
+    this.arout.paramMap.subscribe(e=>{
+     
+      this.persionalDataForm.get('id').setValue(e.get('id'))
+       
+     })
   }
 
   onSubmit(formData){
     this.submmited = true;
-    this.persionalDataForm.get('id').setValue(this.id)
+    // this.persionalDataForm.get('id').setValue(this.id)
     this.logValidationMessages();
     if(this.persionalDataForm.valid){
       console.log(formData);
-      this.http.post('http://localhost:3000/api/pat/addPersonal',formData).subscribe(this.addpersonalCB)
+      this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPersonal',formData).subscribe(this.addpersonalCB)
     }
   }
   addpersonalCB=(dt)=>{

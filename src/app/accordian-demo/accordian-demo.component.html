@@ -1,23 +1,392 @@
-<!-- <mat-accordion></mat-accordion> -->
 
-<mat-accordion>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        This is the expansion 1 title
-      </mat-expansion-panel-header>
-  
-      This the expansion 1 content
-  
-    </mat-expansion-panel>
-  
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        This is the expansion 2 title
-      </mat-expansion-panel-header>
-  
-      This the expansion 2 content
-  
-    </mat-expansion-panel>
-  
-  </mat-accordion>
+  <div id="wrapper">
+    <app-sidebar></app-sidebar>
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <app-topnavbar></app-topnavbar>
+        <mat-accordion>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+            Chief Complain
+            </mat-expansion-panel-header>
+        
+            <form [formGroup]="ChiefComplain" (ngSubmit)="chiefComplaintSubmit(ChiefComplain.value)">
+              <div class="card-body">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Complaint <span
+                                          class="text-danger">*</span> </label>
+                                  <div class="col-md-6">
+                                      <input type="text" formControlName="ComplaintName" class="form-control" (blur)="logValidationMessages(ChiefComplain)"
+                                        [class.is-invalid]="formErrors.ComplaintName" placeholder="Description*">
+                                      <div *ngIf="formErrors.ComplaintName" class="invalid-feedback">{{formErrors.ComplaintName}}</div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Duration: <span
+                                        class="text-danger">*</span> </label>
+                                <div class="col-md-6">
+                                  <select class="form-control" formControlName="ComplaintDuration" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.ComplaintDuration">
+                                    <option disabled value="">Select Your Option</option>
+                                    <option value="Last 2 days">Last 2 days</option>
+                                    <option value=" Last 2 weeks"> Last 2 weeks</option>
+                                    <option value="Less than 1 month">Less than 1 month</option>
+                                    <option value="1 to 3 months">1 to 3 months</option>
+                                    <option value="3 to 6 months">3 to 6 months</option>
+                                    <option value="More than 6 months">More than 6 months</option>
+                                    <option value="More than 1 year">More  than 1 year</option>
+                                    <option value="More than 5 years">More than 5 years</option>
+                                </select>
+                                    <div *ngIf="formErrors.ComplaintDuration" class="invalid-feedback">{{formErrors.ComplaintDuration}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                      </div>   
+              </div> 
+              <div class="card-footer">
+                  <div class="col-md-2 offset-md-10">
+                      <input type="submit" class="btn btn-primary btn-sm btn-block" value="save"    />
+                  </div>
+              </div>
+          </form>
+        
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              Illness
+            </mat-expansion-panel-header>
+            <form [formGroup]="Illness" (ngSubmit)="IllnessonSubmit(Illness.value)">
+              <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Duration of Currunt Illness <span
+                                class="text-danger">*</span> </label>
+                        <div class="col-md-6">
+                          <select class="form-control" formControlName="DurationOfCurruntIllness" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.DurationOfCurruntIllness">
+                            <option disabled value="">Select Your Option</option>
+                            <option value="Last 2 days">Last 2 days</option>
+                            <option value=" Last 2 weeks"> Last 2 weeks</option>
+                            <option value="Less than 1 month">Less than 1 month</option>
+                            <option value="1 to 3 months">1 to 3 months</option>
+                            <option value="3 to 6 months">3 to 6 months</option>
+                            <option value="More than 6 months">More than 6 months</option>
+                            <option value="More than 1 year">More  than 1 year</option>
+                            <option value="More than 5 years">More than 5 years</option>
+                        </select>
+                            <div *ngIf="IllnessformErrors.DurationOfCurruntIllness" class="invalid-feedback">{{IllnessformErrors.DurationOfCurruntIllness}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group row">
+                      <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Current Episode Number <span
+                              class="text-danger">*</span> </label>
+                      <div class="col-md-6">
+                        <select class="form-control" formControlName="CurruntEpisodeNumber" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.CurruntEpisodeNumber">
+                          <option disabled value="">Select Your Option</option>
+                          <option value="1">1</option>
+                          <option value="2"> 2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                         
+                      </select>
+                          <div *ngIf="IllnessformErrors.CurruntEpisodeNumber" class="invalid-feedback">{{IllnessformErrors.CurruntEpisodeNumber}}</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group row">
+                    <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Mode of Onset <span
+                            class="text-danger">*</span> </label>
+                    <div class="col-md-6">
+                      <select class="form-control" formControlName="ModeOfOnset" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.ModeOfOnset">
+                        <option disabled value="">Select Your Option</option>
+                        <option value="Abrupt (Within 48 Hours or less)">Abrupt (Within 48 Hours or less)</option>
+                        <option value="Acute (Within 2 Weeks or less)"> Acute (Within 2 Weeks or less)</option>
+                        <option value="Sub-Acute (2 Weeks - 1 Month)">Sub-Acute (2 Weeks - 1 Month)</option>
+                        <option value="Insidious (More than 1 Month)">Insidious (More than 1 Month)</option>
+                       
+                       
+                    </select>
+                        <div *ngIf="IllnessformErrors.ModeOfOnset" class="invalid-feedback">{{IllnessformErrors.ModeOfOnset}}</div>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-4">
+              <div class="form-group row">
+                  <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Course <span
+                          class="text-danger">*</span> </label>
+                  <div class="col-md-6">
+                    <select class="form-control" formControlName="Course" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.Course">
+                              <option disabled value="">Select Your Option</option>
+                              <option value="Continous">Continous</option>
+                              <option value=" Episodic"> Episodic</option>
+                              <option value="Fluctuating">Fluctuating</option>
+                     
+                     
+                  </select>
+                      <div *ngIf="IllnessformErrors.Course" class="invalid-feedback">{{IllnessformErrors.Course}}</div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group row">
+                <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Predisposing Factors <span
+                        class="text-danger">*</span> </label>
+                <div class="col-md-6">
+                  <select class="form-control" formControlName="PredisposingFactors" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.PredisposingFactors">
+                   
+                    <option disabled value="">Select Your Option</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent"> Absent</option>    
+                   
+                   
+                </select>
+                    <div *ngIf="IllnessformErrors.PredisposingFactors" class="invalid-feedback">{{IllnessformErrors.PredisposingFactors}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group row">
+              <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Precipitating Factors <span
+                      class="text-danger">*</span> </label>
+              <div class="col-md-6">
+                <select class="form-control" formControlName="PrecipatingFactors" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.PrecipatingFactors">
+                 
+                  <option disabled value="">Select Your Option</option>
+                  <option value="Present">Present</option>
+                  <option value="Absent"> Absent</option>    
+                 
+                 
+              </select>
+                  <div *ngIf="IllnessformErrors.PrecipatingFactors" class="invalid-feedback">{{IllnessformErrors.PrecipatingFactors}}</div>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group row">
+            <label for="Vendor" class="col-md-4 col-form-label text-md-right">Perpetuating Factors<span
+                    class="text-danger">*</span> </label>
+            <div class="col-md-6">
+              <select class="form-control" formControlName="PrepetuatingFactors" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.PrepetuatingFactors">
+              
+                <option disabled value="">Select Your Option</option>
+                <option value="Present">Present</option>
+                <option value="Absent"> Absent</option>    
+               
+               
+            </select>
+                <div *ngIf="IllnessformErrors.PrepetuatingFactors" class="invalid-feedback">{{IllnessformErrors.PrepetuatingFactors}}</div>
+            </div>
+        </div>
+        
+    </div>
+              
+            </div>
+            <div class="card-footer">
+              <div class="col-md-2 offset-md-10">
+                  <input type="submit" class="btn btn-primary btn-sm btn-block" value="save"    />
+              </div>
+          </div>
+            </form>
+            
+        
+          </mat-expansion-panel>
+
+
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>History</mat-expansion-panel-header>
+            
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>History of present Illness</mat-expansion-panel-header>
+            <div class="form-group">
+              <label for="">History of present Illness</label>
+              <input type="text" [(ngModel)]="HistoryOfPresentIllness"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <input type="button" value="save" (click)="addHistoryOfPresentIllness()"  class="btn btn-success" >
+            </div>
+            
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>History of Past Illness</mat-expansion-panel-header>
+            <div class="form-group">
+              <label for="">History of present Illness</label>
+              <input type="text" [(ngModel)]="HistoryOfPastIllness"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <input type="button" (click)="addHistoryOfPastIllness()"  value="save" class="btn btn-success" >
+            </div>
+            
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>History Of Mode Of Intake</mat-expansion-panel-header>
+            <div class="form-group">
+              <label for="">Psychiatric History (Duration, Number of Episode, Similarity with Present Illness)</label>
+              <input type="text"
+                class="form-control" [(ngModel)]="PsychiatricHistory"  name="" id="" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Medical/Surgical History</label>
+              <input type="text" [(ngModel)]="MedicalcHistory"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <input type="button"  (click)="addHistoryOfModeOfIntake()"  value="save" class="btn btn-success" >
+            </div>
+            
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Treatement History</mat-expansion-panel-header>
+            <div class="form-group">
+              <label for="">Present Treatement History</label>
+              <input type="text" [(ngModel)]="PresentTreateMent"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Past Treatement History</label>
+              <input type="text" [(ngModel)]="PastTreateMent"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <input type="button" (click)="addTreatementHostory()"  value="save" class="btn btn-success" >
+            </div>
+            
+            
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Family History</mat-expansion-panel-header>
+            <div class="form-group">
+              <label for="">Family History of Mental illness or Drug Addiction</label>
+              <input type="text" [(ngModel)]="mental"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Family Environment History</label>
+              <input type="text" [(ngModel)]="environment"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+               
+            </div>
+            <div class="form-group">
+              <label for="">Family Attitute History</label>
+              <input type="text" [(ngModel)]="attitute"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Living Condition History</label>
+              <input type="text" [(ngModel)]="living"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <input type="button" (click)="addFamilyHistory()"  value="save" class="btn btn-success" >
+            </div>
+            
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Personal History</mat-expansion-panel-header>
+            <div class="form-group">
+              <label for="">Birth History</label>
+              <input type="text" [(ngModel)]="Birth"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Immunization History</label>
+              <input type="text"  [(ngModel)]="Immunization"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+               
+            </div>
+            <div class="form-group">
+              <label for="">Development History</label>
+              <input type="text" [(ngModel)]="Development"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Education History</label>
+              <input type="text" [(ngModel)]="Education"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+               
+            </div>
+            <div class="form-group">
+              <label for="">Occupation History</label>
+              <input type="text" [(ngModel)]="Occupation"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Marrital and Sexual History</label>
+              <input type="text" [(ngModel)]="MarritalandSexual"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+               
+            </div>
+            <div class="form-group">
+              <label for="">Menstrual and obstetric History(Females)</label>
+              <input type="text" [(ngModel)]="Menstrualandobstetric"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <input type="button" (click)="addPersonalHistory()"  value="save" class="btn btn-success" >
+            </div>
+           
+            
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Substance History</mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="">History of choise of Substance</label>
+              <input type="text" [(ngModel)]="HistoryOfChoiseOfSubstance"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">History of Total Duration of Use</label>
+              <input type="text" [(ngModel)]="HistoryOfTotalDurationOfUse"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+               
+            </div>
+            <div class="form-group">
+              <label for="">History of Duration of Regular Use</label>
+              <input type="text" [(ngModel)]="HistoryOfDurationOfRegularUse"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">History of Daily Intake (Amount/No.)</label>
+              <input type="text" [(ngModel)]="HistoryOfDailyIntake"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+               
+            </div>
+            <div class="form-group">
+              <label for="">History of last Intake of Drug (Day/time and Quantity of the drug)</label>
+              <input type="text" [(ngModel)]="HistoryOfLastIntakeOfDrug"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <input type="button" (click)="addSubstanceHistory()" value="save" class="btn btn-success" >
+            </div>
+           
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Legal History</mat-expansion-panel-header>
+            <div class="form-group">
+              <label for="">H/o Homicide/Suicide Attempts If yes, specify the number of attempt and method.</label>
+              <input type="text"  [(ngModel)]="HomicideAttempt"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+               
+            </div>
+            <div class="form-group">
+              <label for="">Pre-morbid personality</label>
+              <input type="text" [(ngModel)]="preMorbidpersonality"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <input type="button" (click)="addLegalHistory()" value="save" class="btn btn-success" >
+            </div>
+            
+          </mat-expansion-panel>
+
+          </mat-expansion-panel>
+
+          </mat-accordion>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>

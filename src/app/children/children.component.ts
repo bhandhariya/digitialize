@@ -19,7 +19,7 @@ export class ChildrenComponent implements OnInit {
         dateInputFormat: 'MM/DD/YYYY'
       });
    }
-id;
+id;iiid;
   ngOnInit() {
     this.familyDataForm = this.fb.group({
       id:[''],
@@ -34,6 +34,7 @@ id;
     });
     this.id=this.arout.paramMap.subscribe(e=>{
       this.familyDataForm.get('id').setValue(e.get('id'))
+      this.iiid=e.get('id')
     })
   }
   logValidationMessages(group: FormGroup = this.familyDataForm): void {
@@ -93,6 +94,6 @@ id;
       this.familyDataForm.reset()
   }
   next(){
-    this.router.navigate(['dashboard'])
+    this.router.navigate(['dashboard/accordian',{id:this.iiid}])
   }
 }
