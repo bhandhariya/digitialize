@@ -27,6 +27,7 @@ import { IllnessComponent } from '../illness/illness.component';
 import { HistoryComponent } from '../history/history.component';
 import { AccordianDemoComponent } from '../accordian-demo/accordian-demo.component';
 import { DemoDashComponent } from '../demo-dash/demo-dash.component';
+import { PatientDetailComponent } from '../patient-detail/patient-detail.component';
 
 const AppRoutes: Routes = [
   { path : '', component : DashboardComponent },
@@ -36,6 +37,7 @@ const AppRoutes: Routes = [
   { path : 'family', component : FamilydataComponent },
   { path : 'children', component : ChildrenComponent },
   { path : 'patable', component : PatientTableComponent },
+  { path : 'patable/details', component : PatientDetailComponent },
   { path : 'chiefComplain', component : ChiefComplainComponent },
   { path : 'illness', component : IllnessComponent },
   { path : 'history', component : HistoryComponent },
@@ -61,7 +63,8 @@ const AppRoutes: Routes = [
     IllnessComponent,
     HistoryComponent,
     AccordianDemoComponent,
-    DemoDashComponent
+    DemoDashComponent,
+    PatientDetailComponent
   ],
   imports: [
     CommonModule,

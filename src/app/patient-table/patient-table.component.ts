@@ -20,7 +20,7 @@ url="https://digitalapp001.herokuapp.com";
   }
   goToForm5(x){
     console.log(x)
-    this.router.navigate(['dashboard/chiefComplain',{id:x}])
+    this.router.navigate(['dashboard/patable/details',{id:x}])
 
   }
 

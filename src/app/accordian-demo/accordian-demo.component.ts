@@ -319,4 +319,19 @@ submmited: boolean = false;
     this.HomicideAttempt="";
     this.preMorbidpersonality="";
   }
+  Appearance;LevelofGrooming;LevelofCleanliness;LevelofConsciousness;Gait;Posture;ModeOfEntry;Cooperative;EyetoEyeContact;Rapport;Gesturing;
+  OtherMovements;otherCatatolicPhemenon
+  Appearancechane(){
+    // console.log(this.Appearance)
+    // console.log(this.LevelofGrooming)
+    // console.log(this.LevelofCleanliness)
+    // console.log(this.LevelofConsciousness)
+    // console.log(this.Gait)
+    // console.log(this.Posture)
+    // console.log(this.ModeOfEntry)
+    // console.log(this.Cooperative)
+    //console.log(this.otherCatatolicPhemenon)
+  }
+  PsychomotorActivity;Initiation;ReactionTime;Speed;LevelofConsciousnessinSpeech;Output;PressureOfSpeech;Volume;Tone;Manner;Relavance;Coherence;Other;example;
+  Subjective;Objectivetext;Objective;Congruence;Stability;Range;
 }

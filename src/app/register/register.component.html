@@ -5,7 +5,7 @@
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
         <div class="row">
-          <div class="col-lg-5 d-none d-lg-block" style="background: url(../../assets/images/register-bg.jpg); background-position: center; background-size: cover;"></div>
+          <div class="col-lg-5 d-none d-lg-block" style="background: url(../../assets/images/398329-PD0PG2-599.jpg); background-position: center; background-size: cover;"></div>
           <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">
@@ -13,8 +13,8 @@
               </div>
               <form #formCtrl="ngForm" (ngSubmit)="register(formCtrl.value)" class="user">
                 <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" #firstnameCtrl="ngModel" [(ngModel)]="firstname" name="FirstName" 
+                  <input type="text" #firstnameCtrl="ngModel" [(ngModel)]="firstname" name="FirstName" >
+                    <div class="col-sm-6 mb-3 mb-sm-0">
                     class="form-control form-control-user" id="exampleFirstName" placeholder="First Name"
                     required [class.is-invalid]="firstnameCtrl.invalid && (firstnameCtrl.touched || submmited)">
                     <div *ngIf="firstnameCtrl.invalid && (firstnameCtrl.touched || submmited)" class="invalid-feedback">

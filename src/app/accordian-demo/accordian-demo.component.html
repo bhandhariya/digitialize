@@ -385,6 +385,362 @@
 
           </mat-expansion-panel>
 
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Mental Status Examination </mat-expansion-panel-header>
+            
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>General Appearance, Attitude & Behaviour </mat-expansion-panel-header>
+            <table class="table table-hover table-inverse table-responsive">
+                <tbody>
+                  <tr>
+                    <td scope="row">Appearance</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Looking one's Age"  [(ngModel)]="Appearance"   name="Appearance">Looking one's Age</label>
+                      <label class="radio-inline"><input type="radio" value="Older" [(ngModel)]="Appearance"  name="Appearance">Older</label>
+                      <label class="radio-inline"><input type="radio" value="Younger" [(ngModel)]="Appearance"  name="Appearance">Younger</label> 
+                      <label class="radio-inline"><input type="radio" name="Appearance" [(ngModel)]="Appearance"  value="Appropriate" >Appropriate</label>
+                      <label class="radio-inline"><input type="radio" name="Appearance" [(ngModel)]="Appearance"  value="Inappropriate" >Inappropriate</label>
+                    </td>
+             
+                  </tr>
+                  <tr>
+                    <td scope="row">Level of Grooming</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Appropriate"  [(ngModel)]="LevelofGrooming"   name="Grooming">Appropriate</label>
+                      <label class="radio-inline"><input type="radio" value="Unkempt" [(ngModel)]="LevelofGrooming"  name="Grooming">Unkempt</label>
+                      <label class="radio-inline"><input type="radio" value="Over Dressed" [(ngModel)]="LevelofGrooming"  name="Grooming">Over Dressed</label> 
+                      <label class="radio-inline"><input type="radio" value="Without Clothes" [(ngModel)]="LevelofGrooming" name="Grooming"  >Without Clothes</label>
+                    </td>
+                    
+                  </tr>
+                  <tr>
+                    <td scope="row">Level of Cleanliness</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Adequate"  [(ngModel)]="LevelofCleanliness"   name="LevelofCleanliness">Adequate</label>
+                      <label class="radio-inline"><input type="radio" value="Inadequate" [(ngModel)]="LevelofCleanliness"  name="LevelofCleanliness">Inadequate</label>
+                      <label class="radio-inline"><input type="radio" value="Overtly Clean" [(ngModel)]="LevelofCleanliness"  name="LevelofCleanliness">Overtly Clean</label> 
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Level of Consciousness</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Fully consciousness and alter"  [(ngModel)]="LevelofConsciousness"   name="LevelofConsciousness">Fully consciousness and alter</label>
+                      <label class="radio-inline"><input type="radio" value="Drowsy" [(ngModel)]="LevelofConsciousness"  name="LevelofConsciousness">Drowsy</label>
+                      <label class="radio-inline"><input type="radio" value="Stuporose" [(ngModel)]="LevelofConsciousness"  name="LevelofConsciousness">Stuporose</label>
+                      <label class="radio-inline"><input type="radio" value="Comatose" [(ngModel)]="LevelofConsciousness"  name="LevelofConsciousness">Comatose</label> 
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Gait</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Gait"   name="Gait">Normal</label>
+                      <label class="radio-inline"><input type="radio" value="Swaying" [(ngModel)]="Gait"  name="Gait">Swaying</label>
+                      <label class="radio-inline"><input type="radio" value="Short Stepping" [(ngModel)]="Gait"  name="Gait">Short Stepping</label>
+                      <label class="radio-inline"><input type="radio" value="Waddling" [(ngModel)]="Gait"  name="Gait">Waddling</label> 
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Posture</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Erect"  [(ngModel)]="Posture"   name="Posture">Erect</label>
+                      <label class="radio-inline"><input type="radio" value="Stopping" [(ngModel)]="Posture"  name="Posture">Stopping</label>
+                      <label class="radio-inline"><input type="radio" value="Catatonic" [(ngModel)]="Posture"  name="Posture">Catatonic</label>
+                      <label class="radio-inline"><input type="radio" value="Bending to side" [(ngModel)]="Posture"  name="Posture">Bending to side</label> 
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Mode of Entry</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Came Willingly"  [(ngModel)]="ModeOfEntry"   name="ModeOfEntry">Came Willingly</label>
+                      <label class="radio-inline"><input type="radio" value="Persuaded" [(ngModel)]="ModeOfEntry"  name="ModeOfEntry">Persuaded</label>
+                      <label class="radio-inline"><input type="radio" value="Brought using Physical force" [(ngModel)]="ModeOfEntry"  name="ModeOfEntry">Brought using Physical force </label>
+                   
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Cooperative</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Cooperative"  [(ngModel)]="Cooperative"   name="Cooperative">Cooperative</label>
+                      <label class="radio-inline"><input type="radio" value="Uncooperative" [(ngModel)]="Cooperative"  name="Cooperative">Uncooperative</label>
+                      <label class="radio-inline"><input type="radio" value="Partially Co operative" [(ngModel)]="Cooperative"  name="Cooperative">Partially Co operative </label>
+                   
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Eye to Eye Contact</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Maintained"  [(ngModel)]="EyetoEyeContact"   name="EyetoEyeContact">Maintained</label>
+                      <label class="radio-inline"><input type="radio" value="Difficult" [(ngModel)]="EyetoEyeContact"  name="EyetoEyeContact">Difficult</label>
+                      <label class="radio-inline"><input type="radio" value="Not Maintained" [(ngModel)]="EyetoEyeContact"  name="EyetoEyeContact">Not Maintained </label>
+                   
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Rapport</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Establish"  [(ngModel)]="Rapport"   name="Rapport">Establish</label>
+                      <label class="radio-inline"><input type="radio" value="Difficult to Establish" [(ngModel)]="Rapport"  name="Rapport">Difficult to Establish</label>
+                      <label class="radio-inline"><input type="radio" value="Workable Rapport" [(ngModel)]="Rapport"  name="Rapport">Workable Rapport</label>
+                      <label class="radio-inline"><input type="radio" value="Not Established" [(ngModel)]="Rapport"  name="Rapport">Not Established</label>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Gesturing</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Gesturing"   name="Gesturing">Normal</label>
+                      <label class="radio-inline"><input type="radio" value="Exaggerated" [(ngModel)]="Gesturing"  name="Gesturing">Exaggerated</label>
+                      <label class="radio-inline"><input type="radio" value="Odd" [(ngModel)]="Gesturing"  name="Gesturing">Odd</label>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Other Movements</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Mannerisms"  [(ngModel)]="OtherMovements"   name="OtherMovements">Mannerisms</label>
+                      <label class="radio-inline"><input type="radio" value="Streotypes" [(ngModel)]="OtherMovements"  name="OtherMovements">Streotypes</label>
+                      <label class="radio-inline"><input type="radio" value="Tremors" [(ngModel)]="OtherMovements"  name="OtherMovements">Tremors</label> 
+                      <label class="radio-inline"><input type="radio" name="OtherMovements" [(ngModel)]="OtherMovements"  value="EPS" >EPS</label>
+                      <label class="radio-inline"><input type="radio" name="OtherMovements" [(ngModel)]="OtherMovements"  value="Preseveration" >Preseveration</label>
+                    </td>
+             
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Other Catatonic Phenomenon</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Automatic Obedience"  [(ngModel)]="otherCatatolicPhemenon"   name="otherCatatolicPhemenon">Automatic Obedience</label>
+                      <label class="radio-inline"><input type="radio" value="Negativism" [(ngModel)]="otherCatatolicPhemenon"  name="otherCatatolicPhemenon">Negativism</label>
+                      <label class="radio-inline"><input type="radio" value="Excessive Cooperation" [(ngModel)]="otherCatatolicPhemenon"  name="otherCatatolicPhemenon">Excessive Cooperation</label>
+                      <label class="radio-inline"><input type="radio" value="Waxy Flexibility"  [(ngModel)]="otherCatatolicPhemenon"   name="otherCatatolicPhemenon">Waxy Flexibility</label>
+                      <label class="radio-inline"><input type="radio" value="Echoproxia" [(ngModel)]="otherCatatolicPhemenon"  name="otherCatatolicPhemenon">Echoproxia</label>
+                      <label class="radio-inline"><input type="radio" value="Echolalia" [(ngModel)]="otherCatatolicPhemenon"  name="otherCatatolicPhemenon">Echolalia</label>
+                    </td>
+                  </tr>
+                  <td><input type="button" value="Save"  class="btn btn-primary" (click)="Appearancechane()" ></td>
+                </tbody>
+            </table>
+          </mat-expansion-panel>
+          
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Psychomotor Activity & Speech </mat-expansion-panel-header>
+            <h2>PSYCHOMOTOR</h2>
+            <table class="table table-hover table-inverse table-responsive">
+                <tbody>
+                  <tr>
+                    <td scope="row">Psychomotor Activity</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="PsychomotorActivity"   name="PsychomotorActivity">Normal</label>
+                      <label class="radio-inline"><input type="radio" value="Increased" [(ngModel)]="PsychomotorActivity"  name="PsychomotorActivity">Increased</label>
+                      <label class="radio-inline"><input type="radio" value="Decreased" [(ngModel)]="PsychomotorActivity"  name="PsychomotorActivity">Decreased</label> 
+                    </td>
+                    
+                  </tr>
+                </tbody>
+            </table>
+            <h2>SPEECH</h2>
+            <table class="table table-hover table-inverse table-responsive">
+                <tbody>
+                  <tr>
+                    <td scope="row">Initiation</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Spontaneous"  [(ngModel)]="Initiation"   name="Initiation">Spontaneous</label>
+                      <label class="radio-inline"><input type="radio" value="Speaks when Spoken to" [(ngModel)]="Initiation"  name="Initiation">Speaks when Spoken to</label>
+                      <label class="radio-inline"><input type="radio" value="Minimal" [(ngModel)]="Initiation"  name="Initiation">Minimal</label> 
+                      <label class="radio-inline"><input type="radio" value="Mute" [(ngModel)]="Initiation"  name="Initiation">Mute</label> 
+                    
+                    </td>
+             
+                  </tr>
+                  <tr>
+                    <td scope="row">Reaction time</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="ReactionTime"   name="ReactionTime">Normal</label>
+                      <label class="radio-inline"><input type="radio" value="Delayed" [(ngModel)]="ReactionTime"  name="ReactionTime">Delayed</label>
+                      <label class="radio-inline"><input type="radio" value="Shortened" [(ngModel)]="ReactionTime"  name="ReactionTime">Shortened</label> 
+                      <label class="radio-inline"><input type="radio" value="Difficult to Assess" [(ngModel)]="ReactionTime" name="ReactionTime"  >Difficult to Assess</label>
+                    </td>
+                    
+                  </tr>
+                  <tr>
+                    <td scope="row">Speed</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Adequate"  [(ngModel)]="Speed"   name="Speed">Adequate</label>
+                      <label class="radio-inline"><input type="radio" value="Inadequate" [(ngModel)]="Speed"  name="Speed">Inadequate</label>
+                      <label class="radio-inline"><input type="radio" value="Overtly Clean" [(ngModel)]="Speed"  name="Speed">Overtly Clean</label> 
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Level of Consciousness</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="LevelofConsciousnessinSpeech"   name="LevelofConsciousnessinSpeech">Normal</label>
+                      <label class="radio-inline"><input type="radio" value="Slow" [(ngModel)]="LevelofConsciousnessinSpeech"  name="LevelofConsciousnessinSpeech">Slow</label>
+                      <label class="radio-inline"><input type="radio" value="Rapid" [(ngModel)]="LevelofConsciousnessinSpeech"  name="LevelofConsciousnessinSpeech">Rapid</label>
+                      <label class="radio-inline"><input type="radio" value="Not Clear" [(ngModel)]="LevelofConsciousnessinSpeech"  name="LevelofConsciousnessinSpeech">Not Clear</label> 
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Output</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Output"   name="Output">Normal</label>
+                      <label class="radio-inline"><input type="radio" value="Increased" [(ngModel)]="Output"  name="Output">Increased</label>
+                      <label class="radio-inline"><input type="radio" value="Decreased" [(ngModel)]="Output"  name="Output">Decreased</label>
+                      <label class="radio-inline"><input type="radio" value="Variable" [(ngModel)]="Output"  name="Output">Variable</label> 
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Pressure of Speech</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Absent"  [(ngModel)]="PressureOfSpeech"   name="PressureOfSpeech">Absent</label>
+                      <label class="radio-inline"><input type="radio" value="Present" [(ngModel)]="PressureOfSpeech"  name="PressureOfSpeech">Present</label> 
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Volume</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Absent"  [(ngModel)]="Volume"   name="Volume">Normal</label>
+                      <label class="radio-inline"><input type="radio" value="Increased" [(ngModel)]="Volume"  name="Volume">Increased</label>
+                      <label class="radio-inline"><input type="radio" value="Decreased" [(ngModel)]="Volume"  name="Volume">Decreased</label> 
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Tone</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Normal Variation"  [(ngModel)]="Tone"   name="Tone">Normal Variation</label>
+                      <label class="radio-inline"><input type="radio" value="Monotonous" [(ngModel)]="Tone"  name="Tone">Monotonous</label>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Manner</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Manner"   name="Manner">Normal</label>
+                      <label class="radio-inline"><input type="radio" value="Highly Formal" [(ngModel)]="Manner"  name="Manner">Highly Formal</label>
+                      <label class="radio-inline"><input type="radio" value="Inappropriately Familiar" [(ngModel)]="Manner"  name="Manner">Inappropriately Familiar </label>
+                   
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Relavance</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Fully Relevant"  [(ngModel)]="Relavance"   name="Relavance">Fully Relevant</label>
+                      <label class="radio-inline"><input type="radio" value="Some time Off Target" [(ngModel)]="Relavance"  name="Relavance">Some time Off Target</label>
+                      <label class="radio-inline"><input type="radio" value="Irrelevant" [(ngModel)]="Relavance"  name="Relavance">Irrelevant</label>
+                    
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Coherence</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Fully Coherent"  [(ngModel)]="Coherence"   name="Coherence">Fully Coherent</label>
+                      <label class="radio-inline"><input type="radio" value="Over Elaborate Digressive" [(ngModel)]="Coherence"  name="Coherence">Over Elaborate, Digressive</label>
+                      <label class="radio-inline"><input type="radio" value="Some Loosing of association" [(ngModel)]="Coherence"  name="Coherence">Some Loosing of association</label>
+                      <label class="radio-inline"><input type="radio" value="Some Loosing of association" [(ngModel)]="Coherence"  name="Coherence">Incoherent</label>
+
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Other</td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="Rhyming"  [(ngModel)]="Other"   name="Other">Rhyming</label>
+                      <label class="radio-inline"><input type="radio" value="Punning" [(ngModel)]="Other"  name="Other">Punning</label>
+                      <label class="radio-inline"><input type="radio" value="Echolalia" [(ngModel)]="Other"  name="Other">Echolalia</label> 
+                      <label class="radio-inline"><input type="radio" name="Other" [(ngModel)]="Other"  value="Preservation" >Preservation</label>
+                      <label class="radio-inline"><input type="radio" name="Other" [(ngModel)]="Other"  value="Neologism" >Neologism</label>
+                    </td>
+             
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Provide Examples</td>
+                    <td>
+                     <textarea type="text" name="" [(ngModel)]="example"  class="form-control"  id=""></textarea>
+                    </td>
+                  </tr>
+                  <td><input type="button" value="Save"  class="btn btn-primary"  ></td>
+                </tbody>
+            </table>
+          </mat-expansion-panel>
+
+
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>Affect</mat-expansion-panel-header>
+              <table class="table table-hover table-inverse table-responsive">
+                  <tbody>
+                    <tr>
+                      <td scope="row">Subjective</td>
+                      <td>
+                       <textarea [(ngModel)]="Subjective"  class="form-control"  ></textarea>
+                      
+                      </td>
+               
+                    </tr>
+                    <tr>
+                      <td scope="row">Objective</td>
+                      <td>
+                          <textarea class="form-control" [(ngModel)]="Objectivetext"  ></textarea>
+                          <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Objective"   name="Objective">Normal</label>
+                          <label class="radio-inline"><input type="radio" value="Depressed" [(ngModel)]="Objective"  name="Objective">Depressed</label>
+                          <label class="radio-inline"><input type="radio" value="Anxious" [(ngModel)]="Objective"  name="Objective">Anxious</label> 
+                          <label class="radio-inline"><input type="radio" value="Blunted"  [(ngModel)]="Objective"   name="Objective">Blunted</label>
+                          <label class="radio-inline"><input type="radio" value="Flattened" [(ngModel)]="Objective"  name="Objective">Flattened</label>
+                          <label class="radio-inline"><input type="radio" value="Euphoric" [(ngModel)]="Objective"  name="Objective">Euphoric</label>
+                          <label class="radio-inline"><input type="radio" value="Inappropriate" [(ngModel)]="Objective"  name="Objective">Inappropriate</label>
+                      </td>
+                      
+                    </tr>
+                    <tr>
+                      <td scope="row">Congruence</td>
+                      <td>
+                        <label class="radio-inline"><input type="radio" value="Congruent"  [(ngModel)]="Congruence"   name="Congruence">Congruent</label>
+                        <label class="radio-inline"><input type="radio" value="Incongruent" [(ngModel)]="Congruence"  name="Congruence">Incongruent</label>
+                     
+                      </td>
+                    </tr>
+  
+                    <tr>
+                      <td scope="row">Stability</td>
+                      <td>
+                        <label class="radio-inline"><input type="radio" value="Stable"  [(ngModel)]="Stability"   name="Stability">Stable</label>
+                        <label class="radio-inline"><input type="radio" value="Unstable" [(ngModel)]="Stability"  name="Stability">Unstable</label> 
+                      </td>
+                    </tr>
+  
+                    <tr>
+                      <td scope="row">Range</td>
+                      <td>
+                        <label class="radio-inline"><input type="radio" value="Full Range"  [(ngModel)]="Range"   name="Range">Full Range</label>
+                        <label class="radio-inline"><input type="radio" value="Restricted towards Sadness" [(ngModel)]="Range"  name="Range">Restricted towards Sadness</label>
+                        <label class="radio-inline"><input type="radio" value="Restricted towards Elation & Constricted" [(ngModel)]="Range"  name="Range">Restricted towards Elation & Constricted</label>
+                        
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+              </table>
+              <h2>THOUGHT</h2>
+            </mat-expansion-panel>
+
+          </mat-expansion-panel>
+
+
           </mat-accordion>
       </div>
       <app-footer></app-footer>
