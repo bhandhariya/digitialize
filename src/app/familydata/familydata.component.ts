@@ -26,15 +26,15 @@ export class FamilydataComponent implements OnInit {
   ngOnInit() {
     this.familyDataForm = this.fb.group({
       id:[''],
-      SpouseName : ['',[Validators.required]],
-      SpouseAge : ['',[Validators.required]],
-      SpouseOccupation : ['',[Validators.required]],
-      SpouseAddress : ['',[Validators.required,Validators.minLength(5)]],
-      LivingStatus : ['',[Validators.required]],
-      NoOfChildren : ['',[Validators.required]],
+      SpouseName : [''],
+      SpouseAge : [''],
+      SpouseOccupation : [''],
+      SpouseAddress : [''],
+      LivingStatus : [''],
+      NoOfChildren : [''],
       GuardianName : ['',[Validators.required]],
       ContactNo : ['',[Validators.required,Validators.minLength(10)]],
-      Email : ['',[Validators.required,Validators.email]],
+      Email : [''],
       Address : ['',[Validators.required]]
       
     });

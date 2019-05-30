@@ -21,20 +21,20 @@
                   <div class="row">
                       <div class="col-md-6">
                           <div class="form-group row">
-                              <label for="Vendor" class="col-md-4 col-form-label text-md-right"> ParmentAddress: <span
+                              <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Permanent Address: <span
                                       class="text-danger">*</span> </label>
                               <div class="col-md-6">
                                 <input type="text" formControlName="ParmentAddress" class="form-control" (blur)="logValidationMessages()"
-                                [class.is-invalid]="formErrors.ParmentAddress" placeholder="Parment Address *">
+                                [class.is-invalid]="formErrors.ParmentAddress" placeholder="Permanent Address *">
                               <div *ngIf="formErrors.ParmentAddress" class="invalid-feedback">{{formErrors.ParmentAddress}}</div>
                               </div>
                           </div>
                           <div class="form-group row">
-                              <label for="Employer" class="col-md-4 col-form-label text-md-right"> OfficeFax: <span
+                              <label for="Employer" class="col-md-4 col-form-label text-md-right"> Office Contact Number: <span
                                       class="text-danger">*</span> </label>
                               <div class="col-md-6">
                                 <input type="text" formControlName="OfficeFax" class="form-control" (blur)="logValidationMessages()" 
-                                [class.is-invalid]="formErrors.OfficeFax" placeholder="Office Fax *">
+                                [class.is-invalid]="formErrors.OfficeFax" placeholder="Office Contact Number*">
                               <div *ngIf="formErrors.OfficeFax" class="invalid-feedback">{{formErrors.OfficeFax}}</div>
                               </div>
                           </div>
@@ -74,11 +74,11 @@
                               </div>
                           </div>
                           <div class="form-group row">
-                            <label for="DateOfBirth" class="col-md-4 col-form-label text-md-right"> Material Status: <span
+                            <label for="DateOfBirth" class="col-md-4 col-form-label text-md-right"> Marital Status: <span
                                     class="text-danger">*</span> </label>
                             <div class="col-md-6">
                             <select class="form-control" formControlName="MaterialStatus" class="form-control" (blur)="logValidationMessages()" [class.is-invalid]="formErrors.MaterialStatus">
-                                <option disabled value="">Select Material Status </option>
+                                <option disabled value="">Select Marital Status </option>
                                 <option value="1" >Married</option>
                                 <option value="2" >Unmarried</option>
                             </select>
@@ -103,7 +103,7 @@
                               </label>
                               <div class="col-md-6">
                                 <input type="text" formControlName="Residence" class="form-control" (blur)="logValidationMessages()"
-                                [class.is-invalid]="formErrors.Residence" placeholder="Residence *">
+                                [class.is-invalid]="formErrors.Residence" placeholder="Residence Mobile Number *">
                               <div *ngIf="formErrors.Residence" class="invalid-feedback">{{formErrors.Residence}}</div>
                               </div>
                           </div>

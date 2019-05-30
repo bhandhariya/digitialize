@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <input type="text" formControlName="ContactNo" class="form-control" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="10" MaxDigit="10"
-                              [class.is-invalid]="formErrors.ContactNo" placeholder="Contact No. *">
+                              [class.is-invalid]="formErrors.ContactNo" placeholder="Gurdian Contact No. *">
                             <div *ngIf="formErrors.ContactNo" class="invalid-feedback">{{formErrors.ContactNo}}</div>
                         </div>
                     </div>

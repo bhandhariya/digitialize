@@ -735,8 +735,187 @@
                     
                   </tbody>
               </table>
-              <h2>THOUGHT</h2>
+             
             </mat-expansion-panel>
+
+
+          <mat-expansion-panel>
+          <mat-expansion-panel-header>Thought and Thought Content</mat-expansion-panel-header>
+          <h2>THOUGHT</h2>
+          <table class="table table-bordered table-inverse table-responsive">
+              <tbody>
+                <tr>
+                  <td scope="row">Stream</td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Stream"   name="Stream">Normal</label>
+                    <label class="radio-inline"><input type="radio" value="Circumstantial" [(ngModel)]="Stream"  name="Stream">Circumstantial</label>
+                    <label class="radio-inline"><input type="radio" value="Tengential" [(ngModel)]="Stream"  name="Stream">Tengential</label> 
+                    <label class="radio-inline"><input type="radio" value="Flight of ideas"  [(ngModel)]="Stream"   name="Stream">Flight of ideas</label>
+                    <label class="radio-inline"><input type="radio" value="Abnormal" [(ngModel)]="Stream"  name="Stream">Abnormal</label>
+                  </td>
+                  
+                </tr>
+                <tr>
+                  <td scope="row">Form</td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Adequate"  [(ngModel)]="Form"   name="Form">Adequate</label>
+                    <label class="radio-inline"><input type="radio" value="Inadequate" [(ngModel)]="Form"  name="Form">Inadequate</label>
+                    <label class="radio-inline"><input type="radio" value="Omission" [(ngModel)]="Form"  name="Form">Omission</label> 
+                    <label class="radio-inline"><input type="radio" value="Fusion"  [(ngModel)]="Form"   name="Form">Fusion</label>
+                    <label class="radio-inline"><input type="radio" value="Derailment" [(ngModel)]="Form"  name="Form">Derailment</label>
+                    <label class="radio-inline"><input type="radio" value="Substitution" [(ngModel)]="Form"  name="Form">Substitution</label>
+                  </td>
+                  
+                </tr>
+                <tr>
+                  <td>Provide Examples</td>
+                  <td>
+                    <textarea [(ngModel)]="FormExample"  class="form-control"  ></textarea>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+          <h2>THOUGHT CONTENT</h2>
+          <table class="table table-bordered table-inverse table-responsive">
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Idea"  [(ngModel)]="ThoughtContent"   name="ThoughtContent">Idea</label>
+                    <label class="radio-inline"><input type="radio" value="Over Valued Ideas" [(ngModel)]="ThoughtContent"  name="ThoughtContent">Over Valued Ideas</label>
+                    <label class="radio-inline"><input type="radio" value="Delusion" [(ngModel)]="ThoughtContent"  name="ThoughtContent">Delusion</label> 
+                    <label class="radio-inline"><input type="radio" value="Somatic Proccupation"  [(ngModel)]="ThoughtContent"   name="ThoughtContent">Somatic Proccupation</label>
+                    <label class="radio-inline"><input type="radio" value="Sucidal Ideation" [(ngModel)]="ThoughtContent"  name="ThoughtContent">Sucidal Ideation</label>
+                    <label class="radio-inline"><input type="radio" value="Depressive Cognition" [(ngModel)]="ThoughtContent"  name="ThoughtContent">Depressive Cognition</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Provide Examples</td>
+                  <td>
+                    <textarea [(ngModel)]="ThoughtContentExample"  class="form-control"  ></textarea>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+          <table class="table table-hover table-inverse table-bordered">
+              <tbody>
+                <tr>
+                  <td scope="row">
+                    <label class="radio-inline"><input type="radio" value="Worthlessness"  [(ngModel)]="First"   name="First">Worthlessness</label><br>
+                    <label class="radio-inline"><input type="radio" value="Hopelessness" [(ngModel)]="First"  name="First">Hopelessness</label><br>
+                    <label class="radio-inline"><input type="radio" value="Helpnessness" [(ngModel)]="First"  name="First">Helpnessness</label> <br>
+                    <label class="radio-inline"><input type="radio" value="Guilt"  [(ngModel)]="First"   name="First">Guilt</label><br>
+                    <label class="radio-inline"><input type="radio" value="Ill Health" [(ngModel)]="First"  name="First">Ill Health</label><br>
+                    <label class="radio-inline"><input type="radio" value="Poverty" [(ngModel)]="First"  name="First">Poverty</label>
+                  </td>
+                  <td>
+                      <label class="radio-inline"><input type="radio" value="Nihilistic"  [(ngModel)]="Second"   name="Second">Nihilistic</label><br>
+                      <label class="radio-inline"><input type="radio" value="Hypocondrical" [(ngModel)]="Second"  name="Second">Hypocondrical</label><br>
+                      <label class="radio-inline"><input type="radio" value="Death Wish" [(ngModel)]="Second"  name="Second">Death Wish</label> <br>
+                      <label class="radio-inline"><input type="radio" value="Sucidial Ideas"  [(ngModel)]="Second"   name="Second">Sucidial Ideas</label><br>
+                      <label class="radio-inline"><input type="radio" value="Grandiose Ability and Indentity" [(ngModel)]="Second"  name="Second">Grandiose Ability and Indentity</label><br>
+         
+                  </td>
+                  <td>
+                      <label class="radio-inline"><input type="radio" value="Reference"  [(ngModel)]="Third"   name="Third">Reference</label><br>
+                      <label class="radio-inline"><input type="radio" value="Control" [(ngModel)]="Third"  name="Third">Control</label><br>
+                      <label class="radio-inline"><input type="radio" value="Influence" [(ngModel)]="Third"  name="Third">Influence</label> <br>
+                      <label class="radio-inline"><input type="radio" value="Persecution"  [(ngModel)]="Third"   name="Third">Persecution</label><br>
+                      <label class="radio-inline"><input type="radio" value="Bodily Change" [(ngModel)]="Third"  name="Third">Bodily Change</label><br>
+                      <label class="radio-inline"><input type="radio" value="Bizarre" [(ngModel)]="Third"  name="Third">Bizarre</label>
+                      <label class="radio-inline"><input type="radio" value="Bizarre" [(ngModel)]="Third"  name="Third">Bizarre</label>
+                  </td>
+                  <td>
+                      <label class="radio-inline"><input type="radio" value="Fentastic Delusion"  [(ngModel)]="Fourth"   name="Fourth">Fentastic Delusion</label><br>
+                      <label class="radio-inline"><input type="radio" value="Delusional Memory" [(ngModel)]="Fourth"  name="Fourth">Delusional Memory</label><br>
+                      <label class="radio-inline"><input type="radio" value="Delusional Confabulation" [(ngModel)]="Fourth"  name="Fourth">Delusional Confabulation</label> <br>
+                  </td>
+                  <td>
+                      <label class="radio-inline"><input type="radio" value="Single"  [(ngModel)]="Fifth"   name="Fifth">Single</label><br>
+                      <label class="radio-inline"><input type="radio" value="Multiple" [(ngModel)]="Fifth"  name="Fifth">Multiple</label><br>
+                      <label class="radio-inline"><input type="radio" value="Simple" [(ngModel)]="Fifth"  name="Fifth">Simple</label> <br>
+                      <label class="radio-inline"><input type="radio" value="Elaborate"  [(ngModel)]="Fifth"   name="Fifth">Elaborate</label><br>
+                      <label class="radio-inline"><input type="radio" value="Systematized" [(ngModel)]="Fifth"  name="Fifth">Systematized</label><br>
+                      <label class="radio-inline"><input type="radio" value="Non-Systematized" [(ngModel)]="Fifth"  name="Fifth">Non-Systematized</label><br>
+                      <label class="radio-inline"><input type="radio" value="Mood Congruent" [(ngModel)]="Fifth"  name="Fifth">Mood Congruent</label><br>
+                      <label class="radio-inline"><input type="radio" value="Incongruent"  [(ngModel)]="Fifth"   name="Fifth">Incongruent</label><br>
+                      <label class="radio-inline"><input type="radio" value="Degree of Distress" [(ngModel)]="Fifth"  name="Fifth">Degree of Distress</label><br>
+                      <label class="radio-inline"><input type="radio" value="Interference With Work" [(ngModel)]="Fifth"  name="Fifth">Interference With Work</label> <br>
+                      <label class="radio-inline"><input type="radio" value="Reaction to Phenomenon"  [(ngModel)]="Fifth"   name="Fifth">Reaction to Phenomenon</label><br>
+                      <label class="radio-inline"><input type="radio" value="Primary Delusion" [(ngModel)]="Fifth"  name="Fifth">Primary Delusion</label> <br>
+                      <label class="radio-inline"><input type="radio" value="Secondry Delusion"  [(ngModel)]="Fifth"   name="Fifth">Secondry Delusion</label><br>
+                     
+                  </td>
+                </tr>
+                <tr>
+                 
+                  <td>Provide Examples</td>
+                  <td>
+                      <textarea [(ngModel)]="ThoughtContentExample2"  class="form-control"  ></textarea>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+          </mat-expansion-panel>
+
+
+          <mat-expansion-panel>
+          <mat-expansion-panel-header>Possession</mat-expansion-panel-header>
+          <h2>Obsessive Compulsive Phenomenon</h2>
+          <table class="table table-inverse table-inverse table-responsive">
+              <tbody>
+                <tr>
+                  <td scope="row">Obsession</td>
+                  <td>
+                      <label class="radio-inline"><input type="radio" value="Thought"  [(ngModel)]="Obsession"   name="Obsession">Thought</label>
+                      <label class="radio-inline"><input type="radio" value="Doubt" [(ngModel)]="Obsession"  name="Obsession">Doubt</label>
+                      <label class="radio-inline"><input type="radio" value="Impluse" [(ngModel)]="Obsession"  name="Obsession">Impluse</label> 
+                      <label class="radio-inline"><input type="radio" value="Image"  [(ngModel)]="Obsession"   name="Obsession">Image</label>
+                      <label class="radio-inline"><input type="radio" value="Rumination" [(ngModel)]="Obsession"  name="Obsession">Rumination</label>
+                  </td>
+                  
+                </tr>
+                <tr>
+                    <td scope="row">Compulsion</td>
+                    <td>
+                        <label class="radio-inline"><input type="radio" value="Yielding"  [(ngModel)]="Complusion"   name="Complusion">Yielding</label>
+                        <label class="radio-inline"><input type="radio" value="Controlling" [(ngModel)]="Complusion"  name="Complusion">Controlling</label>
+                        <label class="radio-inline"><input type="radio" value="Cognitive Compulsion" [(ngModel)]="Complusion"  name="Complusion">Cognitive Compulsion</label>
+                    </td>
+                    
+                  </tr>
+               <tr>
+                 <td>Provide Examples</td>
+                 <td>
+                    <textarea [(ngModel)]="ObsessiveCompulsive" class="form-control"  ></textarea>
+                 </td>
+               </tr>
+              </tbody>
+          </table>
+          <h2>Thought  Alienation Phenomenon</h2>
+          <table class="table table-inverse table-inverse table-responsive">
+              <tbody>
+                <tr>
+                  <td scope="row">Thought Alienation Phenomenon</td>
+                  <td>
+                      <label class="radio-inline"><input type="radio" value="Thought Insertion"  [(ngModel)]="ThoughtAlienationPhenomenon"   name="ThoughtAlienationPhenomenon">Thought Insertion</label>
+                      <label class="radio-inline"><input type="radio" value="Withdrawal" [(ngModel)]="ThoughtAlienationPhenomenon"  name="ThoughtAlienationPhenomenon">Withdrawal</label>
+                      <label class="radio-inline"><input type="radio" value="Thought Broadcast" [(ngModel)]="ThoughtAlienationPhenomenon"  name="ThoughtAlienationPhenomenon">Thought Broadcast</label> 
+                      <label class="radio-inline"><input type="radio" value="Thought Commentry"  [(ngModel)]="ThoughtAlienationPhenomenon"   name="ThoughtAlienationPhenomenon">Thought Commentry</label>
+                      
+                  </td>
+                  
+                </tr>
+               
+               <tr>
+                 <td>Provide Examples</td>
+                 <td>
+                    <textarea [(ngModel)]="ThoughtAlienationPhenomenonExample" class="form-control"  ></textarea>
+                 </td>
+               </tr>
+              </tbody>
+          </table>
+          </mat-expansion-panel>
 
           </mat-expansion-panel>
 

@@ -37,6 +37,7 @@
                     <th>Age</th>
                     <th>photo</th>
                     <th>Mobile</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                
@@ -50,6 +51,9 @@
                       <img src="{{i.profile_image}}" height="100px" width="100px" >
                     </td>
                     <td>{{i.permanent_mobile}}</td>
+                    <td>
+                      <input type="button" value="Edit Details" class="btn btn-danger" (click)="gotosecondpage(i._id)"  >
+                    </td>
                   </tr>
                   </tbody>
               </table>

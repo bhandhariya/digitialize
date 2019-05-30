@@ -63,7 +63,7 @@ export class FirstComponent implements OnInit {
     ngOnInit() {
       this.firstForm = this.fb.group({
         FirstName : ['',[Validators.required]],
-        MiddleName : ['',[Validators.required]],
+        MiddleName : [''],
         LastName : ['',[Validators.required]],
         AddmissionDate : ['',[Validators.required]],
         File : ['',[Validators.required]],

@@ -120,7 +120,12 @@ submmited: boolean = false;
     }
   }
   ChiefcomplainCB=(dt)=>{
-    console.log(dt);
+    alert(dt);
+    this.ChiefComplain.reset({
+      ComplaintName : '',
+      ComplaintDuration :''
+      
+      });
    
    
   }
@@ -137,15 +142,15 @@ submmited: boolean = false;
   }
   Illnesscb=(dt)=>{
     console.log(dt)
-    // this.Illness.reset({
-    //   DurationOfCurruntIllness : '',
-    //   CurruntEpisodeNumber : '',
-    //   ModeOfOnset:'',
-    //   Course:"",
-    //   PredisposingFactors : '',
-    //   PrecipatingFactors : '',
-    //   PrepetuatingFactors : ''
-    // });
+    this.Illness.reset({
+      DurationOfCurruntIllness : '',
+      CurruntEpisodeNumber : '',
+      ModeOfOnset:'',
+      Course:"",
+      PredisposingFactors : '',
+      PrecipatingFactors : '',
+      PrepetuatingFactors : ''
+    });
   }
 
   logValidationMessages(group: FormGroup = this.ChiefComplain): void {
@@ -334,4 +339,7 @@ submmited: boolean = false;
   }
   PsychomotorActivity;Initiation;ReactionTime;Speed;LevelofConsciousnessinSpeech;Output;PressureOfSpeech;Volume;Tone;Manner;Relavance;Coherence;Other;example;
   Subjective;Objectivetext;Objective;Congruence;Stability;Range;
+
+  Stream;Form;FormExample;ThoughtContent;ThoughtContentExample;First;Second;Third;Fourth;Fifth;ThoughtContentExample2;Obsession;Complusion;ObsessiveCompulsive;
+  ThoughtAlienationPhenomenon;ThoughtAlienationPhenomenonExample;
 }

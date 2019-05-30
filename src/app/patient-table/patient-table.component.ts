@@ -23,5 +23,8 @@ url="https://digitalapp001.herokuapp.com";
     this.router.navigate(['dashboard/patable/details',{id:x}])
 
   }
+  gotosecondpage(x){
+    this.router.navigate(['dashboard/second',{id:x}])
+  }
 
 }
