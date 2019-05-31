@@ -11,6 +11,9 @@ export const environment = {
     projectId: "digitalapp-49c9e",
     storageBucket: "digitalapp-49c9e.appspot.com",
     messagingSenderId: "937297135346"
+  },
+  dialogflow: {
+    angularBot: 'ceb75aee3e3f42b79af229baccd11b55'
   }
 };
 

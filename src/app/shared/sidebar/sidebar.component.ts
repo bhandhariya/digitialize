@@ -49,4 +49,12 @@ export class SidebarComponent implements OnInit {
       this.router.navigate(['../../dashboard/accordian']);
     } 
   }
+  goToChatBotComponent(){
+    // if(this.router.url == 'dashboard'){
+    //   this.router.navigate(['../chat']);
+    // }else{
+    //   this.router.navigate(['../../chat']);
+    // }
+    this.router.navigate(['chat']);
+  }
 }

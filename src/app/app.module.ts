@@ -24,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ChatModule } from './chat/chat.module';
+import { ChatDialogComponent } from './chat/chat-dialog/chat-dialog.component';
 
 
 
@@ -33,6 +35,7 @@ const routes: Routes = [
   { path : 'forgot', component : ForgotpasswordComponent, canActivate :[LoginGuard] },
   { path : 'changepassword/:id', component : ChangepasswordComponent, canActivate :[LoginGuard]  },
   { path : 'dashboard', loadChildren : './dashboard/dashboard.module#DashboardModule', canActivate : [AuthGurad]},
+  {path:'chat',component:ChatDialogComponent},
   { path : '**', component : LoginComponent, canActivate :[LoginGuard]}
 ];
 
@@ -46,6 +49,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    ChatModule,
     FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
