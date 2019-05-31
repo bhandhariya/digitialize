@@ -525,7 +525,7 @@
                       <label class="radio-inline"><input type="radio" value="Echolalia" [(ngModel)]="otherCatatolicPhemenon"  name="otherCatatolicPhemenon">Echolalia</label>
                     </td>
                   </tr>
-                  <td><input type="button" value="Save"  class="btn btn-primary" (click)="Appearancechane()" ></td>
+                  <td><input type="button" value="Save"  class="btn btn-primary" (click)="addGeneralAppearanceAttitudeBehaviour()" ></td>
                 </tbody>
             </table>
           </mat-expansion-panel>
@@ -674,7 +674,7 @@
                      <textarea type="text" name="" [(ngModel)]="example"  class="form-control"  id=""></textarea>
                     </td>
                   </tr>
-                  <td><input type="button" value="Save"  class="btn btn-primary"  ></td>
+                  <td><input type="button" value="Save" (click)="addPsychomotorActivitySpeech()"   class="btn btn-primary"  ></td>
                 </tbody>
             </table>
           </mat-expansion-panel>
@@ -732,6 +732,12 @@
                         
                       </td>
                     </tr>
+                    <tr>
+                      <td>
+                        <input type="button" value="Save" class="btn btn-primary" (click)="addAffect()" >
+                      </td>
+                    </tr>
+
                     
                   </tbody>
               </table>
@@ -854,6 +860,11 @@
                       <textarea [(ngModel)]="ThoughtContentExample2"  class="form-control"  ></textarea>
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    <input type="button" value="Save" class="btn btn-primary"  (click)="addThoughtContent()" >
+                  </td>
+                </tr>
               </tbody>
           </table>
           </mat-expansion-panel>
@@ -916,6 +927,606 @@
               </tbody>
           </table>
           </mat-expansion-panel>
+
+          
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Perception</mat-expansion-panel-header>
+            <h2></h2>
+            <table class="table table-inverse table-inverse table-responsive">
+                <tbody>
+                  <tr>
+                    
+                    <td>
+                        <label class="radio-inline"><input type="radio" value="Hallucination"  [(ngModel)]="Perception1"   name="Perception1">Hallucination</label>
+                        <label class="radio-inline"><input type="radio" value="Pseudo Hallucination/Illusion" [(ngModel)]="Perception1"  name="Perception1">Pseudo Hallucination/Illusion</label>
+                    </td>
+                    
+                  </tr>
+                  <tr>
+                     
+                      <td>
+                          <label class="radio-inline"><input type="radio" value="Auditory"  [(ngModel)]="Perception2"   name="Perception2">Auditory</label>
+                          <label class="radio-inline"><input type="radio" value="Visual" [(ngModel)]="Perception2"  name="Perception2">Visual</label>
+                          <label class="radio-inline"><input type="radio" value="Olfactory" [(ngModel)]="Perception2"  name="Perception2">Olfactory</label>
+                          <label class="radio-inline"><input type="radio" value="Gustatory"  [(ngModel)]="Perception2"   name="Perception2">Gustatory</label>
+                          <label class="radio-inline"><input type="radio" value="Tactile" [(ngModel)]="Perception2"  name="Perception2">Tactile</label>
+                          <label class="radio-inline"><input type="radio" value="Somatic" [(ngModel)]="Perception2"  name="Perception2">Somatic</label>
+                      </td>
+                      
+                    </tr>
+                 <tr>
+                   
+                   <td>
+                    <label class="radio-inline"><input type="radio" value="Depersonalization"  [(ngModel)]="Perception3"   name="Perception3">Depersonalization</label>
+                    <label class="radio-inline"><input type="radio" value="Derelization" [(ngModel)]="Perception3"  name="Perception3">Derelization</label>
+                    <label class="radio-inline"><input type="radio" value="Illusion" [(ngModel)]="Perception3"  name="Perception3">Illusion</label>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>
+                     <textarea [(ngModel)]="PerceptionExample" class="form-control" placeholder="provide exampless"  ></textarea>
+                   </td>
+                 </tr>
+
+                </tbody>
+            </table>
+            
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>Cognitive Function</mat-expansion-panel-header>
+              <h2>Conscious Level</h2>
+              <table class="table table-inverse table-inverse table-responsive">
+                  <tbody>
+                    <tr>
+                      <td>Conscious Level</td>
+                      <td>
+                          <label class="radio-inline"><input type="radio" value="Conscious"  [(ngModel)]="ConsciousLevel"   name="ConsciousLevel">Conscious</label>
+                          <label class="radio-inline"><input type="radio" value="Drowsy" [(ngModel)]="ConsciousLevel"  name="ConsciousLevel">Drowsy</label>
+                          <label class="radio-inline"><input type="radio" value="Stupor"  [(ngModel)]="ConsciousLevel"   name="ConsciousLevel">Stupor</label>
+                          <label class="radio-inline"><input type="radio" value="Unconscious" [(ngModel)]="ConsciousLevel"  name="ConsciousLevel">Unconscious</label>
+                      </td>
+                      
+                    </tr>
+                  </tbody>
+              </table>
+              <h2>Attention</h2>
+              <table class="table table-inverse table-inverse table-responsive">
+                  <tbody>
+                    <tr>
+                      <td>Digit Forward
+                        <input type="text" name=""  [(ngModel)]="AttentionDigitForward" class="form-control" id="">
+                      </td>
+                      <td>
+                          <label class="radio-inline"><input type="radio" value="Aroused Easily"  [(ngModel)]="Attention"   name="Attention">Aroused Easily</label>
+                          <label class="radio-inline"><input type="radio" value="Aroused with Difficulty" [(ngModel)]="Attention"  name="Attention">Aroused with Difficulty</label>
+                          <label class="radio-inline"><input type="radio" value="Not Aroused"  [(ngModel)]="Attention"   name="Attention">Not Aroused</label>
+                         
+                      </td>
+                      
+                    </tr>
+                    <tr>
+                      <td>
+                        Digit Backward
+                        <input type="text" [(ngModel)]="AttentionDigitBackward"  name="" class="form-control" id="">
+                      </td>
+                    </tr>
+                  </tbody>
+              </table>
+              <h2>Concentration</h2>
+              <table class="table table-inverse table-inverse table-responsive">
+                  <tbody>
+                    <tr>
+                      <td>Serial Substraction(100-7/40-3/20-1)
+                        <input type="text" name=""  [(ngModel)]="ConcentrationSerialSubstraction" class="form-control" id="">
+                      </td>
+                      <td>
+                          <label class="radio-inline"><input type="radio" value="Sustained Easily"  [(ngModel)]="Concentration"   name="Concentration">Sustained Easily</label>
+                          <label class="radio-inline"><input type="radio" value="Sustained with Difficulty" [(ngModel)]="Concentration"  name="Concentration">Sustained with Difficulty</label>
+                          <label class="radio-inline"><input type="radio" value="Not Sustained"  [(ngModel)]="Concentration"   name="Concentration">Not Sustained</label>
+                         
+                      </td>
+                      </tr>
+                  
+                  </tbody>
+              </table>
+              <h2>Orientation</h2>
+              <table border="1" class="table table-inverse table-inverse table-responsive">
+                  <tbody>
+                    <tr>
+                      <td>Time
+                      </td>
+                      <td>
+                          <label class="radio-inline"><input type="radio" value="Approximate Time"  [(ngModel)]="OrientationTime"   name="OrientationTime">Approximate Time</label>
+                          <label class="radio-inline"><input type="radio" value="Day-Night" [(ngModel)]="OrientationTime"  name="OrientationTime">Day-Night</label>
+                          <label class="radio-inline"><input type="radio" value="Date"  [(ngModel)]="OrientationTime"   name="OrientationTime">Date</label>
+                          <label class="radio-inline"><input type="radio" value="Day"  [(ngModel)]="OrientationTime"   name="OrientationTime">Day</label>
+                          <label class="radio-inline"><input type="radio" value="Month" [(ngModel)]="OrientationTime"  name="OrientationTime">Month</label>
+                          <label class="radio-inline"><input type="radio" value="Year"  [(ngModel)]="OrientationTime"   name="OrientationTime">Year</label>
+                         
+                      </td>
+                      <td>
+                        <label class="radio-inline"><input type="radio" value="Oriented"  [(ngModel)]="OrientationTimeCheck"   name="OrientationTimeCheck">Oriented</label>
+                        <label class="radio-inline"><input type="radio" value="Disoriented" [(ngModel)]="OrientationTimeCheck"  name="OrientationTimeCheck">Disoriented</label>
+                      </td>
+                      </tr>
+
+                      <tr>
+                        <td>Place
+                        </td>
+                        <td>
+                            <label class="radio-inline"><input type="radio" value="Kind of Place"  [(ngModel)]="OrientationPlace"   name="OrientationPlace">Kind of Place</label>
+                            <label class="radio-inline"><input type="radio" value="Area" [(ngModel)]="OrientationPlace"  name="OrientationPlace">Area</label>
+                            <label class="radio-inline"><input type="radio" value="City"  [(ngModel)]="OrientationPlace"   name="OrientationPlace">City</label>
+                           
+                        </td>
+                        <td>
+                          <label class="radio-inline"><input type="radio" value="Oriented"  [(ngModel)]="OrientationPlaceCheck"   name="OrientationPlaceCheck">Oriented</label>
+                          <label class="radio-inline"><input type="radio" value="Disoriented" [(ngModel)]="OrientationPlaceCheck"  name="OrientationPlaceCheck">Disoriented</label>
+                        </td>
+                        </tr>
+
+                        <tr>
+                          <td>Person
+                          </td>
+                          <td>
+                              <label class="radio-inline"><input type="radio" value="Self"  [(ngModel)]="OrientationPerson"   name="OrientationPerson">Self</label>
+                              <label class="radio-inline"><input type="radio" value="Close Associates" [(ngModel)]="OrientationPerson"  name="OrientationPerson">Close Associates</label>
+                              <label class="radio-inline"><input type="radio" value="Other Staf"  [(ngModel)]="OrientationPerson"   name="OrientationPerson">Other Staf</label>
+                             
+                          </td>
+                          <td>
+                            <label class="radio-inline"><input type="radio" value="Oriented"  [(ngModel)]="OrientationPersonCheck"   name="OrientationPersonCheck">Oriented</label>
+                            <label class="radio-inline"><input type="radio" value="Disoriented" [(ngModel)]="OrientationPersonCheck"  name="OrientationPersonCheck">Disoriented</label>
+                          </td>
+                          </tr>
+                  
+                  </tbody>
+              </table>
+              <h2>Memory</h2>
+              <table class="table table-inverse table-inverse table-responsive">
+                  <tbody>
+                    <tr>
+                      <td>Immediate
+                        <input type="text" name=""  [(ngModel)]="Memory" class="form-control" id="" placeholder="Immediate Memory" >
+                      </td>
+                    
+                      </tr>
+                  
+                  </tbody>
+              </table>
+              <h2>Recent Verbal Recall</h2>
+              <table class="table table-hover table-inverse">
+                <thead class="thead-inverse">
+                  <tr>
+                    <th>Object</th>
+                    <th>After 5 Minutes</th>
+                    <th>After 10 Minutes</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row">3 Unrelated Objects</td>
+                      <td>
+                        <textarea [(ngModel)]="RecentVerbalRecall3ObjAfter5Minut" class="form-control" placeholder="3 Unrelated Objects Verbal Recall after 5 Minutes Memory" ></textarea>
+                      </td>
+                      <td><textarea [(ngModel)]="RecentVerbalRecall3ObjAfter10Minut" class="form-control"  placeholder="3 Unrelated Objects Verbal Recall after 10 Minutes Memory" ></textarea></td>
+                    </tr>
+                    <tr>
+                      <td scope="row">5 Unrelated Objects</td>
+                      <td><textarea [(ngModel)]="RecentVerbalRecall5ObjAfter5Minut" class="form-control"  placeholder="5 Unrelated Objects Verbal Recall after 5 Minutes Memory" ></textarea></td>
+                      <td>
+                        <textarea [(ngModel)]="RecentVerbalRecall5ObjAfter10Minut" class="form-control"  placeholder="5 Unrelated Objects Verbal Recall after 10 Minutes Memory" ></textarea>
+                      </td>
+                    </tr>
+                  </tbody>
+              </table>
+
+              <h2>Recent Visual Recall</h2>
+              <table class="table table-hover table-inverse">
+                <thead class="thead-inverse">
+                  <tr>
+                    
+                    <th>After 5 Minutes</th>
+                    <th>After 10 Minutes</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      
+                      <td>
+                        <textarea [(ngModel)]="RecentVisualRecallAfter5Minut" class="form-control" placeholder="Recent Visual Recall after 5 Minutes Memory" ></textarea>
+                      </td>
+                      <td><textarea [(ngModel)]="RecentVisualRecallAfter10Minut" class="form-control"  placeholder="Recent Visual Recall after 10 Minutes Memory" ></textarea></td>
+                    </tr>
+                   
+                  </tbody>
+              </table>
+              <h2>Remotes</h2>
+              <table class="table table-hover table-inverse">
+                  <tbody>
+                    <tr>
+                      <td scope="row">Personal Events</td>
+                      <td>
+                        <textarea [(ngModel)]="RemotePersonalEvents" class="form-control" placeholder="Remote Personal Events Memory" ></textarea>
+                      </td>
+                      
+                    </tr>
+                    <tr>
+                      <td scope="row">Impersonal Events</td>
+                      <td>
+                        <textarea [(ngModel)]="RemoteImPersonalEvents" class="form-control" placeholder="Remote Impersonal Events Memory" ></textarea>
+                      </td>
+                      
+                    </tr>
+                    <tr>
+                      <td scope="row">Illness Related Events</td>
+                      <td>
+                        <textarea [(ngModel)]="RemoteIllnessRelatedEvents" class="form-control" placeholder="Illness Related Events Memory" ></textarea>
+                      </td>
+                      
+                    </tr>
+                  </tbody>
+              </table>
+              
+              </mat-expansion-panel>
+
+
+          <mat-expansion-panel>
+          <mat-expansion-panel-header>Intelligence</mat-expansion-panel-header>
+          <table class="table table-hover table-inverse">
+              <tbody>
+                <tr>
+                  <td scope="row">Comprehension</td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Simple Commands"  [(ngModel)]="IntelligenceComprehension"   name="IntelligenceComprehension">Simple Commands</label>
+                    <label class="radio-inline"><input type="radio" value="Complex Commands" [(ngModel)]="IntelligenceComprehension"  name="IntelligenceComprehension">Complex Commands</label>
+                   
+                  </td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="IntelligenceComprehensionCheck"   name="IntelligenceComprehensionCheck">Intact</label>
+                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="IntelligenceComprehensionCheck"  name="IntelligenceComprehensionCheck">Impaired</label>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td scope="row">Vocabulary</td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Common Object"  [(ngModel)]="IntelligenceVocabulary"   name="IntelligenceVocabulary">Common Object</label>
+                    <label class="radio-inline"><input type="radio" value="Uncommon Object" [(ngModel)]="IntelligenceVocabulary"  name="IntelligenceVocabulary">Uncommon Object</label>
+                    <label class="radio-inline"><input type="radio" value="Part of Object" [(ngModel)]="IntelligenceVocabulary"  name="IntelligenceVocabulary">Part of Object</label>
+                   
+                  </td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="IntelligenceVocabularyCheck"   name="IntelligenceVocabularyCheck">Intact</label>
+                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="IntelligenceVocabularyCheck"  name="IntelligenceVocabularyCheck">Impaired</label>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td scope="row">General Fund of Information</td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Name of the President of India"  [(ngModel)]="GeneralFundofInformation"   name="GeneralFundofInformation">Name of the President of India</label>
+                    <label class="radio-inline"><input type="radio" value="Currunt Affairs" [(ngModel)]="GeneralFundofInformation"  name="GeneralFundofInformation">Currunt Affairs</label>
+                    <label class="radio-inline"><input type="radio" value="Name of the Common State Capital" [(ngModel)]="GeneralFundofInformation"  name="GeneralFundofInformation">Name of the Common State Capital</label>
+                   
+                  </td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="GeneralFundofInformationCheck"   name="GeneralFundofInformationCheck">Normal</label>
+                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="GeneralFundofInformationCheck"  name="GeneralFundofInformationCheck">Impaired</label>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td scope="row">Arithmetic Ability</td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Mental Arithmetic"  [(ngModel)]="ArithmeticAbility"   name="ArithmeticAbility">Mental Arithmetic</label>
+                    <label class="radio-inline"><input type="radio" value="Written Sums" [(ngModel)]="ArithmeticAbility"  name="ArithmeticAbility">Written Sums</label>
+                   
+                  </td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="ArithmeticAbilityCheck"   name="ArithmeticAbilityCheck">Normal</label>
+                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="ArithmeticAbilityCheck"  name="ArithmeticAbilityCheck">Impaired</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">Abstraction</td>
+                  <td>
+                    <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Abstraction"   name="Abstraction">Normal</label>
+                    <label class="radio-inline"><input type="radio" value="Concrete" [(ngModel)]="Abstraction"  name="Abstraction">Concrete</label>
+                    <label class="radio-inline"><input type="radio" value="Mental Arithmetic"  [(ngModel)]="Abstraction"   name="Abstraction">Mental Arithmetic</label>
+                    <label class="radio-inline"><input type="radio" value="Written Sums" [(ngModel)]="Abstraction"  name="Abstraction">Written Sums</label>
+                   
+                  </td>
+                  
+                </tr>
+                <tr>
+                  <td>Interpretation of Proverb</td>
+                  <td>
+                    <textarea type="text" name="" [(ngModel)]="InterpretationofProverb"  placeholder="Interpretation of Proverb" class="form-control"  id=""></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Similarities between Paired Object</td>
+                  <td>
+                    <textarea type="text" name="" [(ngModel)]="SimilaritiesbetweenPairedObject" placeholder="Similarities between Paired Object"  class="form-control"  id=""></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Dissimilarities between Paired Object</td>
+                  <td>
+                    <textarea type="text" name="" [(ngModel)]="DIsSimilaritiesbetweenPairedObject" placeholder="Dissimilarities between Paired Object"  class="form-control"  id=""></textarea>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+          </mat-expansion-panel>
+
+
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Judgement</mat-expansion-panel-header>
+            <table border="1" >
+              <tr>
+                <td>
+                  Perosnal
+                </td>
+                <td>Sense of Personal Capability or Worth and Planning of Future</td>
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="JudgementPerosnal"   name="JudgementPerosnal">Intact</label>
+                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="JudgementPerosnal"  name="JudgementPerosnal">Impaired</label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Social
+                </td>
+                <td>Sense of What Social and Culturally Acceptable</td>
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="JudgementSocial"   name="JudgementSocial">Intact</label>
+                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="JudgementSocial"  name="JudgementSocial">Impaired</label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Test
+                </td>
+                <td>
+                  Perception of Human Behaviour in Imaginary Situation
+                  <li>Fire Test</li>
+                  <li>Letter Test</li>
+                </td>
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="JudgementTest"   name="JudgementTest">Intact</label>
+                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="JudgementTest"  name="JudgementTest">Impaired</label>
+                </td>
+              </tr>
+            </table>
+          </mat-expansion-panel>
+
+
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Insight</mat-expansion-panel-header>
+            <table border="1" >
+              <tr>
+                <td>
+                  Awareness of Abnormal Behaviour/Experience
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Yes"  [(ngModel)]="AwarenessofAbnormalBehaviourExperience"   name="AwarenessofAbnormalBehaviourExperience">Yes</label>
+                  <label class="radio-inline"><input type="radio" value="May Be" [(ngModel)]="AwarenessofAbnormalBehaviourExperience"  name="AwarenessofAbnormalBehaviourExperience">May Be</label>
+                  <label class="radio-inline"><input type="radio" value="No" [(ngModel)]="AwarenessofAbnormalBehaviourExperience"  name="AwarenessofAbnormalBehaviourExperience">No</label>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  Attribution to Physical Cause
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Yes"  [(ngModel)]="AttributiontoPhysicalCause"   name="AttributiontoPhysicalCause">Yes</label>
+                  <label class="radio-inline"><input type="radio" value="May Be" [(ngModel)]="AttributiontoPhysicalCause"  name="AttributiontoPhysicalCause">May Be</label>
+                  <label class="radio-inline"><input type="radio" value="No" [(ngModel)]="AttributiontoPhysicalCause"  name="AttributiontoPhysicalCause">No</label>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Recognition of Personal Responsibility
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Yes"  [(ngModel)]="RecognitionofPersonalResponsibility"   name="RecognitionofPersonalResponsibility">Yes</label>
+                  <label class="radio-inline"><input type="radio" value="May Be" [(ngModel)]="RecognitionofPersonalResponsibility"  name="RecognitionofPersonalResponsibility">May Be</label>
+                  <label class="radio-inline"><input type="radio" value="No" [(ngModel)]="RecognitionofPersonalResponsibility"  name="RecognitionofPersonalResponsibility">No</label>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Willingness to take Treatement
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Yes"  [(ngModel)]="WillingnesstotakeTreatement"   name="WillingnesstotakeTreatement">Yes</label>
+                  <label class="radio-inline"><input type="radio" value="May Be" [(ngModel)]="WillingnesstotakeTreatement"  name="WillingnesstotakeTreatement">May Be</label>
+                  <label class="radio-inline"><input type="radio" value="No" [(ngModel)]="WillingnesstotakeTreatement"  name="WillingnesstotakeTreatement">No</label>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Grade
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Grade 1"  [(ngModel)]="Grade"   name="Grade">Grade 1</label>
+                  <label class="radio-inline"><input type="radio" value="Grade 2" [(ngModel)]="Grade"  name="Grade">Grade 2</label>
+                  <label class="radio-inline"><input type="radio" value="Grade 3" [(ngModel)]="Grade"  name="Grade">Grade 3</label>
+                  <label class="radio-inline"><input type="radio" value="Grade 4"  [(ngModel)]="Grade"   name="Grade">Grade 4</label>
+                  <label class="radio-inline"><input type="radio" value="Grade 5" [(ngModel)]="Grade"  name="Grade">Grade 5</label>
+                  <label class="radio-inline"><input type="radio" value="Grade 6" [(ngModel)]="Grade"  name="Grade">Grade 6</label>
+                </td>
+              </tr>
+             
+            </table>
+          </mat-expansion-panel>
+
+
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>General Physical Examination</mat-expansion-panel-header>
+            <table border="1" >
+              <tr>
+                <td>
+                  Consciousness
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Conscious"  [(ngModel)]="Consciousness"   name="Consciousness">Conscious</label>
+                  <label class="radio-inline"><input type="radio" value="Drowsy" [(ngModel)]="Consciousness"  name="Consciousness">Drowsy</label>
+                  <label class="radio-inline"><input type="radio" value="Stupor" [(ngModel)]="Consciousness"  name="Consciousness">Stupor</label>
+                  <label class="radio-inline"><input type="radio" value="Confusion" [(ngModel)]="Consciousness"  name="Consciousness">Confusion</label>
+                  <label class="radio-inline"><input type="radio" value="Coma" [(ngModel)]="Consciousness"  name="Consciousness">Coma</label>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                 Built
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Average"  [(ngModel)]="GPEBuilt"   name="GPEBuilt">Average</label>
+                  <label class="radio-inline"><input type="radio" value="Lean" [(ngModel)]="GPEBuilt"  name="GPEBuilt">Lean</label>
+                  <label class="radio-inline"><input type="radio" value="Obese" [(ngModel)]="GPEBuilt"  name="GPEBuilt">Obese</label>
+                  <label class="radio-inline"><input type="radio" value="Tall" [(ngModel)]="GPEBuilt"  name="GPEBuilt">Tall</label>
+                  <label class="radio-inline"><input type="radio" value="Dwarf" [(ngModel)]="GPEBuilt"  name="GPEBuilt">Dwarf</label>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                 Inspection
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="GPEInspection"   name="GPEInspection">Normal</label>
+                  <label class="radio-inline"><input type="radio" value="Pallor" [(ngModel)]="GPEInspection"  name="GPEInspection">Pallor</label>
+                  <label class="radio-inline"><input type="radio" value="Icterus" [(ngModel)]="GPEInspection"  name="GPEInspection">Icterus</label>
+                  <label class="radio-inline"><input type="radio" value="Cyanosis"  [(ngModel)]="GPEInspection"   name="GPEInspection">Cyanosis</label>
+                  <label class="radio-inline"><input type="radio" value="Clubbing" [(ngModel)]="GPEInspection"  name="GPEInspection">Clubbing</label>
+                  <label class="radio-inline"><input type="radio" value="Abnormal Swelling" [(ngModel)]="GPEInspection"  name="GPEInspection">Abnormal Swelling</label>
+                  <label class="radio-inline"><input type="radio" value="Edema"  [(ngModel)]="GPEInspection"   name="GPEInspection">Edema</label>
+                 
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Pluse
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Within Normal Limits"  [(ngModel)]="GPEPluse"   name="GPEPluse">Within Normal Limits</label>
+                  <label class="radio-inline"><input type="radio" value="Tachycardia" [(ngModel)]="GPEPluse"  name="GPEPluse">Tachycardia</label>
+                  <label class="radio-inline"><input type="radio" value="Bradhycardia" [(ngModel)]="GPEPluse"  name="GPEPluse">Bradhycardia</label>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Respiration
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Within Normal Limits"  [(ngModel)]="GPERespiration"   name="GPERespiration">Within Normal Limits</label>
+                  <label class="radio-inline"><input type="radio" value="Tachycardia" [(ngModel)]="GPERespiration"  name="GPERespiration">Tachycardia</label>
+                  <label class="radio-inline"><input type="radio" value="Bradhycardia" [(ngModel)]="GPERespiration"  name="GPERespiration">Bradhycardia</label>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Body Temperature
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Within Normal Limits"  [(ngModel)]="GPEBodyTemperature"   name="GPEBodyTemperature">Within Normal Limits</label>
+                  <label class="radio-inline"><input type="radio" value="Hyperthermia" [(ngModel)]="GPEBodyTemperature"  name="GPEBodyTemperature">Hyperthermia</label>
+                  <label class="radio-inline"><input type="radio" value="Hypothemia" [(ngModel)]="GPEBodyTemperature"  name="GPEBodyTemperature">Hypothemia</label>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Blood Pressure
+                </td>
+               
+                <td>
+                  <label class="radio-inline"><input type="radio" value="Within Normal Limits"  [(ngModel)]="GPEBloodPressure"   name="GPEBloodPressure">Within Normal Limits</label>
+                  <label class="radio-inline"><input type="radio" value="Hyperthermia" [(ngModel)]="GPEBloodPressure"  name="GPEBloodPressure">Hyperthermia</label>
+                  <label class="radio-inline"><input type="radio" value="Hypothemia" [(ngModel)]="GPEBloodPressure"  name="GPEBloodPressure">Hypothemia</label>
+                </td>
+              </tr>
+             
+            </table>
+            <h2>Systemic Examiniation</h2>
+            <table class="table table-hover table-inverse table-responsive">
+              
+                <tbody>
+                  <tr>
+                    <td scope="row">1. Respiratory System </td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="No Abnormality Detected"  [(ngModel)]="RespiratorySystem"   name="RespiratorySystem">No Abnormality Detected</label>
+                      <label class="radio-inline"><input type="radio" value="Abnormality Present" [(ngModel)]="RespiratorySystem"  name="RespiratorySystem">Abnormality Present</label>
+                    </td>
+                   
+                  </tr>
+
+                  <tr>
+                    <td scope="row">2. Cardio-Vescular System </td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="No Abnormality Detected"  [(ngModel)]="CardioVescularSystem"   name="CardioVescularSystem">No Abnormality Detected</label>
+                      <label class="radio-inline"><input type="radio" value="Abnormality Present" [(ngModel)]="CardioVescularSystem"  name="CardioVescularSystem">Abnormality Present</label>
+                    </td>
+                   
+                  </tr>
+
+                  <tr>
+                    <td scope="row">3. Gastro-Intestinal System </td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="No Abnormality Detected"  [(ngModel)]="GPEGastroIntestinalSystem"   name="GPEGastroIntestinalSystem">No Abnormality Detected</label>
+                      <label class="radio-inline"><input type="radio" value="Abnormality Present" [(ngModel)]="GPEGastroIntestinalSystem"  name="GPEGastroIntestinalSystem">Abnormality Present</label>
+                    </td>
+                   
+                  </tr>
+
+                  <tr>
+                    <td scope="row">4. Central Nervous System </td>
+                    <td>
+                      <label class="radio-inline"><input type="radio" value="No Abnormality Detected"  [(ngModel)]="CentralNervousSystem"   name="CentralNervousSystem">No Abnormality Detected</label>
+                      <label class="radio-inline"><input type="radio" value="Abnormality Present" [(ngModel)]="CentralNervousSystem"  name="CentralNervousSystem">Abnormality Present</label>
+                    </td>
+                   
+                  </tr>
+                  
+                </tbody>
+            </table>
+          </mat-expansion-panel>
+
 
           </mat-expansion-panel>
 

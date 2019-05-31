@@ -326,20 +326,177 @@ submmited: boolean = false;
   }
   Appearance;LevelofGrooming;LevelofCleanliness;LevelofConsciousness;Gait;Posture;ModeOfEntry;Cooperative;EyetoEyeContact;Rapport;Gesturing;
   OtherMovements;otherCatatolicPhemenon
-  Appearancechane(){
-    // console.log(this.Appearance)
-    // console.log(this.LevelofGrooming)
-    // console.log(this.LevelofCleanliness)
-    // console.log(this.LevelofConsciousness)
-    // console.log(this.Gait)
-    // console.log(this.Posture)
-    // console.log(this.ModeOfEntry)
-    // console.log(this.Cooperative)
-    //console.log(this.otherCatatolicPhemenon)
+  addGeneralAppearanceAttitudeBehaviour(){
+    var obj={
+      id:this.id,
+      Appearance:this.Appearance,
+      LevelofGrooming:this.LevelofGrooming,
+      LevelofCleanliness:this.LevelofCleanliness,
+      LevelofConsciousness:this.LevelofConsciousness,
+      Gait:this.Gait,
+      Posture:this.Posture,
+      ModeOfEntry:this.ModeOfEntry,
+      Cooperative:this.Cooperative,
+      EyetoEyeContact:this.EyetoEyeContact,
+      Rapport:this.Rapport,
+      Gesturing:this.Gesturing,
+      OtherMovements:this.OtherMovements,
+      otherCatatolicPhemenon:this.otherCatatolicPhemenon
+
+    }
+    console.log(obj)
+    this.http.post('https://digitalapp001.herokuapp.com/addGeneralAptitudeBehaviour',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
   }
+  addGeneralAppearanceAttitudeBehaviourCB=(dt)=>{
+    console.log(dt)
+    if(dt){
+      alert('data saved')
+    }
+      this.Appearance="";
+      this.LevelofGrooming="",
+      this.LevelofCleanliness="",
+      this.LevelofConsciousness="",
+      this.Gait="",
+      this.Posture="",
+      this.ModeOfEntry="",
+      this.Cooperative="",
+      this.EyetoEyeContact="",
+      this.Rapport="",
+      this.Gesturing="",
+      this.OtherMovements="",
+      this.otherCatatolicPhemenon=""
+  }
+
   PsychomotorActivity;Initiation;ReactionTime;Speed;LevelofConsciousnessinSpeech;Output;PressureOfSpeech;Volume;Tone;Manner;Relavance;Coherence;Other;example;
+
+  addPsychomotorActivitySpeech(){
+    var obj={
+      id:this.id,
+      PsychomotorActivity:this.PsychomotorActivity,
+      Initiation:this.Initiation,
+      ReactionTime:this.ReactionTime,
+      Speed:this.Speed,
+      LevelofConsciousnessinSpeech:this.LevelofConsciousnessinSpeech,
+      Output:this.Output,
+      PressureOfSpeech:this.PressureOfSpeech,
+      Volume:this.Volume,
+      Tone:this.Tone,
+      Manner:this.Manner,
+      Relavance:this.Relavance,
+      Coherence:this.Coherence,
+      Other:this.Other,
+      example:this.example
+
+    }
+    console.log(obj)
+    this.http.post('https://digitalapp001.herokuapp.com/addPsychomotorActivitySpeech',obj).subscribe(this.addPsychomotorActivitySpeechCB)
+  }
+  addPsychomotorActivitySpeechCB=(dt)=>{
+    console.log(dt)
+    if(dt){
+      alert('data saved')
+    }
+      this.PsychomotorActivity="",
+      this.Initiation="",
+      this.ReactionTime="",
+      this.Speed="",
+      this.LevelofConsciousnessinSpeech="",
+      this.Output="",
+      this.PressureOfSpeech="",
+      this.Volume="",
+      this.Tone="",
+      this.Manner="",
+      this.Relavance="",
+      this.Coherence="",
+      this.Other="",
+      this.example=""
+      
+  }
+
+
   Subjective;Objectivetext;Objective;Congruence;Stability;Range;
 
-  Stream;Form;FormExample;ThoughtContent;ThoughtContentExample;First;Second;Third;Fourth;Fifth;ThoughtContentExample2;Obsession;Complusion;ObsessiveCompulsive;
+  addAffect(){
+    var obj={
+      id:this.id,
+      Subjective:this.Subjective,
+      Objectivetext:this.Objectivetext,
+      Objective:this.Objective,
+      Congruence:this.Congruence,
+      Stability:this.Stability,
+      Range:this.Range
+    }
+    console.log(obj)
+    this.http.post('https://digitalapp001.herokuapp.com/addAffect',obj).subscribe(this.addAffectCB)
+  }
+  addAffectCB=(dt)=>{
+    console.log(dt)
+    if(dt){
+      alert('data Saved')
+      this.Subjective="",
+      this.Objectivetext="",
+      this.Objective="",
+      this.Congruence="",
+      this.Stability="",
+      this.Range=""
+    }
+  }
+  Stream;Form;FormExample;ThoughtContent;ThoughtContentExample;First;Second;Third;Fourth;Fifth;ThoughtContentExample2;
+  
+  addThoughtContent(){
+    var obj={
+      id:this.id,
+      Stream:this.Stream,
+      Form:this.Form,
+      FormExample:this.FormExample,
+      ThoughtContent:this.ThoughtContent,
+      ThoughtContentExample:this.ThoughtContentExample,
+      First:this.First,
+      Second:this.Second,
+      Third:this.Third,
+      Fourth:this.Fourth,
+      Fifth:this.Fifth,
+      ThoughtContentExample2:this.ThoughtContentExample2
+    }
+    console.log(obj)
+    this.http.post('https://digitalapp001.herokuapp.com/addThoughtContent',obj).subscribe(this.addThoughtContentCB)
+  }
+  addThoughtContentCB=(dt)=>{
+    console.log(dt)
+    if(dt){
+      alert('data Saved')
+      this.Stream="",
+      this.Form="",
+      this.FormExample="",
+      this.ThoughtContent="",
+      this.ThoughtContentExample="",
+      this.First="",
+      this.Second="",
+      this.Third="",
+      this.Fourth="",
+      this.Fifth="",
+      this.ThoughtContentExample2=""
+    }
+  }
+  
+  
+  Obsession;Complusion;ObsessiveCompulsive;
   ThoughtAlienationPhenomenon;ThoughtAlienationPhenomenonExample;
+  Perception1;Perception2;Perception3;PerceptionExample;
+
+  ConsciousLevel;Attention;AttentionDigitForward;AttentionDigitBackward;Concentration;ConcentrationSerialSubstraction;Orientation;OrientationTime;OrientationTimeCheck;
+  OrientationPlace;OrientationPlaceCheck;OrientationPerson;OrientationPersonCheck;
+  Memory;
+  RecentVerbalRecall3ObjAfter5Minut;RecentVerbalRecall3ObjAfter10Minut;RecentVerbalRecall5ObjAfter5Minut;RecentVerbalRecall5ObjAfter10Minut;
+  RecentVisualRecallAfter5Minut;RecentVisualRecallAfter10Minut;
+  RemotePersonalEvents;RemoteImPersonalEvents;RemoteIllnessRelatedEvents;
+  IntelligenceComprehension;IntelligenceComprehensionCheck;
+  IntelligenceVocabulary;IntelligenceVocabularyCheck;
+  GeneralFundofInformation;GeneralFundofInformationCheck;
+  ArithmeticAbility;ArithmeticAbilityCheck;
+  Abstraction;InterpretationofProverb;SimilaritiesbetweenPairedObject;DIsSimilaritiesbetweenPairedObject;
+  JudgementPerosnal;JudgementSocial;JudgementTest;
+  AwarenessofAbnormalBehaviourExperience;AttributiontoPhysicalCause;RecognitionofPersonalResponsibility;WillingnesstotakeTreatement;Grade;
+  GPEConsciousness;GPEBuilt;GPEInspection;GPEPluse;GPERespiration;GPEBodyTemperature;GPEBloodPressure;
+  RespiratorySystem;CardioVescularSystem;GPEGastroIntestinalSystem;CentralNervousSystem;
 }
