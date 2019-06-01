@@ -20,6 +20,9 @@
       <th>PersonalHistoryDetails</th>
       <th>SubstanceHistoryDetails</th>
       <th>TreateMentHistoryDetails</th>
+      <th>family History</th>
+      <th>Personal History</th>
+      <th>Substance History</th>
       <th>options</th>
     </tr>
     </thead>
@@ -75,8 +78,8 @@
              <th>History of present Illness</th>
            </tr>
            <tr  >
-             <td>{{Patient.PresentHistoryDetails[0].history}}</td>
-             <td>{{Patient.PastHistoryDetails[0].history}}</td>
+             <td></td>
+             <td></td>
            </tr>
          </table>
        </td>
@@ -176,6 +179,66 @@
             <td>{{i.presentHistory}}</td>
       
          
+          </tr>
+        </table>
+      </td>
+      <td>
+        <table>
+          <tr>
+            <th>Family History of Mental illness or Drug Addiction</th>
+            <th>Family Environment History</th>
+            <th>Family Attitute History</th>
+            <th>Living Condition History</th>
+          </tr>
+          <tr *ngFor="let i of Patient.FamilyHistoryDetails">
+            <td>{{i.mentalHistory}}</td>
+            <td>{{i.environHistory}}</td>
+            <td>{{i.attitudeHistory}}</td>
+            <td>{{i.livingHistory}}</td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <table>
+          <tr>
+            <th>Birth  History </th>
+            <th>Immunization  History</th>
+            <th>Development  History</th>
+            <th>Education  History</th>
+            <th>Occupation   History </th>
+            <th>Marrital and Sexual  History</th>
+            <th>Menstrual and obstetric History(Females)</th>
+          
+          </tr>
+          <tr *ngFor="let i of Patient.FamilyHistoryDetails">
+            <td>{{i.mentalHistory}}</td>
+            <td>{{i.environHistory}}</td>
+            <td>{{i.attitudeHistory}}</td>
+            <td>{{i.livingHistory}}</td>
+            <td>{{i.environHistory}}</td>
+            <td>{{i.attitudeHistory}}</td>
+            <td>{{i.livingHistory}}</td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <table>
+          <tr>
+            <th>History of choise of Substance</th>
+            <th>History of Total Duration of Use</th>
+            <th>History of Duration of Regular Use</th>
+            <th>History of Daily Intake (Amount/No.)</th>
+            <th>History of last Intake of Drug (Day/time and Quantity of the drug)</th>
+           
+          
+          </tr>
+          <tr *ngFor="let i of Patient.FamilyHistoryDetails">
+            <td>{{i.mentalHistory}}</td>
+            <td>{{i.environHistory}}</td>
+            <td>{{i.attitudeHistory}}</td>
+            <td>{{i.livingHistory}}</td>
+            <td>{{i.environHistory}}</td>
+            
           </tr>
         </table>
       </td>

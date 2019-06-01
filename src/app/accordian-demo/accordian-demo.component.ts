@@ -482,7 +482,39 @@ submmited: boolean = false;
   
   Obsession;Complusion;ObsessiveCompulsive;
   ThoughtAlienationPhenomenon;ThoughtAlienationPhenomenonExample;
+  addPossession(){
+    var obj={
+      id:this.id,
+      Obsession:this.Obsession,
+      Complusion:this.Complusion,
+      ObsessiveCompulsive:this.ObsessiveCompulsive,
+      ThoughtAlienationPhenomenon:this.ThoughtAlienationPhenomenon,
+      ThoughtAlienationPhenomenonExample:this.ThoughtAlienationPhenomenonExample
+    }
+    console.log(obj);
+    this.http.post('http://localhost:3000/api/pat/test',obj).subscribe(this.addThoughtContentCB)
+  }
+  addPossessionCB=(dt)=>{
+    console.log(dt)
+  }
+
+
+
   Perception1;Perception2;Perception3;PerceptionExample;
+  addPerception(){
+    var obj={
+      id:this.id,
+      Perception1:this.Perception1,
+      Perception2:this.Perception2,
+      Perception3:this.Perception3,
+      PerceptionExample:this.PerceptionExample
+    }
+    console.log(obj)
+    this.http.post('http://localhost:3000/api/pat/test',obj).subscribe(this.addPerceptionCB)
+  }
+  addPerceptionCB=(dt)=>{
+    console.log(dt)
+  }
 
   ConsciousLevel;Attention;AttentionDigitForward;AttentionDigitBackward;Concentration;ConcentrationSerialSubstraction;Orientation;OrientationTime;OrientationTimeCheck;
   OrientationPlace;OrientationPlaceCheck;OrientationPerson;OrientationPersonCheck;
@@ -490,6 +522,69 @@ submmited: boolean = false;
   RecentVerbalRecall3ObjAfter5Minut;RecentVerbalRecall3ObjAfter10Minut;RecentVerbalRecall5ObjAfter5Minut;RecentVerbalRecall5ObjAfter10Minut;
   RecentVisualRecallAfter5Minut;RecentVisualRecallAfter10Minut;
   RemotePersonalEvents;RemoteImPersonalEvents;RemoteIllnessRelatedEvents;
+
+  addCognitiveFunction(){
+  var obj={
+  id:this.id,
+  ConsciousLevel:this.ConsciousLevel,
+  Attention:this.Attention,
+  AttentionDigitForward:this.AttentionDigitForward,
+  AttentionDigitBackward:this.AttentionDigitBackward,
+  Concentration:this.Concentration,
+  ConcentrationSerialSubstraction:this.ConcentrationSerialSubstraction,
+  Orientation:this.Orientation,
+  OrientationTime:this.OrientationTime,
+  OrientationTimeCheck:this.OrientationTimeCheck,
+  OrientationPlace:this.OrientationPlace,
+  OrientationPlaceCheck:this.OrientationPlaceCheck,
+  OrientationPerson:this.OrientationPerson,
+  OrientationPersonCheck:this.OrientationPersonCheck,
+  Memory:this.Memory,
+  RecentVerbalRecall3ObjAfter5Minut:this.RecentVerbalRecall3ObjAfter5Minut,
+  RecentVerbalRecall3ObjAfter10Minut:this.RecentVerbalRecall3ObjAfter10Minut,
+  RecentVerbalRecall5ObjAfter5Minut:this.RecentVerbalRecall5ObjAfter5Minut,
+  RecentVerbalRecall5ObjAfter10Minut:this.RecentVerbalRecall5ObjAfter10Minut,
+  RecentVisualRecallAfter5Minut:this.RecentVisualRecallAfter5Minut,
+  RecentVisualRecallAfter10Minut:this.RecentVisualRecallAfter10Minut,
+  RemotePersonalEvents:this.RemotePersonalEvents,
+  RemoteImPersonalEvents:this.RemoteImPersonalEvents,
+  RemoteIllnessRelatedEvents:this.RemoteIllnessRelatedEvents
+  }
+  console.log(obj)
+  this.http.post('http://localhost:3000/api/pat/test',obj).subscribe(this.addCognitiveFunctionCB)
+  }
+  addCognitiveFunctionCB=(dt)=>{
+    console.log(dt);
+    if(dt){
+  this.ConsciousLevel="",
+  this.Attention="",
+  this.AttentionDigitForward="",
+  this.AttentionDigitBackward="",
+  this.Concentration="",
+  this.ConcentrationSerialSubstraction="",
+  this.Orientation="",
+  this.OrientationTime="",
+  this.OrientationTimeCheck="",
+  this.OrientationPlace="",
+  this.OrientationPlaceCheck="",
+  this.OrientationPerson="",
+  this.OrientationPersonCheck="",
+  this.Memory="",
+  this.RecentVerbalRecall3ObjAfter5Minut="",
+  this.RecentVerbalRecall3ObjAfter10Minut="",
+  this.RecentVerbalRecall5ObjAfter5Minut="",
+  this.RecentVerbalRecall5ObjAfter10Minut="",
+  this.RecentVisualRecallAfter5Minut="",
+  this.RecentVisualRecallAfter10Minut="",
+  this.RemotePersonalEvents="",
+  this.RemoteImPersonalEvents="",
+  this.RemoteIllnessRelatedEvents=""
+    }
+    
+  }
+  
+
+
   IntelligenceComprehension;IntelligenceComprehensionCheck;
   IntelligenceVocabulary;IntelligenceVocabularyCheck;
   GeneralFundofInformation;GeneralFundofInformationCheck;

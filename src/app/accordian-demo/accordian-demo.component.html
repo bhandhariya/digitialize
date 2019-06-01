@@ -924,6 +924,11 @@
                     <textarea [(ngModel)]="ThoughtAlienationPhenomenonExample" class="form-control"  ></textarea>
                  </td>
                </tr>
+               <tr>
+                 <td>
+                   <input type="button" value="Save" (click)="addPossession()" class="btn btn-primary"  >
+                 </td>
+               </tr>
               </tbody>
           </table>
           </mat-expansion-panel>
@@ -965,6 +970,11 @@
                  <tr>
                    <td>
                      <textarea [(ngModel)]="PerceptionExample" class="form-control" placeholder="provide exampless"  ></textarea>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>
+                    <input type="button" value="Save" (click)="addPerception()" class="btn btn-primary"  >
                    </td>
                  </tr>
 
@@ -1166,6 +1176,11 @@
                         <textarea [(ngModel)]="RemoteIllnessRelatedEvents" class="form-control" placeholder="Illness Related Events Memory" ></textarea>
                       </td>
                       
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="button" value="Save" (click)="addCognitiveFunction()" class="btn btn-primary"  >
+                      </td>
                     </tr>
                   </tbody>
               </table>
