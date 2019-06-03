@@ -1274,6 +1274,11 @@
                     <textarea type="text" name="" [(ngModel)]="DIsSimilaritiesbetweenPairedObject" placeholder="Dissimilarities between Paired Object"  class="form-control"  id=""></textarea>
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    <input type="button" value="Save" class="btn btn-primary" (click)="addIntelligence()" >
+                  </td>
+                </tr>
               </tbody>
           </table>
           </mat-expansion-panel>
@@ -1315,6 +1320,11 @@
                 <td>
                   <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="JudgementTest"   name="JudgementTest">Intact</label>
                     <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="JudgementTest"  name="JudgementTest">Impaired</label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="button" value="Save" class="btn btn-primary" (click)="addJudgement()"   >
                 </td>
               </tr>
             </table>
@@ -1390,7 +1400,11 @@
                   <label class="radio-inline"><input type="radio" value="Grade 6" [(ngModel)]="Grade"  name="Grade">Grade 6</label>
                 </td>
               </tr>
-             
+             <tr>
+               <td>
+                 <input type="button" value="Save" class="btn btn-primary"  (click)="addInsight()" >
+               </td>
+             </tr>
             </table>
           </mat-expansion-panel>
 
@@ -1405,11 +1419,11 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Conscious"  [(ngModel)]="Consciousness"   name="Consciousness">Conscious</label>
-                  <label class="radio-inline"><input type="radio" value="Drowsy" [(ngModel)]="Consciousness"  name="Consciousness">Drowsy</label>
-                  <label class="radio-inline"><input type="radio" value="Stupor" [(ngModel)]="Consciousness"  name="Consciousness">Stupor</label>
-                  <label class="radio-inline"><input type="radio" value="Confusion" [(ngModel)]="Consciousness"  name="Consciousness">Confusion</label>
-                  <label class="radio-inline"><input type="radio" value="Coma" [(ngModel)]="Consciousness"  name="Consciousness">Coma</label>
+                  <label class="radio-inline"><input type="radio" value="Conscious"  [(ngModel)]="GPEConsciousness"   name="GPEConsciousness">Conscious</label>
+                  <label class="radio-inline"><input type="radio" value="Drowsy" [(ngModel)]="GPEConsciousness"  name="GPEConsciousness">Drowsy</label>
+                  <label class="radio-inline"><input type="radio" value="Stupor" [(ngModel)]="GPEConsciousness"  name="GPEConsciousness">Stupor</label>
+                  <label class="radio-inline"><input type="radio" value="Confusion" [(ngModel)]="GPEConsciousness"  name="GPEConsciousness">Confusion</label>
+                  <label class="radio-inline"><input type="radio" value="Coma" [(ngModel)]="GPEConsciousness"  name="GPEConsciousness">Coma</label>
                 </td>
               </tr>
 
@@ -1537,7 +1551,11 @@
                     </td>
                    
                   </tr>
-                  
+                  <tr>
+                    <td>
+                      <input type="button" value="Save" class="btn btn-primary"  (click)="addGeneralPhysicalExamination()" >
+                    </td>
+                  </tr>
                 </tbody>
             </table>
           </mat-expansion-panel>

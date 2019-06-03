@@ -492,10 +492,18 @@ submmited: boolean = false;
       ThoughtAlienationPhenomenonExample:this.ThoughtAlienationPhenomenonExample
     }
     console.log(obj);
-    this.http.post('http://localhost:3000/api/pat/test',obj).subscribe(this.addThoughtContentCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPossession',obj).subscribe(this.addPossessionCB)
   }
   addPossessionCB=(dt)=>{
     console.log(dt)
+    if(dt){
+      alert('data Saved');
+      this.Obsession="",
+      this.Complusion="",
+      this.ObsessiveCompulsive="",
+      this.ThoughtAlienationPhenomenon="",
+      this.ThoughtAlienationPhenomenonExample=""
+    }
   }
 
 
@@ -510,10 +518,17 @@ submmited: boolean = false;
       PerceptionExample:this.PerceptionExample
     }
     console.log(obj)
-    this.http.post('http://localhost:3000/api/pat/test',obj).subscribe(this.addPerceptionCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/test',obj).subscribe(this.addPerceptionCB)
   }
   addPerceptionCB=(dt)=>{
     console.log(dt)
+    if(dt){
+      alert('data Saved')
+      this.Perception1="",
+      this.Perception2="",
+      this.Perception3="",
+      this.PerceptionExample=""
+    }
   }
 
   ConsciousLevel;Attention;AttentionDigitForward;AttentionDigitBackward;Concentration;ConcentrationSerialSubstraction;Orientation;OrientationTime;OrientationTimeCheck;
@@ -551,7 +566,7 @@ submmited: boolean = false;
   RemoteIllnessRelatedEvents:this.RemoteIllnessRelatedEvents
   }
   console.log(obj)
-  this.http.post('http://localhost:3000/api/pat/test',obj).subscribe(this.addCognitiveFunctionCB)
+  this.http.post('https://digitalapp001.herokuapp.com/api/pat/addCongnitiveFunction',obj).subscribe(this.addCognitiveFunctionCB)
   }
   addCognitiveFunctionCB=(dt)=>{
     console.log(dt);
@@ -590,8 +605,130 @@ submmited: boolean = false;
   GeneralFundofInformation;GeneralFundofInformationCheck;
   ArithmeticAbility;ArithmeticAbilityCheck;
   Abstraction;InterpretationofProverb;SimilaritiesbetweenPairedObject;DIsSimilaritiesbetweenPairedObject;
+  addIntelligence(){
+    var obj={
+      id:this.id,
+      IntelligenceComprehension:this.IntelligenceComprehension,
+      IntelligenceComprehensionCheck:this.IntelligenceComprehensionCheck,
+      IntelligenceVocabulary:this.IntelligenceVocabulary,
+      IntelligenceVocabularyCheck:this.IntelligenceVocabularyCheck,
+      GeneralFundofInformation:this.GeneralFundofInformation,
+      GeneralFundofInformationCheck:this.GeneralFundofInformationCheck,
+      ArithmeticAbility:this.ArithmeticAbility,
+      ArithmeticAbilityCheck:this.ArithmeticAbilityCheck,
+      Abstraction:this.Abstraction,
+      InterpretationofProverb:this.InterpretationofProverb,
+      SimilaritiesbetweenPairedObject:this.SimilaritiesbetweenPairedObject,
+      DIsSimilaritiesbetweenPairedObject:this.DIsSimilaritiesbetweenPairedObject
+    }
+    console.log(obj)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addIntelligence',obj).subscribe(this.addIntelligenceCB)
+  }
+
+  addIntelligenceCB=(dt)=>{
+    console.log(dt)
+    alert('data Saved')
+    if(dt){
+      this.IntelligenceComprehension="",
+      this.IntelligenceComprehensionCheck="",
+      this.IntelligenceVocabulary="",
+      this.IntelligenceVocabularyCheck="",
+      this.GeneralFundofInformation="",
+      this.GeneralFundofInformationCheck="",
+      this.ArithmeticAbility="",
+      this.ArithmeticAbilityCheck="",
+      this.Abstraction="",
+      this.InterpretationofProverb="",
+      this.SimilaritiesbetweenPairedObject="",
+      this.DIsSimilaritiesbetweenPairedObject=""
+    }
+  }
+
   JudgementPerosnal;JudgementSocial;JudgementTest;
+
+  addJudgement(){
+    var obj={
+      id:this.id,
+      JudgementPerosnal:this.JudgementPerosnal,
+      JudgementSocial:this.JudgementSocial,
+      JudgementTest:this.JudgementTest
+    }
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addJudgement',obj).subscribe(this.JudgementCB)
+  }
+  JudgementCB=(dt)=>{
+    console.log(dt)
+    if(dt){
+      alert('data Saved')
+      this.JudgementPerosnal="",
+      this.JudgementSocial="",
+      this.JudgementTest=""
+    }
+  }
+
+
   AwarenessofAbnormalBehaviourExperience;AttributiontoPhysicalCause;RecognitionofPersonalResponsibility;WillingnesstotakeTreatement;Grade;
+  addInsight(){
+    var obj={
+      id:this.id,
+      AwarenessofAbnormalBehaviourExperience:this.AwarenessofAbnormalBehaviourExperience,
+      AttributiontoPhysicalCause:this.AttributiontoPhysicalCause,
+      RecognitionofPersonalResponsibility:this.RecognitionofPersonalResponsibility,
+      WillingnesstotakeTreatement:this.WillingnesstotakeTreatement,
+      Grade:this.Grade
+    }
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addInsight',obj).subscribe(this.addInsightCB)
+
+  }
+  addInsightCB=(dt)=>{
+    console.log(dt)
+    if(dt){
+      alert("data Saved")
+  this.AwarenessofAbnormalBehaviourExperience=""
+  this.AttributiontoPhysicalCause=""
+  this.RecognitionofPersonalResponsibility=""
+  this.WillingnesstotakeTreatement=""
+  this.Grade=""
+    }
+  }
+
+
   GPEConsciousness;GPEBuilt;GPEInspection;GPEPluse;GPERespiration;GPEBodyTemperature;GPEBloodPressure;
   RespiratorySystem;CardioVescularSystem;GPEGastroIntestinalSystem;CentralNervousSystem;
+
+  addGeneralPhysicalExamination(){
+    var obj={
+      id:this.id,
+      GPEConsciousness:this.GPEConsciousness,
+      GPEBuilt:this.GPEBuilt,
+      GPEInspection:this.GPEInspection,
+      GPEPluse:this.GPEPluse,
+      GPERespiration:this.GPERespiration,
+      GPEBodyTemperature:this.GPEBodyTemperature,
+      GPEBloodPressure:this.GPEBloodPressure,
+      RespiratorySystem:this.RespiratorySystem,
+      CardioVescularSystem:this.CardioVescularSystem,
+      GPEGastroIntestinalSystem:this.GPEGastroIntestinalSystem,
+      CentralNervousSystem:this.CentralNervousSystem
+    }
+    console.log(obj)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGPE',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
+
+    }
+      addGeneralPhysicalExaminationCB=(dt)=>{
+        if(dt){
+          alert('Data Saved')
+          this.GPEConsciousness=""
+          this.GPEBuilt=""
+          this.GPEInspection=""
+          this.GPEPluse=""
+          this.GPERespiration=""
+          this.GPEBodyTemperature=""
+          this.GPEBloodPressure=""
+          this.RespiratorySystem=""
+          this.CardioVescularSystem=""
+          this.GPEGastroIntestinalSystem=""
+          this.CentralNervousSystem=""
+    
+        }
+      }
 }
