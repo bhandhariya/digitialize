@@ -78,8 +78,12 @@ submmited: boolean = false;
    }
 
   ngOnInit() {
+    this.arout.paramMap.subscribe(e=>{
+      this.id=e.get('id')
+      console.log(this.id);
+    })
     this.ChiefComplain = this.fb.group({
-      id:[''],
+      id:[this.id],
       ComplaintName : ['',[Validators.required]],
       ComplaintDuration : ['',[Validators.required]]
     
@@ -101,10 +105,7 @@ submmited: boolean = false;
     this.Illness.valueChanges.subscribe(value =>{
       this.IllnesslogValidationMessages();
     });
-    this.arout.paramMap.subscribe(e=>{
-      this.id=e.get('id')
-      console.log(this.id);
-    })
+   
     this.ChiefComplain.get('id').setValue(this.id);
     this.Illness.get('id').setValue(this.id)
   }
@@ -122,6 +123,7 @@ submmited: boolean = false;
   ChiefcomplainCB=(dt)=>{
     alert(dt);
     this.ChiefComplain.reset({
+      id:this.id,
       ComplaintName : '',
       ComplaintDuration :''
       
@@ -143,6 +145,7 @@ submmited: boolean = false;
   Illnesscb=(dt)=>{
     console.log(dt)
     this.Illness.reset({
+      id:this.id,
       DurationOfCurruntIllness : '',
       CurruntEpisodeNumber : '',
       ModeOfOnset:'',
@@ -345,7 +348,7 @@ submmited: boolean = false;
 
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/addGeneralAptitudeBehaviour',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGeneralAptitudeBehaviour',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
   }
   addGeneralAppearanceAttitudeBehaviourCB=(dt)=>{
     console.log(dt)
@@ -389,7 +392,7 @@ submmited: boolean = false;
 
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/addPsychomotorActivitySpeech',obj).subscribe(this.addPsychomotorActivitySpeechCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPsychomotorActivitySpeech',obj).subscribe(this.addPsychomotorActivitySpeechCB)
   }
   addPsychomotorActivitySpeechCB=(dt)=>{
     console.log(dt)
@@ -427,7 +430,7 @@ submmited: boolean = false;
       Range:this.Range
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/addAffect',obj).subscribe(this.addAffectCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addAffect',obj).subscribe(this.addAffectCB)
   }
   addAffectCB=(dt)=>{
     console.log(dt)
@@ -459,7 +462,7 @@ submmited: boolean = false;
       ThoughtContentExample2:this.ThoughtContentExample2
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/addThoughtContent',obj).subscribe(this.addThoughtContentCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addThoughtContent',obj).subscribe(this.addThoughtContentCB)
   }
   addThoughtContentCB=(dt)=>{
     console.log(dt)

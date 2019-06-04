@@ -83,7 +83,10 @@ export class FirstComponent implements OnInit {
         console.log(formData);
 
         // this.router.navigate(['dashboard/second']);
-        this.http.post('https://digitalapp001.herokuapp.com/api/pat/create',formData).subscribe(this.createCB)
+        // this.http.post('https://digitalapp001.herokuapp.com/api/pat/create',formData).subscribe(this.createCB)
+        setTimeout(() => {
+          this.http.post('https://digitalapp001.herokuapp.com/api/pat/create',formData).subscribe(this.createCB)
+        }, 5000);
       }
     }
     createCB=(dt)=>{

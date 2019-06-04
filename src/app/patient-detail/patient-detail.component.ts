@@ -11,6 +11,7 @@ export class PatientDetailComponent implements OnInit {
 
   constructor(@Inject(HttpClient) private http,private aroute:ActivatedRoute,private router:Router) { }
   Patient;id;
+  url="https://digitalapp001.herokuapp.com"
   ngOnInit() {
 
     this.aroute.paramMap.subscribe(e=>{

@@ -23,6 +23,8 @@
       <th>family History</th>
       <th>Personal History</th>
       <th>Substance History</th>
+      <th>Legal History</th>
+      <th>Mental Status Examination</th>
       <th>options</th>
     </tr>
     </thead>
@@ -240,6 +242,58 @@
             <td>{{i.environHistory}}</td>
             
           </tr>
+        </table>
+      </td>
+      <td>
+        <table>
+          <tr>
+            <th>H/o Homicide/Suicide Attempts If yes, specify the number of attempt and method</th>
+            <th>Pre-morbid personality</th>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <table>
+         <tr>
+           <th>General Appearance, Attitude & Behaviour</th>
+         </tr>
+         <tr>
+           <td>
+             <table>
+               <tr>
+                 <th>Appearance</th>
+                 <th>Level of Grooming</th>
+                 <th>Level of Cleanliness</th>
+                 <th>Level of Consciousness</th>
+                 <th>Gait</th>
+                 <th>Posture</th>
+                 <th>Mode of Entry</th>
+                 <th>Cooperative</th>
+                 <th>Eye to Eye Contact</th>
+                 <th>Rapport</th>
+                 <th>Gesturing</th>
+                 <th>Other Movements</th>
+                 <th>Other Catatonic Phenomenon</th>
+               </tr>
+               <tr *ngFor="let i of Patient.generalAptitudeBehaviourDetails" >
+                 <td>{{i.Appearance}}</td>
+                 <td>{{i.LevelofGrooming}}</td>
+                 <td>{{i.LevelofCleanliness}}</td>
+                 <td>{{i.LevelofConsciousness}}</td>
+                 <td>{{i.Gait}}</td>
+                 <td>{{i.Posture}}</td>
+                 <td>{{i.ModeOfEntry}}</td>
+                 <td>{{i.Cooperative}}</td>
+                 <td>{{i.EyetoEyeContact}}</td>
+                 <td>{{i.Rapport}}</td>
+                 <td>{{i.Gesturing}}</td>
+                 <td>{{i.OtherMovements}}</td>
+                 <td>{{i.otherCatatolicPhemenon}}</td>
+                
+               </tr>
+             </table>
+           </td>
+         </tr>
         </table>
       </td>
       <td>
