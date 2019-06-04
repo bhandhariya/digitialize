@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
@@ -17,6 +17,7 @@ export class AccordianDemoComponent implements OnInit {
   ChiefComplain: any;
   Illness:any;
   public loading = false;
+  @ViewChild('form') form;
   validationMessages  = {
     'ComplaintName' : {
                     'required': 'First Name is Required',
@@ -121,13 +122,9 @@ submmited: boolean = false;
   }
   ChiefcomplainCB=(dt)=>{
     alert(dt);
-    this.ChiefComplain.reset({
-      ComplaintName : '',
-      ComplaintDuration :''
-      
-      });
-   
-   
+    this.submmited= false;
+    this.ChiefComplain.reset();
+    this.form.resetFrom();   
   }
   IllnessonSubmit(formData){
     this.submmited = true;

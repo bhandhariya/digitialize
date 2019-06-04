@@ -74,13 +74,15 @@
        <td>
          <table>
            <tr>
-             <th>History of present Illness</th>
-             <th>History of present Illness</th>
+             <th>History of Past Illness</th>
+             
            </tr>
-           <tr  >
-             <td></td>
-             <td></td>
+           <tr *ngFor="let i of Patient.PastHistoryDetails" >
+             <td>
+              {{i.history}}
+             </td>
            </tr>
+           
          </table>
        </td>
        <td>
