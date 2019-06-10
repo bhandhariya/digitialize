@@ -43,7 +43,7 @@
                
                 <tbody>
                   <tr *ngFor="let i of Patient"    >
-                    <td (click)="goToForm5(i._id)" >{{i.first_name}}  {{i.last_name}}</td>
+                    <td (click)="goToForm5(i._id)" style="color: blue" >{{i.first_name}}  {{i.last_name}}</td>
                     <td>{{i.addmission_date | date }}</td>
                     <td>{{i.permanent_address}}</td>
                     <td>{{i.age}}</td>

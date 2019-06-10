@@ -12,7 +12,7 @@
             Chief Complain
             </mat-expansion-panel-header>
         
-            <form [formGroup]="ChiefComplain" (ngSubmit)="chiefComplaintSubmit(ChiefComplain.value)">
+            <form [formGroup]="ChiefComplain" (ngSubmit)="chiefComplaintSubmit(ChiefComplain.value)" #ChiefForm="ngForm">
               <div class="card-body">
                       <div class="row">
                           <div class="col-md-6">
@@ -61,7 +61,7 @@
             <mat-expansion-panel-header>
               Illness
             </mat-expansion-panel-header>
-            <form [formGroup]="Illness" (ngSubmit)="IllnessonSubmit(Illness.value)">
+            <form [formGroup]="Illness" (ngSubmit)="IllnessonSubmit(Illness.value)" #IllnessForm="ngForm">
               <div class="row">
                 <div class="col-md-4">
                     <div class="form-group row">

@@ -1,4 +1,4 @@
-
+import Swal from 'sweetalert2'
 import { Component, OnInit, Inject } from '@angular/core';
 // import * as firebase from "firebase";
 import { Router } from '@angular/router';
@@ -91,7 +91,7 @@ export class FirstComponent implements OnInit {
     }
     createCB=(dt)=>{
       console.log(dt);
-     
+      Swal.fire({type: 'success',title: 'Patient Created',showConfirmButton: false,timer: 1000});
       if(dt.id){
         this.router.navigate(['dashboard/second',{id:dt.id}]);
       }

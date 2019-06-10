@@ -10,10 +10,17 @@
                     <div class="col-md-3">
                         <h5 class="m-0 font-weight-bold text-primary"> Personal Data</h5>
                     </div>
-                    <!-- <div class="col-md-7"></div>
-                    <div class="col-md-2">
-                        <a routerLink="../../dashboard"><button class="btn btn-primary btn-sm btn-block">Back</button> </a>
-                    </div>  -->
+                    <div style="margin-left: 500px" class="container">
+                      <ul class="pagination">
+                                    <li class="disabled"><a >«</a></li>
+                                    <li   ><a >1 <span class="sr-only">(current)</span></a></li>
+                                    <li class="active" style="color: blue"  ><a >2</a></li>
+                                    <li><a >3</a></li>
+                                    <li><a >4</a></li>
+                                    <li><a >5</a></li>
+                                    <li><a >»</a></li>
+                                  </ul>
+                      </div>
                 </div>
             </div>
             <form [formGroup]="persionalDataForm" (ngSubmit)="onSubmit(persionalDataForm.value)">

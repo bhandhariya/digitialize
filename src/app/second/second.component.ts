@@ -3,6 +3,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-second',
@@ -127,6 +128,7 @@ export class SecondComponent implements OnInit {
   }
   addpersonalCB=(dt)=>{
     console.log(dt)
+    Swal.fire({type: 'success',title: 'Personal Details Added Successfully',showConfirmButton: false,timer: 2000});
     if(dt.id){
       this.router.navigate(['dashboard/family',{id:dt.id}])
     }

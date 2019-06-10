@@ -1,11 +1,11 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { HttpClient } from '@angular/common/http';
 // import { AngularFireStorage } from "angularfire2/storage";
 import { Observable } from 'rxjs';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-accordian-demo',
   templateUrl: './accordian-demo.component.html',
@@ -17,6 +17,8 @@ export class AccordianDemoComponent implements OnInit {
   ChiefComplain: any;
   Illness:any;
   public loading = false;
+  @ViewChild('ChiefForm') ChiefForm;
+  @ViewChild('IllnessForm') IllnessForm;
   validationMessages  = {
     'ComplaintName' : {
                     'required': 'First Name is Required',
@@ -121,21 +123,15 @@ submmited: boolean = false;
     }
   }
   ChiefcomplainCB=(dt)=>{
-    alert(dt);
-    this.ChiefComplain.reset({
-      id:this.id,
-      ComplaintName : '',
-      ComplaintDuration :''
-      
-      });
-   
-   
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
+    this.submmited = false;
+    this.ChiefComplain.reset({id:this.id});
+   this.ChiefForm.resetForm({
+     id:this.id
+   });
   }
   IllnessonSubmit(formData){
     this.submmited = true;
-   
-    
-
     this.IllnesslogValidationMessages();
     if(this.Illness.valid){
       console.log(formData);
@@ -143,17 +139,12 @@ submmited: boolean = false;
     }
   }
   Illnesscb=(dt)=>{
-    console.log(dt)
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
+    this.submmited=false;
     this.Illness.reset({
-      id:this.id,
-      DurationOfCurruntIllness : '',
-      CurruntEpisodeNumber : '',
-      ModeOfOnset:'',
-      Course:"",
-      PredisposingFactors : '',
-      PrecipatingFactors : '',
-      PrepetuatingFactors : ''
+      id:this.id
     });
+    this.IllnessForm.resetForm();
   }
 
   logValidationMessages(group: FormGroup = this.ChiefComplain): void {
@@ -201,7 +192,7 @@ submmited: boolean = false;
     
   }
   addHistoryOfPresentIllnessCB=(dt)=>{
-    console.log(dt);
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.HistoryOfPresentIllness=""
   }
   HistoryOfPastIllness;
@@ -213,7 +204,7 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPastHistory',obj).subscribe(this.addHistoryOfPastIllnessCB)    
   }
   addHistoryOfPastIllnessCB=(dt)=>{
-    console.log(dt);
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.HistoryOfPastIllness=""
   }
   MedicalcHistory;PsychiatricHistory;
@@ -227,7 +218,7 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addHistoryOfModeOfIntake',obj).subscribe(this.addHistoryOfModeOfIntakeCB)
   }
   addHistoryOfModeOfIntakeCB=(dt)=>{
-    console.log(dt);
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.MedicalcHistory="";
     this.PsychiatricHistory=""
   }
@@ -242,7 +233,7 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addTreatementHistory',obj).subscribe(this.addTreatementHostoryCB)
   }
   addTreatementHostoryCB=(dt)=>{
-    console.log(dt);
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.PresentTreateMent="";
     this.PastTreateMent=""
   }
@@ -259,7 +250,7 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addFamilyHistory',obj).subscribe(this.addFamilyHistoryCB)
   }
   addFamilyHistoryCB=(dt)=>{
-    console.log(dt);
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.mental="";
     this.environment="";
     this.attitute="";
@@ -282,7 +273,7 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPersonalHistory',obj).subscribe(this.addPersonalHistoryCB)
   }
   addPersonalHistoryCB=(dt)=>{
-    console.log(dt);
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.Birth="";
     this.Immunization="";
     this.Development="";
@@ -305,7 +296,7 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addSubstanceHistory',obj).subscribe(this.addSubstanceHistoryCB)
   }
   addSubstanceHistoryCB=(dt)=>{
-    console.log(dt)
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.HistoryOfChoiseOfSubstance="";
     this.HistoryOfTotalDurationOfUse="";
     this.HistoryOfDurationOfRegularUse="";
@@ -323,7 +314,7 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addLegalHistory',obj).subscribe(this.addLegalHistoryCB)
   }
   addLegalHistoryCB=(dt)=>{
-    console.log(dt)
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.HomicideAttempt="";
     this.preMorbidpersonality="";
   }
@@ -351,9 +342,9 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGeneralAptitudeBehaviour',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
   }
   addGeneralAppearanceAttitudeBehaviourCB=(dt)=>{
-    console.log(dt)
+   
     if(dt){
-      alert('data saved')
+      Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     }
       this.Appearance="";
       this.LevelofGrooming="",
@@ -395,9 +386,9 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPsychomotorActivitySpeech',obj).subscribe(this.addPsychomotorActivitySpeechCB)
   }
   addPsychomotorActivitySpeechCB=(dt)=>{
-    console.log(dt)
+    
     if(dt){
-      alert('data saved')
+      Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     }
       this.PsychomotorActivity="",
       this.Initiation="",
@@ -435,7 +426,7 @@ submmited: boolean = false;
   addAffectCB=(dt)=>{
     console.log(dt)
     if(dt){
-      alert('data Saved')
+      Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
       this.Subjective="",
       this.Objectivetext="",
       this.Objective="",
@@ -467,7 +458,7 @@ submmited: boolean = false;
   addThoughtContentCB=(dt)=>{
     console.log(dt)
     if(dt){
-      alert('data Saved')
+      Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
       this.Stream="",
       this.Form="",
       this.FormExample="",
@@ -500,7 +491,7 @@ submmited: boolean = false;
   addPossessionCB=(dt)=>{
     console.log(dt)
     if(dt){
-      alert('data Saved');
+      Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
       this.Obsession="",
       this.Complusion="",
       this.ObsessiveCompulsive="",
@@ -524,9 +515,9 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/test',obj).subscribe(this.addPerceptionCB)
   }
   addPerceptionCB=(dt)=>{
-    console.log(dt)
+   
     if(dt){
-      alert('data Saved')
+      Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
       this.Perception1="",
       this.Perception2="",
       this.Perception3="",
@@ -572,7 +563,7 @@ submmited: boolean = false;
   this.http.post('https://digitalapp001.herokuapp.com/api/pat/addCongnitiveFunction',obj).subscribe(this.addCognitiveFunctionCB)
   }
   addCognitiveFunctionCB=(dt)=>{
-    console.log(dt);
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     if(dt){
   this.ConsciousLevel="",
   this.Attention="",
@@ -629,8 +620,8 @@ submmited: boolean = false;
   }
 
   addIntelligenceCB=(dt)=>{
-    console.log(dt)
-    alert('data Saved')
+   
+    Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     if(dt){
       this.IntelligenceComprehension="",
       this.IntelligenceComprehensionCheck="",
@@ -659,9 +650,9 @@ submmited: boolean = false;
     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addJudgement',obj).subscribe(this.JudgementCB)
   }
   JudgementCB=(dt)=>{
-    console.log(dt)
+    
     if(dt){
-      alert('data Saved')
+      Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
       this.JudgementPerosnal="",
       this.JudgementSocial="",
       this.JudgementTest=""
@@ -683,9 +674,9 @@ submmited: boolean = false;
 
   }
   addInsightCB=(dt)=>{
-    console.log(dt)
+   
     if(dt){
-      alert("data Saved")
+      Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
   this.AwarenessofAbnormalBehaviourExperience=""
   this.AttributiontoPhysicalCause=""
   this.RecognitionofPersonalResponsibility=""
@@ -719,7 +710,7 @@ submmited: boolean = false;
     }
       addGeneralPhysicalExaminationCB=(dt)=>{
         if(dt){
-          alert('Data Saved')
+          Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
           this.GPEConsciousness=""
           this.GPEBuilt=""
           this.GPEInspection=""

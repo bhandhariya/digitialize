@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,Validators, FormGroup } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { HttpClient } from '@angular/common/http';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-familydata',
   templateUrl: './familydata.component.html',
@@ -104,6 +104,7 @@ onSubmit(formData){
   }
 }
 cb=(dt)=>{
+  Swal.fire({type: 'success',title: 'Addedd Successfully',showConfirmButton: false,timer: 1000});
   if(dt._id){
     this.router.navigate(['dashboard/children',{id:dt.id}])
   }
