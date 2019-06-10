@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from "../services/login.service";
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   registerRoute: boolean;
   forgotRoute: boolean;
   loading : boolean;
-  constructor(private loginService:LoginService, private router:Router) { }
+  constructor(private loginService:LoginService, private router:Router,private auth:AngularFireAuth) { }
   @ViewChild('formCtrl') formCtrl;
   ngOnInit() {
     if(this.router.url == '/') this.registerRoute = true;
@@ -33,29 +34,24 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if(this.formCtrl.valid){
       this.loading = true;
-      // this.loginService.getAllUsers().subscribe(res =>{
-      //   for(var i = 0; i < res['length']; i++){
-      //     if(res[i]['Email'] == formData.Email && res[i]['Password'] == formData.Password){
-      //       this.loading = false;
-      //       sessionStorage.setItem('IsLogin','true');
-      //       Swal.fire({type: 'success',title: 'Login Successfully',showConfirmButton: false,timer: 1000});
-      //       this.router.navigate(['dashboard']);
-      //       break;
-      //     }
-      //   }
-      //   if(i == res['length']){
-      //     this.loading = false;
-      //     Swal.fire({type: 'error',title: 'Please give correct credentials',showConfirmButton: false,timer: 1500});
-      //   }
-      // },err => this.loading = false); 
-      if(formData.Email == 'test@gmail.com' && formData.Password == '123456') {
+      
+      // if(formData.Email == 'test@gmail.com' && formData.Password == '123456') {
+      //   sessionStorage.setItem('IsLogin','true');
+      //   Swal.fire({type: 'success',title: 'Login Successfully',showConfirmButton: false,timer: 1000});
+      //   this.router.navigate(['dashboard']);
+      // }else{
+      //   this.loading = false;
+      //   Swal.fire({type: 'error',title: 'Please give correct credentials',showConfirmButton: false,timer: 1500});
+      // }
+      console.log(formData)
+      this.auth.auth.signInWithEmailAndPassword(formData.Email,formData.Password).then(res=>{
         sessionStorage.setItem('IsLogin','true');
         Swal.fire({type: 'success',title: 'Login Successfully',showConfirmButton: false,timer: 1000});
         this.router.navigate(['dashboard']);
-      }else{
+      },err=>{
         this.loading = false;
         Swal.fire({type: 'error',title: 'Please give correct credentials',showConfirmButton: false,timer: 1500});
-      }
+      })
     }
   }
 

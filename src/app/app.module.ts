@@ -6,6 +6,8 @@ import { NgxLoadingModule } from 'ngx-loading';
 
  import { AngularFireModule } from "@angular/fire";
  import { AngularFireStorageModule } from "@angular/fire/storage";
+ import { AngularFireAuthModule } from "@angular/fire/auth";
+ 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login.service';
@@ -60,6 +62,7 @@ const routes: Routes = [
       
     }),
     AngularFireStorageModule,
+    AngularFireAuthModule,
     RouterModule.forRoot(routes),
     NgxLoadingModule.forRoot({}),
     BrowserAnimationsModule,

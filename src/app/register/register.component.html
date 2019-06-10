@@ -13,8 +13,9 @@
               </div>
               <form #formCtrl="ngForm" (ngSubmit)="register(formCtrl.value)" class="user">
                 <div class="form-group row">
-                  <input type="text" #firstnameCtrl="ngModel" [(ngModel)]="firstname" name="FirstName" >
-                    <div class="col-sm-6 mb-3 mb-sm-0">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="text" #firstnameCtrl="ngModel" [(ngModel)]="firstname" name="FirstName" 
+                  
                     class="form-control form-control-user" id="exampleFirstName" placeholder="First Name"
                     required [class.is-invalid]="firstnameCtrl.invalid && (firstnameCtrl.touched || submmited)">
                     <div *ngIf="firstnameCtrl.invalid && (firstnameCtrl.touched || submmited)" class="invalid-feedback">
