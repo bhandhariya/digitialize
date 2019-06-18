@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {RegisterService } from '../services/register.service'
 import Swal from 'sweetalert2';
 import { AngularFireAuth } from "@angular/fire/auth";
+import * as firebase from "firebase";
 
 
 @Component({
@@ -28,7 +29,21 @@ export class RegisterComponent implements OnInit {
       this.loading = true;
       console.log(formData)
       this.auth.auth.createUserWithEmailAndPassword(formData.Email,formData.Password).then(res=>{
-        Swal.fire({type: 'success',title: 'Registerd Successfully',showConfirmButton: false,timer: 1000});
+        res.user.sendEmailVerification().then(function(){
+          firebase.database().ref('users/'+res.user.uid).set({
+            email:formData.Email,
+            uid:res.user.uid,
+            registrationDate:new Date().toString(),
+            name:formData.FirstName
+          })
+          
+          Swal.fire({type: 'success',title: 'Registerd Successfully',showConfirmButton: false,timer: 1000});
+         
+        });
+        var uu=this.auth.auth.currentUser;
+        uu.updateProfile({
+          displayName:formData.FirstName
+        })
         this.router.navigate(['login']);
       },err=>{
         this.loading = false;

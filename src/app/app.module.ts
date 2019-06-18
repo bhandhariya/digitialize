@@ -7,6 +7,7 @@ import { NgxLoadingModule } from 'ngx-loading';
  import { AngularFireModule } from "@angular/fire";
  import { AngularFireStorageModule } from "@angular/fire/storage";
  import { AngularFireAuthModule } from "@angular/fire/auth";
+ import { AngularFireDatabaseModule } from "@angular/fire/database";
  
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -26,11 +27,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
+import { UserService } from './services/user.service';
+import { MyFireService } from './services/my-fire.service';
+import { DemoDashComponent } from './demo-dash/demo-dash.component';
+import { SwipeComponent } from './shared/swipe/swipe.component';
+import { PageComponent } from './page/page.component';
 
 
 
 const routes: Routes = [
   { path : 'login', component : LoginComponent, canActivate :[LoginGuard] },
+  {path:'demo',component:DemoDashComponent},
   { path : 'register', component : RegisterComponent, canActivate :[LoginGuard] },
   { path : 'forgot', component : ForgotpasswordComponent, canActivate :[LoginGuard] },
   { path : 'changepassword/:id', component : ChangepasswordComponent, canActivate :[LoginGuard]  },
@@ -44,7 +51,10 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     ForgotpasswordComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    DemoDashComponent,
+    SwipeComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +73,7 @@ const routes: Routes = [
     }),
     AngularFireStorageModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     RouterModule.forRoot(routes),
     NgxLoadingModule.forRoot({}),
     BrowserAnimationsModule,
@@ -98,7 +109,9 @@ const routes: Routes = [
     ForgotService,
     ChangepasswordService,
     AuthGurad,
-    LoginGuard
+    LoginGuard,
+    MyFireService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

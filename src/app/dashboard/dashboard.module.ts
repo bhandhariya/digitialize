@@ -26,8 +26,9 @@ import { ChiefComplainComponent } from '../chief-complain/chief-complain.compone
 import { IllnessComponent } from '../illness/illness.component';
 import { HistoryComponent } from '../history/history.component';
 import { AccordianDemoComponent } from '../accordian-demo/accordian-demo.component';
-import { DemoDashComponent } from '../demo-dash/demo-dash.component';
 import { PatientDetailComponent } from '../patient-detail/patient-detail.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PagiComponent } from './pagi/pagi.component';
 
 const AppRoutes: Routes = [
   { path : '', component : DashboardComponent },
@@ -42,7 +43,7 @@ const AppRoutes: Routes = [
   { path : 'illness', component : IllnessComponent },
   { path : 'history', component : HistoryComponent },
   { path : 'accordian', component : AccordianDemoComponent },
-  { path : 'demo', component : DemoDashComponent },
+  { path : 'profile', component : ProfileComponent },
   { path : '**', redirectTo :'', pathMatch : 'full'}
 ];
 
@@ -63,8 +64,9 @@ const AppRoutes: Routes = [
     IllnessComponent,
     HistoryComponent,
     AccordianDemoComponent,
-    DemoDashComponent,
-    PatientDetailComponent
+    PatientDetailComponent,
+    ProfileComponent,
+    PagiComponent
   ],
   imports: [
     CommonModule,
