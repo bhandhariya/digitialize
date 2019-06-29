@@ -8,6 +8,7 @@ import { NgxLoadingModule } from 'ngx-loading';
  import { AngularFireStorageModule } from "@angular/fire/storage";
  import { AngularFireAuthModule } from "@angular/fire/auth";
  import { AngularFireDatabaseModule } from "@angular/fire/database";
+ import * as fAdmin from "firebase-admin";
  
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -32,7 +33,8 @@ import { MyFireService } from './services/my-fire.service';
 import { DemoDashComponent } from './demo-dash/demo-dash.component';
 import { SwipeComponent } from './shared/swipe/swipe.component';
 import { PageComponent } from './page/page.component';
-
+import { environment } from 'src/environments/environment.prod';
+const serviceAccount=require('../../../../../Desktop/admin.json')
 
 
 const routes: Routes = [
@@ -46,6 +48,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     LoginComponent,
@@ -71,6 +74,7 @@ const routes: Routes = [
         messagingSenderId: "937297135346"
       
     }),
+    
     AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,

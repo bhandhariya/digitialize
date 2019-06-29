@@ -28,6 +28,7 @@
     "express": "^4.16.4",
     "file-saver": "^2.0.2",
     "firebase": "^5.11.1",
+    "firebase-admin": "^8.1.0",
     "hammerjs": "^2.0.8",
     "jquery": "^3.4.0",
     "jsonexport": "^2.4.1",
