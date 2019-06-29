@@ -27,6 +27,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -74,7 +75,8 @@ const AppRoutes: Routes = [
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
   ],
   providers :[
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },

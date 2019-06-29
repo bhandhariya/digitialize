@@ -396,40 +396,62 @@
                   <tr>
                     <td scope="row">Appearance</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Looking one's Age"  [(ngModel)]="Appearance"   name="Appearance">Looking one's Age</label>
-                      <label class="radio-inline"><input type="radio" value="Older" [(ngModel)]="Appearance"  name="Appearance">Older</label>
-                      <label class="radio-inline"><input type="radio" value="Younger" [(ngModel)]="Appearance"  name="Appearance">Younger</label> 
-                      <label class="radio-inline"><input type="radio" name="Appearance" [(ngModel)]="Appearance"  value="Appropriate" >Appropriate</label>
-                      <label class="radio-inline"><input type="radio" name="Appearance" [(ngModel)]="Appearance"  value="Inappropriate" >Inappropriate</label>
+                     <mat-radio-group [(ngModel)]="Appearance" aria-label="Select an option">
+                          
+                          <mat-radio-button value="Looking one's Age">Looking one's Age</mat-radio-button>
+                          <mat-radio-button value="Older">Older</mat-radio-button>
+                          <mat-radio-button value="Younger">Younger</mat-radio-button>
+                          <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
+                          <mat-radio-button value="Inappropriate">Inappropriate</mat-radio-button>
+
+                      </mat-radio-group>
                     </td>
              
                   </tr>
                   <tr>
                     <td scope="row">Level of Grooming</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Appropriate"  [(ngModel)]="LevelofGrooming"   name="Grooming">Appropriate</label>
-                      <label class="radio-inline"><input type="radio" value="Unkempt" [(ngModel)]="LevelofGrooming"  name="Grooming">Unkempt</label>
-                      <label class="radio-inline"><input type="radio" value="Over Dressed" [(ngModel)]="LevelofGrooming"  name="Grooming">Over Dressed</label> 
-                      <label class="radio-inline"><input type="radio" value="Without Clothes" [(ngModel)]="LevelofGrooming" name="Grooming"  >Without Clothes</label>
+                    
+                      <mat-radio-group [(ngModel)]="LevelofGrooming" aria-label="Select an option">
+                          
+                          <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
+                          <mat-radio-button value="Unkempt">Unkempt</mat-radio-button>
+                          <mat-radio-button value="Over Dressed">Over Dressed</mat-radio-button>
+                          <mat-radio-button value="Without Clothes">Without Clothes</mat-radio-button>
+                        
+
+                      </mat-radio-group>
                     </td>
                     
                   </tr>
                   <tr>
                     <td scope="row">Level of Cleanliness</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Adequate"  [(ngModel)]="LevelofCleanliness"   name="LevelofCleanliness">Adequate</label>
-                      <label class="radio-inline"><input type="radio" value="Inadequate" [(ngModel)]="LevelofCleanliness"  name="LevelofCleanliness">Inadequate</label>
-                      <label class="radio-inline"><input type="radio" value="Overtly Clean" [(ngModel)]="LevelofCleanliness"  name="LevelofCleanliness">Overtly Clean</label> 
+                        <mat-radio-group [(ngModel)]="LevelofCleanliness" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Adequate">Adequate</mat-radio-button>
+                            <mat-radio-button value="Inadequate">Inadequate</mat-radio-button>
+                            <mat-radio-button value="Overtly Clean">Overtly Clean</mat-radio-button>
+                         
+  
+                        </mat-radio-group>
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Level of Consciousness</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Fully consciousness and alter"  [(ngModel)]="LevelofConsciousness"   name="LevelofConsciousness">Fully consciousness and alter</label>
-                      <label class="radio-inline"><input type="radio" value="Drowsy" [(ngModel)]="LevelofConsciousness"  name="LevelofConsciousness">Drowsy</label>
-                      <label class="radio-inline"><input type="radio" value="Stuporose" [(ngModel)]="LevelofConsciousness"  name="LevelofConsciousness">Stuporose</label>
-                      <label class="radio-inline"><input type="radio" value="Comatose" [(ngModel)]="LevelofConsciousness"  name="LevelofConsciousness">Comatose</label> 
+                       <mat-radio-group [(ngModel)]="LevelofConsciousness" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Fully consciousness and alter">Fully consciousness and alter</mat-radio-button>
+                            <mat-radio-button value="Drowsy">Drowsy</mat-radio-button>
+                            <mat-radio-button value="Stuporose">Stuporose</mat-radio-button>
+                            <mat-radio-button value="Comatose">Comatose</mat-radio-button>
+                         
+  
+                        </mat-radio-group>
                     </td>
                   </tr>
 
@@ -696,13 +718,17 @@
                       <td scope="row">Objective</td>
                       <td>
                           <textarea class="form-control" [(ngModel)]="Objectivetext"  ></textarea>
-                          <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Objective"   name="Objective">Normal</label>
-                          <label class="radio-inline"><input type="radio" value="Depressed" [(ngModel)]="Objective"  name="Objective">Depressed</label>
-                          <label class="radio-inline"><input type="radio" value="Anxious" [(ngModel)]="Objective"  name="Objective">Anxious</label> 
-                          <label class="radio-inline"><input type="radio" value="Blunted"  [(ngModel)]="Objective"   name="Objective">Blunted</label>
-                          <label class="radio-inline"><input type="radio" value="Flattened" [(ngModel)]="Objective"  name="Objective">Flattened</label>
-                          <label class="radio-inline"><input type="radio" value="Euphoric" [(ngModel)]="Objective"  name="Objective">Euphoric</label>
-                          <label class="radio-inline"><input type="radio" value="Inappropriate" [(ngModel)]="Objective"  name="Objective">Inappropriate</label>
+                          <mat-radio-group [(ngModel)]="Objective" aria-label="Select an option">
+                              <mat-radio-button value="Normal">Normal</mat-radio-button>
+                              <mat-radio-button value="Depressed">Depressed</mat-radio-button>
+                              <mat-radio-button value="Anxious">Anxious</mat-radio-button>
+                              <mat-radio-button value="Blunted">Blunted</mat-radio-button>
+                              <mat-radio-button value="Flattened">Flattened</mat-radio-button>
+                              <mat-radio-button value="Euphoric">Euphoric</mat-radio-button>
+                              <mat-radio-button value="Inappropriate">Inappropriate</mat-radio-button>
+  
+                            </mat-radio-group>
+                       
                       </td>
                       
                     </tr>
