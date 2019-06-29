@@ -6,82 +6,123 @@
       <div class="container-fluid">
         <!-- Begin Main Content -->
 
-            <div class="card shadow mb-4">
-            <div class="card-header "> 
-                <div class="row">
-                    <div class="col-md-3">
-                        <h5 class="m-0 font-weight-bold text-primary"> Application Form</h5>
-                    </div>
-                   <app-pagi></app-pagi>
-                        
-                </div>
+        <div class="container-fluid">
+            <!-- Begin Main Content -->
+            <div class="card">
+              <div class="card-header">
+                Patient Personal Details
+              </div>
+              <div class="card-body">
+                <form class="example-form" [formGroup]="profileForm" (ngSubmit)="save()"  >
+                    <table class="example-full-width" cellspacing="0"><tr>
+               <td> <mat-form-field class="example-full-width">
+                 <input matInput formControlName="doctorName"  placeholder="Doctor" required  value="Dr Raj Bhandhariya">
+               </mat-form-field></td>
+               <td  >
+                 
+                  <input type="file" (change)="uploadPhoto($event)" formControlName="basicfile" placeholder="Select Profile Photo" name="" id="">
+                  </td>
+               </tr>
+                    </table>
+             
+               <table class="example-full-width" cellspacing="0"><tr>
+                 <td><mat-form-field class="example-full-width">
+                   <input  formControlName="firstName" required matInput placeholder="First name">
+                 </mat-form-field></td>
+                 <td><mat-form-field class="example-full-width">
+                     <input formControlName="middleName" matInput placeholder="Middle name">
+                   </mat-form-field></td>
+                 <td><mat-form-field class="example-full-width">
+                   <input formControlName="lastName" required matInput placeholder="Last Name ">
+                 </mat-form-field></td>
+                 <td><mat-form-field class="example-full-width">
+                  <input formControlName="addmissionDate" required matInput [matDatepicker]="picker" placeholder="Addmission date">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                   </mat-form-field></td>
+                   
+               </tr></table>
+             
+               <p>
+                 <mat-form-field class="example-full-width">
+                   <textarea formControlName="permanentAddress" required matInput placeholder="Permanent Address"></textarea>
+                 </mat-form-field>
+                 <mat-form-field class="example-full-width">
+                   <textarea formControlName="correspondenceAddress" matInput placeholder="Correspondence Address"></textarea>
+                 </mat-form-field>
+               </p>
+    
+               <table class="example-full-width" cellspacing="0"><tr>
+                <td><mat-form-field class="example-full-width">
+                  <input formControlName="mobileNumber" OnlyNumberWithLength MinDigit="10" MaxDigit="10" matInput placeholder="Mobile Number">
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width">
+                  <input formControlName="landlineNumber" OnlyNumberWithLength MinDigit="7" MaxDigit="10" matInput placeholder="Landline Number">
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width">
+                  <input formControlName="residanceNumber" OnlyNumberWithLength MinDigit="10" MaxDigit="10" matInput placeholder="Residence Number">
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width">
+                  <input formControlName="officeNumber" OnlyNumberWithLength MinDigit="10" MaxDigit="10" matInput placeholder="Office Contact Number">
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width">
+                  <input formControlName="email" matInput placeholder="Email">
+                </mat-form-field></td>
+                
+              </tr></table>
+    
+              <table class="example-full-width" cellspacing="0"><tr>
+                <td><mat-form-field class="example-full-width">
+                  <input formControlName="DOB" required matInput [matDatepicker]="dob" placeholder="Date of Birth">
+                  <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                  <mat-datepicker #dob></mat-datepicker>
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width">
+                  <input formControlName="age" OnlyNumberWithLength MinDigit="2" MaxDigit="2" matInput placeholder="Age">
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width">
+                  <mat-label>Gender</mat-label>
+                  <mat-select formControlName="gender" >
+                    <mat-option>None</mat-option>
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                    
+                  </mat-select>
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width">
+                  <input formControlName="education" matInput placeholder="Education">
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width">
+                  <input formControlName="occupation" matInput placeholder="Occupation">
+                </mat-form-field></td>
+                
+              </tr>
+            </table>
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Marital Status</mat-label>
+                    <mat-select formControlName="maritalStatus" >
+                      <mat-option>None</mat-option>
+                      <mat-option value="Married">Married</mat-option>
+                      <mat-option value="Unmarried">Unmarried</mat-option>
+                      
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+              
+             </form>
+              </div>
+              <div class="card-footer text-muted">
+               <!-- {{profileForm.value | json}} -->
+               <input style="width: 20%" type="button" (click)="save()"  value="Next" class="btn btn-primary"  >
+              </div>
             </div>
-                <form [formGroup]="firstForm" (ngSubmit)="onSubmit(firstForm.value)">
-                <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label for="Vendor" class="col-md-4 col-form-label text-md-right"> First Name: <span
-                                            class="text-danger">*</span> </label>
-                                    <div class="col-md-6">
-                                        <input type="text" formControlName="FirstName" class="form-control" (blur)="logValidationMessages(firstForm)"
-                                          [class.is-invalid]="formErrors.FirstName" placeholder="First Name *">
-                                        <div *ngIf="formErrors.FirstName" class="invalid-feedback">{{formErrors.FirstName}}</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group row">
-                                    <label for="FirstName" class="col-md-4 col-form-label text-md-right"> Last Name: <span class="text-danger">*</span>
-                                    </label>
-                                    <div class="col-md-6">
-                                        <input type="text" formControlName="LastName" class="form-control" (blur)="logValidationMessages(firstForm)"
-                                          [class.is-invalid]="formErrors.LastName" placeholder="Last Name *">
-                                        <div *ngIf="formErrors.LastName" class="invalid-feedback">{{formErrors.LastName}}</div>
-                                    </div>
-                                </div>
-                                            
-                                <div class="form-group row">
-                                    <label for="DateOfBirth" class="col-md-4 col-form-label text-md-right"> Upload File: <span
-                                            class="text-danger">*</span> </label>
-                                    <div class="col-md-6">
-                                        <input type="file" ngf formControlName="File" class="form-control" placeholder="Upload File *"  (change)="uploadImage($event)"  [class.is-invalid]="formErrors.File" />
-                                        <div *ngIf="formErrors.File" class="invalid-feedback">{{formErrors.File}}</div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="col-md-6">
-
-                                <div class="form-group row">
-                                    <label for="Employer" class="col-md-4 col-form-label text-md-right"> Middle Name: <span
-                                            class="text-danger">*</span> </label>
-                                    <div class="col-md-6">
-                                        <input type="text" formControlName="MiddleName" class="form-control" (blur)="logValidationMessages(firstForm)" 
-                                        [class.is-invalid]="formErrors.MiddleName" placeholder="Middle Name *">
-                                      <div *ngIf="formErrors.MiddleName" class="invalid-feedback">{{formErrors.MiddleName}}</div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="EmployeeType" class="col-md-4 col-form-label text-md-right"> Addmission Date: <span
-                                            class="text-danger">*</span> </label>
-                                    <div class="col-md-6">
-                                        <input type="text" formControlName="AddmissionDate" bsDatepicker [bsConfig]="datePickerConfig" (blur)="logValidationMessages()"
-                                          class="form-control" maxlength="8" placeholder="Enter Addmission Date" [class.is-invalid]="formErrors.AddmissionDate" >
-                                        <div *ngIf="formErrors.AddmissionDate" class="invalid-feedback">{{formErrors.AddmissionDate}}</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>   
-                </div> 
-                <div class="card-footer">
-                    <div class="col-md-2 offset-md-10">
-                        <input type="submit" class="btn btn-primary btn-sm btn-block" value="Next"    />
-                    </div>
-                </div>
-            </form>
-            </div> 
+            <!-- End of Main Content -->
+          </div>
 
         <!-- End of Main Content -->
       </div>

@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Router, ActivatedRoute} from '@angular/router';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import Swal from 'sweetalert2'
+import { FormGroup, FormControl } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-second',
@@ -11,146 +11,53 @@ import Swal from 'sweetalert2'
   styleUrls: ['./second.component.css']
 })
 export class SecondComponent implements OnInit {
+
+  constructor(private arout:ActivatedRoute,private router:Router,private http:HttpClient
+    ) { }
   id;
-  datePickerConfig: Partial<BsDatepickerConfig>;
-  persionalDataForm: any;
-  validationMessages  = {
-          'ParmentAddress' : {
-                                'required': 'Parment Address is Required',
-                                'minlength': '5 Characters is Required'
-                              },
-          'Mobile' : {
-                        'required': 'Mobile No. is Required',
-                        'minlength': '10 Digits is Required'
-                      },
-          'OfficeFax' : {
-                          'required': 'Office Fax is Required'
-                          },
-          'Residence' : {
-                            'required': 'Residence is Required'
-                          },
-          'Landline' : {
-                          'required': 'Landline is Required'
-                        },
-          'CorrespondenceAddress' : {
-                                      'required': 'Correspondence Address is Required'
-                                    },
-          'Email' : {
-                      'required': 'Correspondence Address is Required',
-                      'email': 'Invalid email'
-                    },
-          'DateOfBirth' : {
-                            'required': 'DateOfBirth is Required'
-                          },
-          'Age' : {
-                    'required': 'DateOfBirth is Required'
-                  },
-          'Gender' : {
-                        'required': 'Gender is Required'
-                      },
-          'Education' : {
-                        'required': 'Education is Required'
-                      },
-          'Occupation' : {
-                        'required': 'Occupation is Required'
-                      },
-          'MaterialStatus' : {
-                                'required': 'Material Status is Required'
-                              },
-  };
-  
-  formErrors = {
-    'ParmentAddress' : '',
-    'Mobile' : '',
-    'OfficeFax' : '',
-    'Residence' : '',
-    'Landline' : '',
-    'CorrespondenceAddress' : '',
-    'Email' : '',
-    'DateOfBirth' : '',
-    'Age' : '',
-    'Gender' : '',
-    'Education' : '',
-    'Occupation' : '',
-    'MaterialStatus' : '',
-  };
-  submmited: boolean = false;
-  constructor(@Inject(HttpClient) public http, private router:Router,private fb: FormBuilder,private arout:ActivatedRoute) {
-    this.datePickerConfig = Object.assign({},
-      {
-        containerClass: 'theme-dark-blue',
-        showWeekNumbers: false,
-        dateInputFormat: 'MM/DD/YYYY'
-      });
-      // this.arout.paramMap.subscribe(e=>{
-      //  this.id=e.get('id')    
-      //   console.log(this.id)
-        
-      // })
-   }
-
-   ngOnInit() {
-    this.persionalDataForm = this.fb.group({
-      id:[''],
-      ParmentAddress : ['',[Validators.required,Validators.minLength(5)]],
-      Mobile : ['',[Validators.required]],
-      OfficeFax : [''],
-      Residence : ['',[Validators.required]],
-      Landline : [''],
-      CorrespondenceAddress : ['',[Validators.required]],
-      Email : ['',[Validators.required,Validators.email]],
-      DateOfBirth : ['',[Validators.required]],
-      Age : ['',[Validators.required]],
-      Gender : ['',[Validators.required]],
-      Education : [''],
-      Occupation : [''],
-      MaterialStatus : ['',[Validators.required]],
-    });
-
-    this.persionalDataForm.valueChanges.subscribe(value =>{
-      this.logValidationMessages();
-    });
-    this.arout.paramMap.subscribe(e=>{
-     
-      this.persionalDataForm.get('id').setValue(e.get('id'))
-       
-     })
+  ngOnInit() {
+    this.arout.paramMap.subscribe(r=>{
+      this.id=r.get('id');
+      console.log(this.id)
+    })
   }
-
-  onSubmit(formData){
-    this.submmited = true;
-    // this.persionalDataForm.get('id').setValue(this.id)
-    this.logValidationMessages();
-    if(this.persionalDataForm.valid){
-      console.log(formData);
-      this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPersonal',formData).subscribe(this.addpersonalCB)
+  familyForm=new FormGroup({
+    id: new FormControl(this.id),
+    fatherName : new FormControl(''),
+    fatherAddress : new FormControl(''),
+    fatherNumber : new FormControl(''),
+    fatherEmail : new FormControl(''),
+    guardianName : new FormControl(''),
+    guardianAddress : new FormControl(''),
+    guardianNumber : new FormControl(''),
+    guardianEmail : new FormControl(''),
+    spouseName : new FormControl(''),
+    spouseAddress : new FormControl(''),
+    spouseNumber : new FormControl(''),
+    spouseEmail : new FormControl(''),
+    spouseAge : new FormControl(''),
+    spouseOccupation : new FormControl(''),
+    relationShipStatus: new FormControl(''),
+    childernsCount: new FormControl('')
+  })
+  save(){
+    this.familyForm.get('id').setValue(this.id);
+    console.log(this.familyForm.value)
+    if(this.familyForm.valid){
+      this.http.post('https://digitalapp001.herokuapp.com/api/pat/addFamilyData',this.familyForm.value).subscribe(this.addFamilyDataCB)
+    }else{
+      Swal.fire('Form details are not valid')
     }
   }
-  addpersonalCB=(dt)=>{
-    console.log(dt)
-    Swal.fire({type: 'success',title: 'Personal Details Added Successfully',showConfirmButton: false,timer: 2000});
-    if(dt.id){
-      this.router.navigate(['dashboard/family',{id:dt.id}])
+  addFamilyDataCB=(dt)=>{
+    console.log(dt);
+    if(dt.first_name){
+      Swal.fire('Personal Details Saved SuccessFully');
+      this.router.navigate(['dashboard/accordian',{id:dt._id}])
+      
+    }else{
+      Swal.fire('error Occured ')
     }
   }
 
-  logValidationMessages(group: FormGroup = this.persionalDataForm): void {
-    Object.keys(group.controls).forEach((key: string) => {
-      const abstractControl = group.get(key);
-        this.formErrors[key] = '';
-          if (abstractControl && !abstractControl.valid && (abstractControl.touched || this.submmited)) {
-            const messages = this.validationMessages[key];
-            for (const errorKey in abstractControl.errors) {
-              if (errorKey) {
-                this.formErrors[key] += messages[errorKey] + ' ';
-              }
-            }
-          }
-          if (abstractControl instanceof FormGroup) {
-            this.logValidationMessages(abstractControl);
-          } 
-      });
-  }
-
-} 
- 
+}

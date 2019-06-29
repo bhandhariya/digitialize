@@ -3,8 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { HttpClient } from '@angular/common/http';
-// import { AngularFireStorage } from "angularfire2/storage";
-import { Observable } from 'rxjs';
 import Swal from 'sweetalert2'
 @Component({
   selector: 'app-accordian-demo',

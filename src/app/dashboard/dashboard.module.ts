@@ -18,32 +18,27 @@ import { DashboardComponent } from './dashboard.component';
 import { FirstComponent } from '../first/first.component';
 import { HttpErrorInterceptor } from '../services/httpErrorInterceptor';
 import { SecondComponent } from '../second/second.component';
-import { Form5FirstComponent } from '../form5-first/form5-first.component';
-import { FamilydataComponent } from '../familydata/familydata.component';
-import { ChildrenComponent } from '../children/children.component';
 import { PatientTableComponent } from "../patient-table/patient-table.component";
-import { ChiefComplainComponent } from '../chief-complain/chief-complain.component';
-import { IllnessComponent } from '../illness/illness.component';
-import { HistoryComponent } from '../history/history.component';
 import { AccordianDemoComponent } from '../accordian-demo/accordian-demo.component';
 import { PatientDetailComponent } from '../patient-detail/patient-detail.component';
-import { ProfileComponent } from './profile/profile.component';
-import { PagiComponent } from './pagi/pagi.component';
+
+
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 const AppRoutes: Routes = [
   { path : '', component : DashboardComponent },
   { path : 'first', component : FirstComponent },
   { path : 'second', component : SecondComponent },
-  { path : 'form1', component : Form5FirstComponent },
-  { path : 'family', component : FamilydataComponent },
-  { path : 'children', component : ChildrenComponent },
+
   { path : 'patable', component : PatientTableComponent },
   { path : 'patable/details', component : PatientDetailComponent },
-  { path : 'chiefComplain', component : ChiefComplainComponent },
-  { path : 'illness', component : IllnessComponent },
-  { path : 'history', component : HistoryComponent },
+
   { path : 'accordian', component : AccordianDemoComponent },
-  { path : 'profile', component : ProfileComponent },
   { path : '**', redirectTo :'', pathMatch : 'full'}
 ];
 
@@ -56,17 +51,10 @@ const AppRoutes: Routes = [
     DashboardComponent,
     FirstComponent,
     SecondComponent,
-    Form5FirstComponent,
-    FamilydataComponent,
-    ChildrenComponent,
     PatientTableComponent,
-    ChiefComplainComponent,
-    IllnessComponent,
-    HistoryComponent,
     AccordianDemoComponent,
     PatientDetailComponent,
-    ProfileComponent,
-    PagiComponent
+
   ],
   imports: [
     CommonModule,
@@ -83,6 +71,10 @@ const AppRoutes: Routes = [
     MatIconModule,
     MatButtonModule,
     LayoutModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers :[
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
