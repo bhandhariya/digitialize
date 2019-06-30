@@ -30,51 +30,19 @@ export class LoginComponent implements OnInit {
     if(this.router.url == '/') this.registerRoute = true;
     if(this.router.url == '/') this.forgotRoute = true;
 
-    // this.loginService.emailExistance("test@gmail.com").subscribe(res =>{
-    //   console.log(res)
-    // });
+    
   }
 
   loginFunction(formData){
     this.submitted = true;
     if(this.formCtrl.valid){
       this.loading = true;
-      
-      // if(formData.Email == 'test@gmail.com' && formData.Password == '123456') {
-      //   sessionStorage.setItem('IsLogin','true');
-      //   Swal.fire({type: 'success',title: 'Login Successfully',showConfirmButton: false,timer: 1000});
-      //   this.router.navigate(['dashboard']);
-      // }else{
-      //   this.loading = false;
-      //   Swal.fire({type: 'error',title: 'Please give correct credentials',showConfirmButton: false,timer: 1500});
-      // }
-      console.log(formData)
-      this.auth.auth.signInWithEmailAndPassword(formData.Email,formData.Password).then(res=>{
-        if(res.user.emailVerified){
-          return this.myFire.getUserFromDatabase(res.user.uid).then(userDataFromDatabase=>{
-            this.UserService.set(userDataFromDatabase)
-            console.log(userDataFromDatabase)
-          }).catch(err=>{
-            Swal.fire({type: 'error',title: err,showConfirmButton: false,timer: 1500});
-          })
-        }else{
-          Swal.fire({type: 'error',title: 'Your Email is not yet Verified ',showConfirmButton: false,timer: 1500});
-          this.auth.auth.signOut();
-        }
-        sessionStorage.setItem('IsLogin','true');
-        Swal.fire({type: 'success',title: 'Login Successfully',showConfirmButton: false,timer: 1000});
-        var user=this.auth.auth.currentUser;
-        if (user != null) {
-          console.log(user.email);
-          console.log(user.displayName);
-          
-        }
-        this.router.navigate(['dashboard']);
-
-      },err=>{
-        this.loading = false;
-        Swal.fire({type: 'error',title: 'Please give correct credentials',showConfirmButton: false,timer: 1500});
-      })
+      var obj={
+        email:this.email,
+        password:this.password
+      }
+     this.loginService.login(obj)
+     
     }
   }
 
