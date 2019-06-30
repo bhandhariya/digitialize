@@ -1,6 +1,6 @@
 import { Component, OnInit,Inject, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2'
@@ -84,12 +84,14 @@ submmited: boolean = false;
     })
     this.ChiefComplain = this.fb.group({
       id:[this.id],
+      createdBy:[sessionStorage.getItem('MID')],
       ComplaintName : ['',[Validators.required]],
       ComplaintDuration : ['',[Validators.required]]
     
     });
     this.Illness = this.fb.group({
-      id:[''],
+      id:[this.id],
+      createdBy:[sessionStorage.getItem('MID')],
       DurationOfCurruntIllness : ['',[Validators.required]],
       CurruntEpisodeNumber : ['',[Validators.required]],
       ModeOfOnset : ['',[Validators.required]],
@@ -108,6 +110,8 @@ submmited: boolean = false;
    
     this.ChiefComplain.get('id').setValue(this.id);
     this.Illness.get('id').setValue(this.id)
+    // this.HistoryOfPresentIllnessForm.get('id').setValue(this.id)
+    // this.GeneralAppearanceAttitudeBehaviourForm.get('id').setValue(this.id);
   }
   chiefComplaintSubmit(formData){
     this.submmited = true;
@@ -117,10 +121,11 @@ submmited: boolean = false;
       console.log(formData);
 
      
-     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addcomplain',formData).subscribe(this.ChiefcomplainCB)
+     this.http.post('http://localhost:3000/api/pat/addcomplain',formData).subscribe(this.ChiefcomplainCB)
     }
   }
   ChiefcomplainCB=(dt)=>{
+    console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.submmited = false;
     this.ChiefComplain.reset({id:this.id});
@@ -130,13 +135,15 @@ submmited: boolean = false;
   }
   IllnessonSubmit(formData){
     this.submmited = true;
+    formData.createdBy=sessionStorage.getItem('MID')
     this.IllnesslogValidationMessages();
     if(this.Illness.valid){
       console.log(formData);
-         this.http.post('https://digitalapp001.herokuapp.com/api/pat/addIllness',formData).subscribe(this.Illnesscb)
+         this.http.post('http://localhost:3000/api/pat/addIllness',formData).subscribe(this.Illnesscb)
     }
   }
   Illnesscb=(dt)=>{
+    console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.submmited=false;
     this.Illness.reset({
@@ -180,144 +187,178 @@ submmited: boolean = false;
       });
   }
 
-  HistoryOfPresentIllness;
-  addHistoryOfPresentIllness(){
-    var obj={
-      id:this.id,
-      history:this.HistoryOfPresentIllness
-    }
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPresentHistory',obj).subscribe(this.addHistoryOfPresentIllnessCB)
-    
+  ;
+  HistoryOfPresentIllnessForm=new FormGroup({
+    id: new FormControl(''),
+    history: new FormControl(''),
+    createdBy:new FormControl('')
+  })
+  HistoryOfPresentIllnessFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID')
+    console.log(form)
+    this.http.post('http://localhost:3000/api/pat/addPresentHistory',form).subscribe(this.addHistoryOfPresentIllnessCB)
   }
   addHistoryOfPresentIllnessCB=(dt)=>{
+    console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-    this.HistoryOfPresentIllness=""
+    this.HistoryOfPresentIllnessForm.reset()
   }
-  HistoryOfPastIllness;
-  addHistoryOfPastIllness(){
-    var obj={
-      id:this.id,
-      history:this.HistoryOfPastIllness
-    }
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPastHistory',obj).subscribe(this.addHistoryOfPastIllnessCB)    
+  HistoryOfPastIllnessForm=new FormGroup({
+    id: new FormControl(''),
+    history: new FormControl(''),
+    createdBy:new FormControl('')
+  })
+  HistoryOfPastIllnessFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('http://localhost:3000/api/pat/addPastHistory',form).subscribe(this.addHistoryOfPastIllnessCB)  
   }
   addHistoryOfPastIllnessCB=(dt)=>{
+    console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-    this.HistoryOfPastIllness=""
+    this.HistoryOfPastIllnessForm.reset();
   }
-  MedicalcHistory;PsychiatricHistory;
-  addHistoryOfModeOfIntake(){
-    var obj={
-      id:this.id,
-      psy:this.PsychiatricHistory,
-      med:this.MedicalcHistory
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addHistoryOfModeOfIntake',obj).subscribe(this.addHistoryOfModeOfIntakeCB)
+  HistoryOfModeOfIntakeForm = new FormGroup({
+    PsychiatricHistory: new FormControl(''),
+    MedicalcHistory : new FormControl(''),
+    createdBy:new FormControl(''),
+    id: new FormControl('')
+  });
+  HistoryOfModeOfIntakeFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID')
+    console.log(form)
+    this.http.post('http://localhost:3000/api/pat/addHistoryOfModeOfIntake',form).subscribe(this.addHistoryOfModeOfIntakeCB)
   }
   addHistoryOfModeOfIntakeCB=(dt)=>{
+    console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-    this.MedicalcHistory="";
-    this.PsychiatricHistory=""
+   this.HistoryOfModeOfIntakeForm.reset();
   }
-  PresentTreateMent;PastTreateMent;
-  addTreatementHostory(){
-    var obj={
-      id:this.id,
-      Present:this.PresentTreateMent,
-      Past:this.PastTreateMent
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addTreatementHistory',obj).subscribe(this.addTreatementHostoryCB)
+  TreatementHostoryForm= new FormGroup({
+    PresentTreatementHistory: new FormControl(''),
+    PastTreatementHistory: new FormControl(''),
+    createdBy:new FormControl(''),
+    id: new FormControl('')
+  })
+  TreatementHostoryFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form)
+    this.http.post('http://localhost:3000/api/pat/addTreatementHistory',form).subscribe(this.addHistoryOfModeOfIntakeCB)
   }
-  addTreatementHostoryCB=(dt)=>{
+   addTreatementHostoryCB=(dt)=>{
+     console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-    this.PresentTreateMent="";
-    this.PastTreateMent=""
+   this.TreatementHostoryForm.reset();
   }
-  mental;environment;attitute;living;
-  addFamilyHistory(){
-    var obj={
-      id:this.id,
-      mental:this.mental,
-      environment:this.environment,
-      attitute:this.attitute,
-      living:this.living
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addFamilyHistory',obj).subscribe(this.addFamilyHistoryCB)
+  FamilyHistoryForm=new FormGroup({
+    mental:new FormControl(''),
+    environment:new FormControl(''),
+    attitute:new FormControl(''),
+    living:new FormControl(''),
+    createdBy:new FormControl(''),
+    id: new FormControl('')
+  })
+  FamilyHistoryFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form)
+    this.http.post('http://localhost:3000/api/pat/addFamilyHistory',form).subscribe(this.addFamilyHistoryCB)
   }
   addFamilyHistoryCB=(dt)=>{
+    console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-    this.mental="";
-    this.environment="";
-    this.attitute="";
-    this.living="";
+    this.FamilyHistoryForm.reset();
     
   }
-  Birth;Immunization;Development;Education;Occupation;MarritalandSexual;Menstrualandobstetric;
-  addPersonalHistory(){
-    var obj={
-      id:this.id,
-      Birth:this.Birth,
-      Immunization:this.Immunization,
-      Development:this.Development,
-      Education:this.Education,
-      Occupation:this.Occupation,
-      MarritalandSexual:this.MarritalandSexual,
-      Menstrualandobstetric:this.Menstrualandobstetric
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPersonalHistory',obj).subscribe(this.addPersonalHistoryCB)
+  PersonalHistoryForm = new FormGroup({
+      Birth: new FormControl(''),
+      Immunization: new FormControl(''),
+      Development: new FormControl(''),
+      Education: new FormControl(''),
+      Occupation: new FormControl(''),
+      MarritalandSexual: new FormControl(''),
+      Menstrualandobstetric: new FormControl(''),
+      createdBy:new FormControl(''),
+      id: new FormControl('')
+  })
+  PersonalHistoryFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form)
+    this.http.post('http://localhost:3000/api/pat/addPersonalHistory',form).subscribe(this.addPersonalHistoryCB)
   }
+ 
   addPersonalHistoryCB=(dt)=>{
+    console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-    this.Birth="";
-    this.Immunization="";
-    this.Development="";
-    this.Education="";
-    this.Occupation="";
-    this.MarritalandSexual="";
-    this.Menstrualandobstetric="";
+  this.PersonalHistoryForm.reset();
   }
-  HistoryOfChoiseOfSubstance;HistoryOfTotalDurationOfUse;HistoryOfDurationOfRegularUse;HistoryOfDailyIntake;HistoryOfLastIntakeOfDrug;
-  addSubstanceHistory(){
-    var obj={
-      id:this.id,
-      HistoryOfChoiseOfSubstance:this.HistoryOfChoiseOfSubstance,
-      HistoryOfTotalDurationOfUse:this.HistoryOfTotalDurationOfUse,
-      HistoryOfDurationOfRegularUse:this.HistoryOfDurationOfRegularUse,
-      HistoryOfDailyIntake:this.HistoryOfDailyIntake,
-      HistoryOfLastIntakeOfDrug:this.HistoryOfLastIntakeOfDrug
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addSubstanceHistory',obj).subscribe(this.addSubstanceHistoryCB)
+  SubstanceHistoryForm=new FormGroup({
+      HistoryOfChoiseOfSubstance: new FormControl(''),
+      HistoryOfTotalDurationOfUse: new FormControl(''),
+      HistoryOfDurationOfRegularUse: new FormControl(''),
+      HistoryOfDailyIntake: new FormControl(''),
+      HistoryOfLastIntakeOfDrug: new FormControl(''),
+      createdBy:new FormControl(''),
+      id: new FormControl('')
+  })
+  SubstanceHistoryFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form)
+    this.http.post('http://localhost:3000/api/pat/addSubstanceHistory',form).subscribe(this.addSubstanceHistoryCB)
   }
+  
   addSubstanceHistoryCB=(dt)=>{
+    console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-    this.HistoryOfChoiseOfSubstance="";
-    this.HistoryOfTotalDurationOfUse="";
-    this.HistoryOfDurationOfRegularUse="";
-    this.HistoryOfDailyIntake="";
-    this.HistoryOfLastIntakeOfDrug="";
+   this.SubstanceHistoryForm.reset();
   }
-  HomicideAttempt;preMorbidpersonality;
-  addLegalHistory(){
-    var obj={
-      id:this.id,
-      HomicideAttempt:this.HomicideAttempt,
-      preMorbidpersonality:this.preMorbidpersonality
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addLegalHistory',obj).subscribe(this.addLegalHistoryCB)
+ 
+  LegalHistoryForm=new FormGroup({
+    HomicideAttempt: new FormControl(''),
+    preMorbidpersonality: new FormControl('') 
+  })
+  LegalHistoryFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form)
+    this.http.post('http://localhost:3000/api/pat/addLegalHistory',form).subscribe(this.addLegalHistoryCB)
   }
+ 
   addLegalHistoryCB=(dt)=>{
+    console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-    this.HomicideAttempt="";
-    this.preMorbidpersonality="";
+    this.LegalHistoryForm.reset();
   }
   Appearance;LevelofGrooming;LevelofCleanliness;LevelofConsciousness;Gait;Posture;ModeOfEntry;Cooperative;EyetoEyeContact;Rapport;Gesturing;
   OtherMovements;otherCatatolicPhemenon
+  GeneralAppearanceAttitudeBehaviourForm=new FormGroup({
+       id: new FormControl(this.id),
+      Appearance: new FormControl(''),
+      LevelofGrooming: new FormControl(''),
+      LevelofCleanliness: new FormControl(''),
+      LevelofConsciousness: new FormControl(''),
+      Gait: new FormControl(''),
+      Posture: new FormControl(''),
+      ModeOfEntry: new FormControl(''),
+      Cooperative: new FormControl(''),
+      EyetoEyeContact: new FormControl(''),
+      Rapport: new FormControl(''),
+      Gesturing: new FormControl(''),
+      OtherMovements: new FormControl(''),
+      otherCatatolicPhemenon: new FormControl('')
+  })
+  GeneralAppearanceAttitudeBehaviourFormSubmit(form){
+    
+    console.log(form)
+    console.log(this.GeneralAppearanceAttitudeBehaviourForm.value)
+
+  }
   addGeneralAppearanceAttitudeBehaviour(){
     var obj={
       id:this.id,
@@ -337,7 +378,7 @@ submmited: boolean = false;
 
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGeneralAptitudeBehaviour',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
+    this.http.post('http://localhost:3000/api/pat/addGeneralAptitudeBehaviour',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
   }
   addGeneralAppearanceAttitudeBehaviourCB=(dt)=>{
    
@@ -360,7 +401,26 @@ submmited: boolean = false;
   }
 
   PsychomotorActivity;Initiation;ReactionTime;Speed;LevelofConsciousnessinSpeech;Output;PressureOfSpeech;Volume;Tone;Manner;Relavance;Coherence;Other;example;
+  PsychomotorActivitySpeech= new FormGroup({
+      id: new FormControl(''),
+      PsychomotorActivity: new FormControl(''),
+      Initiation: new FormControl(''),
+      ReactionTime: new FormControl(''),
+      Speed: new FormControl(''),
+      LevelofConsciousnessinSpeech: new FormControl(''),
+      Output: new FormControl(''),
+      PressureOfSpeech: new FormControl(''),
+      Volume: new FormControl(''),
+      Tone: new FormControl(''),
+      Manner: new FormControl(''),
+      Relavance: new FormControl(''),
+      Coherence: new FormControl(''),
+      Other: new FormControl(''),
+      example: new FormControl('')
+  })
+  PsychomotorActivitySpeechSubmit(form){
 
+  }
   addPsychomotorActivitySpeech(){
     var obj={
       id:this.id,
@@ -381,7 +441,7 @@ submmited: boolean = false;
 
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPsychomotorActivitySpeech',obj).subscribe(this.addPsychomotorActivitySpeechCB)
+    this.http.post('http://localhost:3000/api/pat/addPsychomotorActivitySpeech',obj).subscribe(this.addPsychomotorActivitySpeechCB)
   }
   addPsychomotorActivitySpeechCB=(dt)=>{
     
@@ -407,7 +467,18 @@ submmited: boolean = false;
 
 
   Subjective;Objectivetext;Objective;Congruence;Stability;Range;
+  Affect= new FormGroup({
+      id: new FormControl(''),
+      Subjective: new FormControl(''),
+      Objectivetext: new FormControl(''),
+      Objective: new FormControl(''),
+      Congruence: new FormControl(''),
+      Stability: new FormControl(''),
+      Range: new FormControl('')
+  })
+  AffectSubmit(form){
 
+  }
   addAffect(){
     var obj={
       id:this.id,
@@ -419,7 +490,7 @@ submmited: boolean = false;
       Range:this.Range
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addAffect',obj).subscribe(this.addAffectCB)
+    this.http.post('http://localhost:3000/api/pat/addAffect',obj).subscribe(this.addAffectCB)
   }
   addAffectCB=(dt)=>{
     console.log(dt)
@@ -434,7 +505,23 @@ submmited: boolean = false;
     }
   }
   Stream;Form;FormExample;ThoughtContent;ThoughtContentExample;First;Second;Third;Fourth;Fifth;ThoughtContentExample2;
-  
+  ThoughtContentForm=new FormGroup({
+    id: new FormControl(this.id),
+    Stream: new FormControl(''),
+    Form: new FormControl(''),
+    FormExample: new FormControl(''),
+    ThoughtContent: new FormControl(''),
+    ThoughtContentExample: new FormControl(''),
+    First: new FormControl(''),
+    Second: new FormControl(''),
+    Third: new FormControl(''),
+    Fourth: new FormControl(''),
+    Fifth: new FormControl(''),
+    ThoughtContentExample2: new FormControl('')
+  })
+  ThoughtContentFormSubmit(form){
+
+  } 
   addThoughtContent(){
     var obj={
       id:this.id,
@@ -451,7 +538,7 @@ submmited: boolean = false;
       ThoughtContentExample2:this.ThoughtContentExample2
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addThoughtContent',obj).subscribe(this.addThoughtContentCB)
+    this.http.post('http://localhost:3000/api/pat/addThoughtContent',obj).subscribe(this.addThoughtContentCB)
   }
   addThoughtContentCB=(dt)=>{
     console.log(dt)
@@ -474,6 +561,15 @@ submmited: boolean = false;
   
   Obsession;Complusion;ObsessiveCompulsive;
   ThoughtAlienationPhenomenon;ThoughtAlienationPhenomenonExample;
+  PossessionForm=new FormGroup({
+     id: new FormControl(''),
+      Obsession: new FormControl(''),
+      Complusion: new FormControl(''),
+      ObsessiveCompulsive: new FormControl(''),
+      ThoughtAlienationPhenomenon: new FormControl(''),
+      ThoughtAlienationPhenomenonExample: new FormControl('')
+  })
+  PossessionFormSubmit(form){}
   addPossession(){
     var obj={
       id:this.id,
@@ -484,7 +580,7 @@ submmited: boolean = false;
       ThoughtAlienationPhenomenonExample:this.ThoughtAlienationPhenomenonExample
     }
     console.log(obj);
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPossession',obj).subscribe(this.addPossessionCB)
+    this.http.post('http://localhost:3000/api/pat/addPossession',obj).subscribe(this.addPossessionCB)
   }
   addPossessionCB=(dt)=>{
     console.log(dt)
@@ -501,6 +597,14 @@ submmited: boolean = false;
 
 
   Perception1;Perception2;Perception3;PerceptionExample;
+  PerceptionForm=new FormGroup({
+    id: new FormControl(''),
+    Perception1: new FormControl(''),
+    Perception2: new FormControl(''),
+    Perception3: new FormControl(''),
+    PerceptionExample: new FormControl('')
+  })
+  PerceptionFormSubmit(form){}
   addPerception(){
     var obj={
       id:this.id,
@@ -510,7 +614,7 @@ submmited: boolean = false;
       PerceptionExample:this.PerceptionExample
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/test',obj).subscribe(this.addPerceptionCB)
+    this.http.post('http://localhost:3000/api/pat/test',obj).subscribe(this.addPerceptionCB)
   }
   addPerceptionCB=(dt)=>{
    
@@ -529,7 +633,33 @@ submmited: boolean = false;
   RecentVerbalRecall3ObjAfter5Minut;RecentVerbalRecall3ObjAfter10Minut;RecentVerbalRecall5ObjAfter5Minut;RecentVerbalRecall5ObjAfter10Minut;
   RecentVisualRecallAfter5Minut;RecentVisualRecallAfter10Minut;
   RemotePersonalEvents;RemoteImPersonalEvents;RemoteIllnessRelatedEvents;
-
+  CognitiveFunctionForm=new FormGroup({
+    id: new FormControl(''),
+    ConsciousLevel: new FormControl(''),
+    Attention: new FormControl(''),
+    AttentionDigitForward: new FormControl(''),
+    AttentionDigitBackward: new FormControl(''),
+    Concentration: new FormControl(''),
+    ConcentrationSerialSubstraction: new FormControl(''),
+    Orientation: new FormControl(''),
+    OrientationTime: new FormControl(''),
+    OrientationTimeCheck: new FormControl(''),
+    OrientationPlace: new FormControl(''),
+    OrientationPlaceCheck: new FormControl(''),
+    OrientationPerson: new FormControl(''),
+    OrientationPersonCheck: new FormControl(''),
+    Memory: new FormControl(''),
+    RecentVerbalRecall3ObjAfter5Minut: new FormControl(''),
+    RecentVerbalRecall3ObjAfter10Minut: new FormControl(''),
+    RecentVerbalRecall5ObjAfter5Minut: new FormControl(''),
+    RecentVerbalRecall5ObjAfter10Minut: new FormControl(''),
+    RecentVisualRecallAfter5Minut: new FormControl(''),
+    RecentVisualRecallAfter10Minut: new FormControl(''),
+    RemotePersonalEvents: new FormControl(''),
+    RemoteImPersonalEvents: new FormControl(''),
+    RemoteIllnessRelatedEvents: new FormControl('')
+  })
+  CognitiveFunctionFormSubmit(form){}
   addCognitiveFunction(){
   var obj={
   id:this.id,
@@ -558,7 +688,7 @@ submmited: boolean = false;
   RemoteIllnessRelatedEvents:this.RemoteIllnessRelatedEvents
   }
   console.log(obj)
-  this.http.post('https://digitalapp001.herokuapp.com/api/pat/addCongnitiveFunction',obj).subscribe(this.addCognitiveFunctionCB)
+  this.http.post('http://localhost:3000/api/pat/addCongnitiveFunction',obj).subscribe(this.addCognitiveFunctionCB)
   }
   addCognitiveFunctionCB=(dt)=>{
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
@@ -597,6 +727,22 @@ submmited: boolean = false;
   GeneralFundofInformation;GeneralFundofInformationCheck;
   ArithmeticAbility;ArithmeticAbilityCheck;
   Abstraction;InterpretationofProverb;SimilaritiesbetweenPairedObject;DIsSimilaritiesbetweenPairedObject;
+  IntelligenceForm=new FormGroup({
+      id: new FormControl(''),
+      IntelligenceComprehension: new FormControl(''),
+      IntelligenceComprehensionCheck: new FormControl(''),
+      IntelligenceVocabulary: new FormControl(''),
+      IntelligenceVocabularyCheck: new FormControl(''),
+      GeneralFundofInformation: new FormControl(''),
+      GeneralFundofInformationCheck: new FormControl(''),
+      ArithmeticAbility: new FormControl(''),
+      ArithmeticAbilityCheck: new FormControl(''),
+      Abstraction: new FormControl(''),
+      InterpretationofProverb: new FormControl(''),
+      SimilaritiesbetweenPairedObject: new FormControl(''),
+      DIsSimilaritiesbetweenPairedObject: new FormControl('')
+  })
+  IntelligenceFormSubmit(form){}
   addIntelligence(){
     var obj={
       id:this.id,
@@ -614,7 +760,7 @@ submmited: boolean = false;
       DIsSimilaritiesbetweenPairedObject:this.DIsSimilaritiesbetweenPairedObject
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addIntelligence',obj).subscribe(this.addIntelligenceCB)
+    this.http.post('http://localhost:3000/api/pat/addIntelligence',obj).subscribe(this.addIntelligenceCB)
   }
 
   addIntelligenceCB=(dt)=>{
@@ -637,7 +783,13 @@ submmited: boolean = false;
   }
 
   JudgementPerosnal;JudgementSocial;JudgementTest;
-
+  JudgementForm= new FormGroup({
+    id: new FormControl(''),
+      JudgementPerosnal: new FormControl(''),
+      JudgementSocial: new FormControl(''),
+      JudgementTest: new FormControl('')
+  })
+  JudgementFormSubmit(form){}
   addJudgement(){
     var obj={
       id:this.id,
@@ -645,7 +797,7 @@ submmited: boolean = false;
       JudgementSocial:this.JudgementSocial,
       JudgementTest:this.JudgementTest
     }
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addJudgement',obj).subscribe(this.JudgementCB)
+    this.http.post('http://localhost:3000/api/pat/addJudgement',obj).subscribe(this.JudgementCB)
   }
   JudgementCB=(dt)=>{
     
@@ -659,6 +811,15 @@ submmited: boolean = false;
 
 
   AwarenessofAbnormalBehaviourExperience;AttributiontoPhysicalCause;RecognitionofPersonalResponsibility;WillingnesstotakeTreatement;Grade;
+  InsightSubmit = new FormGroup({
+    id: new FormControl(''),
+      AwarenessofAbnormalBehaviourExperience: new FormControl(''),
+      AttributiontoPhysicalCause: new FormControl(''),
+      RecognitionofPersonalResponsibility: new FormControl(''),
+      WillingnesstotakeTreatement: new FormControl(''),
+      Grade: new FormControl('')
+  })
+  InsightSubmitForm(form){}
   addInsight(){
     var obj={
       id:this.id,
@@ -668,7 +829,7 @@ submmited: boolean = false;
       WillingnesstotakeTreatement:this.WillingnesstotakeTreatement,
       Grade:this.Grade
     }
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addInsight',obj).subscribe(this.addInsightCB)
+    this.http.post('http://localhost:3000/api/pat/addInsight',obj).subscribe(this.addInsightCB)
 
   }
   addInsightCB=(dt)=>{
@@ -686,7 +847,21 @@ submmited: boolean = false;
 
   GPEConsciousness;GPEBuilt;GPEInspection;GPEPluse;GPERespiration;GPEBodyTemperature;GPEBloodPressure;
   RespiratorySystem;CardioVescularSystem;GPEGastroIntestinalSystem;CentralNervousSystem;
-
+  GeneralPhysicalExaminationForm = new FormGroup({
+    id: new FormControl(''),
+      GPEConsciousness: new FormControl(''),
+      GPEBuilt: new FormControl(''),
+      GPEInspection: new FormControl(''),
+      GPEPluse: new FormControl(''),
+      GPERespiration: new FormControl(''),
+      GPEBodyTemperature: new FormControl(''),
+      GPEBloodPressure: new FormControl(''),
+      RespiratorySystem: new FormControl(''),
+      CardioVescularSystem: new FormControl(''),
+      GPEGastroIntestinalSystem: new FormControl(''),
+      CentralNervousSystem: new FormControl('')
+  })
+  GeneralPhysicalExaminationFormSubmit(form){}
   addGeneralPhysicalExamination(){
     var obj={
       id:this.id,
@@ -703,7 +878,7 @@ submmited: boolean = false;
       CentralNervousSystem:this.CentralNervousSystem
     }
     console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGPE',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
+    this.http.post('http://localhost:3000/api/pat/addGPE',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
 
     }
       addGeneralPhysicalExaminationCB=(dt)=>{

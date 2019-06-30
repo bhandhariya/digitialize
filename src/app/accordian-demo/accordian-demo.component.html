@@ -212,173 +212,173 @@
           <mat-expansion-panel>
             <mat-expansion-panel-header>History</mat-expansion-panel-header>
             
-          <mat-expansion-panel>
+          <mat-expansion-panel [formGroup]="HistoryOfPresentIllnessForm"  (ngSubmit)="HistoryOfPresentIllnessFormSubmit(HistoryOfPresentIllnessForm.value)"  >
             <mat-expansion-panel-header>History of present Illness</mat-expansion-panel-header>
             <div class="form-group">
               <label for="">History of present Illness</label>
-              <input type="text" [(ngModel)]="HistoryOfPresentIllness"
+              <input type="text" formControlName="history"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                <input type="button" value="save" (click)="addHistoryOfPresentIllness()"  class="btn btn-success" >
+                <input type="button" value="save" (click)="HistoryOfPresentIllnessFormSubmit(HistoryOfPresentIllnessForm.value)"  class="btn btn-success" >
             </div>
             
           </mat-expansion-panel>
-          <mat-expansion-panel>
+          <mat-expansion-panel [formGroup]="HistoryOfPastIllnessForm"  (ngSubmit)="HistoryOfPastIllnessFormSubmit(HistoryOfPastIllnessForm.value)"   > 
             <mat-expansion-panel-header>History of Past Illness</mat-expansion-panel-header>
             <div class="form-group">
               <label for="">History of present Illness</label>
-              <input type="text" [(ngModel)]="HistoryOfPastIllness"
+              <input type="text" formControlName="history"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                <input type="button" (click)="addHistoryOfPastIllness()"  value="save" class="btn btn-success" >
+                <input type="submit" (click)="HistoryOfPastIllnessFormSubmit(HistoryOfPastIllnessForm.value)"  value="save" class="btn btn-success" >
             </div>
             
           </mat-expansion-panel>
-          <mat-expansion-panel>
+          <mat-expansion-panel [formGroup]="HistoryOfModeOfIntakeForm"  (ngSubmit)="HistoryOfModeOfIntakeFormSubmit(HistoryOfModeOfIntakeForm.value)" >
             <mat-expansion-panel-header>History Of Mode Of Intake</mat-expansion-panel-header>
             <div class="form-group">
               <label for="">Psychiatric History (Duration, Number of Episode, Similarity with Present Illness)</label>
               <input type="text"
-                class="form-control" [(ngModel)]="PsychiatricHistory"  name="" id="" aria-describedby="helpId" placeholder="">
+                class="form-control" formControlName="PsychiatricHistory"  name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="form-group">
               <label for="">Medical/Surgical History</label>
-              <input type="text" [(ngModel)]="MedicalcHistory"
+              <input type="text" formControlName="MedicalcHistory"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                <input type="button"  (click)="addHistoryOfModeOfIntake()"  value="save" class="btn btn-success" >
+                <input type="button"  (click)="HistoryOfModeOfIntakeFormSubmit(HistoryOfModeOfIntakeForm.value)"  value="save" class="btn btn-success" >
             </div>
             
           </mat-expansion-panel>
-          <mat-expansion-panel>
+          <mat-expansion-panel [formGroup]="TreatementHostoryForm"  (ngSubmit)="TreatementHostoryFormSubmit(TreatementHostoryForm.value)" >
             <mat-expansion-panel-header>Treatement History</mat-expansion-panel-header>
             <div class="form-group">
               <label for="">Present Treatement History</label>
-              <input type="text" [(ngModel)]="PresentTreateMent"
+              <input type="text" formControlName="PresentTreatementHistory"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="form-group">
               <label for="">Past Treatement History</label>
-              <input type="text" [(ngModel)]="PastTreateMent"
+              <input type="text" formControlName="PastTreatementHistory"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                <input type="button" (click)="addTreatementHostory()"  value="save" class="btn btn-success" >
+                <input type="button" (click)="TreatementHostoryFormSubmit(TreatementHostoryForm.value)"  value="save" class="btn btn-success" >
             </div>
             
             
-          </mat-expansion-panel>
-          <mat-expansion-panel>
+          </mat-expansion-panel  >
+          <mat-expansion-panel [formGroup]="FamilyHistoryForm"  (ngSubmit)="FamilyHistoryFormSubmit(FamilyHistoryForm.value)" >
             <mat-expansion-panel-header>Family History</mat-expansion-panel-header>
             <div class="form-group">
               <label for="">Family History of Mental illness or Drug Addiction</label>
-              <input type="text" [(ngModel)]="mental"
+              <input type="text" formControlName="mental"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="form-group">
               <label for="">Family Environment History</label>
-              <input type="text" [(ngModel)]="environment"
+              <input type="text" formControlName="environment"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
                
             </div>
             <div class="form-group">
               <label for="">Family Attitude History</label>
-              <input type="text" [(ngModel)]="attitute"
+              <input type="text" formControlName="attitute"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="form-group">
               <label for="">Living Condition History</label>
-              <input type="text" [(ngModel)]="living"
+              <input type="text" formControlName="living"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                <input type="button" (click)="addFamilyHistory()"  value="save" class="btn btn-success" >
+                <input type="button" (click)="FamilyHistoryFormSubmit(FamilyHistoryForm.value)"  value="save" class="btn btn-success" >
             </div>
             
           </mat-expansion-panel>
-          <mat-expansion-panel>
+          <mat-expansion-panel [formGroup]="PersonalHistoryForm"  (ngSubmit)="PersonalHistoryFormSubmit(PersonalHistoryForm.value)" >
             <mat-expansion-panel-header>Personal History</mat-expansion-panel-header>
             <div class="form-group">
               <label for="">Birth History</label>
-              <input type="text" [(ngModel)]="Birth"
+              <input type="text" formControlName="Birth"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="form-group">
               <label for="">Immunization History</label>
-              <input type="text"  [(ngModel)]="Immunization"
+              <input type="text"  formControlName="Immunization"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
                
             </div>
             <div class="form-group">
               <label for="">Development History</label>
-              <input type="text" [(ngModel)]="Development"
+              <input type="text" formControlName="Development"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="form-group">
               <label for="">Education History</label>
-              <input type="text" [(ngModel)]="Education"
+              <input type="text" formControlName="Education"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
                
             </div>
             <div class="form-group">
               <label for="">Occupation History</label>
-              <input type="text" [(ngModel)]="Occupation"
+              <input type="text" formControlName="Occupation"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="form-group">
               <label for="">Marrital and Sexual History</label>
-              <input type="text" [(ngModel)]="MarritalandSexual"
+              <input type="text" formControlName="MarritalandSexual"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
                
             </div>
             <div class="form-group">
               <label for="">Menstrual and obstetric History(Females)</label>
-              <input type="text" [(ngModel)]="Menstrualandobstetric"
+              <input type="text" formControlName="Menstrualandobstetric"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                <input type="button" (click)="addPersonalHistory()"  value="save" class="btn btn-success" >
+                <input type="button" (click)="PersonalHistoryFormSubmit(PersonalHistoryForm.value)"  value="save" class="btn btn-success" >
             </div>
            
             
           </mat-expansion-panel>
-          <mat-expansion-panel>
+          <mat-expansion-panel [formGroup]="SubstanceHistoryForm"  (ngSubmit)="SubstanceHistoryFormSubmit(SubstanceHistoryForm.value)" >
             <mat-expansion-panel-header>Substance History</mat-expansion-panel-header>
 
             <div class="form-group">
               <label for="">History of choise of Substance</label>
-              <input type="text" [(ngModel)]="HistoryOfChoiseOfSubstance"
+              <input type="text" formControlName="HistoryOfChoiseOfSubstance"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="form-group">
               <label for="">History of Total Duration of Use</label>
-              <input type="text" [(ngModel)]="HistoryOfTotalDurationOfUse"
+              <input type="text" formControlName="HistoryOfTotalDurationOfUse"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
                
             </div>
             <div class="form-group">
               <label for="">History of Duration of Regular Use</label>
-              <input type="text" [(ngModel)]="HistoryOfDurationOfRegularUse"
+              <input type="text" formControlName="HistoryOfDurationOfRegularUse"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="form-group">
               <label for="">History of Daily Intake (Amount/No.)</label>
-              <input type="text" [(ngModel)]="HistoryOfDailyIntake"
+              <input type="text" formControlName="HistoryOfDailyIntake"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
                
             </div>
             <div class="form-group">
               <label for="">History of last Intake of Drug (Day/time and Quantity of the drug)</label>
-              <input type="text" [(ngModel)]="HistoryOfLastIntakeOfDrug"
+              <input type="text" formControlName="HistoryOfLastIntakeOfDrug"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                <input type="button" (click)="addSubstanceHistory()" value="save" class="btn btn-success" >
+                <input type="button" (click)="SubstanceHistoryFormSubmit(SubstanceHistoryForm.value)" value="save" class="btn btn-success" >
             </div>
            
           </mat-expansion-panel>
-          <mat-expansion-panel>
+          <mat-expansion-panel [formGroup]="LegalHistoryForm"  (ngSubmit)="LegalHistoryFormSubmit(LegalHistoryForm.value)" >
             <mat-expansion-panel-header>Legal History</mat-expansion-panel-header>
             <div class="form-group">
               <label for="">H/o Homicide/Suicide Attempts If yes, specify the number of attempt and method.</label>
-              <input type="text"  [(ngModel)]="HomicideAttempt"
+              <input type="text"  formControlName="HomicideAttempt"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
                
             </div>
             <div class="form-group">
               <label for="">Pre-morbid personality</label>
-              <input type="text" [(ngModel)]="preMorbidpersonality"
+              <input type="text" formControlName="preMorbidpersonality"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                <input type="button" (click)="addLegalHistory()" value="save" class="btn btn-success" >
+                <input type="button" (click)="LegalHistoryFormSubmit(LegalHistoryForm.value)" value="save" class="btn btn-success" >
             </div>
             
           </mat-expansion-panel>
@@ -391,12 +391,12 @@
             
           <mat-expansion-panel>
             <mat-expansion-panel-header>General Appearance, Attitude & Behaviour </mat-expansion-panel-header>
-            <table class="table table-hover table-inverse table-responsive">
+            <table [formGroup]="GeneralAppearanceAttitudeBehaviourForm"  (ngSubmit)="GeneralAppearanceAttitudeBehaviourFormSubmit(GeneralAppearanceAttitudeBehaviourForm.value)" class="table table-hover table-inverse table-responsive">
                 <tbody>
                   <tr>
                     <td scope="row">Appearance</td>
                     <td>
-                     <mat-radio-group [(ngModel)]="Appearance" aria-label="Select an option">
+                     <mat-radio-group  formControlName="Appearance" aria-label="Select an option">
                           
                           <mat-radio-button value="Looking one's Age">Looking one's Age</mat-radio-button>
                           <mat-radio-button value="Older">Older</mat-radio-button>
@@ -412,7 +412,7 @@
                     <td scope="row">Level of Grooming</td>
                     <td>
                     
-                      <mat-radio-group [(ngModel)]="LevelofGrooming" aria-label="Select an option">
+                      <mat-radio-group formControlName="LevelofGrooming" aria-label="Select an option">
                           
                           <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
                           <mat-radio-button value="Unkempt">Unkempt</mat-radio-button>
@@ -427,7 +427,7 @@
                   <tr>
                     <td scope="row">Level of Cleanliness</td>
                     <td>
-                        <mat-radio-group [(ngModel)]="LevelofCleanliness" aria-label="Select an option">
+                        <mat-radio-group formControlName="LevelofCleanliness" aria-label="Select an option">
                           
                          
                             <mat-radio-button value="Adequate">Adequate</mat-radio-button>
@@ -442,7 +442,7 @@
                   <tr>
                     <td scope="row">Level of Consciousness</td>
                     <td>
-                       <mat-radio-group [(ngModel)]="LevelofConsciousness" aria-label="Select an option">
+                       <mat-radio-group formControlName="LevelofConsciousness" aria-label="Select an option">
                           
                          
                             <mat-radio-button value="Fully consciousness and alter">Fully consciousness and alter</mat-radio-button>
@@ -458,80 +458,129 @@
                   <tr>
                     <td scope="row">Gait</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Gait"   name="Gait">Normal</label>
-                      <label class="radio-inline"><input type="radio" value="Swaying" [(ngModel)]="Gait"  name="Gait">Swaying</label>
-                      <label class="radio-inline"><input type="radio" value="Short Stepping" [(ngModel)]="Gait"  name="Gait">Short Stepping</label>
-                      <label class="radio-inline"><input type="radio" value="Waddling" [(ngModel)]="Gait"  name="Gait">Waddling</label> 
+                        <mat-radio-group formControlName="Gait" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Normal">Normal</mat-radio-button>
+                            <mat-radio-button value="Swaying">Swaying</mat-radio-button>
+                            <mat-radio-button value="Short Stepping">Short Stepping</mat-radio-button>
+                            <mat-radio-button value="Waddling">Waddling</mat-radio-button>
+                         
+  
+                        </mat-radio-group> 
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Posture</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Erect"  [(ngModel)]="Posture"   name="Posture">Erect</label>
-                      <label class="radio-inline"><input type="radio" value="Stopping" [(ngModel)]="Posture"  name="Posture">Stopping</label>
-                      <label class="radio-inline"><input type="radio" value="Catatonic" [(ngModel)]="Posture"  name="Posture">Catatonic</label>
-                      <label class="radio-inline"><input type="radio" value="Bending to side" [(ngModel)]="Posture"  name="Posture">Bending to side</label> 
+                        <mat-radio-group formControlName="Posture" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Erect">Erect</mat-radio-button>
+                            <mat-radio-button value="Swaying">Swaying</mat-radio-button>
+                            <mat-radio-button value="Short Stepping">Short Stepping</mat-radio-button>
+                            <mat-radio-button value="Waddling">Waddling</mat-radio-button>
+                         
+  
+                        </mat-radio-group> 
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Mode of Entry</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Came Willingly"  [(ngModel)]="ModeOfEntry"   name="ModeOfEntry">Came Willingly</label>
-                      <label class="radio-inline"><input type="radio" value="Persuaded" [(ngModel)]="ModeOfEntry"  name="ModeOfEntry">Persuaded</label>
-                      <label class="radio-inline"><input type="radio" value="Brought using Physical force" [(ngModel)]="ModeOfEntry"  name="ModeOfEntry">Brought using Physical force </label>
-                   
+                        <mat-radio-group formControlName="ModeOfEntry" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Came Willingly">Came Willingly</mat-radio-button>
+                            <mat-radio-button value="Persuaded">Persuaded</mat-radio-button>
+                            <mat-radio-button value="Short Stepping">Brought using Physical force</mat-radio-button>
+                            
+                         
+  
+                        </mat-radio-group>                   
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Cooperative</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Cooperative"  [(ngModel)]="Cooperative"   name="Cooperative">Cooperative</label>
-                      <label class="radio-inline"><input type="radio" value="Uncooperative" [(ngModel)]="Cooperative"  name="Cooperative">Uncooperative</label>
-                      <label class="radio-inline"><input type="radio" value="Partially Co operative" [(ngModel)]="Cooperative"  name="Cooperative">Partially Co operative </label>
-                   
+                        <mat-radio-group formControlName="Cooperative" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Cooperative">Cooperative</mat-radio-button>
+                            <mat-radio-button value="Persuaded">Persuaded</mat-radio-button>
+                            <mat-radio-button value="Partially Co operative">Partially Co operative</mat-radio-button>
+                 
+                         
+  
+                        </mat-radio-group>                   
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Eye to Eye Contact</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Maintained"  [(ngModel)]="EyetoEyeContact"   name="EyetoEyeContact">Maintained</label>
-                      <label class="radio-inline"><input type="radio" value="Difficult" [(ngModel)]="EyetoEyeContact"  name="EyetoEyeContact">Difficult</label>
-                      <label class="radio-inline"><input type="radio" value="Not Maintained" [(ngModel)]="EyetoEyeContact"  name="EyetoEyeContact">Not Maintained </label>
-                   
+                        <mat-radio-group formControlName="EyetoEyeContact" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Maintained">Maintained</mat-radio-button>
+                            <mat-radio-button value="Difficult">Difficult</mat-radio-button>
+                            <mat-radio-button value="Not Maintained">Not Maintained</mat-radio-button>
+                            
+                         
+  
+                        </mat-radio-group>                   
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Rapport</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Establish"  [(ngModel)]="Rapport"   name="Rapport">Establish</label>
-                      <label class="radio-inline"><input type="radio" value="Difficult to Establish" [(ngModel)]="Rapport"  name="Rapport">Difficult to Establish</label>
-                      <label class="radio-inline"><input type="radio" value="Workable Rapport" [(ngModel)]="Rapport"  name="Rapport">Workable Rapport</label>
-                      <label class="radio-inline"><input type="radio" value="Not Established" [(ngModel)]="Rapport"  name="Rapport">Not Established</label>
-
+                      
+                        <mat-radio-group formControlName="Rapport" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Establish">Establish</mat-radio-button>
+                            <mat-radio-button value="Difficult to Establish">Difficult to Establish</mat-radio-button>
+                            <mat-radio-button value="Workable Rapport">Workable Rapport</mat-radio-button>
+                            <mat-radio-button value="Not Established">Not Established</mat-radio-button>
+                           
+  
+                        </mat-radio-group>
                     </td>
                   </tr>
                   <tr>
                     <td scope="row">Gesturing</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Gesturing"   name="Gesturing">Normal</label>
-                      <label class="radio-inline"><input type="radio" value="Exaggerated" [(ngModel)]="Gesturing"  name="Gesturing">Exaggerated</label>
-                      <label class="radio-inline"><input type="radio" value="Odd" [(ngModel)]="Gesturing"  name="Gesturing">Odd</label>
+                    
+                        <mat-radio-group formControlName="Gesturing" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Normal">Came Willingly</mat-radio-button>
+                            <mat-radio-button value="Exaggerated">Persuaded</mat-radio-button>
+                            <mat-radio-button value="Odd">Brought using Physical force</mat-radio-button>
+                           
+  
+                        </mat-radio-group>
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Other Movements</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Mannerisms"  [(ngModel)]="OtherMovements"   name="OtherMovements">Mannerisms</label>
-                      <label class="radio-inline"><input type="radio" value="Streotypes" [(ngModel)]="OtherMovements"  name="OtherMovements">Streotypes</label>
-                      <label class="radio-inline"><input type="radio" value="Tremors" [(ngModel)]="OtherMovements"  name="OtherMovements">Tremors</label> 
-                      <label class="radio-inline"><input type="radio" name="OtherMovements" [(ngModel)]="OtherMovements"  value="EPS" >EPS</label>
-                      <label class="radio-inline"><input type="radio" name="OtherMovements" [(ngModel)]="OtherMovements"  value="Preseveration" >Preseveration</label>
+                        <mat-radio-group formControlName="OtherMovements" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Mannerisms">Came Willingly</mat-radio-button>
+                            <mat-radio-button value="Streotypes">Persuaded</mat-radio-button>
+                            <mat-radio-button value="Tremors">Brought using Physical force</mat-radio-button>
+                            <mat-radio-button value="EPS">Waddling</mat-radio-button>
+                            <mat-radio-button value="Preseveration">Waddling</mat-radio-button>
+                         
+  
+                        </mat-radio-group>
                     </td>
              
                   </tr>
@@ -539,15 +588,21 @@
                   <tr>
                     <td scope="row">Other Catatonic Phenomenon</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Automatic Obedience"  [(ngModel)]="otherCatatolicPhemenon"   name="otherCatatolicPhemenon">Automatic Obedience</label>
-                      <label class="radio-inline"><input type="radio" value="Negativism" [(ngModel)]="otherCatatolicPhemenon"  name="otherCatatolicPhemenon">Negativism</label>
-                      <label class="radio-inline"><input type="radio" value="Excessive Cooperation" [(ngModel)]="otherCatatolicPhemenon"  name="otherCatatolicPhemenon">Excessive Cooperation</label>
-                      <label class="radio-inline"><input type="radio" value="Waxy Flexibility"  [(ngModel)]="otherCatatolicPhemenon"   name="otherCatatolicPhemenon">Waxy Flexibility</label>
-                      <label class="radio-inline"><input type="radio" value="Echoproxia" [(ngModel)]="otherCatatolicPhemenon"  name="otherCatatolicPhemenon">Echoproxia</label>
-                      <label class="radio-inline"><input type="radio" value="Echolalia" [(ngModel)]="otherCatatolicPhemenon"  name="otherCatatolicPhemenon">Echolalia</label>
+                        <mat-radio-group formControlName="otherCatatolicPhemenon" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Automatic Obedience">Came Willingly</mat-radio-button>
+                            <mat-radio-button value="Negativism">Persuaded</mat-radio-button>
+                            <mat-radio-button value="Excessive Cooperation">Brought using Physical force</mat-radio-button>
+                            <mat-radio-button value="Waxy Flexibility">Waddling</mat-radio-button>
+                            <mat-radio-button value="Echoproxia">Waddling</mat-radio-button>
+                            <mat-radio-button value="Echolalia">Waddling</mat-radio-button>
+                         
+  
+                        </mat-radio-group>
                     </td>
                   </tr>
-                  <td><input type="button" value="Save"  class="btn btn-primary" (click)="addGeneralAppearanceAttitudeBehaviour()" ></td>
+                  <td><input type="submit" value="Save" (click)="GeneralAppearanceAttitudeBehaviourFormSubmit(GeneralAppearanceAttitudeBehaviourForm.value)"  class="btn btn-danger"  ></td>
                 </tbody>
             </table>
           </mat-expansion-panel>
