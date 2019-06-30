@@ -13,7 +13,7 @@
                 <tr>
                   <td>
                     <mat-form-field >
-                        <input matInput formControlName="fatherName"  placeholder="Father/Mother Name" >
+                        <input matInput formControlName="fatherName" required  placeholder="Father/Mother Name" >
                     </mat-form-field>
                   </td>
                   <td>
@@ -23,7 +23,7 @@
                     </td>
                     <td>
                         <mat-form-field >
-                            <input matInput formControlName="fatherNumber" OnlyNumberWithLength MinDigit="10" MaxDigit="10"   placeholder="Mobile Number" >
+                            <input matInput type="number" formControlName="fatherNumber" OnlyNumberWithLength MinDigit="10" MaxDigit="10"   placeholder="Mobile Number" >
                         </mat-form-field>
                       </td>
                       <td>

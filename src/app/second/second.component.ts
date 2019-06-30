@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 
@@ -23,7 +23,7 @@ export class SecondComponent implements OnInit {
   }
   familyForm=new FormGroup({
     id: new FormControl(this.id),
-    fatherName : new FormControl(''),
+    fatherName : new FormControl('',Validators.required),
     fatherAddress : new FormControl(''),
     fatherNumber : new FormControl(''),
     fatherEmail : new FormControl(''),
@@ -38,15 +38,18 @@ export class SecondComponent implements OnInit {
     spouseAge : new FormControl(''),
     spouseOccupation : new FormControl(''),
     relationShipStatus: new FormControl(''),
-    childernsCount: new FormControl('')
+    childernsCount: new FormControl(''),
+    updatedBy:new FormControl('')
   })
   save(){
     this.familyForm.get('id').setValue(this.id);
+    this.familyForm.get('updatedBy').setValue(sessionStorage.getItem('MID'));
     console.log(this.familyForm.value)
     if(this.familyForm.valid){
-      this.http.post('https://digitalapp001.herokuapp.com/api/pat/addFamilyData',this.familyForm.value).subscribe(this.addFamilyDataCB)
+      console.log(this.familyForm.value)
+       this.http.post('http://localhost:3000/api/pat/addFamilyData',this.familyForm.value).subscribe(this.addFamilyDataCB)
     }else{
-      Swal.fire('Form details are not valid')
+      Swal.fire('Please fill required Fields')
     }
   }
   addFamilyDataCB=(dt)=>{
