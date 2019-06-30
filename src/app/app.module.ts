@@ -39,7 +39,7 @@ const routes: Routes = [
   { path : 'register', component : RegisterComponent, canActivate :[LoginGuard] },
   { path : 'forgot', component : ForgotpasswordComponent, canActivate :[LoginGuard] },
   { path : 'changepassword/:id', component : ChangepasswordComponent, canActivate :[LoginGuard]  },
-  { path : 'dashboard', loadChildren : './dashboard/dashboard.module#DashboardModule', canActivate : [AuthGurad]},
+  { path : 'dashboard', loadChildren : './dashboard/dashboard.module#DashboardModule', canActivate :[LoginGuard]},
   { path : '**', component : LoginComponent, canActivate :[LoginGuard]}
 ];
 
