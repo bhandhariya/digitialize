@@ -121,7 +121,7 @@ submmited: boolean = false;
       console.log(formData);
 
      
-     this.http.post('http://localhost:3000/api/pat/addcomplain',formData).subscribe(this.ChiefcomplainCB)
+     this.http.post('https://digitalapp001.herokuapp.com/api/pat/addcomplain',formData).subscribe(this.ChiefcomplainCB)
     }
   }
   ChiefcomplainCB=(dt)=>{
@@ -139,7 +139,7 @@ submmited: boolean = false;
     this.IllnesslogValidationMessages();
     if(this.Illness.valid){
       console.log(formData);
-         this.http.post('http://localhost:3000/api/pat/addIllness',formData).subscribe(this.Illnesscb)
+         this.http.post('https://digitalapp001.herokuapp.com/api/pat/addIllness',formData).subscribe(this.Illnesscb)
     }
   }
   Illnesscb=(dt)=>{
@@ -197,7 +197,7 @@ submmited: boolean = false;
     form.id=this.id;
     form.createdBy=sessionStorage.getItem('MID')
     console.log(form)
-    this.http.post('http://localhost:3000/api/pat/addPresentHistory',form).subscribe(this.addHistoryOfPresentIllnessCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPresentHistory',form).subscribe(this.addHistoryOfPresentIllnessCB)
   }
   addHistoryOfPresentIllnessCB=(dt)=>{
     console.log(dt)
@@ -213,7 +213,7 @@ submmited: boolean = false;
     form.id=this.id;
     form.createdBy=sessionStorage.getItem('MID');
     console.log(form);
-    this.http.post('http://localhost:3000/api/pat/addPastHistory',form).subscribe(this.addHistoryOfPastIllnessCB)  
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPastHistory',form).subscribe(this.addHistoryOfPastIllnessCB)  
   }
   addHistoryOfPastIllnessCB=(dt)=>{
     console.log(dt)
@@ -230,7 +230,7 @@ submmited: boolean = false;
     form.id=this.id;
     form.createdBy=sessionStorage.getItem('MID')
     console.log(form)
-    this.http.post('http://localhost:3000/api/pat/addHistoryOfModeOfIntake',form).subscribe(this.addHistoryOfModeOfIntakeCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addHistoryOfModeOfIntake',form).subscribe(this.addHistoryOfModeOfIntakeCB)
   }
   addHistoryOfModeOfIntakeCB=(dt)=>{
     console.log(dt)
@@ -247,7 +247,7 @@ submmited: boolean = false;
     form.id=this.id;
     form.createdBy=sessionStorage.getItem('MID');
     console.log(form)
-    this.http.post('http://localhost:3000/api/pat/addTreatementHistory',form).subscribe(this.addHistoryOfModeOfIntakeCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addTreatementHistory',form).subscribe(this.addHistoryOfModeOfIntakeCB)
   }
    addTreatementHostoryCB=(dt)=>{
      console.log(dt)
@@ -266,7 +266,7 @@ submmited: boolean = false;
     form.id=this.id;
     form.createdBy=sessionStorage.getItem('MID');
     console.log(form)
-    this.http.post('http://localhost:3000/api/pat/addFamilyHistory',form).subscribe(this.addFamilyHistoryCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addFamilyHistory',form).subscribe(this.addFamilyHistoryCB)
   }
   addFamilyHistoryCB=(dt)=>{
     console.log(dt)
@@ -289,7 +289,7 @@ submmited: boolean = false;
     form.id=this.id;
     form.createdBy=sessionStorage.getItem('MID');
     console.log(form)
-    this.http.post('http://localhost:3000/api/pat/addPersonalHistory',form).subscribe(this.addPersonalHistoryCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPersonalHistory',form).subscribe(this.addPersonalHistoryCB)
   }
  
   addPersonalHistoryCB=(dt)=>{
@@ -310,7 +310,7 @@ submmited: boolean = false;
     form.id=this.id;
     form.createdBy=sessionStorage.getItem('MID');
     console.log(form)
-    this.http.post('http://localhost:3000/api/pat/addSubstanceHistory',form).subscribe(this.addSubstanceHistoryCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addSubstanceHistory',form).subscribe(this.addSubstanceHistoryCB)
   }
   
   addSubstanceHistoryCB=(dt)=>{
@@ -327,7 +327,7 @@ submmited: boolean = false;
     form.id=this.id;
     form.createdBy=sessionStorage.getItem('MID');
     console.log(form)
-    this.http.post('http://localhost:3000/api/pat/addLegalHistory',form).subscribe(this.addLegalHistoryCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addLegalHistory',form).subscribe(this.addLegalHistoryCB)
   }
  
   addLegalHistoryCB=(dt)=>{
@@ -378,7 +378,7 @@ submmited: boolean = false;
 
     }
     console.log(obj)
-    this.http.post('http://localhost:3000/api/pat/addGeneralAptitudeBehaviour',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGeneralAptitudeBehaviour',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
   }
   addGeneralAppearanceAttitudeBehaviourCB=(dt)=>{
    
@@ -441,7 +441,7 @@ submmited: boolean = false;
 
     }
     console.log(obj)
-    this.http.post('http://localhost:3000/api/pat/addPsychomotorActivitySpeech',obj).subscribe(this.addPsychomotorActivitySpeechCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPsychomotorActivitySpeech',obj).subscribe(this.addPsychomotorActivitySpeechCB)
   }
   addPsychomotorActivitySpeechCB=(dt)=>{
     
@@ -490,7 +490,7 @@ submmited: boolean = false;
       Range:this.Range
     }
     console.log(obj)
-    this.http.post('http://localhost:3000/api/pat/addAffect',obj).subscribe(this.addAffectCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addAffect',obj).subscribe(this.addAffectCB)
   }
   addAffectCB=(dt)=>{
     console.log(dt)
@@ -538,7 +538,7 @@ submmited: boolean = false;
       ThoughtContentExample2:this.ThoughtContentExample2
     }
     console.log(obj)
-    this.http.post('http://localhost:3000/api/pat/addThoughtContent',obj).subscribe(this.addThoughtContentCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addThoughtContent',obj).subscribe(this.addThoughtContentCB)
   }
   addThoughtContentCB=(dt)=>{
     console.log(dt)
@@ -580,7 +580,7 @@ submmited: boolean = false;
       ThoughtAlienationPhenomenonExample:this.ThoughtAlienationPhenomenonExample
     }
     console.log(obj);
-    this.http.post('http://localhost:3000/api/pat/addPossession',obj).subscribe(this.addPossessionCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPossession',obj).subscribe(this.addPossessionCB)
   }
   addPossessionCB=(dt)=>{
     console.log(dt)
@@ -614,7 +614,7 @@ submmited: boolean = false;
       PerceptionExample:this.PerceptionExample
     }
     console.log(obj)
-    this.http.post('http://localhost:3000/api/pat/test',obj).subscribe(this.addPerceptionCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/test',obj).subscribe(this.addPerceptionCB)
   }
   addPerceptionCB=(dt)=>{
    
@@ -688,7 +688,7 @@ submmited: boolean = false;
   RemoteIllnessRelatedEvents:this.RemoteIllnessRelatedEvents
   }
   console.log(obj)
-  this.http.post('http://localhost:3000/api/pat/addCongnitiveFunction',obj).subscribe(this.addCognitiveFunctionCB)
+  this.http.post('https://digitalapp001.herokuapp.com/api/pat/addCongnitiveFunction',obj).subscribe(this.addCognitiveFunctionCB)
   }
   addCognitiveFunctionCB=(dt)=>{
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
@@ -760,7 +760,7 @@ submmited: boolean = false;
       DIsSimilaritiesbetweenPairedObject:this.DIsSimilaritiesbetweenPairedObject
     }
     console.log(obj)
-    this.http.post('http://localhost:3000/api/pat/addIntelligence',obj).subscribe(this.addIntelligenceCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addIntelligence',obj).subscribe(this.addIntelligenceCB)
   }
 
   addIntelligenceCB=(dt)=>{
@@ -797,7 +797,7 @@ submmited: boolean = false;
       JudgementSocial:this.JudgementSocial,
       JudgementTest:this.JudgementTest
     }
-    this.http.post('http://localhost:3000/api/pat/addJudgement',obj).subscribe(this.JudgementCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addJudgement',obj).subscribe(this.JudgementCB)
   }
   JudgementCB=(dt)=>{
     
@@ -829,7 +829,7 @@ submmited: boolean = false;
       WillingnesstotakeTreatement:this.WillingnesstotakeTreatement,
       Grade:this.Grade
     }
-    this.http.post('http://localhost:3000/api/pat/addInsight',obj).subscribe(this.addInsightCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addInsight',obj).subscribe(this.addInsightCB)
 
   }
   addInsightCB=(dt)=>{
@@ -878,7 +878,7 @@ submmited: boolean = false;
       CentralNervousSystem:this.CentralNervousSystem
     }
     console.log(obj)
-    this.http.post('http://localhost:3000/api/pat/addGPE',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGPE',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
 
     }
       addGeneralPhysicalExaminationCB=(dt)=>{
