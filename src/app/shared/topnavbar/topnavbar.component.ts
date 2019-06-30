@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from "@angular/fire/auth";
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 export class TopnavbarComponent implements OnInit {
   loading: boolean;
   customLoadingTemplate;
-  constructor(private router:Router,private auth:AngularFireAuth) {
+  constructor(private router:Router,private auth:AngularFireAuth,private http:HttpClient) {
     this.getUsername();
    }
 
@@ -33,10 +34,14 @@ export class TopnavbarComponent implements OnInit {
   }
   displayName="Dummy";
   getUsername(){
-    var user=this.auth.auth.currentUser;
-    if(user!=null){
-    this.displayName=(user.displayName)
+    var id=sessionStorage.getItem('MID')
+    var obj={
+      id:id
     }
+   this.http.post('http://localhost:3000/api/users/getDataById',obj).subscribe(this.cb)
     
+  }
+  cb=(dt)=>{
+    this.displayName=(dt.name)
   }
 }
