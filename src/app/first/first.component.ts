@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AngularFireStorage } from "@angular/fire/storage";
 import { finalize } from 'rxjs/operators';
@@ -12,34 +12,47 @@ import { Router } from '@angular/router';
   styleUrls: ['./first.component.css']
 })
 export class FirstComponent implements OnInit {
-  profileForm = new FormGroup({
-    cretatedBy: new FormControl(''),
-    cretionTime:new FormControl(''),
-    doctorName: new FormControl('',Validators.required),
-    firstName: new FormControl('',Validators.required),
-    middleName: new FormControl(''),
-    lastName: new FormControl(''),
-    addmissionDate: new FormControl('',Validators.required),
-    permanentAddress: new FormControl('',Validators.required),
-    correspondenceAddress: new FormControl(''),
-    mobileNumber: new FormControl('',Validators.required),
-    landlineNumber: new FormControl(''),
-    residanceNumber: new FormControl(''),
-    officeNumber: new FormControl(''),
-    email: new FormControl(''),
-    DOB: new FormControl(''),
-    age: new FormControl(''),
-    gender: new FormControl('',Validators.required),
-    education: new FormControl(''),
-    occupation: new FormControl(''),
-    maritalStatus: new FormControl(''),
-    basicfile: new FormControl(''),
-    imageURL: new FormControl('',Validators.required),
-  });
-  constructor(private storage:AngularFireStorage,private http:HttpClient,private router:Router) { }
+  profileForm :FormGroup;
+
+  validationMessages  = {
+    'firstName' : {
+                    'required': 'this field is Required'
+                  }  
+};
+
+formErrors = {
+          'firstName' : '',
+};
+
+
+
+  constructor(private storage:AngularFireStorage,private http:HttpClient,private router:Router,private formBuilder:FormBuilder) { }
 
   ngOnInit() {
-    
+    this.profileForm = this.formBuilder.group({
+      cretatedBy: new FormControl(''),
+      cretionTime:new FormControl(''),
+      doctorName: new FormControl('',Validators.required),
+      firstName: new FormControl('',Validators.required),
+      middleName: new FormControl(''),
+      lastName: new FormControl(''),
+      addmissionDate: new FormControl('',Validators.required),
+      permanentAddress: new FormControl('',Validators.required),
+      correspondenceAddress: new FormControl(''),
+      mobileNumber: new FormControl('',Validators.required),
+      landlineNumber: new FormControl(''),
+      residanceNumber: new FormControl(''),
+      officeNumber: new FormControl(''),
+      email: new FormControl(''),
+      DOB: new FormControl(''),
+      age: new FormControl(''),
+      gender: new FormControl('',Validators.required),
+      education: new FormControl(''),
+      occupation: new FormControl(''),
+      maritalStatus: new FormControl(''),
+      basicfile: new FormControl(''),
+      imageURL: new FormControl('',Validators.required),
+    })
   }
 
   save(){
@@ -50,15 +63,40 @@ export class FirstComponent implements OnInit {
           this.http.post('https://digitalapp001.herokuapp.com/api/pat/create',this.profileForm.value).subscribe(this.createCB)
            
     }else{
-      Swal.fire('Form not filled properlly ')
+    
+      Swal.fire('Form Not Filled Correctly');
     }
   }
+
+  logValidationMessages(group: FormGroup = this.profileForm): void {
+    Object.keys(group.controls).forEach((key: string) => {
+      const abstractControl = group.get(key);
+        this.formErrors[key] = '';
+          if (abstractControl && !abstractControl.valid && (abstractControl.touched)) {
+            const messages = this.validationMessages[key];
+            // alert(this.validationMessages[key])
+            for (const errorKey in abstractControl.errors) {
+              if (errorKey) {
+                this.formErrors[key] += messages[errorKey] + ' ';
+                Swal.fire(this.formErrors[key]);
+                // console.log(this.formErrors[key] += messages[errorKey])
+                // // console.log(this.formErrors.firstName)
+              }
+            }
+          }
+          if (abstractControl instanceof FormGroup) {
+            this.logValidationMessages(abstractControl);
+          } 
+      });
+  }
+
   createCB=(dt)=>{
     console.log(dt)
     if(dt.first_name){
       Swal.fire('ok Patient have been Saved Successfully');
       this.router.navigate(['dashboard/second',{id:dt._id}])
     }else{
+      
       Swal.fire('ok Patient not Saved Successfully')
     }
   }

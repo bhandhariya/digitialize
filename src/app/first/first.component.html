@@ -20,23 +20,24 @@
                </mat-form-field></td>
                <td>
                  
-                  <input type="file" (change)="uploadPhoto($event)" formControlName="basicfile" placeholder="Select Profile Photo" name="" id="">
+                  <input type="file" (change)="uploadPhoto($event)" formControlName="basicfile" placeholder="Select Profile Photo" name=""   id="">
                   </td>
                </tr>
                     </table>
              
                <table class="example-full-width" cellspacing="0"><tr>
                  <td><mat-form-field class="example-full-width">
-                   <input  formControlName="firstName" required matInput placeholder="First name">
+                   <input  formControlName="firstName" required matInput placeholder="First name" (blur)="logValidationMessages()">
+                   
                  </mat-form-field></td>
                  <td><mat-form-field class="example-full-width">
                      <input formControlName="middleName" matInput placeholder="Middle name">
                    </mat-form-field></td>
                  <td><mat-form-field class="example-full-width">
-                   <input formControlName="lastName" required matInput placeholder="Last Name ">
+                   <input formControlName="lastName" required matInput placeholder="Last Name " (blur)="logValidationMessages()" >
                  </mat-form-field></td>
                  <td><mat-form-field class="example-full-width">
-                  <input formControlName="addmissionDate" required matInput [matDatepicker]="picker" placeholder="Addmission date">
+                  <input formControlName="addmissionDate" required matInput [matDatepicker]="picker" (blur)="logValidationMessages()" placeholder="Addmission date" (blur)="logValidationMessages()" >
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                    </mat-form-field></td>
@@ -45,7 +46,7 @@
              
                <p>
                  <mat-form-field class="example-full-width">
-                   <textarea formControlName="permanentAddress" required matInput placeholder="Permanent Address"></textarea>
+                   <textarea formControlName="permanentAddress" required matInput placeholder="Permanent Address" (blur)="logValidationMessages()" ></textarea>
                  </mat-form-field>
                  <mat-form-field class="example-full-width">
                    <textarea formControlName="correspondenceAddress" matInput placeholder="Correspondence Address"></textarea>
@@ -73,7 +74,7 @@
     
               <table class="example-full-width" cellspacing="0"><tr>
                 <td><mat-form-field class="example-full-width">
-                  <input formControlName="DOB" required matInput [matDatepicker]="dob" placeholder="Date of Birth">
+                  <input formControlName="DOB" required matInput [matDatepicker]="dob" placeholder="Date of Birth" (blur)="logValidationMessages()" >
                   <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
                   <mat-datepicker #dob></mat-datepicker>
                 </mat-form-field></td>
