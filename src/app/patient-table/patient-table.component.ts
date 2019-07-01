@@ -67,4 +67,8 @@ pdfcb=(dt)=>{
 doc.save('raja.pdf')
 
 }
+Psychatric(id){
+  console.log(id)
+  this.router.navigate(['dashboard/accordian',{id:id}])
+}
 }
