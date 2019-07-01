@@ -38,7 +38,7 @@ export class TopnavbarComponent implements OnInit {
     var obj={
       id:id
     }
-   this.http.post('http://localhost:3000/api/users/getDataById',obj).subscribe(this.cb)
+   this.http.post('https://digitalapp001.herokuapp.com/api/users/getDataById',obj).subscribe(this.cb)
     
   }
   cb=(dt)=>{
