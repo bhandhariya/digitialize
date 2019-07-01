@@ -598,71 +598,56 @@ submmited: boolean = false;
     }
   }
 
-  JudgementPerosnal;JudgementSocial;JudgementTest;
+
   JudgementForm= new FormGroup({
-    id: new FormControl(''),
+      id: new FormControl(''),
       JudgementPerosnal: new FormControl(''),
       JudgementSocial: new FormControl(''),
-      JudgementTest: new FormControl('')
+      JudgementTest: new FormControl(''),
+      createdBy:new FormControl('')
   })
-  JudgementFormSubmit(form){}
-  addJudgement(){
-    var obj={
-      id:this.id,
-      JudgementPerosnal:this.JudgementPerosnal,
-      JudgementSocial:this.JudgementSocial,
-      JudgementTest:this.JudgementTest
-    }
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addJudgement',obj).subscribe(this.JudgementCB)
+  JudgementFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addJudgement',form).subscribe(this.JudgementCB)
   }
+ 
   JudgementCB=(dt)=>{
-    
+    console.log(dt)
     if(dt){
       Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-      this.JudgementPerosnal="",
-      this.JudgementSocial="",
-      this.JudgementTest=""
+      this.JudgementForm.reset();
     }
   }
 
 
-  AwarenessofAbnormalBehaviourExperience;AttributiontoPhysicalCause;RecognitionofPersonalResponsibility;WillingnesstotakeTreatement;Grade;
   InsightSubmit = new FormGroup({
     id: new FormControl(''),
       AwarenessofAbnormalBehaviourExperience: new FormControl(''),
       AttributiontoPhysicalCause: new FormControl(''),
       RecognitionofPersonalResponsibility: new FormControl(''),
       WillingnesstotakeTreatement: new FormControl(''),
-      Grade: new FormControl('')
+      Grade: new FormControl(''),
+      createdBy:new FormControl('')
   })
-  InsightSubmitForm(form){}
-  addInsight(){
-    var obj={
-      id:this.id,
-      AwarenessofAbnormalBehaviourExperience:this.AwarenessofAbnormalBehaviourExperience,
-      AttributiontoPhysicalCause:this.AttributiontoPhysicalCause,
-      RecognitionofPersonalResponsibility:this.RecognitionofPersonalResponsibility,
-      WillingnesstotakeTreatement:this.WillingnesstotakeTreatement,
-      Grade:this.Grade
-    }
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addInsight',obj).subscribe(this.addInsightCB)
-
+  InsightSubmitForm(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addInsight',form).subscribe(this.addInsightCB)
   }
+ 
   addInsightCB=(dt)=>{
-   
+   console.log(dt)
     if(dt){
       Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-  this.AwarenessofAbnormalBehaviourExperience=""
-  this.AttributiontoPhysicalCause=""
-  this.RecognitionofPersonalResponsibility=""
-  this.WillingnesstotakeTreatement=""
-  this.Grade=""
+      this.InsightSubmit.reset();
     }
   }
 
 
-  GPEConsciousness;GPEBuilt;GPEInspection;GPEPluse;GPERespiration;GPEBodyTemperature;GPEBloodPressure;
-  RespiratorySystem;CardioVescularSystem;GPEGastroIntestinalSystem;CentralNervousSystem;
+
   GeneralPhysicalExaminationForm = new FormGroup({
     id: new FormControl(''),
       GPEConsciousness: new FormControl(''),
@@ -675,43 +660,22 @@ submmited: boolean = false;
       RespiratorySystem: new FormControl(''),
       CardioVescularSystem: new FormControl(''),
       GPEGastroIntestinalSystem: new FormControl(''),
-      CentralNervousSystem: new FormControl('')
+      CentralNervousSystem: new FormControl(''),
+      createdBy:new FormControl('')
   })
-  GeneralPhysicalExaminationFormSubmit(form){}
-  addGeneralPhysicalExamination(){
-    var obj={
-      id:this.id,
-      GPEConsciousness:this.GPEConsciousness,
-      GPEBuilt:this.GPEBuilt,
-      GPEInspection:this.GPEInspection,
-      GPEPluse:this.GPEPluse,
-      GPERespiration:this.GPERespiration,
-      GPEBodyTemperature:this.GPEBodyTemperature,
-      GPEBloodPressure:this.GPEBloodPressure,
-      RespiratorySystem:this.RespiratorySystem,
-      CardioVescularSystem:this.CardioVescularSystem,
-      GPEGastroIntestinalSystem:this.GPEGastroIntestinalSystem,
-      CentralNervousSystem:this.CentralNervousSystem
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGPE',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
-
-    }
+  GeneralPhysicalExaminationFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGPE',form).subscribe(this.addGeneralPhysicalExaminationCB)
+  }
+ 
       addGeneralPhysicalExaminationCB=(dt)=>{
+        console.log(dt)
         if(dt){
           Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-          this.GPEConsciousness=""
-          this.GPEBuilt=""
-          this.GPEInspection=""
-          this.GPEPluse=""
-          this.GPERespiration=""
-          this.GPEBodyTemperature=""
-          this.GPEBloodPressure=""
-          this.RespiratorySystem=""
-          this.CardioVescularSystem=""
-          this.GPEGastroIntestinalSystem=""
-          this.CentralNervousSystem=""
-    
+        
         }
+        this.GeneralPhysicalExaminationForm.reset()
       }
 }

@@ -1670,7 +1670,7 @@
 
 
 
-          <mat-expansion-panel>
+          <mat-expansion-panel  [formGroup]="JudgementForm"  (ngSubmit)="JudgementFormSubmit(JudgementForm.value)"  >
             <mat-expansion-panel-header>Judgement</mat-expansion-panel-header>
             <table class="table table-hover table-inverse" >
               <tr>
@@ -1679,8 +1679,11 @@
                 </td>
                 <td>Sense of Personal Capability or Worth and Planning of Future</td>
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="JudgementPerosnal"   name="JudgementPerosnal">Intact</label>
-                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="JudgementPerosnal"  name="JudgementPerosnal">Impaired</label>
+                    <mat-radio-group formControlName="JudgementPerosnal" aria-label="Select an option">
+                        <mat-radio-button value="Intact">Intact</mat-radio-button>
+                        <mat-radio-button value="Impaired">Impaired</mat-radio-button>
+                    </mat-radio-group>
+    
                 </td>
               </tr>
               <tr>
@@ -1689,8 +1692,10 @@
                 </td>
                 <td>Sense of What Social and Culturally Acceptable</td>
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="JudgementSocial"   name="JudgementSocial">Intact</label>
-                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="JudgementSocial"  name="JudgementSocial">Impaired</label>
+                    <mat-radio-group formControlName="JudgementSocial" aria-label="Select an option">
+                        <mat-radio-button value="Intact">Intact</mat-radio-button>
+                        <mat-radio-button value="Impaired">Impaired</mat-radio-button>
+                    </mat-radio-group>
                 </td>
               </tr>
               <tr>
@@ -1703,13 +1708,15 @@
                   <li>Letter Test</li>
                 </td>
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="JudgementTest"   name="JudgementTest">Intact</label>
-                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="JudgementTest"  name="JudgementTest">Impaired</label>
+                    <mat-radio-group formControlName="JudgementTest" aria-label="Select an option">
+                        <mat-radio-button value="Intact">Intact</mat-radio-button>
+                        <mat-radio-button value="Impaired">Impaired</mat-radio-button>
+                    </mat-radio-group>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <input type="button" value="Save" class="btn btn-primary" (click)="addJudgement()"   >
+                  <input type="button" value="Save" class="btn btn-primary" (click)="JudgementFormSubmit(JudgementForm.value)"   >
                 </td>
               </tr>
             </table>
@@ -1717,7 +1724,7 @@
 
 
 
-          <mat-expansion-panel>
+          <mat-expansion-panel [formGroup]="InsightSubmit"  (ngSubmit)="InsightSubmitForm(InsightSubmit.value)" >
             <mat-expansion-panel-header>Insight</mat-expansion-panel-header>
             <table class="table table-hover table-inverse" >
               <tr>
@@ -1726,9 +1733,11 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Yes"  [(ngModel)]="AwarenessofAbnormalBehaviourExperience"   name="AwarenessofAbnormalBehaviourExperience">Yes</label>
-                  <label class="radio-inline"><input type="radio" value="May Be" [(ngModel)]="AwarenessofAbnormalBehaviourExperience"  name="AwarenessofAbnormalBehaviourExperience">May Be</label>
-                  <label class="radio-inline"><input type="radio" value="No" [(ngModel)]="AwarenessofAbnormalBehaviourExperience"  name="AwarenessofAbnormalBehaviourExperience">No</label>
+                    <mat-radio-group formControlName="AwarenessofAbnormalBehaviourExperience" aria-label="Select an option">
+                        <mat-radio-button value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button value="May Be">May Be</mat-radio-button>
+                        <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group>
                 </td>
               </tr>
 
@@ -1738,9 +1747,11 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Yes"  [(ngModel)]="AttributiontoPhysicalCause"   name="AttributiontoPhysicalCause">Yes</label>
-                  <label class="radio-inline"><input type="radio" value="May Be" [(ngModel)]="AttributiontoPhysicalCause"  name="AttributiontoPhysicalCause">May Be</label>
-                  <label class="radio-inline"><input type="radio" value="No" [(ngModel)]="AttributiontoPhysicalCause"  name="AttributiontoPhysicalCause">No</label>
+                    <mat-radio-group formControlName="AttributiontoPhysicalCause" aria-label="Select an option">
+                        <mat-radio-button value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button value="May Be">May Be</mat-radio-button>
+                        <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group>
                 </td>
               </tr>
 
@@ -1751,9 +1762,11 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Yes"  [(ngModel)]="RecognitionofPersonalResponsibility"   name="RecognitionofPersonalResponsibility">Yes</label>
-                  <label class="radio-inline"><input type="radio" value="May Be" [(ngModel)]="RecognitionofPersonalResponsibility"  name="RecognitionofPersonalResponsibility">May Be</label>
-                  <label class="radio-inline"><input type="radio" value="No" [(ngModel)]="RecognitionofPersonalResponsibility"  name="RecognitionofPersonalResponsibility">No</label>
+                    <mat-radio-group formControlName="RecognitionofPersonalResponsibility" aria-label="Select an option">
+                        <mat-radio-button value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button value="May Be">May Be</mat-radio-button>
+                        <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group> 
                 </td>
               </tr>
 
@@ -1764,9 +1777,12 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Yes"  [(ngModel)]="WillingnesstotakeTreatement"   name="WillingnesstotakeTreatement">Yes</label>
-                  <label class="radio-inline"><input type="radio" value="May Be" [(ngModel)]="WillingnesstotakeTreatement"  name="WillingnesstotakeTreatement">May Be</label>
-                  <label class="radio-inline"><input type="radio" value="No" [(ngModel)]="WillingnesstotakeTreatement"  name="WillingnesstotakeTreatement">No</label>
+                    <mat-radio-group formControlName="WillingnesstotakeTreatement" aria-label="Select an option">
+                        <mat-radio-button value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button value="May Be">May Be</mat-radio-button>
+                        <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group> 
+                
                 </td>
               </tr>
 
@@ -1777,17 +1793,21 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Grade 1"  [(ngModel)]="Grade"   name="Grade">Grade 1</label>
-                  <label class="radio-inline"><input type="radio" value="Grade 2" [(ngModel)]="Grade"  name="Grade">Grade 2</label>
-                  <label class="radio-inline"><input type="radio" value="Grade 3" [(ngModel)]="Grade"  name="Grade">Grade 3</label>
-                  <label class="radio-inline"><input type="radio" value="Grade 4"  [(ngModel)]="Grade"   name="Grade">Grade 4</label>
-                  <label class="radio-inline"><input type="radio" value="Grade 5" [(ngModel)]="Grade"  name="Grade">Grade 5</label>
-                  <label class="radio-inline"><input type="radio" value="Grade 6" [(ngModel)]="Grade"  name="Grade">Grade 6</label>
+                    <mat-radio-group formControlName="Grade" aria-label="Select an option">
+                        <mat-radio-button value="Grade 1">Grade 1</mat-radio-button>
+                        <mat-radio-button value="Grade 2">Grade 2</mat-radio-button>
+                        <mat-radio-button value="Grade 3">Grade 3</mat-radio-button>
+                        <mat-radio-button value="Grade 4">Grade 4</mat-radio-button>
+                        <mat-radio-button value="Grade 5">Grade 5</mat-radio-button>
+                        <mat-radio-button value="Grade 6">Grade 6</mat-radio-button>
+                       
+                    </mat-radio-group> 
+               
                 </td>
               </tr>
              <tr>
                <td>
-                 <input type="button" value="Save" class="btn btn-primary"  (click)="addInsight()" >
+                 <input type="button" value="Save" class="btn btn-primary"  (click)="InsightSubmitForm(InsightSubmit.value)" >
                </td>
              </tr>
             </table>
@@ -1795,7 +1815,7 @@
 
 
 
-          <mat-expansion-panel>
+          <mat-expansion-panel  [formGroup]="GeneralPhysicalExaminationForm"  (ngSubmit)="GeneralPhysicalExaminationFormSubmit(GeneralPhysicalExaminationForm.value)" >
             <mat-expansion-panel-header>General Physical Examination</mat-expansion-panel-header>
             <table class="table table-hover table-inverse" >
               <tr>
@@ -1804,11 +1824,14 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Conscious"  [(ngModel)]="GPEConsciousness"   name="GPEConsciousness">Conscious</label>
-                  <label class="radio-inline"><input type="radio" value="Drowsy" [(ngModel)]="GPEConsciousness"  name="GPEConsciousness">Drowsy</label>
-                  <label class="radio-inline"><input type="radio" value="Stupor" [(ngModel)]="GPEConsciousness"  name="GPEConsciousness">Stupor</label>
-                  <label class="radio-inline"><input type="radio" value="Confusion" [(ngModel)]="GPEConsciousness"  name="GPEConsciousness">Confusion</label>
-                  <label class="radio-inline"><input type="radio" value="Coma" [(ngModel)]="GPEConsciousness"  name="GPEConsciousness">Coma</label>
+                    <mat-radio-group formControlName="GPEConsciousness" aria-label="Select an option">
+                        <mat-radio-button value="Conscious">Conscious</mat-radio-button>
+                        <mat-radio-button value="Drowsy">Drowsy</mat-radio-button>
+                        <mat-radio-button value="Stupor">Stupor</mat-radio-button>
+                        <mat-radio-button value="Confusion">Confusion</mat-radio-button>
+                        <mat-radio-button value="Coma">Coma</mat-radio-button>
+                    </mat-radio-group> 
+                 
                 </td>
               </tr>
 
@@ -1818,11 +1841,14 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Average"  [(ngModel)]="GPEBuilt"   name="GPEBuilt">Average</label>
-                  <label class="radio-inline"><input type="radio" value="Lean" [(ngModel)]="GPEBuilt"  name="GPEBuilt">Lean</label>
-                  <label class="radio-inline"><input type="radio" value="Obese" [(ngModel)]="GPEBuilt"  name="GPEBuilt">Obese</label>
-                  <label class="radio-inline"><input type="radio" value="Tall" [(ngModel)]="GPEBuilt"  name="GPEBuilt">Tall</label>
-                  <label class="radio-inline"><input type="radio" value="Dwarf" [(ngModel)]="GPEBuilt"  name="GPEBuilt">Dwarf</label>
+                    <mat-radio-group formControlName="GPEBuilt" aria-label="Select an option">
+                        <mat-radio-button value="Average">Average</mat-radio-button>
+                        <mat-radio-button value="Lean">Lean</mat-radio-button>
+                        <mat-radio-button value="Obese">Obese</mat-radio-button>
+                        <mat-radio-button value="Tall">Tall</mat-radio-button>
+                        <mat-radio-button value="Dwarf">Dwarf</mat-radio-button>
+                    </mat-radio-group> 
+                
                 </td>
               </tr>
 
@@ -1833,14 +1859,16 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="GPEInspection"   name="GPEInspection">Normal</label>
-                  <label class="radio-inline"><input type="radio" value="Pallor" [(ngModel)]="GPEInspection"  name="GPEInspection">Pallor</label>
-                  <label class="radio-inline"><input type="radio" value="Icterus" [(ngModel)]="GPEInspection"  name="GPEInspection">Icterus</label>
-                  <label class="radio-inline"><input type="radio" value="Cyanosis"  [(ngModel)]="GPEInspection"   name="GPEInspection">Cyanosis</label>
-                  <label class="radio-inline"><input type="radio" value="Clubbing" [(ngModel)]="GPEInspection"  name="GPEInspection">Clubbing</label>
-                  <label class="radio-inline"><input type="radio" value="Abnormal Swelling" [(ngModel)]="GPEInspection"  name="GPEInspection">Abnormal Swelling</label>
-                  <label class="radio-inline"><input type="radio" value="Edema"  [(ngModel)]="GPEInspection"   name="GPEInspection">Edema</label>
-                 
+                    <mat-radio-group formControlName="GPEInspection" aria-label="Select an option">
+                        <mat-radio-button value="Normal">Normal</mat-radio-button>
+                        <mat-radio-button value="Pallor">Pallor</mat-radio-button>
+                        <mat-radio-button value="Icterus">Icterus</mat-radio-button>
+                        <mat-radio-button value="Cyanosis">Cyanosis</mat-radio-button>
+                        <mat-radio-button value="Clubbing">Clubbing</mat-radio-button>
+                        <mat-radio-button value="Abnormal Swelling">Abnormal Swelling</mat-radio-button>
+                        <mat-radio-button value="Edema">Edema</mat-radio-button>
+                    </mat-radio-group> 
+              
                 </td>
               </tr>
 
@@ -1851,9 +1879,13 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Within Normal Limits"  [(ngModel)]="GPEPluse"   name="GPEPluse">Within Normal Limits</label>
-                  <label class="radio-inline"><input type="radio" value="Tachycardia" [(ngModel)]="GPEPluse"  name="GPEPluse">Tachycardia</label>
-                  <label class="radio-inline"><input type="radio" value="Bradhycardia" [(ngModel)]="GPEPluse"  name="GPEPluse">Bradhycardia</label>
+                    <mat-radio-group formControlName="GPEPluse" aria-label="Select an option">
+                        <mat-radio-button value="Within Normal Limits">Within Normal Limits</mat-radio-button>
+                        <mat-radio-button value="Tachycardia">Tachycardia</mat-radio-button>
+                        <mat-radio-button value="Bradhycardia">Bradhycardia</mat-radio-button>
+                       
+                    </mat-radio-group> 
+               
                 </td>
               </tr>
 
@@ -1864,9 +1896,13 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Within Normal Limits"  [(ngModel)]="GPERespiration"   name="GPERespiration">Within Normal Limits</label>
-                  <label class="radio-inline"><input type="radio" value="Tachycardia" [(ngModel)]="GPERespiration"  name="GPERespiration">Tachycardia</label>
-                  <label class="radio-inline"><input type="radio" value="Bradhycardia" [(ngModel)]="GPERespiration"  name="GPERespiration">Bradhycardia</label>
+                    <mat-radio-group formControlName="GPERespiration" aria-label="Select an option">
+                        <mat-radio-button value="Within Normal Limits">Within Normal Limits</mat-radio-button>
+                        <mat-radio-button value="Tachycardia">Tachycardia</mat-radio-button>
+                        <mat-radio-button value="Bradhycardia">Bradhycardia</mat-radio-button>
+                       
+                    </mat-radio-group> 
+                 
                 </td>
               </tr>
 
@@ -1877,9 +1913,13 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Within Normal Limits"  [(ngModel)]="GPEBodyTemperature"   name="GPEBodyTemperature">Within Normal Limits</label>
-                  <label class="radio-inline"><input type="radio" value="Hyperthermia" [(ngModel)]="GPEBodyTemperature"  name="GPEBodyTemperature">Hyperthermia</label>
-                  <label class="radio-inline"><input type="radio" value="Hypothemia" [(ngModel)]="GPEBodyTemperature"  name="GPEBodyTemperature">Hypothemia</label>
+                    <mat-radio-group formControlName="GPEBodyTemperature" aria-label="Select an option">
+                        <mat-radio-button value="Within Normal Limits">Within Normal Limits</mat-radio-button>
+                        <mat-radio-button value="Hyperthermia">Hyperthermia</mat-radio-button>
+                        <mat-radio-button value="Hypothemia">Hypothemia</mat-radio-button>
+                       
+                    </mat-radio-group> 
+             
                 </td>
               </tr>
 
@@ -1890,9 +1930,13 @@
                 </td>
                
                 <td>
-                  <label class="radio-inline"><input type="radio" value="Within Normal Limits"  [(ngModel)]="GPEBloodPressure"   name="GPEBloodPressure">Within Normal Limits</label>
-                  <label class="radio-inline"><input type="radio" value="Hyperthermia" [(ngModel)]="GPEBloodPressure"  name="GPEBloodPressure">Hyperthermia</label>
-                  <label class="radio-inline"><input type="radio" value="Hypothemia" [(ngModel)]="GPEBloodPressure"  name="GPEBloodPressure">Hypothemia</label>
+                    <mat-radio-group formControlName="GPEBloodPressure" aria-label="Select an option">
+                        <mat-radio-button value="Within Normal Limits">Within Normal Limits</mat-radio-button>
+                        <mat-radio-button value="Hypertension">Hypertension</mat-radio-button>
+                        <mat-radio-button value="Hypotension">Hypotension</mat-radio-button>
+                       
+                    </mat-radio-group> 
+                 
                 </td>
               </tr>
              
@@ -1904,8 +1948,12 @@
                   <tr>
                     <td scope="row">1. Respiratory System </td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="No Abnormality Detected"  [(ngModel)]="RespiratorySystem"   name="RespiratorySystem">No Abnormality Detected</label>
-                      <label class="radio-inline"><input type="radio" value="Abnormality Present" [(ngModel)]="RespiratorySystem"  name="RespiratorySystem">Abnormality Present</label>
+                        <mat-radio-group formControlName="RespiratorySystem" aria-label="Select an option">
+                            <mat-radio-button value="No Abnormality Detected">No Abnormality Detected</mat-radio-button>
+                            <mat-radio-button value="Abnormality Present">Abnormality Present</mat-radio-button>
+                          
+                        </mat-radio-group> 
+                  
                     </td>
                    
                   </tr>
@@ -1913,8 +1961,13 @@
                   <tr>
                     <td scope="row">2. Cardio-Vescular System </td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="No Abnormality Detected"  [(ngModel)]="CardioVescularSystem"   name="CardioVescularSystem">No Abnormality Detected</label>
-                      <label class="radio-inline"><input type="radio" value="Abnormality Present" [(ngModel)]="CardioVescularSystem"  name="CardioVescularSystem">Abnormality Present</label>
+                        <mat-radio-group formControlName="CardioVescularSystem" aria-label="Select an option">
+                            <mat-radio-button value="No Abnormality Detected">No Abnormality Detected</mat-radio-button>
+                            <mat-radio-button value="Abnormality Present">Abnormality Present</mat-radio-button>
+                          
+                        </mat-radio-group> 
+                  
+                   
                     </td>
                    
                   </tr>
@@ -1922,8 +1975,12 @@
                   <tr>
                     <td scope="row">3. Gastro-Intestinal System </td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="No Abnormality Detected"  [(ngModel)]="GPEGastroIntestinalSystem"   name="GPEGastroIntestinalSystem">No Abnormality Detected</label>
-                      <label class="radio-inline"><input type="radio" value="Abnormality Present" [(ngModel)]="GPEGastroIntestinalSystem"  name="GPEGastroIntestinalSystem">Abnormality Present</label>
+                        <mat-radio-group formControlName="GPEGastroIntestinalSystem" aria-label="Select an option">
+                            <mat-radio-button value="No Abnormality Detected">No Abnormality Detected</mat-radio-button>
+                            <mat-radio-button value="Abnormality Present">Abnormality Present</mat-radio-button>
+                          
+                        </mat-radio-group> 
+                   
                     </td>
                    
                   </tr>
@@ -1931,14 +1988,18 @@
                   <tr>
                     <td scope="row">4. Central Nervous System </td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="No Abnormality Detected"  [(ngModel)]="CentralNervousSystem"   name="CentralNervousSystem">No Abnormality Detected</label>
-                      <label class="radio-inline"><input type="radio" value="Abnormality Present" [(ngModel)]="CentralNervousSystem"  name="CentralNervousSystem">Abnormality Present</label>
+                        <mat-radio-group formControlName="CentralNervousSystem" aria-label="Select an option">
+                            <mat-radio-button value="No Abnormality Detected">No Abnormality Detected</mat-radio-button>
+                            <mat-radio-button value="Abnormality Present">Abnormality Present</mat-radio-button>
+                          
+                        </mat-radio-group>
+                    
                     </td>
                    
                   </tr>
                   <tr>
                     <td>
-                      <input type="button" value="Save" class="btn btn-primary"  (click)="addGeneralPhysicalExamination()" >
+                      <input type="button" value="Save" class="btn btn-primary"  (click)="GeneralPhysicalExaminationFormSubmit(GeneralPhysicalExaminationForm.value)" >
                     </td>
                   </tr>
                 </tbody>
