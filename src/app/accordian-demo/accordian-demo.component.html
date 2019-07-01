@@ -558,9 +558,9 @@
                         <mat-radio-group formControlName="Gesturing" aria-label="Select an option">
                           
                          
-                            <mat-radio-button value="Normal">Came Willingly</mat-radio-button>
-                            <mat-radio-button value="Exaggerated">Persuaded</mat-radio-button>
-                            <mat-radio-button value="Odd">Brought using Physical force</mat-radio-button>
+                            <mat-radio-button value="Normal">Normal</mat-radio-button>
+                            <mat-radio-button value="Exaggerated">Exaggerated</mat-radio-button>
+                            <mat-radio-button value="Odd">Odd</mat-radio-button>
                            
   
                         </mat-radio-group>
@@ -573,11 +573,11 @@
                         <mat-radio-group formControlName="OtherMovements" aria-label="Select an option">
                           
                          
-                            <mat-radio-button value="Mannerisms">Came Willingly</mat-radio-button>
-                            <mat-radio-button value="Streotypes">Persuaded</mat-radio-button>
-                            <mat-radio-button value="Tremors">Brought using Physical force</mat-radio-button>
-                            <mat-radio-button value="EPS">Waddling</mat-radio-button>
-                            <mat-radio-button value="Preseveration">Waddling</mat-radio-button>
+                            <mat-radio-button value="Mannerisms">Mannerisms</mat-radio-button>
+                            <mat-radio-button value="Streotypes">Streotypes</mat-radio-button>
+                            <mat-radio-button value="Tremors">Tremors</mat-radio-button>
+                            <mat-radio-button value="EPS">EPS</mat-radio-button>
+                            <mat-radio-button value="Preseveration">Preseveration</mat-radio-button>
                          
   
                         </mat-radio-group>
@@ -591,12 +591,12 @@
                         <mat-radio-group formControlName="otherCatatolicPhemenon" aria-label="Select an option">
                           
                          
-                            <mat-radio-button value="Automatic Obedience">Came Willingly</mat-radio-button>
-                            <mat-radio-button value="Negativism">Persuaded</mat-radio-button>
-                            <mat-radio-button value="Excessive Cooperation">Brought using Physical force</mat-radio-button>
-                            <mat-radio-button value="Waxy Flexibility">Waddling</mat-radio-button>
-                            <mat-radio-button value="Echoproxia">Waddling</mat-radio-button>
-                            <mat-radio-button value="Echolalia">Waddling</mat-radio-button>
+                            <mat-radio-button value="Automatic Obedience">Automatic Obedience</mat-radio-button>
+                            <mat-radio-button value="Negativism">Negativism</mat-radio-button>
+                            <mat-radio-button value="Excessive Cooperation">Excessive Cooperation</mat-radio-button>
+                            <mat-radio-button value="Waxy Flexibility">Waxy Flexibility</mat-radio-button>
+                            <mat-radio-button value="Echoproxia">Echoproxia</mat-radio-button>
+                            <mat-radio-button value="Echolalia">Echolalia</mat-radio-button>
                          
   
                         </mat-radio-group>
@@ -608,7 +608,7 @@
           </mat-expansion-panel>
           
 
-          <mat-expansion-panel>
+          <mat-expansion-panel  [formGroup]="PsychomotorActivitySpeechForm"  (ngSubmit)="PsychomotorActivitySpeechSubmit(PsychomotorActivitySpeechForm.value)" >
             <mat-expansion-panel-header>Psychomotor Activity & Speech </mat-expansion-panel-header>
             <h2>PSYCHOMOTOR</h2>
             <table class="table table-hover table-inverse table-responsive">
@@ -616,9 +616,15 @@
                   <tr>
                     <td scope="row">Psychomotor Activity</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="PsychomotorActivity"   name="PsychomotorActivity">Normal</label>
-                      <label class="radio-inline"><input type="radio" value="Increased" [(ngModel)]="PsychomotorActivity"  name="PsychomotorActivity">Increased</label>
-                      <label class="radio-inline"><input type="radio" value="Decreased" [(ngModel)]="PsychomotorActivity"  name="PsychomotorActivity">Decreased</label> 
+                      <mat-radio-group formControlName="PsychomotorActivity" aria-label="Select an option">
+                          
+                         
+                        <mat-radio-button value="Normal">Normal</mat-radio-button>
+                        <mat-radio-button value="Increased">Increased</mat-radio-button>
+                        <mat-radio-button value="Decreased">Decreased</mat-radio-button>
+                     
+
+                    </mat-radio-group>
                     </td>
                     
                   </tr>
@@ -630,10 +636,16 @@
                   <tr>
                     <td scope="row">Initiation</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Spontaneous"  [(ngModel)]="Initiation"   name="Initiation">Spontaneous</label>
-                      <label class="radio-inline"><input type="radio" value="Speaks when Spoken to" [(ngModel)]="Initiation"  name="Initiation">Speaks when Spoken to</label>
-                      <label class="radio-inline"><input type="radio" value="Minimal" [(ngModel)]="Initiation"  name="Initiation">Minimal</label> 
-                      <label class="radio-inline"><input type="radio" value="Mute" [(ngModel)]="Initiation"  name="Initiation">Mute</label> 
+                      <mat-radio-group formControlName="Initiation" aria-label="Select an option">
+                          
+                         
+                        <mat-radio-button value="Spontaneous">Spontaneous</mat-radio-button>
+                        <mat-radio-button value="Speaks when Spoken to">Speaks when Spoken to</mat-radio-button>
+                        <mat-radio-button value="Minimal">Minimal</mat-radio-button>
+                        <mat-radio-button value="Mute">Mute</mat-radio-button>
+                     
+
+                    </mat-radio-group>
                     
                     </td>
              
@@ -641,73 +653,122 @@
                   <tr>
                     <td scope="row">Reaction time</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="ReactionTime"   name="ReactionTime">Normal</label>
-                      <label class="radio-inline"><input type="radio" value="Delayed" [(ngModel)]="ReactionTime"  name="ReactionTime">Delayed</label>
-                      <label class="radio-inline"><input type="radio" value="Shortened" [(ngModel)]="ReactionTime"  name="ReactionTime">Shortened</label> 
-                      <label class="radio-inline"><input type="radio" value="Difficult to Assess" [(ngModel)]="ReactionTime" name="ReactionTime"  >Difficult to Assess</label>
+                        <mat-radio-group formControlName="ReactionTime" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Normal">Normal</mat-radio-button>
+                            <mat-radio-button value="Delayed">Delayed</mat-radio-button>
+                            <mat-radio-button value="Shortened">Shortened</mat-radio-button>
+                            <mat-radio-button value="Difficult to Assess">Difficult to Assess</mat-radio-button>
+                         
+    
+                        </mat-radio-group>
                     </td>
                     
                   </tr>
                   <tr>
                     <td scope="row">Speed</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Adequate"  [(ngModel)]="Speed"   name="Speed">Adequate</label>
-                      <label class="radio-inline"><input type="radio" value="Inadequate" [(ngModel)]="Speed"  name="Speed">Inadequate</label>
-                      <label class="radio-inline"><input type="radio" value="Overtly Clean" [(ngModel)]="Speed"  name="Speed">Overtly Clean</label> 
+                        <mat-radio-group formControlName="Speed" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Adequate">Adequate</mat-radio-button>
+                            <mat-radio-button value="Inadequate">Inadequate</mat-radio-button>
+                            <mat-radio-button value="Overtly Clean">Overtly Clean</mat-radio-button>
+                 
+                         
+  
+                        </mat-radio-group>
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Level of Consciousness</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="LevelofConsciousnessinSpeech"   name="LevelofConsciousnessinSpeech">Normal</label>
-                      <label class="radio-inline"><input type="radio" value="Slow" [(ngModel)]="LevelofConsciousnessinSpeech"  name="LevelofConsciousnessinSpeech">Slow</label>
-                      <label class="radio-inline"><input type="radio" value="Rapid" [(ngModel)]="LevelofConsciousnessinSpeech"  name="LevelofConsciousnessinSpeech">Rapid</label>
-                      <label class="radio-inline"><input type="radio" value="Not Clear" [(ngModel)]="LevelofConsciousnessinSpeech"  name="LevelofConsciousnessinSpeech">Not Clear</label> 
+                        <mat-radio-group formControlName="LevelofConsciousnessinSpeech" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Normal">Normal</mat-radio-button>
+                            <mat-radio-button value="Slow">Slow</mat-radio-button>
+                            <mat-radio-button value="Rapid">Rapid</mat-radio-button>
+                            <mat-radio-button value="Not Clear">Not Clear</mat-radio-button>
+                         
+  
+                        </mat-radio-group>
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Output</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Output"   name="Output">Normal</label>
-                      <label class="radio-inline"><input type="radio" value="Increased" [(ngModel)]="Output"  name="Output">Increased</label>
-                      <label class="radio-inline"><input type="radio" value="Decreased" [(ngModel)]="Output"  name="Output">Decreased</label>
-                      <label class="radio-inline"><input type="radio" value="Variable" [(ngModel)]="Output"  name="Output">Variable</label> 
+                        <mat-radio-group formControlName="Output" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Normal">Normal</mat-radio-button>
+                            <mat-radio-button value="Increased">Increased</mat-radio-button>
+                            <mat-radio-button value="Decreased">Decreased</mat-radio-button>
+                            <mat-radio-button value="Variable">Variable</mat-radio-button>
+                         
+  
+                        </mat-radio-group>
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Pressure of Speech</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Absent"  [(ngModel)]="PressureOfSpeech"   name="PressureOfSpeech">Absent</label>
-                      <label class="radio-inline"><input type="radio" value="Present" [(ngModel)]="PressureOfSpeech"  name="PressureOfSpeech">Present</label> 
+                        <mat-radio-group formControlName="PressureOfSpeech" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Absent">Absent</mat-radio-button>
+                            <mat-radio-button value="Present">Present</mat-radio-button>
+                            
+                         
+  
+                        </mat-radio-group>
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Volume</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Absent"  [(ngModel)]="Volume"   name="Volume">Normal</label>
-                      <label class="radio-inline"><input type="radio" value="Increased" [(ngModel)]="Volume"  name="Volume">Increased</label>
-                      <label class="radio-inline"><input type="radio" value="Decreased" [(ngModel)]="Volume"  name="Volume">Decreased</label> 
-                    </td>
+                        <mat-radio-group formControlName="Volume" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Normal">Normal</mat-radio-button>
+                            <mat-radio-button value="Increased">Increased</mat-radio-button>
+                            <mat-radio-button value="Decreased">Decreased</mat-radio-button>
+                            
+                         
+  
+                        </mat-radio-group>                    </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Tone</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Normal Variation"  [(ngModel)]="Tone"   name="Tone">Normal Variation</label>
-                      <label class="radio-inline"><input type="radio" value="Monotonous" [(ngModel)]="Tone"  name="Tone">Monotonous</label>
+                        <mat-radio-group formControlName="Tone" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Normal Variation">Normal Variation</mat-radio-button>
+                            <mat-radio-button value="Monotonous">Monotonous</mat-radio-button>
+                            
+  
+                        </mat-radio-group>
                     </td>
                   </tr>
 
                   <tr>
                     <td scope="row">Manner</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Manner"   name="Manner">Normal</label>
-                      <label class="radio-inline"><input type="radio" value="Highly Formal" [(ngModel)]="Manner"  name="Manner">Highly Formal</label>
-                      <label class="radio-inline"><input type="radio" value="Inappropriately Familiar" [(ngModel)]="Manner"  name="Manner">Inappropriately Familiar </label>
+                        <mat-radio-group formControlName="Manner" aria-label="Select an option">
+                          
+                            <mat-radio-button value="Normal">Normal</mat-radio-button>
+                            <mat-radio-button value="Highly Formal">Highly Formal</mat-radio-button>
+                            <mat-radio-button value="Inappropriately Familiar">Inappropriately Familiar</mat-radio-button>
+                            
+  
+                        </mat-radio-group>
                    
                     </td>
                   </tr>
@@ -715,9 +776,16 @@
                   <tr>
                     <td scope="row">Relavance</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Fully Relevant"  [(ngModel)]="Relavance"   name="Relavance">Fully Relevant</label>
-                      <label class="radio-inline"><input type="radio" value="Some time Off Target" [(ngModel)]="Relavance"  name="Relavance">Some time Off Target</label>
-                      <label class="radio-inline"><input type="radio" value="Irrelevant" [(ngModel)]="Relavance"  name="Relavance">Irrelevant</label>
+                        <mat-radio-group formControlName="Relavance" aria-label="Select an option">
+                          
+                         
+                            
+                            <mat-radio-button value="Fully Relevant">Fully Relevant</mat-radio-button>
+                            <mat-radio-button value="Some time Off Target">Some time Off Target</mat-radio-button>
+                            <mat-radio-button value="Irrelevant">Irrelevant</mat-radio-button>
+                         
+  
+                        </mat-radio-group>
                     
 
                     </td>
@@ -725,10 +793,17 @@
                   <tr>
                     <td scope="row">Coherence</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Fully Coherent"  [(ngModel)]="Coherence"   name="Coherence">Fully Coherent</label>
-                      <label class="radio-inline"><input type="radio" value="Over Elaborate Digressive" [(ngModel)]="Coherence"  name="Coherence">Over Elaborate, Digressive</label>
-                      <label class="radio-inline"><input type="radio" value="Some Loosing of association" [(ngModel)]="Coherence"  name="Coherence">Some Loosing of association</label>
-                      <label class="radio-inline"><input type="radio" value="Some Loosing of association" [(ngModel)]="Coherence"  name="Coherence">Incoherent</label>
+                        <mat-radio-group formControlName="Coherence" aria-label="Select an option">
+                          
+                         
+                            
+                            <mat-radio-button value="Fully Coherent">Fully Coherent</mat-radio-button>
+                            <mat-radio-button value="Over Elaborate Digressive">Over Elaborate Digressive</mat-radio-button>
+                            <mat-radio-button value="Some Loosing of association">Some Loosing of association</mat-radio-button>
+                            <mat-radio-button value="Incoherent">Incoherent</mat-radio-button>
+                                                     
+  
+                        </mat-radio-group>
 
                     </td>
                   </tr>
@@ -736,11 +811,17 @@
                   <tr>
                     <td scope="row">Other</td>
                     <td>
-                      <label class="radio-inline"><input type="radio" value="Rhyming"  [(ngModel)]="Other"   name="Other">Rhyming</label>
-                      <label class="radio-inline"><input type="radio" value="Punning" [(ngModel)]="Other"  name="Other">Punning</label>
-                      <label class="radio-inline"><input type="radio" value="Echolalia" [(ngModel)]="Other"  name="Other">Echolalia</label> 
-                      <label class="radio-inline"><input type="radio" name="Other" [(ngModel)]="Other"  value="Preservation" >Preservation</label>
-                      <label class="radio-inline"><input type="radio" name="Other" [(ngModel)]="Other"  value="Neologism" >Neologism</label>
+                        <mat-radio-group formControlName="Other" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Rhyming">Rhyming</mat-radio-button>
+                            <mat-radio-button value="Punning">Punning</mat-radio-button>
+                            <mat-radio-button value="Echolalia">Echolalia</mat-radio-button>
+                            <mat-radio-button value="Preservation">Preservation</mat-radio-button>
+                            <mat-radio-button value="Neologism">Neologism</mat-radio-button>
+                         
+  
+                        </mat-radio-group>
                     </td>
              
                   </tr>
@@ -748,23 +829,23 @@
                   <tr>
                     <td scope="row">Provide Examples</td>
                     <td>
-                     <textarea type="text" name="" [(ngModel)]="example"  class="form-control"  id=""></textarea>
+                     <textarea type="text" name="" formControlName="example"  class="form-control"  id=""></textarea>
                     </td>
                   </tr>
-                  <td><input type="button" value="Save" (click)="addPsychomotorActivitySpeech()"   class="btn btn-primary"  ></td>
+                  <td><input type="button" value="Save" (click)="PsychomotorActivitySpeechSubmit(PsychomotorActivitySpeechForm.value)"   class="btn btn-primary"  ></td>
                 </tbody>
             </table>
           </mat-expansion-panel>
 
 
-          <mat-expansion-panel>
+          <mat-expansion-panel [formGroup]="AffectForm"  (ngSubmit)="AffectFormSubmit(AffectForm.value)" >
               <mat-expansion-panel-header>Affect</mat-expansion-panel-header>
               <table class="table table-hover table-inverse table-responsive">
                   <tbody>
                     <tr>
                       <td scope="row">Subjective</td>
                       <td>
-                       <textarea [(ngModel)]="Subjective"  class="form-control"  ></textarea>
+                       <textarea formControlName="Subjective"  class="form-control"  ></textarea>
                       
                       </td>
                
@@ -772,8 +853,8 @@
                     <tr>
                       <td scope="row">Objective</td>
                       <td>
-                          <textarea class="form-control" [(ngModel)]="Objectivetext"  ></textarea>
-                          <mat-radio-group [(ngModel)]="Objective" aria-label="Select an option">
+                          <textarea class="form-control" formControlName="Objectivetext"  ></textarea>
+                          <mat-radio-group formControlName="Objective" aria-label="Select an option">
                               <mat-radio-button value="Normal">Normal</mat-radio-button>
                               <mat-radio-button value="Depressed">Depressed</mat-radio-button>
                               <mat-radio-button value="Anxious">Anxious</mat-radio-button>
@@ -790,32 +871,53 @@
                     <tr>
                       <td scope="row">Congruence</td>
                       <td>
-                        <label class="radio-inline"><input type="radio" value="Congruent"  [(ngModel)]="Congruence"   name="Congruence">Congruent</label>
-                        <label class="radio-inline"><input type="radio" value="Incongruent" [(ngModel)]="Congruence"  name="Congruence">Incongruent</label>
-                     
+                          <mat-radio-group formControlName="Congruence" aria-label="Select an option">
+                          
+                         
+                              
+                              <mat-radio-button value="Congruent">Congruent</mat-radio-button>
+                              <mat-radio-button value="Incongruent">Incongruent</mat-radio-button>
+                           
+    
+                          </mat-radio-group>
                       </td>
                     </tr>
   
                     <tr>
                       <td scope="row">Stability</td>
                       <td>
-                        <label class="radio-inline"><input type="radio" value="Stable"  [(ngModel)]="Stability"   name="Stability">Stable</label>
-                        <label class="radio-inline"><input type="radio" value="Unstable" [(ngModel)]="Stability"  name="Stability">Unstable</label> 
+                          <mat-radio-group formControlName="Stability" aria-label="Select an option">
+                          
+                         
+                              
+                              <mat-radio-button value="Stable">Stable</mat-radio-button>
+                              <mat-radio-button value="Unstable">Unstable</mat-radio-button>
+                           
+    
+                          </mat-radio-group>
+                    
                       </td>
                     </tr>
   
                     <tr>
                       <td scope="row">Range</td>
                       <td>
-                        <label class="radio-inline"><input type="radio" value="Full Range"  [(ngModel)]="Range"   name="Range">Full Range</label>
-                        <label class="radio-inline"><input type="radio" value="Restricted towards Sadness" [(ngModel)]="Range"  name="Range">Restricted towards Sadness</label>
-                        <label class="radio-inline"><input type="radio" value="Restricted towards Elation & Constricted" [(ngModel)]="Range"  name="Range">Restricted towards Elation & Constricted</label>
+                          <mat-radio-group formControlName="Range" aria-label="Select an option">
+                          
+                         
+                              <mat-radio-button value="Full Range">Full Range</mat-radio-button>
+                              <mat-radio-button value="Restricted towards Sadness">Restricted towards Sadness</mat-radio-button>
+                              <mat-radio-button value="Restricted towards Elation & Constricted">Restricted towards Elation & Constricted</mat-radio-button>
+                      
+                           
+    
+                          </mat-radio-group>
                         
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="button" value="Save" class="btn btn-primary" (click)="addAffect()" >
+                        <input type="submit" value="Save" class="btn btn-primary" (click)="AffectFormSubmit(AffectForm.value)" >
                       </td>
                     </tr>
 
@@ -826,7 +928,7 @@
             </mat-expansion-panel>
 
 
-          <mat-expansion-panel>
+          <mat-expansion-panel [formGroup]="ThoughtContentForm"  (ngSubmit)="ThoughtContentFormSubmit(ThoughtContentForm.value)" >
           <mat-expansion-panel-header>Thought and Thought Content</mat-expansion-panel-header>
           <h2>THOUGHT</h2>
           <table class="table table-bordered table-inverse table-responsive">
@@ -834,30 +936,43 @@
                 <tr>
                   <td scope="row">Stream</td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Stream"   name="Stream">Normal</label>
-                    <label class="radio-inline"><input type="radio" value="Circumstantial" [(ngModel)]="Stream"  name="Stream">Circumstantial</label>
-                    <label class="radio-inline"><input type="radio" value="Tengential" [(ngModel)]="Stream"  name="Stream">Tengential</label> 
-                    <label class="radio-inline"><input type="radio" value="Flight of ideas"  [(ngModel)]="Stream"   name="Stream">Flight of ideas</label>
-                    <label class="radio-inline"><input type="radio" value="Abnormal" [(ngModel)]="Stream"  name="Stream">Abnormal</label>
+                      <mat-radio-group formControlName="Stream" aria-label="Select an option">
+                          
+                         
+                          <mat-radio-button value="Normal">Normal</mat-radio-button>
+                          <mat-radio-button value="Circumstantial">Circumstantial</mat-radio-button>
+                          <mat-radio-button value="Tengential">Tengential</mat-radio-button>
+                          <mat-radio-button value="Flight of ideas">Flight of ideas</mat-radio-button>
+                          <mat-radio-button value="Abnormal">Abnormal</mat-radio-button>
+                       
+
+                      </mat-radio-group>
                   </td>
                   
                 </tr>
                 <tr>
                   <td scope="row">Form</td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Adequate"  [(ngModel)]="Form"   name="Form">Adequate</label>
-                    <label class="radio-inline"><input type="radio" value="Inadequate" [(ngModel)]="Form"  name="Form">Inadequate</label>
-                    <label class="radio-inline"><input type="radio" value="Omission" [(ngModel)]="Form"  name="Form">Omission</label> 
-                    <label class="radio-inline"><input type="radio" value="Fusion"  [(ngModel)]="Form"   name="Form">Fusion</label>
-                    <label class="radio-inline"><input type="radio" value="Derailment" [(ngModel)]="Form"  name="Form">Derailment</label>
-                    <label class="radio-inline"><input type="radio" value="Substitution" [(ngModel)]="Form"  name="Form">Substitution</label>
+                      <mat-radio-group formControlName="Form" aria-label="Select an option">
+                          
+                         
+                          <mat-radio-button value="Adequate">Adequate</mat-radio-button>
+                          <mat-radio-button value="Inadequate">Inadequate</mat-radio-button>
+                          <mat-radio-button value="Omission">Omission</mat-radio-button>
+                          <mat-radio-button value="Fusion">Fusion</mat-radio-button>
+                          <mat-radio-button value="Derailment">Derailment</mat-radio-button>
+                          <mat-radio-button value="Substitution">Substitution</mat-radio-button>
+
+                       
+
+                      </mat-radio-group>
                   </td>
                   
                 </tr>
                 <tr>
                   <td>Provide Examples</td>
                   <td>
-                    <textarea [(ngModel)]="FormExample"  class="form-control"  ></textarea>
+                    <textarea formControlName="FormExample"  class="form-control"  ></textarea>
                   </td>
                 </tr>
               </tbody>
@@ -868,18 +983,24 @@
                 <tr>
                   <td></td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Idea"  [(ngModel)]="ThoughtContent"   name="ThoughtContent">Idea</label>
-                    <label class="radio-inline"><input type="radio" value="Over Valued Ideas" [(ngModel)]="ThoughtContent"  name="ThoughtContent">Over Valued Ideas</label>
-                    <label class="radio-inline"><input type="radio" value="Delusion" [(ngModel)]="ThoughtContent"  name="ThoughtContent">Delusion</label> 
-                    <label class="radio-inline"><input type="radio" value="Somatic Proccupation"  [(ngModel)]="ThoughtContent"   name="ThoughtContent">Somatic Proccupation</label>
-                    <label class="radio-inline"><input type="radio" value="Sucidal Ideation" [(ngModel)]="ThoughtContent"  name="ThoughtContent">Sucidal Ideation</label>
-                    <label class="radio-inline"><input type="radio" value="Depressive Cognition" [(ngModel)]="ThoughtContent"  name="ThoughtContent">Depressive Cognition</label>
+                      <mat-radio-group formControlName="ThoughtContent" aria-label="Select an option">
+                          
+                         
+                          <mat-radio-button value="Idea">Idea</mat-radio-button>
+                          <mat-radio-button value="Over Valued Ideas">Over Valued Ideas</mat-radio-button>
+                          <mat-radio-button value="Delusion">Delusion</mat-radio-button>
+                          <mat-radio-button value="Somatic Proccupation">Somatic Proccupation</mat-radio-button>
+                          <mat-radio-button value="Sucidal Ideation">Sucidal Ideationg</mat-radio-button>
+                          <mat-radio-button value="Depressive Cognition">Depressive Cognition</mat-radio-button>
+                       
+
+                      </mat-radio-group>
                   </td>
                 </tr>
                 <tr>
                   <td>Provide Examples</td>
                   <td>
-                    <textarea [(ngModel)]="ThoughtContentExample"  class="form-control"  ></textarea>
+                    <textarea formControlName="ThoughtContentExample"  class="form-control"  ></textarea>
                   </td>
                 </tr>
               </tbody>
@@ -888,49 +1009,75 @@
               <tbody>
                 <tr>
                   <td scope="row">
-                    <label class="radio-inline"><input type="radio" value="Worthlessness"  [(ngModel)]="First"   name="First">Worthlessness</label><br>
-                    <label class="radio-inline"><input type="radio" value="Hopelessness" [(ngModel)]="First"  name="First">Hopelessness</label><br>
-                    <label class="radio-inline"><input type="radio" value="Helpnessness" [(ngModel)]="First"  name="First">Helpnessness</label> <br>
-                    <label class="radio-inline"><input type="radio" value="Guilt"  [(ngModel)]="First"   name="First">Guilt</label><br>
-                    <label class="radio-inline"><input type="radio" value="Ill Health" [(ngModel)]="First"  name="First">Ill Health</label><br>
-                    <label class="radio-inline"><input type="radio" value="Poverty" [(ngModel)]="First"  name="First">Poverty</label>
+                      <mat-radio-group formControlName="First" aria-label="Select an option">
+                          
+                         
+                          <mat-radio-button value="Worthlessness">Worthlessness</mat-radio-button>
+                          <mat-radio-button value="Hopelessness">Helpnessness</mat-radio-button>
+                          <mat-radio-button value="Helpnessness">Helpnessness</mat-radio-button>
+                          <mat-radio-button value="Guilt">Guilt</mat-radio-button>
+                          <mat-radio-button value="Ill Health">Ill Health</mat-radio-button>
+                          <mat-radio-button value="Poverty">Poverty</mat-radio-button>
+                       
+
+                      </mat-radio-group>                  </td>
+                  <td>
+                      <mat-radio-group formControlName="Second" aria-label="Select an option">
+                          
+                         
+                          <mat-radio-button value="Nihilistic">Nihilistic</mat-radio-button>
+                          <mat-radio-button value="Hypocondrical">Hypocondrical</mat-radio-button>
+                          <mat-radio-button value="Death Wish">Brought using Physical force</mat-radio-button>
+                          <mat-radio-button value="Sucidial Ideas">Sucidial Ideas</mat-radio-button>
+                          <mat-radio-button value="Grandiose Ability and Indentity">Grandiose Ability and Indentity</mat-radio-button>
+                        
+                       
+
+                      </mat-radio-group>         
                   </td>
                   <td>
-                      <label class="radio-inline"><input type="radio" value="Nihilistic"  [(ngModel)]="Second"   name="Second">Nihilistic</label><br>
-                      <label class="radio-inline"><input type="radio" value="Hypocondrical" [(ngModel)]="Second"  name="Second">Hypocondrical</label><br>
-                      <label class="radio-inline"><input type="radio" value="Death Wish" [(ngModel)]="Second"  name="Second">Death Wish</label> <br>
-                      <label class="radio-inline"><input type="radio" value="Sucidial Ideas"  [(ngModel)]="Second"   name="Second">Sucidial Ideas</label><br>
-                      <label class="radio-inline"><input type="radio" value="Grandiose Ability and Indentity" [(ngModel)]="Second"  name="Second">Grandiose Ability and Indentity</label><br>
-         
+                      <mat-radio-group formControlName="Third" aria-label="Select an option">
+                          
+                          <mat-radio-button value="Reference">Reference</mat-radio-button>
+                          <mat-radio-button value="Control">Control</mat-radio-button>
+                          <mat-radio-button value="Influence">Influence</mat-radio-button>
+                          <mat-radio-button value="Persecution">Persecution</mat-radio-button>
+                          <mat-radio-button value="Bodily Change">Bodily Change</mat-radio-button>
+                          <mat-radio-button value="Waddling">Bizarre</mat-radio-button>
+                      </mat-radio-group>
+                     
                   </td>
                   <td>
-                      <label class="radio-inline"><input type="radio" value="Reference"  [(ngModel)]="Third"   name="Third">Reference</label><br>
-                      <label class="radio-inline"><input type="radio" value="Control" [(ngModel)]="Third"  name="Third">Control</label><br>
-                      <label class="radio-inline"><input type="radio" value="Influence" [(ngModel)]="Third"  name="Third">Influence</label> <br>
-                      <label class="radio-inline"><input type="radio" value="Persecution"  [(ngModel)]="Third"   name="Third">Persecution</label><br>
-                      <label class="radio-inline"><input type="radio" value="Bodily Change" [(ngModel)]="Third"  name="Third">Bodily Change</label><br>
-                      <label class="radio-inline"><input type="radio" value="Bizarre" [(ngModel)]="Third"  name="Third">Bizarre</label>
-                      <label class="radio-inline"><input type="radio" value="Bizarre" [(ngModel)]="Third"  name="Third">Bizarre</label>
+                      <mat-radio-group formControlName="Fourth" aria-label="Select an option">
+                          
+                         
+                          <mat-radio-button value="Fentastic Delusion">Fentastic Delusion</mat-radio-button>
+                          <mat-radio-button value="Delusional Memory">Delusional Memory</mat-radio-button>
+                          <mat-radio-button value="Delusional Confabulation">Delusional Confabulation</mat-radio-button>
+                       
+
+                      </mat-radio-group>
                   </td>
                   <td>
-                      <label class="radio-inline"><input type="radio" value="Fentastic Delusion"  [(ngModel)]="Fourth"   name="Fourth">Fentastic Delusion</label><br>
-                      <label class="radio-inline"><input type="radio" value="Delusional Memory" [(ngModel)]="Fourth"  name="Fourth">Delusional Memory</label><br>
-                      <label class="radio-inline"><input type="radio" value="Delusional Confabulation" [(ngModel)]="Fourth"  name="Fourth">Delusional Confabulation</label> <br>
-                  </td>
-                  <td>
-                      <label class="radio-inline"><input type="radio" value="Single"  [(ngModel)]="Fifth"   name="Fifth">Single</label><br>
-                      <label class="radio-inline"><input type="radio" value="Multiple" [(ngModel)]="Fifth"  name="Fifth">Multiple</label><br>
-                      <label class="radio-inline"><input type="radio" value="Simple" [(ngModel)]="Fifth"  name="Fifth">Simple</label> <br>
-                      <label class="radio-inline"><input type="radio" value="Elaborate"  [(ngModel)]="Fifth"   name="Fifth">Elaborate</label><br>
-                      <label class="radio-inline"><input type="radio" value="Systematized" [(ngModel)]="Fifth"  name="Fifth">Systematized</label><br>
-                      <label class="radio-inline"><input type="radio" value="Non-Systematized" [(ngModel)]="Fifth"  name="Fifth">Non-Systematized</label><br>
-                      <label class="radio-inline"><input type="radio" value="Mood Congruent" [(ngModel)]="Fifth"  name="Fifth">Mood Congruent</label><br>
-                      <label class="radio-inline"><input type="radio" value="Incongruent"  [(ngModel)]="Fifth"   name="Fifth">Incongruent</label><br>
-                      <label class="radio-inline"><input type="radio" value="Degree of Distress" [(ngModel)]="Fifth"  name="Fifth">Degree of Distress</label><br>
-                      <label class="radio-inline"><input type="radio" value="Interference With Work" [(ngModel)]="Fifth"  name="Fifth">Interference With Work</label> <br>
-                      <label class="radio-inline"><input type="radio" value="Reaction to Phenomenon"  [(ngModel)]="Fifth"   name="Fifth">Reaction to Phenomenon</label><br>
-                      <label class="radio-inline"><input type="radio" value="Primary Delusion" [(ngModel)]="Fifth"  name="Fifth">Primary Delusion</label> <br>
-                      <label class="radio-inline"><input type="radio" value="Secondry Delusion"  [(ngModel)]="Fifth"   name="Fifth">Secondry Delusion</label><br>
+                      <mat-radio-group formControlName="Fifth" aria-label="Select an option">
+                          
+                         
+                          <mat-radio-button value="Single">Single</mat-radio-button>
+                          <mat-radio-button value="Multiple">Multiple</mat-radio-button>
+                          <mat-radio-button value="Simple">Simple</mat-radio-button>
+                          <mat-radio-button value="Elaborate">Elaborate</mat-radio-button>
+                          <mat-radio-button value="Systematized">Systematized</mat-radio-button>
+                          <mat-radio-button value="Non-Systematized">Non-Systematized</mat-radio-button>
+                          <mat-radio-button value="Mood Congruent">Mood Congruent</mat-radio-button>
+                          <mat-radio-button value="Incongruent">Incongruent</mat-radio-button>
+                          <mat-radio-button value="Degree of Distress">Degree of Distress</mat-radio-button>
+                          <mat-radio-button value="Interference With Work">Interference With Work</mat-radio-button>
+                          <mat-radio-button value="Reaction to Phenomenon">Reaction to Phenomenon</mat-radio-button>
+                          <mat-radio-button value="Primary Delusion">Primary Delusion</mat-radio-button>
+                          <mat-radio-button value="Secondry Delusion">Secondry Delusion</mat-radio-button>
+                       
+
+                      </mat-radio-group>
                      
                   </td>
                 </tr>
@@ -938,12 +1085,12 @@
                  
                   <td>Provide Examples</td>
                   <td>
-                      <textarea [(ngModel)]="ThoughtContentExample2"  class="form-control"  ></textarea>
+                      <textarea formControlName ="ThoughtContentExample2"  class="form-control"  ></textarea>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input type="button" value="Save" class="btn btn-primary"  (click)="addThoughtContent()" >
+                    <input type="button" value="Save" class="btn btn-primary"  (click)="ThoughtContentFormSubmit(ThoughtContentForm.value)" >
                   </td>
                 </tr>
               </tbody>
@@ -951,7 +1098,7 @@
           </mat-expansion-panel>
 
 
-          <mat-expansion-panel>
+          <mat-expansion-panel  [formGroup]="PossessionForm"  (ngSubmit)="PossessionFormSubmit(PossessionForm.value)" >
           <mat-expansion-panel-header>Possession</mat-expansion-panel-header>
           <h2>Obsessive Compulsive Phenomenon</h2>
           <table class="table table-inverse table-inverse table-responsive">
@@ -959,27 +1106,41 @@
                 <tr>
                   <td scope="row">Obsession</td>
                   <td>
-                      <label class="radio-inline"><input type="radio" value="Thought"  [(ngModel)]="Obsession"   name="Obsession">Thought</label>
-                      <label class="radio-inline"><input type="radio" value="Doubt" [(ngModel)]="Obsession"  name="Obsession">Doubt</label>
-                      <label class="radio-inline"><input type="radio" value="Impluse" [(ngModel)]="Obsession"  name="Obsession">Impluse</label> 
-                      <label class="radio-inline"><input type="radio" value="Image"  [(ngModel)]="Obsession"   name="Obsession">Image</label>
-                      <label class="radio-inline"><input type="radio" value="Rumination" [(ngModel)]="Obsession"  name="Obsession">Rumination</label>
+                      <mat-radio-group formControlName="Obsession" aria-label="Select an option">
+                          
+                         
+                          <mat-radio-button value="Thought">Thought</mat-radio-button>
+                          <mat-radio-button value="Doubt">Doubt</mat-radio-button>
+                          <mat-radio-button value="Impluse Stepping">Impluse Stepping</mat-radio-button>
+                          <mat-radio-button value="Image">Image</mat-radio-button>
+                          <mat-radio-button value="Rumination">Rumination</mat-radio-button>
+                       
+
+                      </mat-radio-group>
+                     
                   </td>
                   
                 </tr>
                 <tr>
                     <td scope="row">Compulsion</td>
                     <td>
-                        <label class="radio-inline"><input type="radio" value="Yielding"  [(ngModel)]="Complusion"   name="Complusion">Yielding</label>
-                        <label class="radio-inline"><input type="radio" value="Controlling" [(ngModel)]="Complusion"  name="Complusion">Controlling</label>
-                        <label class="radio-inline"><input type="radio" value="Cognitive Compulsion" [(ngModel)]="Complusion"  name="Complusion">Cognitive Compulsion</label>
+                        <mat-radio-group formControlName="Complusion" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Yielding">Yielding</mat-radio-button>
+                            <mat-radio-button value="Controlling">Controlling</mat-radio-button>
+                            <mat-radio-button value="Cognitive Compulsion">Cognitive Compulsion</mat-radio-button>
+                            
+                         
+  
+                        </mat-radio-group>
                     </td>
                     
                   </tr>
                <tr>
                  <td>Provide Examples</td>
                  <td>
-                    <textarea [(ngModel)]="ObsessiveCompulsive" class="form-control"  ></textarea>
+                    <textarea formControlName="ObsessiveCompulsive" class="form-control"  ></textarea>
                  </td>
                </tr>
               </tbody>
@@ -990,10 +1151,16 @@
                 <tr>
                   <td scope="row">Thought Alienation Phenomenon</td>
                   <td>
-                      <label class="radio-inline"><input type="radio" value="Thought Insertion"  [(ngModel)]="ThoughtAlienationPhenomenon"   name="ThoughtAlienationPhenomenon">Thought Insertion</label>
-                      <label class="radio-inline"><input type="radio" value="Withdrawal" [(ngModel)]="ThoughtAlienationPhenomenon"  name="ThoughtAlienationPhenomenon">Withdrawal</label>
-                      <label class="radio-inline"><input type="radio" value="Thought Broadcast" [(ngModel)]="ThoughtAlienationPhenomenon"  name="ThoughtAlienationPhenomenon">Thought Broadcast</label> 
-                      <label class="radio-inline"><input type="radio" value="Thought Commentry"  [(ngModel)]="ThoughtAlienationPhenomenon"   name="ThoughtAlienationPhenomenon">Thought Commentry</label>
+                      <mat-radio-group formControlName="ThoughtAlienationPhenomenon" aria-label="Select an option">
+                          
+                         
+                          <mat-radio-button value="Thought Insertion">Thought Insertion</mat-radio-button>
+                          <mat-radio-button value="Withdrawal">Withdrawal</mat-radio-button>
+                          <mat-radio-button value="Thought Broadcast">Thought Broadcast</mat-radio-button>
+                          <mat-radio-button value="Thought Commentry">Thought Commentry</mat-radio-button>
+                       
+
+                      </mat-radio-group>
                       
                   </td>
                   
@@ -1002,12 +1169,12 @@
                <tr>
                  <td>Provide Examples</td>
                  <td>
-                    <textarea [(ngModel)]="ThoughtAlienationPhenomenonExample" class="form-control"  ></textarea>
+                    <textarea formControlName="ThoughtAlienationPhenomenonExample" class="form-control"  ></textarea>
                  </td>
                </tr>
                <tr>
                  <td>
-                   <input type="button" value="Save" (click)="addPossession()" class="btn btn-primary"  >
+                   <input type="button" value="Save" (click)="PossessionFormSubmit(PossessionForm.value)" class="btn btn-primary"  >
                  </td>
                </tr>
               </tbody>
@@ -1015,7 +1182,7 @@
           </mat-expansion-panel>
 
           
-          <mat-expansion-panel>
+          <mat-expansion-panel  [formGroup]="PerceptionForm"  (ngSubmit)="PerceptionFormSubmit(PerceptionForm.value)" >
             <mat-expansion-panel-header>Perception</mat-expansion-panel-header>
             <h2></h2>
             <table class="table table-inverse table-inverse table-responsive">
@@ -1023,39 +1190,59 @@
                   <tr>
                     
                     <td>
-                        <label class="radio-inline"><input type="radio" value="Hallucination"  [(ngModel)]="Perception1"   name="Perception1">Hallucination</label>
-                        <label class="radio-inline"><input type="radio" value="Pseudo Hallucination/Illusion" [(ngModel)]="Perception1"  name="Perception1">Pseudo Hallucination/Illusion</label>
+                        <mat-radio-group formControlName="Perception1" aria-label="Select an option">
+                          
+                         
+                            <mat-radio-button value="Hallucination">Hallucination</mat-radio-button>
+                            <mat-radio-button value="Pseudo Hallucination/Illusion">Pseudo Hallucination/Illusion</mat-radio-button>
+                            
+                         
+  
+                        </mat-radio-group>
                     </td>
                     
                   </tr>
                   <tr>
                      
                       <td>
-                          <label class="radio-inline"><input type="radio" value="Auditory"  [(ngModel)]="Perception2"   name="Perception2">Auditory</label>
-                          <label class="radio-inline"><input type="radio" value="Visual" [(ngModel)]="Perception2"  name="Perception2">Visual</label>
-                          <label class="radio-inline"><input type="radio" value="Olfactory" [(ngModel)]="Perception2"  name="Perception2">Olfactory</label>
-                          <label class="radio-inline"><input type="radio" value="Gustatory"  [(ngModel)]="Perception2"   name="Perception2">Gustatory</label>
-                          <label class="radio-inline"><input type="radio" value="Tactile" [(ngModel)]="Perception2"  name="Perception2">Tactile</label>
-                          <label class="radio-inline"><input type="radio" value="Somatic" [(ngModel)]="Perception2"  name="Perception2">Somatic</label>
+                          <mat-radio-group formControlName="Perception2" aria-label="Select an option">
+                          
+                         
+                              <mat-radio-button value="Auditory">Auditory</mat-radio-button>
+                              <mat-radio-button value="Visual">Visual</mat-radio-button>
+                              <mat-radio-button value="Olfactory">Olfactory</mat-radio-button>
+                              <mat-radio-button value="Gustatory">Gustatory</mat-radio-button>
+                              <mat-radio-button value="Tactile">Tactile</mat-radio-button>
+                              <mat-radio-button value="Somatic">Somatic</mat-radio-button>
+                           
+    
+                          </mat-radio-group>
                       </td>
                       
                     </tr>
                  <tr>
                    
                    <td>
-                    <label class="radio-inline"><input type="radio" value="Depersonalization"  [(ngModel)]="Perception3"   name="Perception3">Depersonalization</label>
-                    <label class="radio-inline"><input type="radio" value="Derelization" [(ngModel)]="Perception3"  name="Perception3">Derelization</label>
-                    <label class="radio-inline"><input type="radio" value="Illusion" [(ngModel)]="Perception3"  name="Perception3">Illusion</label>
+                   
+                      <mat-radio-group formControlName="Perception3" aria-label="Select an option">
+                          
+                         
+                          <mat-radio-button value="Depersonalization">Depersonalization</mat-radio-button>
+                          <mat-radio-button value="Derelization">Derelization</mat-radio-button>
+                          <mat-radio-button value="Illusion">Illusion</mat-radio-button>
+                       
+
+                      </mat-radio-group>
                    </td>
                  </tr>
                  <tr>
                    <td>
-                     <textarea [(ngModel)]="PerceptionExample" class="form-control" placeholder="provide exampless"  ></textarea>
+                     <textarea formControlName="PerceptionExample" class="form-control" placeholder="provide exampless"  ></textarea>
                    </td>
                  </tr>
                  <tr>
                    <td>
-                    <input type="button" value="Save" (click)="addPerception()" class="btn btn-primary"  >
+                    <input type="button" value="Save" (click)="PerceptionFormSubmit(PerceptionForm.value)" class="btn btn-primary"  >
                    </td>
                  </tr>
 
@@ -1065,7 +1252,7 @@
             </mat-expansion-panel>
 
 
-            <mat-expansion-panel>
+            <mat-expansion-panel   [formGroup]="CognitiveFunctionForm"  (ngSubmit)="CognitiveFunctionFormSubmit(CognitiveFunctionForm.value)" >
               <mat-expansion-panel-header>Cognitive Function</mat-expansion-panel-header>
               <h2>Conscious Level</h2>
               <table class="table table-inverse table-inverse table-responsive">
@@ -1073,10 +1260,15 @@
                     <tr>
                       <td>Conscious Level</td>
                       <td>
-                          <label class="radio-inline"><input type="radio" value="Conscious"  [(ngModel)]="ConsciousLevel"   name="ConsciousLevel">Conscious</label>
-                          <label class="radio-inline"><input type="radio" value="Drowsy" [(ngModel)]="ConsciousLevel"  name="ConsciousLevel">Drowsy</label>
-                          <label class="radio-inline"><input type="radio" value="Stupor"  [(ngModel)]="ConsciousLevel"   name="ConsciousLevel">Stupor</label>
-                          <label class="radio-inline"><input type="radio" value="Unconscious" [(ngModel)]="ConsciousLevel"  name="ConsciousLevel">Unconscious</label>
+                          <mat-radio-group formControlName="ConsciousLevel" aria-label="Select an option">
+                          
+                         
+                              <mat-radio-button value="Conscious">Conscious</mat-radio-button>
+                              <mat-radio-button value="Drowsy">Drowsy</mat-radio-button>
+                              <mat-radio-button value="Stupor">Stupor</mat-radio-button>
+                              <mat-radio-button value="Unconscious">Unconscious</mat-radio-button>
+    
+                          </mat-radio-group>
                       </td>
                       
                     </tr>
@@ -1087,12 +1279,18 @@
                   <tbody>
                     <tr>
                       <td>Digit Forward
-                        <input type="text" name=""  [(ngModel)]="AttentionDigitForward" class="form-control" id="">
+                        <input type="text" name=""  formControlName="AttentionDigitForward" class="form-control" id="">
                       </td>
                       <td>
-                          <label class="radio-inline"><input type="radio" value="Aroused Easily"  [(ngModel)]="Attention"   name="Attention">Aroused Easily</label>
-                          <label class="radio-inline"><input type="radio" value="Aroused with Difficulty" [(ngModel)]="Attention"  name="Attention">Aroused with Difficulty</label>
-                          <label class="radio-inline"><input type="radio" value="Not Aroused"  [(ngModel)]="Attention"   name="Attention">Not Aroused</label>
+                          <mat-radio-group formControlName="Attention" aria-label="Select an option">
+                                                            
+                                                          
+                              <mat-radio-button value="Aroused Easily">Aroused Easily</mat-radio-button>
+                              <mat-radio-button value="Aroused with Difficulty">Aroused with Difficulty</mat-radio-button>
+                              <mat-radio-button value="Not Aroused">Not Aroused</mat-radio-button>
+                          
+
+                          </mat-radio-group>
                          
                       </td>
                       
@@ -1100,7 +1298,7 @@
                     <tr>
                       <td>
                         Digit Backward
-                        <input type="text" [(ngModel)]="AttentionDigitBackward"  name="" class="form-control" id="">
+                        <input type="text" formControlName="AttentionDigitBackward"  name="" class="form-control" id="">
                       </td>
                     </tr>
                   </tbody>
@@ -1110,12 +1308,18 @@
                   <tbody>
                     <tr>
                       <td>Serial Substraction(100-7/40-3/20-1)
-                        <input type="text" name=""  [(ngModel)]="ConcentrationSerialSubstraction" class="form-control" id="">
+                        <input   formControlName="ConcentrationSerialSubstraction" class="form-control" id="">
                       </td>
                       <td>
-                          <label class="radio-inline"><input type="radio" value="Sustained Easily"  [(ngModel)]="Concentration"   name="Concentration">Sustained Easily</label>
-                          <label class="radio-inline"><input type="radio" value="Sustained with Difficulty" [(ngModel)]="Concentration"  name="Concentration">Sustained with Difficulty</label>
-                          <label class="radio-inline"><input type="radio" value="Not Sustained"  [(ngModel)]="Concentration"   name="Concentration">Not Sustained</label>
+                          <mat-radio-group formControlName="Concentration" aria-label="Select an option">
+                                                            
+                                                          
+                              <mat-radio-button value="Sustained Easily">Sustained Easily</mat-radio-button>
+                              <mat-radio-button value="Sustained with Difficulty">Sustained with Difficulty</mat-radio-button>
+                              <mat-radio-button value="Not Sustained">Not Sustained</mat-radio-button>
+                          
+
+                          </mat-radio-group>
                          
                       </td>
                       </tr>
@@ -1129,17 +1333,30 @@
                       <td>Time
                       </td>
                       <td>
-                          <label class="radio-inline"><input type="radio" value="Approximate Time"  [(ngModel)]="OrientationTime"   name="OrientationTime">Approximate Time</label>
-                          <label class="radio-inline"><input type="radio" value="Day-Night" [(ngModel)]="OrientationTime"  name="OrientationTime">Day-Night</label>
-                          <label class="radio-inline"><input type="radio" value="Date"  [(ngModel)]="OrientationTime"   name="OrientationTime">Date</label>
-                          <label class="radio-inline"><input type="radio" value="Day"  [(ngModel)]="OrientationTime"   name="OrientationTime">Day</label>
-                          <label class="radio-inline"><input type="radio" value="Month" [(ngModel)]="OrientationTime"  name="OrientationTime">Month</label>
-                          <label class="radio-inline"><input type="radio" value="Year"  [(ngModel)]="OrientationTime"   name="OrientationTime">Year</label>
+                          <mat-radio-group formControlName="OrientationTime" aria-label="Select an option">
+                                                            
+                                                          
+                              <mat-radio-button value="Approximate Time">Approximate Time</mat-radio-button>
+                              <mat-radio-button value="Day-Night">Day-Night</mat-radio-button>
+                              <mat-radio-button value="Date">Date</mat-radio-button>
+                              <mat-radio-button value="Day">Day</mat-radio-button>
+                              <mat-radio-button value="Month">Month</mat-radio-button>
+                              <mat-radio-button value="Year">Year</mat-radio-button>
+                              
+                          
+
+                          </mat-radio-group>
                          
                       </td>
                       <td>
-                        <label class="radio-inline"><input type="radio" value="Oriented"  [(ngModel)]="OrientationTimeCheck"   name="OrientationTimeCheck">Oriented</label>
-                        <label class="radio-inline"><input type="radio" value="Disoriented" [(ngModel)]="OrientationTimeCheck"  name="OrientationTimeCheck">Disoriented</label>
+                          <mat-radio-group formControlName="OrientationTimeCheck" aria-label="Select an option">
+                                                            
+                                                          
+                            
+                              <mat-radio-button value="Oriented">Oriented</mat-radio-button>
+                              <mat-radio-button value="Disoriented">Disoriented</mat-radio-button>
+
+                            </mat-radio-group>
                       </td>
                       </tr>
 
@@ -1147,14 +1364,25 @@
                         <td>Place
                         </td>
                         <td>
-                            <label class="radio-inline"><input type="radio" value="Kind of Place"  [(ngModel)]="OrientationPlace"   name="OrientationPlace">Kind of Place</label>
-                            <label class="radio-inline"><input type="radio" value="Area" [(ngModel)]="OrientationPlace"  name="OrientationPlace">Area</label>
-                            <label class="radio-inline"><input type="radio" value="City"  [(ngModel)]="OrientationPlace"   name="OrientationPlace">City</label>
+                            <mat-radio-group formControlName="OrientationPlace" aria-label="Select an option">
+                                                            
+                                                          
+                            
+                                <mat-radio-button value="Kind of Place">Kind of Place</mat-radio-button>
+                                <mat-radio-button value="Area">Area</mat-radio-button>
+                                <mat-radio-button value="City">City</mat-radio-button>
+                              </mat-radio-group>
                            
                         </td>
                         <td>
-                          <label class="radio-inline"><input type="radio" value="Oriented"  [(ngModel)]="OrientationPlaceCheck"   name="OrientationPlaceCheck">Oriented</label>
-                          <label class="radio-inline"><input type="radio" value="Disoriented" [(ngModel)]="OrientationPlaceCheck"  name="OrientationPlaceCheck">Disoriented</label>
+                            <mat-radio-group formControlName="OrientationPlaceCheck" aria-label="Select an option">
+                                                            
+                                                          
+                            
+                               
+                                <mat-radio-button value="Oriented">Oriented</mat-radio-button>
+                                <mat-radio-button value="Disoriented">Disoriented</mat-radio-button>
+                              </mat-radio-group>
                         </td>
                         </tr>
 
@@ -1162,14 +1390,27 @@
                           <td>Person
                           </td>
                           <td>
-                              <label class="radio-inline"><input type="radio" value="Self"  [(ngModel)]="OrientationPerson"   name="OrientationPerson">Self</label>
-                              <label class="radio-inline"><input type="radio" value="Close Associates" [(ngModel)]="OrientationPerson"  name="OrientationPerson">Close Associates</label>
-                              <label class="radio-inline"><input type="radio" value="Other Staf"  [(ngModel)]="OrientationPerson"   name="OrientationPerson">Other Staf</label>
+                              <mat-radio-group formControlName="OrientationPerson" aria-label="Select an option">
+                                                            
+                                                          
+                            
+                               
+                                  <mat-radio-button value="Self">Self</mat-radio-button>
+                                  <mat-radio-button value="Close Associates">Close Associates</mat-radio-button>
+                                  <mat-radio-button value="Other Staf">Other Staf</mat-radio-button>
+                                </mat-radio-group>
+                            
                              
                           </td>
                           <td>
-                            <label class="radio-inline"><input type="radio" value="Oriented"  [(ngModel)]="OrientationPersonCheck"   name="OrientationPersonCheck">Oriented</label>
-                            <label class="radio-inline"><input type="radio" value="Disoriented" [(ngModel)]="OrientationPersonCheck"  name="OrientationPersonCheck">Disoriented</label>
+                              <mat-radio-group formControlName="OrientationPersonCheck" aria-label="Select an option">
+                                                            
+                                                          
+                            
+                               
+                                  <mat-radio-button value="Oriented">Oriented</mat-radio-button>
+                                  <mat-radio-button value="Disoriented">Disoriented</mat-radio-button>
+                                </mat-radio-group>
                           </td>
                           </tr>
                   
@@ -1180,7 +1421,7 @@
                   <tbody>
                     <tr>
                       <td>Immediate
-                        <input type="text" name=""  [(ngModel)]="Memory" class="form-control" id="" placeholder="Immediate Memory" >
+                        <input   formControlName="Memory" class="form-control" id="" placeholder="Immediate Memory" >
                       </td>
                     
                       </tr>
@@ -1200,15 +1441,15 @@
                     <tr>
                       <td scope="row">3 Unrelated Objects</td>
                       <td>
-                        <textarea [(ngModel)]="RecentVerbalRecall3ObjAfter5Minut" class="form-control" placeholder="3 Unrelated Objects Verbal Recall after 5 Minutes Memory" ></textarea>
+                        <textarea formControlName="RecentVerbalRecall3ObjAfter5Minut" class="form-control" placeholder="3 Unrelated Objects Verbal Recall after 5 Minutes Memory" ></textarea>
                       </td>
-                      <td><textarea [(ngModel)]="RecentVerbalRecall3ObjAfter10Minut" class="form-control"  placeholder="3 Unrelated Objects Verbal Recall after 10 Minutes Memory" ></textarea></td>
+                      <td><textarea formControlName="RecentVerbalRecall3ObjAfter10Minut" class="form-control"  placeholder="3 Unrelated Objects Verbal Recall after 10 Minutes Memory" ></textarea></td>
                     </tr>
                     <tr>
                       <td scope="row">5 Unrelated Objects</td>
-                      <td><textarea [(ngModel)]="RecentVerbalRecall5ObjAfter5Minut" class="form-control"  placeholder="5 Unrelated Objects Verbal Recall after 5 Minutes Memory" ></textarea></td>
+                      <td><textarea formControlName="RecentVerbalRecall5ObjAfter5Minut" class="form-control"  placeholder="5 Unrelated Objects Verbal Recall after 5 Minutes Memory" ></textarea></td>
                       <td>
-                        <textarea [(ngModel)]="RecentVerbalRecall5ObjAfter10Minut" class="form-control"  placeholder="5 Unrelated Objects Verbal Recall after 10 Minutes Memory" ></textarea>
+                        <textarea formControlName="RecentVerbalRecall5ObjAfter10Minut" class="form-control"  placeholder="5 Unrelated Objects Verbal Recall after 10 Minutes Memory" ></textarea>
                       </td>
                     </tr>
                   </tbody>
@@ -1227,9 +1468,9 @@
                     <tr>
                       
                       <td>
-                        <textarea [(ngModel)]="RecentVisualRecallAfter5Minut" class="form-control" placeholder="Recent Visual Recall after 5 Minutes Memory" ></textarea>
+                        <textarea formControlName="RecentVisualRecallAfter5Minut" class="form-control" placeholder="Recent Visual Recall after 5 Minutes Memory" ></textarea>
                       </td>
-                      <td><textarea [(ngModel)]="RecentVisualRecallAfter10Minut" class="form-control"  placeholder="Recent Visual Recall after 10 Minutes Memory" ></textarea></td>
+                      <td><textarea formControlName="RecentVisualRecallAfter10Minut" class="form-control"  placeholder="Recent Visual Recall after 10 Minutes Memory" ></textarea></td>
                     </tr>
                    
                   </tbody>
@@ -1240,27 +1481,27 @@
                     <tr>
                       <td scope="row">Personal Events</td>
                       <td>
-                        <textarea [(ngModel)]="RemotePersonalEvents" class="form-control" placeholder="Remote Personal Events Memory" ></textarea>
+                        <textarea formControlName="RemotePersonalEvents" class="form-control" placeholder="Remote Personal Events Memory" ></textarea>
                       </td>
                       
                     </tr>
                     <tr>
                       <td scope="row">Impersonal Events</td>
                       <td>
-                        <textarea [(ngModel)]="RemoteImPersonalEvents" class="form-control" placeholder="Remote Impersonal Events Memory" ></textarea>
+                        <textarea formControlName="RemoteImPersonalEvents" class="form-control" placeholder="Remote Impersonal Events Memory" ></textarea>
                       </td>
                       
                     </tr>
                     <tr>
                       <td scope="row">Illness Related Events</td>
                       <td>
-                        <textarea [(ngModel)]="RemoteIllnessRelatedEvents" class="form-control" placeholder="Illness Related Events Memory" ></textarea>
+                        <textarea formControlName="RemoteIllnessRelatedEvents" class="form-control" placeholder="Illness Related Events Memory" ></textarea>
                       </td>
                       
                     </tr>
                     <tr>
                       <td>
-                        <input type="button" value="Save" (click)="addCognitiveFunction()" class="btn btn-primary"  >
+                        <input type="button" value="Save" (click)="CognitiveFunctionFormSubmit(CognitiveFunctionForm.value)" class="btn btn-primary"  >
                       </td>
                     </tr>
                   </tbody>
@@ -1269,70 +1510,133 @@
               </mat-expansion-panel>
 
 
-          <mat-expansion-panel>
+          <mat-expansion-panel  [formGroup]="IntelligenceForm"  (ngSubmit)="IntelligenceFormSubmit(IntelligenceForm.value)" >
           <mat-expansion-panel-header>Intelligence</mat-expansion-panel-header>
           <table class="table table-hover table-inverse">
               <tbody>
                 <tr>
                   <td scope="row">Comprehension</td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Simple Commands"  [(ngModel)]="IntelligenceComprehension"   name="IntelligenceComprehension">Simple Commands</label>
-                    <label class="radio-inline"><input type="radio" value="Complex Commands" [(ngModel)]="IntelligenceComprehension"  name="IntelligenceComprehension">Complex Commands</label>
+                      <mat-radio-group formControlName="IntelligenceComprehension" aria-label="Select an option">
+                                                      
+                                                    
+                          <mat-radio-button value="Simple Commands">Simple Commands</mat-radio-button>
+                          <mat-radio-button value="Complex Commands">Complex Commands</mat-radio-button>
+                     
+                      
+
+                      </mat-radio-group>
                    
                   </td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="IntelligenceComprehensionCheck"   name="IntelligenceComprehensionCheck">Intact</label>
-                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="IntelligenceComprehensionCheck"  name="IntelligenceComprehensionCheck">Impaired</label>
+                      <mat-radio-group formControlName="IntelligenceComprehensionCheck" aria-label="Select an option">
+                                                      
+                                                    
+                          <mat-radio-button value="Intact">Impaired</mat-radio-button>
+                          <mat-radio-button value="Impaired">Impaired</mat-radio-button>
+                     
+                      
+
+                      </mat-radio-group>
                   </td>
                 </tr>
 
                 <tr>
                   <td scope="row">Vocabulary</td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Common Object"  [(ngModel)]="IntelligenceVocabulary"   name="IntelligenceVocabulary">Common Object</label>
-                    <label class="radio-inline"><input type="radio" value="Uncommon Object" [(ngModel)]="IntelligenceVocabulary"  name="IntelligenceVocabulary">Uncommon Object</label>
-                    <label class="radio-inline"><input type="radio" value="Part of Object" [(ngModel)]="IntelligenceVocabulary"  name="IntelligenceVocabulary">Part of Object</label>
+                      <mat-radio-group formControlName="IntelligenceVocabulary" aria-label="Select an option">
+                                                      
+                                                    
+                          <mat-radio-button value="Common Object">Impaired</mat-radio-button>
+                          <mat-radio-button value="Uncommon Object">Uncommon Object</mat-radio-button>
+                          <mat-radio-button value="Part of Object">Part of Object</mat-radio-button>
+                     
+                      
+
+                      </mat-radio-group>
                    
                   </td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Intact"  [(ngModel)]="IntelligenceVocabularyCheck"   name="IntelligenceVocabularyCheck">Intact</label>
-                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="IntelligenceVocabularyCheck"  name="IntelligenceVocabularyCheck">Impaired</label>
+                      <mat-radio-group formControlName="IntelligenceVocabularyCheck" aria-label="Select an option">
+                                                      
+                                                    
+                          <mat-radio-button value="Intact">Impaired</mat-radio-button>
+                          <mat-radio-button value="Impaired">Impaired</mat-radio-button>
+                     
+                      
+
+                      </mat-radio-group>
                   </td>
                 </tr>
 
                 <tr>
                   <td scope="row">General Fund of Information</td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Name of the President of India"  [(ngModel)]="GeneralFundofInformation"   name="GeneralFundofInformation">Name of the President of India</label>
-                    <label class="radio-inline"><input type="radio" value="Currunt Affairs" [(ngModel)]="GeneralFundofInformation"  name="GeneralFundofInformation">Currunt Affairs</label>
-                    <label class="radio-inline"><input type="radio" value="Name of the Common State Capital" [(ngModel)]="GeneralFundofInformation"  name="GeneralFundofInformation">Name of the Common State Capital</label>
+                      <mat-radio-group formControlName="GeneralFundofInformation" aria-label="Select an option">
+                                                      
+                                                    
+                          <mat-radio-button value="Name of the President of India">Name of the President of India</mat-radio-button>
+                          <mat-radio-button value="Currunt Affairs">Currunt Affairs</mat-radio-button>
+                          <mat-radio-button value="Name of the Common State Capital">Name of the Common State Capital</mat-radio-button>
+                     
+                      
+
+                      </mat-radio-group>
                    
                   </td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="GeneralFundofInformationCheck"   name="GeneralFundofInformationCheck">Normal</label>
-                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="GeneralFundofInformationCheck"  name="GeneralFundofInformationCheck">Impaired</label>
+                      <mat-radio-group formControlName="GeneralFundofInformationCheck" aria-label="Select an option">
+                                                      
+                                                    
+                          <mat-radio-button value="Intact">Normal</mat-radio-button>
+                          <mat-radio-button value="Impaired">Impaired</mat-radio-button>
+                     
+                      
+
+                      </mat-radio-group>
                   </td>
                 </tr>
 
                 <tr>
                   <td scope="row">Arithmetic Ability</td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Mental Arithmetic"  [(ngModel)]="ArithmeticAbility"   name="ArithmeticAbility">Mental Arithmetic</label>
-                    <label class="radio-inline"><input type="radio" value="Written Sums" [(ngModel)]="ArithmeticAbility"  name="ArithmeticAbility">Written Sums</label>
+                      <mat-radio-group formControlName="ArithmeticAbility" aria-label="Select an option">
+                                                      
+                                                    
+                          <mat-radio-button value="Mental Arithmetic">Mental Arithmetic</mat-radio-button>
+                          <mat-radio-button value="Written Sums">Written Sums</mat-radio-button>
+                     
+                      
+
+                      </mat-radio-group>
                    
                   </td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="ArithmeticAbilityCheck"   name="ArithmeticAbilityCheck">Normal</label>
-                    <label class="radio-inline"><input type="radio" value="Impaired" [(ngModel)]="ArithmeticAbilityCheck"  name="ArithmeticAbilityCheck">Impaired</label>
+                      <mat-radio-group formControlName="ArithmeticAbilityCheck" aria-label="Select an option">
+                                                      
+                                                    
+                          <mat-radio-button value="Normal">Normal</mat-radio-button>
+                          <mat-radio-button value="Impaired">Impaired</mat-radio-button>
+                     
+                      
+
+                      </mat-radio-group>
                   </td>
                 </tr>
                 <tr>
                   <td scope="row">Abstraction</td>
                   <td>
-                    <label class="radio-inline"><input type="radio" value="Normal"  [(ngModel)]="Abstraction"   name="Abstraction">Normal</label>
-                    <label class="radio-inline"><input type="radio" value="Concrete" [(ngModel)]="Abstraction"  name="Abstraction">Concrete</label>
-                    <label class="radio-inline"><input type="radio" value="Mental Arithmetic"  [(ngModel)]="Abstraction"   name="Abstraction">Mental Arithmetic</label>
-                    <label class="radio-inline"><input type="radio" value="Written Sums" [(ngModel)]="Abstraction"  name="Abstraction">Written Sums</label>
+                      <mat-radio-group formControlName="Abstraction" aria-label="Select an option">
+                                                      
+                                                    
+                          <mat-radio-button value="Intact">Intact</mat-radio-button>
+                          <mat-radio-button value="Concrete">Impaired</mat-radio-button>
+                          <mat-radio-button value="Mental Arithmetic">Mental Arithmetic</mat-radio-button>
+                          <mat-radio-button value="Written Sums">Written Sums</mat-radio-button>
+                     
+                      
+
+                      </mat-radio-group>
                    
                   </td>
                   
@@ -1340,24 +1644,24 @@
                 <tr>
                   <td>Interpretation of Proverb</td>
                   <td>
-                    <textarea type="text" name="" [(ngModel)]="InterpretationofProverb"  placeholder="Interpretation of Proverb" class="form-control"  id=""></textarea>
+                    <textarea type="text" name="" formControlName="InterpretationofProverb"  placeholder="Interpretation of Proverb" class="form-control"  id=""></textarea>
                   </td>
                 </tr>
                 <tr>
                   <td>Similarities between Paired Object</td>
                   <td>
-                    <textarea type="text" name="" [(ngModel)]="SimilaritiesbetweenPairedObject" placeholder="Similarities between Paired Object"  class="form-control"  id=""></textarea>
+                    <textarea type="text" name="" formControlName="SimilaritiesbetweenPairedObject" placeholder="Similarities between Paired Object"  class="form-control"  id=""></textarea>
                   </td>
                 </tr>
                 <tr>
                   <td>Dissimilarities between Paired Object</td>
                   <td>
-                    <textarea type="text" name="" [(ngModel)]="DIsSimilaritiesbetweenPairedObject" placeholder="Dissimilarities between Paired Object"  class="form-control"  id=""></textarea>
+                    <textarea type="text" name="" formControlName="DIsSimilaritiesbetweenPairedObject" placeholder="Dissimilarities between Paired Object"  class="form-control"  id=""></textarea>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input type="button" value="Save" class="btn btn-primary" (click)="addIntelligence()" >
+                    <input type="button" value="Save" class="btn btn-primary" (click)="IntelligenceFormSubmit(IntelligenceForm.value)" >
                   </td>
                 </tr>
               </tbody>
@@ -1368,7 +1672,7 @@
 
           <mat-expansion-panel>
             <mat-expansion-panel-header>Judgement</mat-expansion-panel-header>
-            <table border="1" >
+            <table class="table table-hover table-inverse" >
               <tr>
                 <td>
                   Perosnal
@@ -1415,7 +1719,7 @@
 
           <mat-expansion-panel>
             <mat-expansion-panel-header>Insight</mat-expansion-panel-header>
-            <table border="1" >
+            <table class="table table-hover table-inverse" >
               <tr>
                 <td>
                   Awareness of Abnormal Behaviour/Experience
@@ -1493,7 +1797,7 @@
 
           <mat-expansion-panel>
             <mat-expansion-panel-header>General Physical Examination</mat-expansion-panel-header>
-            <table border="1" >
+            <table class="table table-hover table-inverse" >
               <tr>
                 <td>
                   Consciousness

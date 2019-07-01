@@ -321,7 +321,9 @@ submmited: boolean = false;
  
   LegalHistoryForm=new FormGroup({
     HomicideAttempt: new FormControl(''),
-    preMorbidpersonality: new FormControl('') 
+    preMorbidpersonality: new FormControl(''),
+    createdBy:new FormControl(''),
+    id: new FormControl('')
   })
   LegalHistoryFormSubmit(form){
     form.id=this.id;
@@ -335,10 +337,11 @@ submmited: boolean = false;
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     this.LegalHistoryForm.reset();
   }
-  Appearance;LevelofGrooming;LevelofCleanliness;LevelofConsciousness;Gait;Posture;ModeOfEntry;Cooperative;EyetoEyeContact;Rapport;Gesturing;
-  OtherMovements;otherCatatolicPhemenon
+
+
+
   GeneralAppearanceAttitudeBehaviourForm=new FormGroup({
-       id: new FormControl(this.id),
+      
       Appearance: new FormControl(''),
       LevelofGrooming: new FormControl(''),
       LevelofCleanliness: new FormControl(''),
@@ -351,58 +354,29 @@ submmited: boolean = false;
       Rapport: new FormControl(''),
       Gesturing: new FormControl(''),
       OtherMovements: new FormControl(''),
-      otherCatatolicPhemenon: new FormControl('')
+      otherCatatolicPhemenon: new FormControl(''),
+      createdBy:new FormControl(''),
+      id: new FormControl('')
   })
   GeneralAppearanceAttitudeBehaviourFormSubmit(form){
     
-    console.log(form)
-    console.log(this.GeneralAppearanceAttitudeBehaviourForm.value)
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGeneralAptitudeBehaviour',form).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
 
   }
-  addGeneralAppearanceAttitudeBehaviour(){
-    var obj={
-      id:this.id,
-      Appearance:this.Appearance,
-      LevelofGrooming:this.LevelofGrooming,
-      LevelofCleanliness:this.LevelofCleanliness,
-      LevelofConsciousness:this.LevelofConsciousness,
-      Gait:this.Gait,
-      Posture:this.Posture,
-      ModeOfEntry:this.ModeOfEntry,
-      Cooperative:this.Cooperative,
-      EyetoEyeContact:this.EyetoEyeContact,
-      Rapport:this.Rapport,
-      Gesturing:this.Gesturing,
-      OtherMovements:this.OtherMovements,
-      otherCatatolicPhemenon:this.otherCatatolicPhemenon
-
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addGeneralAptitudeBehaviour',obj).subscribe(this.addGeneralAppearanceAttitudeBehaviourCB)
-  }
+  
   addGeneralAppearanceAttitudeBehaviourCB=(dt)=>{
-   
+   console.log(dt);
     if(dt){
       Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     }
-      this.Appearance="";
-      this.LevelofGrooming="",
-      this.LevelofCleanliness="",
-      this.LevelofConsciousness="",
-      this.Gait="",
-      this.Posture="",
-      this.ModeOfEntry="",
-      this.Cooperative="",
-      this.EyetoEyeContact="",
-      this.Rapport="",
-      this.Gesturing="",
-      this.OtherMovements="",
-      this.otherCatatolicPhemenon=""
+    this.GeneralAppearanceAttitudeBehaviourForm.reset();
   }
 
-  PsychomotorActivity;Initiation;ReactionTime;Speed;LevelofConsciousnessinSpeech;Output;PressureOfSpeech;Volume;Tone;Manner;Relavance;Coherence;Other;example;
-  PsychomotorActivitySpeech= new FormGroup({
-      id: new FormControl(''),
+  PsychomotorActivitySpeechForm= new FormGroup({
+      
       PsychomotorActivity: new FormControl(''),
       Initiation: new FormControl(''),
       ReactionTime: new FormControl(''),
@@ -416,97 +390,55 @@ submmited: boolean = false;
       Relavance: new FormControl(''),
       Coherence: new FormControl(''),
       Other: new FormControl(''),
-      example: new FormControl('')
+      example: new FormControl(''),
+      createdBy:new FormControl(''),
+      id: new FormControl('')
   })
   PsychomotorActivitySpeechSubmit(form){
-
-  }
-  addPsychomotorActivitySpeech(){
-    var obj={
-      id:this.id,
-      PsychomotorActivity:this.PsychomotorActivity,
-      Initiation:this.Initiation,
-      ReactionTime:this.ReactionTime,
-      Speed:this.Speed,
-      LevelofConsciousnessinSpeech:this.LevelofConsciousnessinSpeech,
-      Output:this.Output,
-      PressureOfSpeech:this.PressureOfSpeech,
-      Volume:this.Volume,
-      Tone:this.Tone,
-      Manner:this.Manner,
-      Relavance:this.Relavance,
-      Coherence:this.Coherence,
-      Other:this.Other,
-      example:this.example
-
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPsychomotorActivitySpeech',obj).subscribe(this.addPsychomotorActivitySpeechCB)
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPsychomotorActivitySpeech',form).subscribe(this.addPsychomotorActivitySpeechCB)
   }
   addPsychomotorActivitySpeechCB=(dt)=>{
-    
+    console.log(dt)
     if(dt){
+      
       Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     }
-      this.PsychomotorActivity="",
-      this.Initiation="",
-      this.ReactionTime="",
-      this.Speed="",
-      this.LevelofConsciousnessinSpeech="",
-      this.Output="",
-      this.PressureOfSpeech="",
-      this.Volume="",
-      this.Tone="",
-      this.Manner="",
-      this.Relavance="",
-      this.Coherence="",
-      this.Other="",
-      this.example=""
+     this.PsychomotorActivitySpeechForm.reset();
       
   }
 
 
-  Subjective;Objectivetext;Objective;Congruence;Stability;Range;
-  Affect= new FormGroup({
+  
+  AffectForm= new FormGroup({
       id: new FormControl(''),
       Subjective: new FormControl(''),
       Objectivetext: new FormControl(''),
       Objective: new FormControl(''),
       Congruence: new FormControl(''),
       Stability: new FormControl(''),
-      Range: new FormControl('')
+      Range: new FormControl(''),
+      createdBy:new FormControl('')
   })
-  AffectSubmit(form){
-
+  AffectFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addAffect',form).subscribe(this.addAffectCB)
   }
-  addAffect(){
-    var obj={
-      id:this.id,
-      Subjective:this.Subjective,
-      Objectivetext:this.Objectivetext,
-      Objective:this.Objective,
-      Congruence:this.Congruence,
-      Stability:this.Stability,
-      Range:this.Range
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addAffect',obj).subscribe(this.addAffectCB)
-  }
-  addAffectCB=(dt)=>{
+   addAffectCB=(dt)=>{
     console.log(dt)
     if(dt){
       Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-      this.Subjective="",
-      this.Objectivetext="",
-      this.Objective="",
-      this.Congruence="",
-      this.Stability="",
-      this.Range=""
+      
     }
+    this.AffectForm.reset()
   }
-  Stream;Form;FormExample;ThoughtContent;ThoughtContentExample;First;Second;Third;Fourth;Fifth;ThoughtContentExample2;
+
+
   ThoughtContentForm=new FormGroup({
-    id: new FormControl(this.id),
     Stream: new FormControl(''),
     Form: new FormControl(''),
     FormExample: new FormControl(''),
@@ -517,122 +449,79 @@ submmited: boolean = false;
     Third: new FormControl(''),
     Fourth: new FormControl(''),
     Fifth: new FormControl(''),
-    ThoughtContentExample2: new FormControl('')
+    ThoughtContentExample2: new FormControl(''),
+    createdBy:new FormControl(''),
+    id: new FormControl('')
   })
   ThoughtContentFormSubmit(form){
-
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addThoughtContent',form).subscribe(this.addThoughtContentCB) 
   } 
-  addThoughtContent(){
-    var obj={
-      id:this.id,
-      Stream:this.Stream,
-      Form:this.Form,
-      FormExample:this.FormExample,
-      ThoughtContent:this.ThoughtContent,
-      ThoughtContentExample:this.ThoughtContentExample,
-      First:this.First,
-      Second:this.Second,
-      Third:this.Third,
-      Fourth:this.Fourth,
-      Fifth:this.Fifth,
-      ThoughtContentExample2:this.ThoughtContentExample2
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addThoughtContent',obj).subscribe(this.addThoughtContentCB)
-  }
   addThoughtContentCB=(dt)=>{
     console.log(dt)
     if(dt){
       Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-      this.Stream="",
-      this.Form="",
-      this.FormExample="",
-      this.ThoughtContent="",
-      this.ThoughtContentExample="",
-      this.First="",
-      this.Second="",
-      this.Third="",
-      this.Fourth="",
-      this.Fifth="",
-      this.ThoughtContentExample2=""
+      this.ThoughtContentForm.reset();
     }
   }
   
   
-  Obsession;Complusion;ObsessiveCompulsive;
-  ThoughtAlienationPhenomenon;ThoughtAlienationPhenomenonExample;
+
   PossessionForm=new FormGroup({
-     id: new FormControl(''),
+    
       Obsession: new FormControl(''),
       Complusion: new FormControl(''),
       ObsessiveCompulsive: new FormControl(''),
       ThoughtAlienationPhenomenon: new FormControl(''),
-      ThoughtAlienationPhenomenonExample: new FormControl('')
+      ThoughtAlienationPhenomenonExample: new FormControl(''),
+      createdBy:new FormControl(''),
+     id: new FormControl('')
   })
-  PossessionFormSubmit(form){}
-  addPossession(){
-    var obj={
-      id:this.id,
-      Obsession:this.Obsession,
-      Complusion:this.Complusion,
-      ObsessiveCompulsive:this.ObsessiveCompulsive,
-      ThoughtAlienationPhenomenon:this.ThoughtAlienationPhenomenon,
-      ThoughtAlienationPhenomenonExample:this.ThoughtAlienationPhenomenonExample
-    }
-    console.log(obj);
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPossession',obj).subscribe(this.addPossessionCB)
+  PossessionFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPossession',form).subscribe(this.addPossessionCB)
   }
   addPossessionCB=(dt)=>{
     console.log(dt)
     if(dt){
       Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-      this.Obsession="",
-      this.Complusion="",
-      this.ObsessiveCompulsive="",
-      this.ThoughtAlienationPhenomenon="",
-      this.ThoughtAlienationPhenomenonExample=""
+      this.PossessionForm.reset()
     }
   }
 
 
 
-  Perception1;Perception2;Perception3;PerceptionExample;
+
   PerceptionForm=new FormGroup({
-    id: new FormControl(''),
+  
     Perception1: new FormControl(''),
     Perception2: new FormControl(''),
     Perception3: new FormControl(''),
-    PerceptionExample: new FormControl('')
+    PerceptionExample: new FormControl(''),
+    createdBy:new FormControl(''),
+     id: new FormControl('')
   })
-  PerceptionFormSubmit(form){}
-  addPerception(){
-    var obj={
-      id:this.id,
-      Perception1:this.Perception1,
-      Perception2:this.Perception2,
-      Perception3:this.Perception3,
-      PerceptionExample:this.PerceptionExample
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/test',obj).subscribe(this.addPerceptionCB)
+  PerceptionFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    Swal.fire({type: 'error',title: 'In Developement',showConfirmButton: false,timer: 1000});
+    // this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPerception',form).subscribe(this.addPerceptionCB)
   }
+ 
   addPerceptionCB=(dt)=>{
-   
+   console.log(dt)
     if(dt){
       Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
-      this.Perception1="",
-      this.Perception2="",
-      this.Perception3="",
-      this.PerceptionExample=""
+      this.PerceptionForm.reset();
     }
   }
 
-  ConsciousLevel;Attention;AttentionDigitForward;AttentionDigitBackward;Concentration;ConcentrationSerialSubstraction;Orientation;OrientationTime;OrientationTimeCheck;
-  OrientationPlace;OrientationPlaceCheck;OrientationPerson;OrientationPersonCheck;
-  Memory;
-  RecentVerbalRecall3ObjAfter5Minut;RecentVerbalRecall3ObjAfter10Minut;RecentVerbalRecall5ObjAfter5Minut;RecentVerbalRecall5ObjAfter10Minut;
-  RecentVisualRecallAfter5Minut;RecentVisualRecallAfter10Minut;
-  RemotePersonalEvents;RemoteImPersonalEvents;RemoteIllnessRelatedEvents;
+ 
   CognitiveFunctionForm=new FormGroup({
     id: new FormControl(''),
     ConsciousLevel: new FormControl(''),
@@ -657,76 +546,27 @@ submmited: boolean = false;
     RecentVisualRecallAfter10Minut: new FormControl(''),
     RemotePersonalEvents: new FormControl(''),
     RemoteImPersonalEvents: new FormControl(''),
-    RemoteIllnessRelatedEvents: new FormControl('')
+    RemoteIllnessRelatedEvents: new FormControl(''),
+    createdBy:new FormControl('')
   })
-  CognitiveFunctionFormSubmit(form){}
-  addCognitiveFunction(){
-  var obj={
-  id:this.id,
-  ConsciousLevel:this.ConsciousLevel,
-  Attention:this.Attention,
-  AttentionDigitForward:this.AttentionDigitForward,
-  AttentionDigitBackward:this.AttentionDigitBackward,
-  Concentration:this.Concentration,
-  ConcentrationSerialSubstraction:this.ConcentrationSerialSubstraction,
-  Orientation:this.Orientation,
-  OrientationTime:this.OrientationTime,
-  OrientationTimeCheck:this.OrientationTimeCheck,
-  OrientationPlace:this.OrientationPlace,
-  OrientationPlaceCheck:this.OrientationPlaceCheck,
-  OrientationPerson:this.OrientationPerson,
-  OrientationPersonCheck:this.OrientationPersonCheck,
-  Memory:this.Memory,
-  RecentVerbalRecall3ObjAfter5Minut:this.RecentVerbalRecall3ObjAfter5Minut,
-  RecentVerbalRecall3ObjAfter10Minut:this.RecentVerbalRecall3ObjAfter10Minut,
-  RecentVerbalRecall5ObjAfter5Minut:this.RecentVerbalRecall5ObjAfter5Minut,
-  RecentVerbalRecall5ObjAfter10Minut:this.RecentVerbalRecall5ObjAfter10Minut,
-  RecentVisualRecallAfter5Minut:this.RecentVisualRecallAfter5Minut,
-  RecentVisualRecallAfter10Minut:this.RecentVisualRecallAfter10Minut,
-  RemotePersonalEvents:this.RemotePersonalEvents,
-  RemoteImPersonalEvents:this.RemoteImPersonalEvents,
-  RemoteIllnessRelatedEvents:this.RemoteIllnessRelatedEvents
-  }
-  console.log(obj)
-  this.http.post('https://digitalapp001.herokuapp.com/api/pat/addCongnitiveFunction',obj).subscribe(this.addCognitiveFunctionCB)
+  CognitiveFunctionFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addCongnitiveFunction',form).subscribe(this.addCognitiveFunctionCB)
+
   }
   addCognitiveFunctionCB=(dt)=>{
+    console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     if(dt){
-  this.ConsciousLevel="",
-  this.Attention="",
-  this.AttentionDigitForward="",
-  this.AttentionDigitBackward="",
-  this.Concentration="",
-  this.ConcentrationSerialSubstraction="",
-  this.Orientation="",
-  this.OrientationTime="",
-  this.OrientationTimeCheck="",
-  this.OrientationPlace="",
-  this.OrientationPlaceCheck="",
-  this.OrientationPerson="",
-  this.OrientationPersonCheck="",
-  this.Memory="",
-  this.RecentVerbalRecall3ObjAfter5Minut="",
-  this.RecentVerbalRecall3ObjAfter10Minut="",
-  this.RecentVerbalRecall5ObjAfter5Minut="",
-  this.RecentVerbalRecall5ObjAfter10Minut="",
-  this.RecentVisualRecallAfter5Minut="",
-  this.RecentVisualRecallAfter10Minut="",
-  this.RemotePersonalEvents="",
-  this.RemoteImPersonalEvents="",
-  this.RemoteIllnessRelatedEvents=""
-    }
-    
+      this.CognitiveFunctionForm.reset()
+    }   
   }
   
 
 
-  IntelligenceComprehension;IntelligenceComprehensionCheck;
-  IntelligenceVocabulary;IntelligenceVocabularyCheck;
-  GeneralFundofInformation;GeneralFundofInformationCheck;
-  ArithmeticAbility;ArithmeticAbilityCheck;
-  Abstraction;InterpretationofProverb;SimilaritiesbetweenPairedObject;DIsSimilaritiesbetweenPairedObject;
+
   IntelligenceForm=new FormGroup({
       id: new FormControl(''),
       IntelligenceComprehension: new FormControl(''),
@@ -740,45 +580,21 @@ submmited: boolean = false;
       Abstraction: new FormControl(''),
       InterpretationofProverb: new FormControl(''),
       SimilaritiesbetweenPairedObject: new FormControl(''),
-      DIsSimilaritiesbetweenPairedObject: new FormControl('')
+      DIsSimilaritiesbetweenPairedObject: new FormControl(''),
+      createdBy:new FormControl('')
   })
-  IntelligenceFormSubmit(form){}
-  addIntelligence(){
-    var obj={
-      id:this.id,
-      IntelligenceComprehension:this.IntelligenceComprehension,
-      IntelligenceComprehensionCheck:this.IntelligenceComprehensionCheck,
-      IntelligenceVocabulary:this.IntelligenceVocabulary,
-      IntelligenceVocabularyCheck:this.IntelligenceVocabularyCheck,
-      GeneralFundofInformation:this.GeneralFundofInformation,
-      GeneralFundofInformationCheck:this.GeneralFundofInformationCheck,
-      ArithmeticAbility:this.ArithmeticAbility,
-      ArithmeticAbilityCheck:this.ArithmeticAbilityCheck,
-      Abstraction:this.Abstraction,
-      InterpretationofProverb:this.InterpretationofProverb,
-      SimilaritiesbetweenPairedObject:this.SimilaritiesbetweenPairedObject,
-      DIsSimilaritiesbetweenPairedObject:this.DIsSimilaritiesbetweenPairedObject
-    }
-    console.log(obj)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addIntelligence',obj).subscribe(this.addIntelligenceCB)
+  IntelligenceFormSubmit(form){
+    form.id=this.id;
+    form.createdBy=sessionStorage.getItem('MID');
+    console.log(form);
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/addIntelligence',form).subscribe(this.addIntelligenceCB)
   }
 
   addIntelligenceCB=(dt)=>{
-   
+   console.log(dt)
     Swal.fire({type: 'success',title: 'Data Successfully',showConfirmButton: false,timer: 1000});
     if(dt){
-      this.IntelligenceComprehension="",
-      this.IntelligenceComprehensionCheck="",
-      this.IntelligenceVocabulary="",
-      this.IntelligenceVocabularyCheck="",
-      this.GeneralFundofInformation="",
-      this.GeneralFundofInformationCheck="",
-      this.ArithmeticAbility="",
-      this.ArithmeticAbilityCheck="",
-      this.Abstraction="",
-      this.InterpretationofProverb="",
-      this.SimilaritiesbetweenPairedObject="",
-      this.DIsSimilaritiesbetweenPairedObject=""
+      this.IntelligenceForm.reset()
     }
   }
 
