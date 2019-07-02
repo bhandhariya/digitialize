@@ -17,7 +17,7 @@
               <mat-card-title>{{patient.first_name}} {{patient.middle_name}} {{patient.last_name}}</mat-card-title>
               <mat-card-subtitle>Doctor Assigned : {{patient.doctorName}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="{{patient.profile_image}}" alt="Photo of a Shiba Inu">
+            <img mat-card-image style="height:300px" src="{{patient.profile_image}}" alt="Photo of a Shiba Inu">
             <mat-card-content>
             <table class="table table-hover table-inverse table-responsive">
              <tr>
@@ -32,9 +32,23 @@
             </table>
             </mat-card-content>
             <mat-card-actions>
-              <button (click)="getThisPatientData(patient._id)" mat-button>Complaits</button>
-              <button (click)="openComplaintDialog(patient._id)" mat-button>Open Complaint</button>
-              <button (click)="openIllnessDialog(patient._id)" mat-button>Open Illness</button>
+              <!-- <button (click)="getThisPatientData(patient._id)" mat-raised-button color="primary">Complaits</button> -->
+              <button mat-raised-button (click)="getThisPatientData(patient._id)" >Basic Details</button>
+              <button mat-raised-button color="primary">Primary</button>
+              <button (click)="openComplaintDialog(patient._id)" mat-raised-button color="accent">Open Complaint</button>
+              
+              <button mat-button [matMenuTriggerFor]="history">History</button>
+
+        <mat-menu #history="matMenu">
+          <button mat-menu-item color="warn" (click)="openHistoryDialog(patient._id)" >Open Present History</button>
+          <button mat-menu-item >Past</button>
+          <button mat-menu-item >History Of Mode Of Intake</button>
+          <button mat-menu-item >Treatement History</button>
+          <button mat-menu-item >Family History</button>
+          <button mat-menu-item >Personal History</button>
+          <button mat-menu-item >Substance History</button>
+          <button mat-menu-item >Legal History</button>
+        </mat-menu>
             </mat-card-actions>
           </mat-card>
          </div>

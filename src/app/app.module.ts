@@ -33,7 +33,8 @@ import { PatientComponent} from './patient/patient.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PopupComponent } from './popup/popup.component';
-
+import {MatInputModule} from '@angular/material/input';
+import { HistoryComponent } from './history/history.component';
 
 
 
@@ -56,9 +57,10 @@ const routes: Routes = [
     ChangepasswordComponent,
     PatientComponent,
     PopupComponent,
+    HistoryComponent,
     
   ],
-  entryComponents:[PopupComponent],
+  entryComponents:[PopupComponent,HistoryComponent],
   imports: [
     BrowserModule,
     FormsModule, 
@@ -87,7 +89,7 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    MatTableModule,MatDialogModule
+    MatTableModule,MatDialogModule,MatInputModule
    
   ],
   exports: [

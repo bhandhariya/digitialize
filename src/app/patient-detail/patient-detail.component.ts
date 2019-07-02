@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import {MatDialog} from '@angular/material/dialog';
 import { PatientComponent } from "../patient/patient.component";
 import { PopupComponent } from "../popup/popup.component";
+import { HistoryComponent } from "../history/history.component";
 
 @Component({
   selector: 'app-patient-detail',
@@ -46,10 +47,10 @@ export class  PatientDetailComponent implements OnInit {
   }
   getThisPatientData(pid){
    
-    var obj={
-      id:pid
-    }
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb2)
+    const dialogRef =this.dialog.open(PatientComponent,{
+      data: {id:pid},
+      width:'75%'
+    });
   }
   cb2=(d)=>{
     console.log(d)
@@ -62,8 +63,8 @@ export class  PatientDetailComponent implements OnInit {
     
     
   }
-  openIllnessDialog(id){
-    const dialogRef =this.dialog.open(PatientComponent,{
+  openHistoryDialog(id){
+    const dialogRef =this.dialog.open(HistoryComponent,{
       data: {id: id}
     });
   }

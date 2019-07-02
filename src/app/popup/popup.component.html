@@ -1,22 +1,38 @@
 <h1>Complaint Details</h1>
-<table class="table table-hover table-inverse table-responsive">
+<table class="table table-hover table-inverse">
   <thead class="thead-inverse">
     <tr>
-      <th>sdsd</th>
-      <th></th>
-      <th></th>
+      <th>complain</th>
+      <th>complain_duration</th>
+      <th>creationDate</th>
     </tr>
     </thead>
     <tbody>
-      <tr>
-        <td scope="row"></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td scope="row"></td>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let item of Complaint">
+        <td scope="row">{{item.complain}}</td>
+        <td>{{item.complain_duration}}</td>
+        <td>{{item.creationDate | date}}</td>
       </tr>
     </tbody>
+    <thead class="thead-inverse">
+        <tr>
+          <th>Course</th>
+          <th>CurruntEpisodeNumber</th>
+          <th>DurationOfCurruntIllness</th>
+          <th>ModeOfOnset</th>
+          <th>PrecipatingFactors</th>
+          <th>PredisposingFactors</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Illness">
+            <td scope="row">{{item.Course}}</td>
+            <td>{{item.CurruntEpisodeNumber}}</td>
+            <td>{{item.DurationOfCurruntIllness}}</td>
+            <td>{{item.ModeOfOnset}}</td>
+            <td>{{item.PrecipatingFactors}}</td>
+            <td>{{item.PredisposingFactors}}</td>
+            
+          </tr>
+        </tbody>
 </table>

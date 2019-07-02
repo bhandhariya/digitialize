@@ -1,48 +1,178 @@
-<table    mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="container" *ngIf="dataSource" >
+  <table class="table table-bordered table-inverse "  *ngIf="dataSource._id!=bgloid;else temp"  >
+    <thead class="thead-inverse">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Contact No.</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row">{{dataSource.first_name}} {{dataSource.middle_name}} {{dataSource.last_name}} </td>
+          <td>{{dataSource.age}}</td>
+          <td>{{dataSource.permanent_address}}</td>
+          <td>{{dataSource.email}}</td>
+          <td>{{dataSource.permanent_mobile}}</td>
+        </tr>
+      </tbody>
+      <thead class="thead-inverse">
+        <tr>
+          <th>Date of Birth</th>
+          <th>Education</th>
+          <th>Marrital Status</th>
+          <th>Occupation</th>
+          <th>Parent Name</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">{{dataSource.DOB | date}} </td>
+            <td>{{dataSource.education}}</td>
+            <td>{{dataSource.marrital_status}}</td>
+            <td>{{dataSource.occupation}}</td>
+            <td>{{dataSource.guardian_name}}</td>
+          </tr>
+        </tbody>
+        <thead class="thead-inverse">
+          <tr>
+            <th>Addmission Date</th>
+            <th>Doctor Assigned</th>
+            <th>Gender</th>
+            <th>Created By</th>
+            <th>Parent Address</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">{{dataSource.addmission_date | date}} </td>
+              <td>{{dataSource.doctorName}}</td>
+              <td>{{dataSource.sex}}</td>
+              <td>{{dataSource.cretatedBy}}</td>
+              <td>{{dataSource.guardian_address}}</td>
+            </tr>
+          </tbody>
+          <tr>
+            <td>
+              <input type="button" value="Edit" class="btn btn-danger" (click)="patientEdit(dataSource._id)" >
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <button mat-button color="accent">Complaints and Illness</button>
+               
+            </td>
+          </tr>
+  </table>
+</div>
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+<ng-template #temp>
+  <table class="table table-bordered table-inverse "    >
+    <thead class="thead-inverse">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Contact No.</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row">
+            
+              <!-- {{dataSource.first_name}} {{dataSource.middle_name}} {{dataSource.last_name}} -->
+            
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="first_name"   value="{{dataSource.first_name}}"   >
+                  </mat-form-field>
+                
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="middle_name"  value="{{dataSource.middle_name}}" ></textarea>
+                  </mat-form-field>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="complain">
-    <th mat-header-cell *matHeaderCellDef> complain. </th>
-    <td mat-cell *matCellDef="let element"> {{element.complain}} </td>
-  </ng-container>
+                  <mat-form-field class="example-full-width">
+                      <input matInput placeholder="last_name"   value="{{dataSource.last_name}}" >
+                    </mat-form-field>
+                
+                <input type="button" value="save" (click)="check()" >
+          </td>
+          <td>
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="age"   value="{{dataSource.age}}" >
+                </mat-form-field>
+           </td>
+          <td>
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="permanent_address"   value="{{dataSource.permanent_address}}" >
+                </mat-form-field>
+            </td>
+          <td> <mat-form-field class="example-full-width">
+              <input matInput placeholder="email"   value="{{dataSource.email}}" >
+            </mat-form-field></td>
+          <td> <mat-form-field class="example-full-width">
+              <input matInput placeholder="permanent_mobile"   value="{{dataSource.permanent_mobile}}" >
+            </mat-form-field></td>
+        </tr>
+      </tbody>
+      <thead class="thead-inverse">
+        <tr>
+          <th>Date of Birth</th>
+          <th>Education</th>
+          <th>Marrital Status</th>
+          <th>Occupation</th>
+          <th>Parent Name</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">{{dataSource.DOB | date}} </td>
+            <td> <mat-form-field class="example-full-width">
+                <input matInput placeholder="education"   value="{{dataSource.education}}" >
+              </mat-form-field></td>
+            <td> <mat-form-field class="example-full-width">
+                <input matInput placeholder="marrital_status"   value="{{dataSource.marrital_status}}" >
+              </mat-form-field></td>
+            <td> <mat-form-field class="example-full-width">
+                <input matInput placeholder="occupation"   value="{{dataSource.occupation}}" >
+              </mat-form-field></td>
+            <td> <mat-form-field class="example-full-width">
+                <input matInput placeholder="guardian_name"   value="{{dataSource.guardian_name}}" >
+              </mat-form-field></td>
+          </tr>
+        </tbody>
+        <thead class="thead-inverse">
+          <tr>
+            <th>Addmission Date</th>
+            <th>Doctor Assigned</th>
+            <th>Gender</th>
+            <th>Created By</th>
+            <th>Parent Address</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">{{dataSource.addmission_date | date}} </td>
+              <td>{{dataSource.doctorName}}</td>
+              <td> <mat-form-field class="example-full-width">
+                  <input matInput placeholder="gender"   value="{{dataSource.sex}}" >
+                </mat-form-field></td>
+              <td>{{dataSource.cretatedBy}}</td>
+              <td> <mat-form-field class="example-full-width">
+                  <input matInput placeholder="guardian_address"   value="{{dataSource.guardian_address}}" >
+                </mat-form-field></td>
+            </tr>
+          </tbody>
+          <tr>
+            <td>
+              <input type="button" value="cancle" class="btn btn-success" (click)="cancle()" >
+              <input type="button" value="save" class="btn btn-primary" (click)="cancle()" >
+            </td>
+          
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="complain_duration">
-    <th mat-header-cell *matHeaderCellDef> complain_duration </th>
-    <td mat-cell *matCellDef="let element"> {{element.complain_duration}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="createdBy">
-    <th mat-header-cell *matHeaderCellDef> createdBy </th>
-    <td mat-cell *matCellDef="let element"> {{element.createdBy}} </td>
-  </ng-container>
-
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="creationDate">
-    <th mat-header-cell *matHeaderCellDef> creationDate </th>
-    <td mat-cell *matCellDef="let element"> {{element.creationDate}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="patient_id">
-    <th mat-header-cell *matHeaderCellDef> patient_id </th>
-    <td mat-cell *matCellDef="let element"> {{element.patient_id}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="_id">
-    <th mat-header-cell *matHeaderCellDef> _id </th>
-    <td mat-cell *matCellDef="let element"> {{element._id}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
+          </tr>
+  </table>
+</ng-template>

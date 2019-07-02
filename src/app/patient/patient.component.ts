@@ -23,14 +23,15 @@ const ELEMENT_DATA = [
 })
 export class PatientComponent implements OnInit {
   id;
-  constructor(private arout:ActivatedRoute,private http:HttpClient,) { }
+  constructor(private arout:ActivatedRoute,private http:HttpClient,@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
-    this.arout.paramMap.subscribe(r=>{
-      this.id=r.get('id');
-    })
-    console.log(this.id)
-    this.getPatientData()
+    // this.arout.paramMap.subscribe(r=>{
+    //   this.id=r.get('id');
+    // })
+    this.id=this.data.id;
+    console.log(this.data.id)
+    this.getPatientData();
   }
   
  displayedColumns: string[] = ['complain','complain_duration','createdBy','creationDate','patient_id','_id'];
@@ -40,13 +41,29 @@ getPatientData(){
   var obj={
     id:this.id
   }
-  console.log(obj)
   this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb)
 }
 cb=r=>{
-  this.dataSource=r.Complaintsdetails;
+  this.dataSource=r;
  console.log(this.dataSource)
   
+}
+bgloid=0;
+patientEdit(id){
+  console.log(id)
+  this.bgloid=id
+}
+first_name;middle_name;last_name
+check(){
+  // this.first_name=this.dataSource.first_name
+  // this.middle_name=this.dataSource.middle_name
+  // this.last_name=this.dataSource.last_name
+  console.log(this.first_name)
+  console.log(this.middle_name)
+console.log(this.last_name)
+}
+cancle(){
+  this.bgloid=0;
 }
 
 
