@@ -29,7 +29,7 @@ import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButt
 import { LayoutModule } from '@angular/cdk/layout';
 import { UserService } from './services/user.service';
 import { MyFireService } from './services/my-fire.service';
-import { PatientComponent,ComplaintPopupComponent, IllnessPopupComponent } from './patient/patient.component';
+import { PatientComponent} from './patient/patient.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 
@@ -54,8 +54,7 @@ const routes: Routes = [
     ForgotpasswordComponent,
     ChangepasswordComponent,
     PatientComponent,
-    ComplaintPopupComponent,
-    IllnessPopupComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -88,8 +87,6 @@ const routes: Routes = [
     MatTableModule,MatDialogModule
    
   ],
-  entryComponents:[ComplaintPopupComponent,IllnessPopupComponent]
-  ,
   exports: [
     BrowserModule,
     FormsModule, 

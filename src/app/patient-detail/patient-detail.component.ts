@@ -5,7 +5,7 @@ import * as saveAs from "file-saver";
 import { jsonexport } from "jsonexport/dist";
 import Swal from 'sweetalert2';
 import {MatDialog} from '@angular/material/dialog';
-import { PatientComponent,ComplaintPopupComponent,IllnessPopupComponent } from "../patient/patient.component";
+import { PatientComponent } from "../patient/patient.component";
 
 @Component({
   selector: 'app-patient-detail',
@@ -57,7 +57,7 @@ export class  PatientDetailComponent implements OnInit {
     console.log(d)
   }
   openComplaintDialog(id){
-    const dialogRef =this.dialog.open(ComplaintPopupComponent,{
+    const dialogRef =this.dialog.open(PatientComponent,{
       data: {id:id},
       width:'75%'
     });
@@ -65,7 +65,7 @@ export class  PatientDetailComponent implements OnInit {
     
   }
   openIllnessDialog(id){
-    const dialogRef =this.dialog.open(IllnessPopupComponent,{
+    const dialogRef =this.dialog.open(PatientComponent,{
       data: {id: id}
     });
   }

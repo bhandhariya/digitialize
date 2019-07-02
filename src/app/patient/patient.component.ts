@@ -52,64 +52,64 @@ cb=r=>{
 
 }
 
-@Component({
-  selector: 'app-complaint-popup',
-  templateUrl: './complaint-pop.component.html'
-})
-export class ComplaintPopupComponent implements OnInit {
-  id;
-  constructor(private arout:ActivatedRoute,private http:HttpClient,@Inject(MAT_DIALOG_DATA) public data: any) { }
+// @Component({
+//   selector: 'app-complaint-popup',
+//   templateUrl: './complaint-pop.component.html'
+// })
+// export class ComplaintPopupComponent implements OnInit {
+//   id;
+//   constructor(private arout:ActivatedRoute,private http:HttpClient,@Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  ngOnInit() {
-    console.log(this.data.id)
-    this.getComplaintDetails();
-  }
-  getComplaintDetails(){
-    var obj={
-      id:this.data.id
-    }
-    console.log(obj)
-     this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb)
-  }
-  dataSource;
-  cb=(dt)=>{
+//   ngOnInit() {
+//     console.log(this.data.id)
+//     this.getComplaintDetails();
+//   }
+//   getComplaintDetails(){
+//     var obj={
+//       id:this.data.id
+//     }
+//     console.log(obj)
+//      this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb)
+//   }
+//   dataSource;
+//   cb=(dt)=>{
     
-    this.dataSource=(dt.Complaintsdetails)
-    console.log(this.dataSource);
+//     this.dataSource=(dt.Complaintsdetails)
+//     console.log(this.dataSource);
 
-  }
-  displayedColumns: string[] = ['complain', 'complain_duration', 'createdBy', 'creationDate','patient_id'];
+//   }
+//   displayedColumns: string[] = ['complain', 'complain_duration', 'createdBy', 'creationDate','patient_id'];
 
-}
+// }
 
-@Component({
-  selector: 'app-illness-popup',
-  templateUrl: './illness-pop.component.html',
-  styleUrls: ['./patient.component.css']
-})
-export class IllnessPopupComponent implements OnInit {
-  id;
-  constructor(private arout:ActivatedRoute,private http:HttpClient,@Inject(MAT_DIALOG_DATA) public data: any) { }
+// @Component({
+//   selector: 'app-illness-popup',
+//   templateUrl: './illness-pop.component.html',
+//   styleUrls: ['./patient.component.css']
+// })
+// export class IllnessPopupComponent implements OnInit {
+//   id;
+//   constructor(private arout:ActivatedRoute,private http:HttpClient,@Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  ngOnInit() {
-    console.log(this.data.id)
-    this.getIllnessDetails();
-  }
-  getIllnessDetails(){
-    var obj={
-      id:this.data.id
-    }
-    console.log(obj)
-     this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb)
-  }
-  illness;
-  dataSource;
-  cb=(dt)=>{
+//   ngOnInit() {
+//     console.log(this.data.id)
+//     this.getIllnessDetails();
+//   }
+//   getIllnessDetails(){
+//     var obj={
+//       id:this.data.id
+//     }
+//     console.log(obj)
+//      this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb)
+//   }
+//   illness;
+//   dataSource;
+//   cb=(dt)=>{
     
-    this.dataSource=(dt.Illnessdetails)
-    console.log(this.dataSource);
+//     this.dataSource=(dt.Illnessdetails)
+//     console.log(this.dataSource);
 
-  }
-  displayedColumns: string[] = ['Course', 'CurruntEpisodeNumber', 'DurationOfCurruntIllness', 'ModeOfOnset','PrecipatingFactors','PredisposingFactors','PrepetuatingFactors'];
+//   }
+//   displayedColumns: string[] = ['Course', 'CurruntEpisodeNumber', 'DurationOfCurruntIllness', 'ModeOfOnset','PrecipatingFactors','PredisposingFactors','PrepetuatingFactors'];
 
-}
+// }
