@@ -34,21 +34,21 @@
             <mat-card-actions>
               <!-- <button (click)="getThisPatientData(patient._id)" mat-raised-button color="primary">Complaits</button> -->
               <button mat-raised-button (click)="getThisPatientData(patient._id)" >Basic Details</button>
-              <button mat-raised-button color="primary">Primary</button>
+              
               <button (click)="openComplaintDialog(patient._id)" mat-raised-button color="accent">Open Complaint</button>
               
-              <button mat-button [matMenuTriggerFor]="history">History</button>
+              <button mat-raised-button color="primary" [matMenuTriggerFor]="history">History</button>
 
         <mat-menu #history="matMenu">
-          <button mat-menu-item color="warn" (click)="openHistory(presentHistory,patient._id)" >Open Present History</button>
-          <button mat-menu-item (click)="openHistory(pastHistory,patient._id)" >Open Past History</button>
-          <button mat-menu-item (click)="openHistory(historyOfModeOfItake,patient._id)" >History Of Mode Of Intake</button>
-          <button mat-menu-item (click)="openHistory(treatementHistory,patient._id)" >Treatement History</button>
-          <button mat-menu-item (click)="openHistory(familyHistory,patient._id)" >Family History</button>
-          <button mat-menu-item  (click)="openHistory(personalHistory,patient._id)" >Personal History</button>
-          <button mat-menu-item  (click)="openHistory(substanceHistory,patient._id)" >Substance History</button>
-          <button mat-menu-item  (click)="openHistory(legalHistory,patient._id)" >Legal History</button>
-          <button mat-menu-item (click)="openModal(mytemplate)" >open templte</button>
+          <button mat-raised-button  color="warn" (click)="openHistory(presentHistory,patient._id)" >Open Present History</button>
+          <button mat-raised-button color="accent" (click)="openHistory(pastHistory,patient._id)" >Open Past History</button>
+          <button mat-raised-button color="primary" (click)="openHistory(historyOfModeOfItake,patient._id)" >History Of Mode Of Intake</button>
+          <button mat-raised-button color="warn" (click)="openHistory(treatementHistory,patient._id)" >Treatement History</button>
+          <button mat-raised-button color="accent" (click)="openHistory(familyHistory,patient._id)" >Family History</button>
+          <button mat-raised-button color="primary" (click)="openHistory(personalHistory,patient._id)" >Personal History</button>
+          <button mat-raised-button  color="warn" (click)="openHistory(substanceHistory,patient._id)" >Substance History</button>
+          <button mat-raised-button color="accent" (click)="openHistory(legalHistory,patient._id)" >Legal History</button>
+          <button mat-raised-button color="primary" (click)="openModal(mytemplate)" >Testing Button</button>
         </mat-menu>
             </mat-card-actions>
           </mat-card>
