@@ -23,11 +23,14 @@ import { AccordianDemoComponent } from '../accordian-demo/accordian-demo.compone
 import { PatientDetailComponent } from '../patient-detail/patient-detail.component';
 
 
+
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 
@@ -37,7 +40,7 @@ const AppRoutes: Routes = [
   { path : 'second', component : SecondComponent },
 
   { path : 'patable', component : PatientTableComponent },
-  { path : 'patable/details', component : PatientDetailComponent },
+  { path : 'details', component : PatientDetailComponent },
 
   { path : 'accordian', component : AccordianDemoComponent },
   { path : '**', redirectTo :'', pathMatch : 'full'}
@@ -54,7 +57,8 @@ const AppRoutes: Routes = [
     SecondComponent,
     PatientTableComponent,
     AccordianDemoComponent,
-    PatientDetailComponent,
+    PatientDetailComponent
+    
 
   ],
   imports: [
@@ -76,7 +80,8 @@ const AppRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,MatDialogModule
+    
   ],
   providers :[
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },

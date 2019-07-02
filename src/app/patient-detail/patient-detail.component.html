@@ -1,305 +1,33 @@
-<table *ngIf="Patient"  class="table table-bordered table-inverse table-responsive">
-  <thead class="thead-inverse">
-    <tr>
-      
-      <th>Patient name</th>
-      <th>DOB</th>
-      <th>Addmision Date</th>
-      <th>age</th>
-      <th>Currunt address</th>
-      <th>email</th>
-      <th>mobile</th>
-      <th>landline</th>
-      <th>education</th>
-      <th>Complaints</th>
-      <th>Illness</th>
-      <th>history</th>
-      <th>family history</th>
-      <th>LegalHistoryDetails</th>
-      <th>PastHiHisrotyOfModeOfIntakestorydetails</th>
-      <th>PersonalHistoryDetails</th>
-      <th>SubstanceHistoryDetails</th>
-      <th>TreateMentHistoryDetails</th>
-      <th>family History</th>
-      <th>Personal History</th>
-      <th>Substance History</th>
-      <th>Legal History</th>
-      <th>Mental Status Examination</th>
-      <th>options</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{Patient.first_name}} {{Patient.middle_name}} {{Patient.last_name}} </td>
-        <td>{{Patient.DOB | date}}</td>
-        <td>{{Patient.addmission_date | date}}</td>
-        <td>{{Patient.age}}</td>
-        <td>{{Patient.correspondence_address}}</td>
-        <td>{{Patient.email}}</td>
-        <td>{{Patient.correspondence_mobile}}</td>
-        <td>{{Patient.correspondence_landline}}</td>
-        <td>{{Patient.education}}</td>
-       <td>
-         <table>
-           <tr>
-             <th>name</th>
-             <th>duration</th>
-           </tr>
-           <tr *ngFor="let i of Patient.Complaintsdetails" >
-             <td>{{i.complain}}</td>
-             <td>{{i.complain_duration}}</td>
-           </tr>
-         </table>
-       </td>
-       <td>
-         <table>
-           <tr>
-             <th>Course</th>
-             <th>CurruntEpisodeNumber</th>
-             <th>DurationOfCurruntIllness</th>
-             <th>ModeOfOnset</th>
-             <th>PrecipatingFactors</th>
-             <th>PredisposingFactors</th>
-             <th>PrepetuatingFactors</th>
-           </tr>
-           <tr *ngFor="let i of Patient.Illnessdetails" >
-              <td>{{i.Course}}</td>
-              <td>{{i.CurruntEpisodeNumber}}</td>
-              <td>{{i.DurationOfCurruntIllness}}</td>
-              <td>{{i.ModeOfOnset}}</td>
-              <td>{{i.PrecipatingFactors}}</td>
-              <td>{{i.PredisposingFactors}}</td>
-              <td>{{i.PrepetuatingFactors}}</td>
-           </tr>
-         </table>
-       </td>
-       <td>
-         <table>
-           <tr>
-             <th>History of present Illness</th>
-             <th>History of present Illness</th>
-           </tr>
-           <tr  >
-             <td></td>
-             <td></td>
-           </tr>
-         </table>
-       </td>
-       <td>
-         <tr>
-           <th>attitudeHistory</th>
-           <th>environHistory</th>
-           <th>livingHistory</th>
-           <th>mentalHistory</th>
-         </tr>
-         <tr *ngFor="let i of Patient.FamilyHistoryDetails" >
-           <td>{{i.attitudeHistory}}</td>
-           <td>{{i.environHistory}}</td>
-           <td>{{i.livingHistory}}</td>
-           <td>{{i.mentalHistory}}</td>
-         </tr>
-       </td>
-       <td>
-         <table>
-           <tr>
-             <th>HomicideAttempt</th>
-             <th>preMorbidpersonality</th>
-           </tr>
-           <tr *ngFor="let i of Patient.LegalHistoryDetails" >
-             <td>{{i.HomicideAttempt}}</td>
-             <td>{{i.preMorbidpersonality}}</td>
-           </tr>
-         </table>
-       </td>
-       <td>
-        <table>
-          <tr>
-            <th>MedicalHistory</th>
-            <th>PsychatricHistory</th>
-          </tr>
-          <tr *ngFor="let i of Patient.PastHiHisrotyOfModeOfIntakestorydetails" >
-            <td>{{i.MedicalHistory}}</td>
-            <td>{{i.PsychatricHistory}}</td>
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table>
-          <tr>
-            <th>BirthHistory</th>
-            <th>DevelopmentHistory</th>
-            <th>EducationHistory</th>
-            <th>ImmunizationHistory</th>
-            <th>MarritalandSexualHistory</th>
-            <th>MenstrualandobstetricHistory</th>
-            <th>OccupationHistory</th>
-   
-          </tr>
-          <tr *ngFor="let i of Patient.PersonalHistoryDetails" >
-            <td>{{i.BirthHistory}}</td>
-            <td>{{i.DevelopmentHistory}}</td>
-            <td>{{i.EducationHistory}}</td>
-            <td>{{i.ImmunizationHistory}}</td>
-            <td>{{i.MarritalandSexualHistory}}</td>
-            <td>{{i.MenstrualandobstetricHistory}}</td>
-            <td>{{i.OccupationHistory}}</td>
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table>
-          <tr>
-            <th>HistoryOfChoiseOfSubstance</th>
-            <th>HistoryOfDailyIntake</th>
-            <th>HistoryOfDurationOfRegularUse</th>
-            <th>HistoryOfLastIntakeOfDrug</th>
-            <th>HistoryOfTotalDurationOfUse</th>
-            
-   
-          </tr>
-          <tr *ngFor="let i of Patient.SubstanceHistoryDetails" >
-            <td>{{i.HistoryOfChoiseOfSubstance}}</td>
-            <td>{{i.HistoryOfDailyIntake}}</td>
-            <td>{{i.HistoryOfDurationOfRegularUse}}</td>
-            <td>{{i.HistoryOfLastIntakeOfDrug}}</td>
-            <td>{{i.HistoryOfTotalDurationOfUse}}</td>
-         
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table>
-          <tr>
-            <th>pastHistory</th>
-            <th>presentHistory</th>
-          
-            
-   
-          </tr>
-          <tr *ngFor="let i of Patient.TreateMentHistoryDetails" >
-            <td>{{i.pastHistory}}</td>
-            <td>{{i.presentHistory}}</td>
-      
-         
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table>
-          <tr>
-            <th>Family History of Mental illness or Drug Addiction</th>
-            <th>Family Environment History</th>
-            <th>Family Attitute History</th>
-            <th>Living Condition History</th>
-          </tr>
-          <tr *ngFor="let i of Patient.FamilyHistoryDetails">
-            <td>{{i.mentalHistory}}</td>
-            <td>{{i.environHistory}}</td>
-            <td>{{i.attitudeHistory}}</td>
-            <td>{{i.livingHistory}}</td>
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table>
-          <tr>
-            <th>Birth  History </th>
-            <th>Immunization  History</th>
-            <th>Development  History</th>
-            <th>Education  History</th>
-            <th>Occupation   History </th>
-            <th>Marrital and Sexual  History</th>
-            <th>Menstrual and obstetric History(Females)</th>
-          
-          </tr>
-          <tr *ngFor="let i of Patient.FamilyHistoryDetails">
-            <td>{{i.mentalHistory}}</td>
-            <td>{{i.environHistory}}</td>
-            <td>{{i.attitudeHistory}}</td>
-            <td>{{i.livingHistory}}</td>
-            <td>{{i.environHistory}}</td>
-            <td>{{i.attitudeHistory}}</td>
-            <td>{{i.livingHistory}}</td>
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table>
-          <tr>
-            <th>History of choise of Substance</th>
-            <th>History of Total Duration of Use</th>
-            <th>History of Duration of Regular Use</th>
-            <th>History of Daily Intake (Amount/No.)</th>
-            <th>History of last Intake of Drug (Day/time and Quantity of the drug)</th>
-           
-          
-          </tr>
-          <tr *ngFor="let i of Patient.FamilyHistoryDetails">
-            <td>{{i.mentalHistory}}</td>
-            <td>{{i.environHistory}}</td>
-            <td>{{i.attitudeHistory}}</td>
-            <td>{{i.livingHistory}}</td>
-            <td>{{i.environHistory}}</td>
-            
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table>
-          <tr>
-            <th>H/o Homicide/Suicide Attempts If yes, specify the number of attempt and method</th>
-            <th>Pre-morbid personality</th>
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table>
-         <tr>
-           <th>General Appearance, Attitude & Behaviour</th>
-         </tr>
-         <tr>
-           <td>
-             <table>
-               <tr>
-                 <th>Appearance</th>
-                 <th>Level of Grooming</th>
-                 <th>Level of Cleanliness</th>
-                 <th>Level of Consciousness</th>
-                 <th>Gait</th>
-                 <th>Posture</th>
-                 <th>Mode of Entry</th>
-                 <th>Cooperative</th>
-                 <th>Eye to Eye Contact</th>
-                 <th>Rapport</th>
-                 <th>Gesturing</th>
-                 <th>Other Movements</th>
-                 <th>Other Catatonic Phenomenon</th>
-               </tr>
-               <tr *ngFor="let i of Patient.generalAptitudeBehaviourDetails" >
-                 <td>{{i.Appearance}}</td>
-                 <td>{{i.LevelofGrooming}}</td>
-                 <td>{{i.LevelofCleanliness}}</td>
-                 <td>{{i.LevelofConsciousness}}</td>
-                 <td>{{i.Gait}}</td>
-                 <td>{{i.Posture}}</td>
-                 <td>{{i.ModeOfEntry}}</td>
-                 <td>{{i.Cooperative}}</td>
-                 <td>{{i.EyetoEyeContact}}</td>
-                 <td>{{i.Rapport}}</td>
-                 <td>{{i.Gesturing}}</td>
-                 <td>{{i.OtherMovements}}</td>
-                 <td>{{i.otherCatatolicPhemenon}}</td>
-                
-               </tr>
-             </table>
-           </td>
-         </tr>
-        </table>
-      </td>
-      <td>
-        <input type="button" value="edit psychatric details" class="btn btn-danger"  (click)="fillPsychatricDetails()" >
-        <input type="button" value="Download as Excel" class="btn btn-success"  (click)="downloadExcel()" >
-      </td>
-      </tr>
-    </tbody>
-</table>
+<body *ngIf="Patient">
+  <div   class="container-fluid"  >
+ <div class="col-md-4"  *ngFor="let patient of Patient">
+  <mat-card class="example-card"  >
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{patient.first_name}} {{patient.middle_name}} {{patient.last_name}}</mat-card-title>
+      <mat-card-subtitle>Doctor Assigned : {{patient.doctorName}}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="{{patient.profile_image}}" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+    <table class="table table-hover table-inverse table-responsive">
+     <tr>
+       <td>Admit on</td>
+       <td> {{patient.addmission_date | date }} </td>
+       <td>Age</td>
+       <td> {{patient.age}} </td>
+     </tr>
+     <tr>
+       <td></td>
+     </tr>
+    </table>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="getThisPatientData(patient._id)" mat-button>Complaits</button>
+      <button (click)="openComplaintDialog(patient._id)" mat-button>Open Complaint</button>
+      <button (click)="openIllnessDialog(patient._id)" mat-button>Open Illness</button>
+    </mat-card-actions>
+  </mat-card>
+ </div>
+  </div>
+
+</body>

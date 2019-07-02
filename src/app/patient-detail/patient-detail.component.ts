@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as saveAs from "file-saver";
 import { jsonexport } from "jsonexport/dist";
-
+import Swal from 'sweetalert2';
+import {MatDialog} from '@angular/material/dialog';
+import { PatientComponent,ComplaintPopupComponent,IllnessPopupComponent } from "../patient/patient.component";
 
 @Component({
   selector: 'app-patient-detail',
@@ -12,7 +14,7 @@ import { jsonexport } from "jsonexport/dist";
 })
 export class  PatientDetailComponent implements OnInit {
 
-  constructor(private http:HttpClient,private aroute:ActivatedRoute,private router:Router) { }
+  constructor(private http:HttpClient,private aroute:ActivatedRoute,private router:Router,public dialog: MatDialog) { }
   Patient;id;
   url="https://digitalapp001.herokuapp.com"
   ngOnInit() {
@@ -28,7 +30,7 @@ export class  PatientDetailComponent implements OnInit {
       id:this.id
     }
     
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb)
+    this.http.get('https://digitalapp001.herokuapp.com/api/pat/getall').subscribe(this.cb)
   }
   cb=(dt)=>{
     this.Patient=dt;
@@ -44,5 +46,29 @@ export class  PatientDetailComponent implements OnInit {
       saveAs(new Blob([csv],{type:'text/json'}),'datdaata.csv')
   });
   }
+  getThisPatientData(pid){
+   
+    var obj={
+      id:pid
+    }
+    this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb2)
+  }
+  cb2=(d)=>{
+    console.log(d)
+  }
+  openComplaintDialog(id){
+    const dialogRef =this.dialog.open(ComplaintPopupComponent,{
+      data: {id:id},
+      width:'75%'
+    });
+    
+    
+  }
+  openIllnessDialog(id){
+    const dialogRef =this.dialog.open(IllnessPopupComponent,{
+      data: {id: id}
+    });
+  }
 
 }
+

@@ -24,7 +24,7 @@ url="https://digitalapp001.herokuapp.com";
   }
   goToForm5(x){
     console.log(x)
-    this.router.navigate(['dashboard/patable/details',{id:x}])
+    this.router.navigate(['dashboard/details',{id:x}])
 
   }
   gotosecondpage(x){
@@ -70,5 +70,9 @@ doc.save('raja.pdf')
 Psychatric(id){
   console.log(id)
   this.router.navigate(['dashboard/accordian',{id:id}])
+}
+goToPatient(id){
+  console.log(id)
+  this.router.navigate(['patient',{id:id}])
 }
 }

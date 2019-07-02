@@ -29,7 +29,9 @@ import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButt
 import { LayoutModule } from '@angular/cdk/layout';
 import { UserService } from './services/user.service';
 import { MyFireService } from './services/my-fire.service';
-
+import { PatientComponent,ComplaintPopupComponent, IllnessPopupComponent } from './patient/patient.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -38,6 +40,7 @@ const routes: Routes = [
   { path : 'login', component : LoginComponent, canActivate :[LoginGuard] },
   { path : 'register', component : RegisterComponent, canActivate :[LoginGuard] },
   { path : 'forgot', component : ForgotpasswordComponent, canActivate :[LoginGuard] },
+  { path : 'patient', component : PatientComponent, canActivate :[LoginGuard] },
   { path : 'changepassword/:id', component : ChangepasswordComponent, canActivate :[LoginGuard]  },
   { path : 'dashboard', loadChildren : './dashboard/dashboard.module#DashboardModule', canActivate :[LoginGuard]},
   { path : '**', component : LoginComponent, canActivate :[LoginGuard]}
@@ -49,7 +52,10 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     ForgotpasswordComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    PatientComponent,
+    ComplaintPopupComponent,
+    IllnessPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -79,8 +85,11 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule,
     LayoutModule,
+    MatTableModule,MatDialogModule
    
   ],
+  entryComponents:[ComplaintPopupComponent,IllnessPopupComponent]
+  ,
   exports: [
     BrowserModule,
     FormsModule, 
