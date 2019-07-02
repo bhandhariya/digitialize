@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as saveAs from "file-saver";
 import { jsonexport } from "jsonexport/dist";
 import Swal from 'sweetalert2';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { PatientComponent } from "../patient/patient.component";
 import { PopupComponent } from "../popup/popup.component";
 import { HistoryComponent } from "../history/history.component";
@@ -68,6 +68,44 @@ export class  PatientDetailComponent implements OnInit {
       data: {id: id}
     });
   }
+  openModal(templateRef){
+    let dialogRef = this.dialog.open(templateRef, {
+      width: '250px',
+      // data: { name: this.name, animal: this.animal }
+  });
+  }
+  
+  openHistory(templateRef,id){
+    let dialogRef = this.dialog.open(templateRef, {
+      width: '50%',
+     data: { id:id }
+  });
 
+  this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',{id:id}).subscribe(this.historyCallback)
+  }
+
+  PresentHistory
+  TreatementHistory;
+  PastHistory;
+  HistoryOfModeOfIntake;
+  FamilyHistory;
+  PersonalHistory;
+  SubstanceHistory;
+  LegalHistory;
+
+
+  historyCallback=(dt)=>{
+    console.log(dt)
+    this.PresentHistory=dt.PresentHistoryDetails;
+    this.PastHistory=dt.PastHistoryDetails;
+    this.HistoryOfModeOfIntake=dt.PastHiHisrotyOfModeOfIntakestorydetails;
+    this.TreatementHistory=dt.TreateMentHistoryDetails;
+    this.FamilyHistory=dt.FamilyHistoryDetails;
+    this.PersonalHistory=dt.PersonalHistoryDetails;
+    this.SubstanceHistory=dt.SubstanceHistoryDetails;
+    this.LegalHistory=dt.LegalHistoryDetails;
+  }
+  
+  
 }
 

@@ -40,14 +40,15 @@
               <button mat-button [matMenuTriggerFor]="history">History</button>
 
         <mat-menu #history="matMenu">
-          <button mat-menu-item color="warn" (click)="openHistoryDialog(patient._id)" >Open Present History</button>
-          <button mat-menu-item >Past</button>
-          <button mat-menu-item >History Of Mode Of Intake</button>
-          <button mat-menu-item >Treatement History</button>
-          <button mat-menu-item >Family History</button>
-          <button mat-menu-item >Personal History</button>
-          <button mat-menu-item >Substance History</button>
-          <button mat-menu-item >Legal History</button>
+          <button mat-menu-item color="warn" (click)="openHistory(presentHistory,patient._id)" >Open Present History</button>
+          <button mat-menu-item (click)="openHistory(pastHistory,patient._id)" >Open Past History</button>
+          <button mat-menu-item (click)="openHistory(historyOfModeOfItake,patient._id)" >History Of Mode Of Intake</button>
+          <button mat-menu-item (click)="openHistory(treatementHistory,patient._id)" >Treatement History</button>
+          <button mat-menu-item (click)="openHistory(familyHistory,patient._id)" >Family History</button>
+          <button mat-menu-item  (click)="openHistory(personalHistory,patient._id)" >Personal History</button>
+          <button mat-menu-item  (click)="openHistory(substanceHistory,patient._id)" >Substance History</button>
+          <button mat-menu-item  (click)="openHistory(legalHistory,patient._id)" >Legal History</button>
+          <button mat-menu-item (click)="openModal(mytemplate)" >open templte</button>
         </mat-menu>
             </mat-card-actions>
           </mat-card>
@@ -63,3 +64,303 @@
     <app-footer></app-footer>
   </div>
 </div>
+
+<ng-template #mytemplate>
+  <h1>It works</h1>
+</ng-template>
+
+<ng-template #presentHistory>
+  <h1>Present History</h1>
+  <table class="table table-hover table-inverse">
+    <thead class="thead-inverse">
+      <tr>
+        <th>SN</th>
+        <th>History</th>
+        <th>Created Date</th>
+        <th>Options</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of PresentHistory;let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td>
+            {{item.history}}
+          </td>
+          <td>
+            {{item.creationDate | date}}
+          </td>
+          <td>
+            <input type="button" value="click" class="btn btn-danger" >
+          </td>
+        </tr>
+        
+      </tbody>
+  </table>
+</ng-template>
+
+<ng-template #pastHistory>
+  <h1>Past History</h1>
+  <table class="table table-hover table-inverse">
+    <thead class="thead-inverse">
+      <tr>
+        <th>SN</th>
+        <th>History</th>
+        <th>Created Date</th>
+        <th>Options</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of PastHistory;let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td>
+            {{item.history}}
+          </td>
+          <td>
+            {{item.creationDate | date}}
+          </td>
+          <td>
+            <input type="button" value="click" class="btn btn-danger" >
+          </td>
+        </tr>
+        
+      </tbody>
+  </table>
+</ng-template>
+
+<ng-template #historyOfModeOfItake>
+  <h1>History of Mode of intake</h1>
+  <table class="table table-hover table-inverse">
+    <thead class="thead-inverse">
+      <tr>
+        <th>SN</th>
+        <th>Medical History</th>
+        <th>Psychatric History</th>
+        <th>Created Date</th>
+        <th>Options</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of HistoryOfModeOfIntake;let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td>
+            {{item.MedicalHistory}}
+          </td>
+          <td>
+            {{item.PsychatricHistory}}
+          </td>
+          <td>
+            {{item.creationDate | date}}
+          </td>
+          <td>
+            <input type="button" value="click" class="btn btn-danger" >
+          </td>
+        </tr>
+        
+      </tbody>
+  </table>
+</ng-template>
+
+<ng-template #treatementHistory>
+  <h1>History of Mode of intake</h1>
+  <table class="table table-hover table-inverse">
+    <thead class="thead-inverse">
+      <tr>
+        <th>SN</th>
+        <th>PastTreatementHistory</th>
+        <th>PresentTreatementHistory</th>
+        <th>Created Date</th>
+        <th>Options</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of TreatementHistory;let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td>
+            {{item.PastTreatementHistory}}
+          </td>
+          <td>
+            {{item.PresentTreatementHistory}}
+          </td>
+          <td>
+            {{item.creationDate | date}}
+          </td>
+          <td>
+            <input type="button" value="click" class="btn btn-danger" >
+          </td>
+        </tr>
+        
+      </tbody>
+  </table>
+</ng-template>
+<ng-template #familyHistory>
+  <h1>History of Mode of intake</h1>
+  <table class="table table-hover table-inverse">
+    <thead class="thead-inverse">
+      <tr>
+        <th>SN</th>
+        <th>Family History of Mental illness or Drug Addiction</th>
+        <th>Family Environment History</th>
+        <th>Family Attitude History</th>
+        <th>Living Condition History</th>
+        <th>Created Date</th>
+        <th>Options</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of FamilyHistory;let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td>
+            {{item.mentalHistory}}
+          </td>
+          <td>
+            {{item.environHistory}}
+          </td>
+          <td>
+            {{item.attitudeHistory}}
+          </td>
+          <td>
+            {{item.livingHistory}}
+          </td>
+          <td>
+            {{item.creationDate | date}}
+          </td>
+          <td>
+            <input type="button" value="click" class="btn btn-danger" >
+          </td>
+        </tr>
+        
+      </tbody>
+  </table>
+</ng-template>
+
+<ng-template #personalHistory>
+  <h1>History of Mode of intake</h1>
+  <table class="table table-hover table-inverse">
+    <thead class="thead-inverse">
+      <tr>
+        <th>SN</th>
+        <th>BirthHistory</th>
+        <th>DevelopmentHistory</th>
+        <th>EducationHistory</th>
+        <th>ImmunizationHistory</th>
+        <th>MarritalandSexualHistory</th>
+        <th>MenstrualandobstetricHistory</th>
+        <th>OccupationHistory</th>
+        <th>Created Date</th>
+        <th>Options</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of PersonalHistory;let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td>
+            {{item.BirthHistory}}
+          </td>
+          <td>
+            {{item.DevelopmentHistory}}
+          </td>
+          <td>
+            {{item.EducationHistory}}
+          </td>
+          <td>
+            {{item.ImmunizationHistory}}
+          </td>
+          <td>
+            {{item.MarritalandSexualHistory}}
+          </td>
+          <td>
+            {{item.MenstrualandobstetricHistory}}
+          </td>
+          <td>
+            {{item.OccupationHistory}}
+          </td>
+          <td>
+            {{item.creationDate | date}}
+          </td>
+          <td>
+            <input type="button" value="click" class="btn btn-danger" >
+          </td>
+        </tr>
+        
+      </tbody>
+  </table>
+</ng-template>
+
+<ng-template #substanceHistory>
+  <h1>History of Mode of intake</h1>
+  <table class="table table-hover table-inverse">
+    <thead class="thead-inverse">
+      <tr>
+        <th>SN</th>
+        <th>History of choise of Substance</th>
+        <th>History of Total Duration of Use  </th>
+        <th>History of Duration of Regular Use</th>
+        <th>History of Daily Intake (Amount/No.)</th>
+        <th>History of last Intake of Drug (Day/time and Quantity of the drug)</th>
+        <th>Created Date</th>
+        <th>Options</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of SubstanceHistory;let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td>
+            {{item.HistoryOfChoiseOfSubstance}}
+          </td>
+          <td>
+            {{item.HistoryOfTotalDurationOfUse}}
+          </td>
+          <td>
+            {{item.HistoryOfDurationOfRegularUse}}
+          </td>
+          <td>
+            {{item.HistoryOfDailyIntake}}
+          </td>
+          <td>
+            {{item.HistoryOfLastIntakeOfDrug}}
+          </td>
+          
+          <td>
+            {{item.creationDate | date}}
+          </td>
+          <td>
+            <input type="button" value="click" class="btn btn-danger" >
+          </td>
+        </tr>
+        
+      </tbody>
+  </table>
+</ng-template>
+
+<ng-template #legalHistory>
+  <h1>History of Mode of intake</h1>
+  <table class="table table-hover table-inverse">
+    <thead class="thead-inverse">
+      <tr>
+        <th>SN</th>
+        <th>H/o Homicide/Suicide Attempts If yes, specify the number of attempt and method.</th>
+        <th>Pre-morbid personality</th>
+        <th>Created Date</th>
+        <th>Options</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of LegalHistory;let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td>
+            {{item.HomicideAttempt}}
+          </td>
+          <td>
+            {{item.preMorbidpersonality}}
+          </td>
+          <td>
+            {{item.creationDate | date}}
+          </td>
+          <td>
+            <input type="button" value="click" class="btn btn-danger" >
+          </td>
+        </tr>
+        
+      </tbody>
+  </table>
+</ng-template>
