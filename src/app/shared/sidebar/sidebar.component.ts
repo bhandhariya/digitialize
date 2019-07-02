@@ -49,4 +49,11 @@ export class SidebarComponent implements OnInit {
       this.router.navigate(['../../dashboard/accordian']);
     } 
   }
+  goTopatientCard(){
+    if(this.router.url == 'dashboard'){
+      this.router.navigate(['../dashboard/details']);
+    }else{
+      this.router.navigate(['../../dashboard/details']);
+    } 
+  }
 }

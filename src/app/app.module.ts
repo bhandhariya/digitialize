@@ -32,6 +32,7 @@ import { MyFireService } from './services/my-fire.service';
 import { PatientComponent} from './patient/patient.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
+import { PopupComponent } from './popup/popup.component';
 
 
 
@@ -54,8 +55,10 @@ const routes: Routes = [
     ForgotpasswordComponent,
     ChangepasswordComponent,
     PatientComponent,
+    PopupComponent,
     
   ],
+  entryComponents:[PopupComponent],
   imports: [
     BrowserModule,
     FormsModule, 

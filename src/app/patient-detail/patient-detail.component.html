@@ -1,33 +1,51 @@
-<body *ngIf="Patient">
-  <div   class="container-fluid"  >
- <div class="col-md-4"  *ngFor="let patient of Patient">
-  <mat-card class="example-card"  >
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{patient.first_name}} {{patient.middle_name}} {{patient.last_name}}</mat-card-title>
-      <mat-card-subtitle>Doctor Assigned : {{patient.doctorName}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{patient.profile_image}}" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-    <table class="table table-hover table-inverse table-responsive">
-     <tr>
-       <td>Admit on</td>
-       <td> {{patient.addmission_date | date }} </td>
-       <td>Age</td>
-       <td> {{patient.age}} </td>
-     </tr>
-     <tr>
-       <td></td>
-     </tr>
-    </table>
-    </mat-card-content>
-    <mat-card-actions>
-      <button (click)="getThisPatientData(patient._id)" mat-button>Complaits</button>
-      <button (click)="openComplaintDialog(patient._id)" mat-button>Open Complaint</button>
-      <button (click)="openIllnessDialog(patient._id)" mat-button>Open Illness</button>
-    </mat-card-actions>
-  </mat-card>
- </div>
-  </div>
 
-</body>
+
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <app-topnavbar></app-topnavbar>
+      <div class="container-fluid"  *ngIf="Patient" >
+        <!-- Begin Main Content -->
+
+        <body class="row" >
+          <div  *ngFor="let patient of Patient"  >
+         <div class="col-md-11"  >
+          <mat-card class="example-card"  >
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{patient.first_name}} {{patient.middle_name}} {{patient.last_name}}</mat-card-title>
+              <mat-card-subtitle>Doctor Assigned : {{patient.doctorName}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{patient.profile_image}}" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+            <table class="table table-hover table-inverse table-responsive">
+             <tr>
+               <td>Admit on</td>
+               <td> {{patient.addmission_date | date }} </td>
+               <td>Age</td>
+               <td> {{patient.age}} </td>
+             </tr>
+             <tr>
+               <td></td>
+             </tr>
+            </table>
+            </mat-card-content>
+            <mat-card-actions>
+              <button (click)="getThisPatientData(patient._id)" mat-button>Complaits</button>
+              <button (click)="openComplaintDialog(patient._id)" mat-button>Open Complaint</button>
+              <button (click)="openIllnessDialog(patient._id)" mat-button>Open Illness</button>
+            </mat-card-actions>
+          </mat-card>
+         </div>
+        
+          </div>
+        
+        </body>
+
+        <!-- End of Main Content -->
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

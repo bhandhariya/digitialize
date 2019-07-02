@@ -6,6 +6,7 @@ import { jsonexport } from "jsonexport/dist";
 import Swal from 'sweetalert2';
 import {MatDialog} from '@angular/material/dialog';
 import { PatientComponent } from "../patient/patient.component";
+import { PopupComponent } from "../popup/popup.component";
 
 @Component({
   selector: 'app-patient-detail',
@@ -19,17 +20,14 @@ export class  PatientDetailComponent implements OnInit {
   url="https://digitalapp001.herokuapp.com"
   ngOnInit() {
 
-    this.aroute.paramMap.subscribe(e=>{
-      this.id=e.get('id');
-      console.log(this.id)
-    })
+    // this.aroute.paramMap.subscribe(e=>{
+    //   this.id=e.get('id');
+    //   console.log(this.id)
+    // })
     this.getAllData();
   }
   getAllData(){
-    var obj={
-      id:this.id
-    }
-    
+   
     this.http.get('https://digitalapp001.herokuapp.com/api/pat/getall').subscribe(this.cb)
   }
   cb=(dt)=>{
@@ -57,7 +55,7 @@ export class  PatientDetailComponent implements OnInit {
     console.log(d)
   }
   openComplaintDialog(id){
-    const dialogRef =this.dialog.open(PatientComponent,{
+    const dialogRef =this.dialog.open(PopupComponent,{
       data: {id:id},
       width:'75%'
     });
