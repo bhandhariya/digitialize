@@ -87,7 +87,7 @@
               <!-- {{dataSource.first_name}} {{dataSource.middle_name}} {{dataSource.last_name}} -->
             
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="first_name"   value="{{dataSource.first_name}}"   >
+                    <input matInput placeholder="first_name" [(ngModel)]='first_name'     >
                   </mat-form-field>
                 
                   <mat-form-field class="example-full-width">
@@ -98,7 +98,7 @@
                       <input matInput placeholder="last_name"   value="{{dataSource.last_name}}" >
                     </mat-form-field>
                 
-                <input type="button" value="save" (click)="check()" >
+                <input type="button" value="save" (click)="check(dataSource)" >
           </td>
           <td>
               <mat-form-field class="example-full-width">

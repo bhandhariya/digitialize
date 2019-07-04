@@ -54,10 +54,8 @@ patientEdit(id){
   this.bgloid=id
 }
 first_name;middle_name;last_name
-check(){
-  // this.first_name=this.dataSource.first_name
-  // this.middle_name=this.dataSource.middle_name
-  // this.last_name=this.dataSource.last_name
+check(d){
+  
   console.log(this.first_name)
   console.log(this.middle_name)
 console.log(this.last_name)
