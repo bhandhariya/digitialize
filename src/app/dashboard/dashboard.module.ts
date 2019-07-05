@@ -30,6 +30,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -38,6 +39,7 @@ const AppRoutes: Routes = [
   { path : '', component : DashboardComponent },
   { path : 'first', component : FirstComponent },
   { path : 'second', component : SecondComponent },
+  {path:'profile',component:ProfileComponent},
 
   { path : 'patable', component : PatientTableComponent },
   { path : 'details', component : PatientDetailComponent },
@@ -57,7 +59,8 @@ const AppRoutes: Routes = [
     SecondComponent,
     PatientTableComponent,
     AccordianDemoComponent,
-    PatientDetailComponent
+    PatientDetailComponent,
+    ProfileComponent
     
 
   ],
