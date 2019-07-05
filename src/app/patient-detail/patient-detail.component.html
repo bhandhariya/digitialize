@@ -27,17 +27,23 @@
                <td> {{patient.age}} </td>
              </tr>
              <tr>
-               <td></td>
+               <td><button mat-raised-button (click)="getThisPatientData(patient._id)" >Basic Details</button></td>
+               <td><button (click)="openComplaintDialog(patient._id)" mat-raised-button color="accent">Open Complaint</button></td>
+               
+             </tr>
+             <tr>
+              <td><button mat-raised-button color="primary" [matMenuTriggerFor]="history">History</button></td>
+              <td><button mat-raised-button color="primary" (click)="EditPsychatric(patient._id)">Add Psychatric </button></td>
              </tr>
             </table>
             </mat-card-content>
             <mat-card-actions>
               <!-- <button (click)="getThisPatientData(patient._id)" mat-raised-button color="primary">Complaits</button> -->
-              <button mat-raised-button (click)="getThisPatientData(patient._id)" >Basic Details</button>
               
-              <button (click)="openComplaintDialog(patient._id)" mat-raised-button color="accent">Open Complaint</button>
               
-              <button mat-raised-button color="primary" [matMenuTriggerFor]="history">History</button>
+              
+              
+              
 
         <mat-menu #history="matMenu">
           <button mat-raised-button  color="warn" (click)="openHistory(presentHistory,patient._id)" >Open Present History</button>
@@ -71,8 +77,8 @@
 
 <ng-template #presentHistory>
   <h1>Present History</h1>
-  <table class="table table-hover table-inverse">
-    <thead class="thead-inverse">
+  <table class="table table-hover table-inverse" *ngFor="let item of PresentHistory;let i=index">
+    <thead class="thead-inverse" *ngIf="item._id!=bgloid;else presentHistoryEdit" >
       <tr>
         <th>SN</th>
         <th>History</th>
@@ -80,8 +86,8 @@
         <th>Options</th>
       </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of PresentHistory;let i=index">
+      <tbody *ngIf="item._id!=bgloid" >
+        <tr >
           <td scope="row">{{i+1}}</td>
           <td>
             {{item.history}}
@@ -90,13 +96,23 @@
             {{item.creationDate | date}}
           </td>
           <td>
-            <input type="button" value="click" class="btn btn-danger" >
+            <input type="button" value="Edit" class="btn btn-danger"  (click)="editPresentHistory(item._id)" >
           </td>
         </tr>
         
       </tbody>
   </table>
 </ng-template>
+
+<ng-template #presentHistoryEdit>
+  <div class="form-group" [formGroup]="presentEditHistoryForm"  >
+    <label for="">Present History </label>
+    <textarea class="form-control" formControlName="history"  name="" id="" rows="3"></textarea>
+    <input type="button" value="Save" class="btn btn-success" (click)="presentEditHistoryFormSubmit(presentEditHistoryForm.value)"  > 
+    <input type="button" value="Cancle" class="btn btn-danger" (click)="CancleForm()" >
+  </div>
+</ng-template>
+
 
 <ng-template #pastHistory>
   <h1>Past History</h1>

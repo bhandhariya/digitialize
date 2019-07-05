@@ -8,6 +8,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { PatientComponent } from "../patient/patient.component";
 import { PopupComponent } from "../popup/popup.component";
 import { HistoryComponent } from "../history/history.component";
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-patient-detail',
@@ -26,6 +27,10 @@ export class  PatientDetailComponent implements OnInit {
     //   console.log(this.id)
     // })
     this.getAllData();
+  }
+  EditPsychatric(id){
+    console.log(id)
+    this.router.navigate(['dashboard/accordian',{id:id}])
   }
   getAllData(){
    
@@ -105,7 +110,23 @@ export class  PatientDetailComponent implements OnInit {
     this.SubstanceHistory=dt.SubstanceHistoryDetails;
     this.LegalHistory=dt.LegalHistoryDetails;
   }
-  
-  
+  CancleForm(){
+    this.bgloid=1;
+  }
+  bgloid=1;
+  editPresentHistory(pid){
+    console.log(pid);
+    this.bgloid=pid;
+  }  
+  presentEditHistoryForm=new FormGroup({
+    // id:new FormControl(this.bgloid),
+    modifyBy:new FormControl(sessionStorage.getItem('MID')),
+    history:new FormControl('')
+  })
+  presentEditHistoryFormSubmit(form){
+    form.id=this.bgloid;
+    
+    console.log(form)
+  }
 }
 
