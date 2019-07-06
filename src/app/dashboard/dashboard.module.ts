@@ -9,6 +9,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
+import { NumberModule } from "../shared/number.module";
 
     // Components
 import { FooterComponent } from '../shared/footer/footer.component';
@@ -83,7 +84,7 @@ const AppRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatRadioModule,MatDialogModule
+    MatRadioModule,MatDialogModule,NumberModule
     
   ],
   providers :[

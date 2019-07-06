@@ -36,6 +36,7 @@ import { PopupComponent } from './popup/popup.component';
 import {MatInputModule} from '@angular/material/input';
 import { HistoryComponent } from './history/history.component';
 
+import { NumberModule } from "./shared/number.module";
 
 
 const routes: Routes = [
@@ -58,6 +59,7 @@ const routes: Routes = [
     PatientComponent,
     PopupComponent,
     HistoryComponent,
+    
     
   ],
   entryComponents:[PopupComponent,HistoryComponent],
@@ -89,7 +91,7 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    MatTableModule,MatDialogModule,MatInputModule
+    MatTableModule,MatDialogModule,MatInputModule,NumberModule
    
   ],
   exports: [
