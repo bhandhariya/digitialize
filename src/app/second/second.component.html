@@ -23,7 +23,7 @@
                     </td>
                     <td>
                         <mat-form-field >
-                            <input matInput type="number" formControlName="fatherNumber" OnlyNumberWithLength MinDigit="10" MaxDigit="10"   placeholder="Mobile Number" >
+                            <input matInput appNumber minlength="10"  maxlength="10" formControlName="fatherNumber"    placeholder="Mobile Number" >
                         </mat-form-field>
                       </td>
                       <td>
@@ -45,7 +45,7 @@
                       </td>
                       <td>
                           <mat-form-field >
-                              <input matInput formControlName="guardianNumber" OnlyNumberWithLength MinDigit="10" MaxDigit="10"  placeholder="Mobile Number" >
+                              <input matInput formControlName="guardianNumber" appNumber MinDigit="10" MaxDigit="10"  placeholder="Mobile Number" >
                           </mat-form-field>
                         </td>
                         <td>
@@ -67,7 +67,7 @@
                       </td>
                       <td>
                           <mat-form-field >
-                              <input matInput formControlName="spouseNumber" OnlyNumberWithLength MinDigit="10" MaxDigit="10"  placeholder="Mobile Number" >
+                              <input matInput formControlName="spouseNumber" appNumber MinDigit="10" MaxDigit="10"  placeholder="Mobile Number" >
                           </mat-form-field>
                         </td>
                         <td>
@@ -79,7 +79,7 @@
                 <tr>
                     <td>
                         <mat-form-field >
-                            <input matInput formControlName="spouseAge" OnlyNumberWithLength MinDigit="2" MaxDigit="2"  placeholder="Spouse Age" >
+                            <input matInput formControlName="spouseAge" appNumber MinDigit="2" MaxDigit="2"  placeholder="Spouse Age" >
                         </mat-form-field> 
                     </td>
                     <td>
@@ -100,7 +100,7 @@
                     </td>
                   <td>
                       <mat-form-field >
-                          <input matInput formControlName="childernsCount" OnlyNumberWithLength MinDigit="1" MaxDigit="2"  placeholder="Childerns Count" >
+                          <input matInput formControlName="childernsCount" appNumber MinDigit="1" MaxDigit="2"  placeholder="Childerns Count" >
                       </mat-form-field> 
                   </td>
                 </tr>
