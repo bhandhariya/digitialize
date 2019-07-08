@@ -26,14 +26,47 @@ import { PatientDetailComponent } from '../patient-detail/patient-detail.compone
 
 
 import {MatInputModule} from '@angular/material/input';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+// import {MatDatepickerModule,} from '@angular/material/datepicker';
+// import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ProfileComponent } from './profile/profile.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
+import {
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MAT_DATE_FORMATS,
+  DateAdapter as DataAdapterFormMaterial
+ } from '@angular/material';
+ import { NativeDateAdapter } from "@angular/material";
 
+ export class AppDateAdapter extends NativeDateAdapter {
+  format(date: Date, displayFormat: Object): string {
+      if (displayFormat === 'input') {
+          const day = date.getDate();
+          const month = date.getMonth() + 1;
+          const year = date.getFullYear();
+          return `${day}/${month}/${year}`;
+      }
+      return date.toDateString();
+  }
+}
+
+export const APP_DATE_FORMATS =
+{
+  parse: {
+      dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
+    },
+  display: {
+      dateInput: 'input',
+      monthYearLabel: { year: 'numeric', month: 'numeric' },
+      dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+      monthYearA11yLabel: { year: 'numeric', month: 'long' },
+  }
+};
 
 
 const AppRoutes: Routes = [
@@ -84,11 +117,15 @@ const AppRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatRadioModule,MatDialogModule,NumberModule
-    
+    MatRadioModule,MatDialogModule,NumberModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
   providers :[
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    { provide: DataAdapterFormMaterial, useClass: AppDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
   ]
 })
 export class DashboardModule { }

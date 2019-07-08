@@ -35,8 +35,42 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PopupComponent } from './popup/popup.component';
 import {MatInputModule} from '@angular/material/input';
 import { HistoryComponent } from './history/history.component';
-
 import { NumberModule } from "./shared/number.module";
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+import {
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MAT_DATE_FORMATS,
+  DateAdapter as DataAdapterFormMaterial
+ } from '@angular/material';
+ import { NativeDateAdapter } from "@angular/material";
+
+ export class AppDateAdapter extends NativeDateAdapter {
+  format(date: Date, displayFormat: Object): string {
+      if (displayFormat === 'input') {
+          const day = date.getDate();
+          const month = date.getMonth() + 1;
+          const year = date.getFullYear();
+          return `${day}/${month}/${year}`;
+      }
+      return date.toDateString();
+  }
+}
+
+export const APP_DATE_FORMATS =
+{
+  parse: {
+      dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
+    },
+  display: {
+      dateInput: 'input',
+      monthYearLabel: { year: 'numeric', month: 'numeric' },
+      dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+      monthYearA11yLabel: { year: 'numeric', month: 'long' },
+  }
+};
 
 
 const routes: Routes = [
@@ -91,8 +125,11 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    MatTableModule,MatDialogModule,MatInputModule,NumberModule
-   
+    MatTableModule,MatDialogModule,MatInputModule,NumberModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+
   ],
   exports: [
     BrowserModule,
@@ -110,6 +147,8 @@ const routes: Routes = [
     LayoutModule,
   ],
   providers: [
+    { provide: DataAdapterFormMaterial, useClass: AppDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     ConfigService,
     LoginService,
