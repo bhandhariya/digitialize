@@ -133,6 +133,7 @@
                               <option value="Continous">Continous</option>
                               <option value=" Episodic"> Episodic</option>
                               <option value="Fluctuating">Fluctuating</option>
+                              <option value="Improving on Madication">Improving on Madication</option>
                      
                      
                   </select>
@@ -146,7 +147,7 @@
                 <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Predisposing Factors <span
                         class="text-danger">*</span> </label>
                 <div class="col-md-6">
-                  <select class="form-control" formControlName="PredisposingFactors" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.PredisposingFactors">
+                  <select (change)="PredisposingFactorsPresent(Illness.value)" class="form-control" formControlName="PredisposingFactors" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.PredisposingFactors">
                    
                     <option disabled value="">Select Your Option</option>
                     <option value="Present">Present</option>
@@ -154,6 +155,10 @@
                    
                    
                 </select>
+            
+                  <input *ngIf="PredisposingFactorsPresentvar" type="text" class="form-control" placeholder="Enter something">
+             
+                
                     <div *ngIf="IllnessformErrors.PredisposingFactors" class="invalid-feedback">{{IllnessformErrors.PredisposingFactors}}</div>
                 </div>
             </div>
@@ -164,7 +169,7 @@
               <label for="Vendor" class="col-md-4 col-form-label text-md-right"> Precipitating Factors <span
                       class="text-danger">*</span> </label>
               <div class="col-md-6">
-                <select class="form-control" formControlName="PrecipatingFactors" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.PrecipatingFactors">
+                <select (change)="PrecipitatingFactorsPresent(Illness.value)" class="form-control" formControlName="PrecipatingFactors" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.PrecipatingFactors">
                  
                   <option disabled value="">Select Your Option</option>
                   <option value="Present">Present</option>
@@ -172,6 +177,7 @@
                  
                  
               </select>
+              <input *ngIf="PrecipitatingFactorsPresentvar" type="text" class="form-control" placeholder="Enter something">
                   <div *ngIf="IllnessformErrors.PrecipatingFactors" class="invalid-feedback">{{IllnessformErrors.PrecipatingFactors}}</div>
               </div>
           </div>
@@ -182,7 +188,7 @@
             <label for="Vendor" class="col-md-4 col-form-label text-md-right">Perpetuating Factors<span
                     class="text-danger">*</span> </label>
             <div class="col-md-6">
-              <select class="form-control" formControlName="PrepetuatingFactors" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.PrepetuatingFactors">
+              <select (change)="PerpetuatingFactorsPresent(Illness.value)" class="form-control" formControlName="PrepetuatingFactors" class="form-control" (blur)="IllnesslogValidationMessages()" [class.is-invalid]="IllnessformErrors.PrepetuatingFactors">
               
                 <option disabled value="">Select Your Option</option>
                 <option value="Present">Present</option>
@@ -190,6 +196,7 @@
                
                
             </select>
+            <input *ngIf="PerpetuatingFactorsPresentvar" type="text" class="form-control" placeholder="Enter something">
                 <div *ngIf="IllnessformErrors.PrepetuatingFactors" class="invalid-feedback">{{IllnessformErrors.PrepetuatingFactors}}</div>
             </div>
         </div>
@@ -222,7 +229,7 @@
             </div>
             
           </mat-expansion-panel>
-          <mat-expansion-panel [formGroup]="HistoryOfPastIllnessForm"  (ngSubmit)="HistoryOfPastIllnessFormSubmit(HistoryOfPastIllnessForm.value)"   > 
+          <!-- <mat-expansion-panel [formGroup]="HistoryOfPastIllnessForm"  (ngSubmit)="HistoryOfPastIllnessFormSubmit(HistoryOfPastIllnessForm.value)"   > 
             <mat-expansion-panel-header>History of Past Illness</mat-expansion-panel-header>
             <div class="form-group">
               <label for="">History of present Illness</label>
@@ -231,9 +238,9 @@
                 <input type="submit" (click)="HistoryOfPastIllnessFormSubmit(HistoryOfPastIllnessForm.value)"  value="save" class="btn btn-success" >
             </div>
             
-          </mat-expansion-panel>
+          </mat-expansion-panel> -->
           <mat-expansion-panel [formGroup]="HistoryOfModeOfIntakeForm"  (ngSubmit)="HistoryOfModeOfIntakeFormSubmit(HistoryOfModeOfIntakeForm.value)" >
-            <mat-expansion-panel-header>History Of Mode Of Intake</mat-expansion-panel-header>
+            <mat-expansion-panel-header>History of Past Illness</mat-expansion-panel-header>
             <div class="form-group">
               <label for="">Psychiatric History (Duration, Number of Episode, Similarity with Present Illness)</label>
               <input type="text"
@@ -265,6 +272,10 @@
           </mat-expansion-panel  >
           <mat-expansion-panel [formGroup]="FamilyHistoryForm"  (ngSubmit)="FamilyHistoryFormSubmit(FamilyHistoryForm.value)" >
             <mat-expansion-panel-header>Family History</mat-expansion-panel-header>
+            <div class="form-group">
+              <label for="">upload Family tree</label>
+              <input type="file" (change)="uploadFamilyTree($event)"  placeholder="Select Profile Photo" name=""   id="">
+            </div>
             <div class="form-group">
               <label for="">Family History of Mental illness or Drug Addiction</label>
               <input type="text" formControlName="mental"
@@ -319,8 +330,14 @@
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="form-group">
-              <label for="">Marrital and Sexual History</label>
-              <input type="text" formControlName="MarritalandSexual"
+              <label for="">Marrital History</label>
+              <input type="text" formControlName="Marrital"
+                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+               
+            </div>
+            <div class="form-group">
+              <label for="">Sexual History</label>
+              <input type="text" formControlName="Sexual"
                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
                
             </div>
@@ -449,6 +466,7 @@
                             <mat-radio-button value="Drowsy">Drowsy</mat-radio-button>
                             <mat-radio-button value="Stuporose">Stuporose</mat-radio-button>
                             <mat-radio-button value="Comatose">Comatose</mat-radio-button>
+                            <mat-radio-button value="Consciousness">Consciousness</mat-radio-button>
                          
   
                         </mat-radio-group>
@@ -512,6 +530,7 @@
                             <mat-radio-button value="Cooperative">Cooperative</mat-radio-button>
                             <mat-radio-button value="Persuaded">Persuaded</mat-radio-button>
                             <mat-radio-button value="Partially Co operative">Partially Co operative</mat-radio-button>
+                            <mat-radio-button value="Un-Coorporative">Un-Coorporative</mat-radio-button>
                  
                          
   
@@ -528,6 +547,7 @@
                             <mat-radio-button value="Maintained">Maintained</mat-radio-button>
                             <mat-radio-button value="Difficult">Difficult</mat-radio-button>
                             <mat-radio-button value="Not Maintained">Not Maintained</mat-radio-button>
+                            <mat-radio-button value="Partially Maintened">Partially Maintened</mat-radio-button>
                             
                          
   
@@ -546,7 +566,7 @@
                             <mat-radio-button value="Difficult to Establish">Difficult to Establish</mat-radio-button>
                             <mat-radio-button value="Workable Rapport">Workable Rapport</mat-radio-button>
                             <mat-radio-button value="Not Established">Not Established</mat-radio-button>
-                           
+                            <mat-radio-button value="Easy to Establish">Easy to Established</mat-radio-button>
   
                         </mat-radio-group>
                     </td>
@@ -572,12 +592,13 @@
                     <td>
                         <mat-radio-group formControlName="OtherMovements" aria-label="Select an option">
                           
-                         
+                            <mat-radio-button value="Absent">Absent</mat-radio-button>
                             <mat-radio-button value="Mannerisms">Mannerisms</mat-radio-button>
                             <mat-radio-button value="Streotypes">Streotypes</mat-radio-button>
                             <mat-radio-button value="Tremors">Tremors</mat-radio-button>
                             <mat-radio-button value="EPS">EPS</mat-radio-button>
                             <mat-radio-button value="Preseveration">Preseveration</mat-radio-button>
+                            
                          
   
                         </mat-radio-group>
@@ -597,6 +618,7 @@
                             <mat-radio-button value="Waxy Flexibility">Waxy Flexibility</mat-radio-button>
                             <mat-radio-button value="Echoproxia">Echoproxia</mat-radio-button>
                             <mat-radio-button value="Echolalia">Echolalia</mat-radio-button>
+                            <mat-radio-button value="Absent">Absent</mat-radio-button>
                          
   
                         </mat-radio-group>
@@ -1114,6 +1136,7 @@
                           <mat-radio-button value="Impluse Stepping">Impluse Stepping</mat-radio-button>
                           <mat-radio-button value="Image">Image</mat-radio-button>
                           <mat-radio-button value="Rumination">Rumination</mat-radio-button>
+                          <mat-radio-button value="Absent">Absent</mat-radio-button>
                        
 
                       </mat-radio-group>

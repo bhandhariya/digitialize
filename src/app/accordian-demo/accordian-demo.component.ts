@@ -4,12 +4,74 @@ import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms'
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2'
+import { AngularFireStorage } from "@angular/fire/storage";
+import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'app-accordian-demo',
   templateUrl: './accordian-demo.component.html',
   styleUrls: ['./accordian-demo.component.css']
 })
 export class AccordianDemoComponent implements OnInit {
+  PredisposingFactorsPresentvar;
+  PredisposingFactorsPresent(u){
+    if(u.PredisposingFactors=="Present"){
+      console.log(u.PredisposingFactors)
+      this.PredisposingFactorsPresentvar=1
+    }else{
+      console.log(u.PredisposingFactors)
+      this.PredisposingFactorsPresentvar=""
+    }
+  };
+  PrecipitatingFactorsPresentvar;
+  PrecipitatingFactorsPresent(u){
+    if(u.PrecipatingFactors=="Present"){
+      console.log(u.PrecipatingFactors)
+      this.PrecipitatingFactorsPresentvar=1
+    }else{
+      console.log(u.PrecipatingFactors)
+      this.PrecipitatingFactorsPresentvar=""
+    }
+  };
+  PerpetuatingFactorsPresentvar;
+  PerpetuatingFactorsPresent(u){
+    if(u.PrepetuatingFactors=="Present"){
+      console.log(u.PrepetuatingFactors)
+      this.PerpetuatingFactorsPresentvar=1
+    }else{
+      console.log(u.PrepetuatingFactors)
+      this.PerpetuatingFactorsPresentvar=""
+    }
+  };
+  // OtherMovements;
+  // OtherMovementsPresent(u){
+  //   if(u.PrepetuatingFactors=="Present"){
+  //     console.log(u.PrepetuatingFactors)
+  //     this.PerpetuatingFactorsPresentvar=1
+  //   }else{
+  //     console.log(u.PrepetuatingFactors)
+  //     this.PerpetuatingFactorsPresentvar=""
+  //   }
+  // };
+  uploadFamilyTree(event){
+    const file = event.target.files[0];
+    console.log(file);
+    var randomString=Math.floor(Date.now() / 1000);
+    const filePath = 'familyTree'+randomString;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath,file);
+    task.snapshotChanges().pipe(
+      finalize(() =>{ var url = fileRef.getDownloadURL()
+        url.subscribe(e=>{
+          console.log(e)
+         this.FamilyHistoryForm.get('familyTree').setValue(e)
+        })
+      } )
+   )
+  .subscribe(e=>{
+    
+  })
+
+  }
   id;
   datePickerConfig: Partial<BsDatepickerConfig>;
   ChiefComplain: any;
@@ -68,7 +130,8 @@ formErrors = {
           'ComplaintDuration' : ''
 };
 submmited: boolean = false;
-  constructor(@Inject(HttpClient) public http,   private router:Router,private fb: FormBuilder,private arout:ActivatedRoute) {
+  constructor(@Inject(HttpClient) public http,   private router:Router,private fb: FormBuilder,private arout:ActivatedRoute,
+  private storage:AngularFireStorage) {
     this.datePickerConfig = Object.assign({},
       {
         containerClass: 'theme-dark-blue',
@@ -255,6 +318,7 @@ submmited: boolean = false;
    this.TreatementHostoryForm.reset();
   }
   FamilyHistoryForm=new FormGroup({
+    familyTree:new FormControl(''),
     mental:new FormControl(''),
     environment:new FormControl(''),
     attitute:new FormControl(''),
@@ -280,7 +344,8 @@ submmited: boolean = false;
       Development: new FormControl(''),
       Education: new FormControl(''),
       Occupation: new FormControl(''),
-      MarritalandSexual: new FormControl(''),
+      Marrital: new FormControl(''),
+      Sexual:new FormControl(''),
       Menstrualandobstetric: new FormControl(''),
       createdBy:new FormControl(''),
       id: new FormControl('')
