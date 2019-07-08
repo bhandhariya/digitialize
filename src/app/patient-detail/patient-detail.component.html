@@ -145,8 +145,8 @@
 
 <ng-template #historyOfModeOfItake>
   <h1>Past History</h1>
-  <table class="table table-hover table-inverse">
-    <thead class="thead-inverse">
+  <table class="table table-hover table-inverse" *ngFor="let item of HistoryOfModeOfIntake;let i=index" >
+    <thead class="thead-inverse" *ngIf="item._id!=bgloid;else pastHistoryEdit" >
       <tr>
         <th>SN</th>
         <th>Medical History</th>
@@ -155,8 +155,8 @@
         <th>Options</th>
       </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of HistoryOfModeOfIntake;let i=index">
+      <tbody *ngIf="item._id!=bgloid" >
+        <tr >
           <td scope="row">{{i+1}}</td>
           <td>
             {{item.MedicalHistory}}
@@ -168,7 +168,7 @@
             {{item.creationDate | date}}
           </td>
           <td>
-            <input type="button" value="click" class="btn btn-danger" >
+            <input type="button" value="edit" class="btn btn-danger" (click)="editPastHistory(item._id)" >
           </td>
         </tr>
         
@@ -176,10 +176,22 @@
   </table>
 </ng-template>
 
+<ng-template #pastHistoryEdit>
+  <div class="form-group" [formGroup]="pastEditHistoryForm"  >
+    <label for="">MedicalHistory </label>
+    <textarea class="form-control" formControlName="MedicalHistory"  name="" id="" rows="3"></textarea>
+    <label for="">Psychatric History </label>
+    <textarea class="form-control" formControlName="PsychatricHistory"  name="" id="" rows="3"></textarea>
+    <input type="button" value="Save" class="btn btn-success" (click)="pastEditHistoryFormSubmit(pastEditHistoryForm.value)"  > 
+    <input type="button" value="Cancle" class="btn btn-danger" (click)="CancleForm()" >
+  </div>
+</ng-template>
+
+
 <ng-template #treatementHistory>
-  <h1>History of Mode of intake</h1>
-  <table class="table table-hover table-inverse">
-    <thead class="thead-inverse">
+  <h1>Treatement History</h1>
+  <table class="table table-hover table-inverse" *ngFor="let item of TreatementHistory;let i=index" >
+    <thead class="thead-inverse" *ngIf="item._id!=bgloid;else treatementEditHistory" >
       <tr>
         <th>SN</th>
         <th>PastTreatementHistory</th>
@@ -188,8 +200,8 @@
         <th>Options</th>
       </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of TreatementHistory;let i=index">
+      <tbody *ngIf="item._id!=bgloid" >
+        <tr >
           <td scope="row">{{i+1}}</td>
           <td>
             {{item.PastTreatementHistory}}
@@ -201,16 +213,27 @@
             {{item.creationDate | date}}
           </td>
           <td>
-            <input type="button" value="click" class="btn btn-danger" >
+            <input type="button" value="edit" class="btn btn-danger"  (click)="editTreatementHistory(item._id)"  >
           </td>
         </tr>
         
       </tbody>
   </table>
 </ng-template>
+<ng-template #treatementEditHistory>
+  <div class="form-group" [formGroup]="editTreatementHistoryForm"  >
+    <label for="">Past Treatement History </label>
+    <textarea class="form-control" formControlName="PastHistory"  name="" id="" rows="3"></textarea>
+    <label for="">Present Treatement History</label>
+    <textarea class="form-control" formControlName="PresentHistory"  name="" id="" rows="3"></textarea>
+    <input type="button" value="Save" class="btn btn-success" (click)="editTreatementHistorySubmit(editTreatementHistoryForm.value)"  > 
+    <input type="button" value="Cancle" class="btn btn-danger" (click)="CancleForm()" >
+  </div>
+</ng-template>
+
 <ng-template #familyHistory>
-  <h1>History of Mode of intake</h1>
-  <table class="table table-hover table-inverse">
+  <h1>Family History</h1>
+  <table class="table table-hover table-inverse" *ngFor="let item of FamilyHistory;let i=index" >
     <thead class="thead-inverse">
       <tr>
         <th>SN</th>
@@ -223,7 +246,7 @@
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of FamilyHistory;let i=index">
+        <tr >
           <td scope="row">{{i+1}}</td>
           <td>
             {{item.mentalHistory}}
@@ -241,13 +264,16 @@
             {{item.creationDate | date}}
           </td>
           <td>
-            <input type="button" value="click" class="btn btn-danger" >
+            <input type="button" value="Edit" class="btn btn-danger" (click)="editFamilyHistory(item._id)" >
           </td>
         </tr>
         
       </tbody>
   </table>
 </ng-template>
+
+
+
 
 <ng-template #personalHistory>
   <h1>History of Mode of intake</h1>

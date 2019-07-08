@@ -125,8 +125,39 @@ export class  PatientDetailComponent implements OnInit {
   })
   presentEditHistoryFormSubmit(form){
     form.id=this.bgloid;
-    
     console.log(form)
   }
+  editPastHistory(pid){
+    console.log(pid);
+    this.bgloid=pid;
+  } 
+  pastEditHistoryForm=new FormGroup({
+    modifyBy:new FormControl(sessionStorage.getItem('MID')),
+    PsychatricHistory:new FormControl(''),
+    MedicalHistory:new FormControl('')
+  })
+  pastEditHistoryFormSubmit(form){
+    form.id=this.bgloid;
+    console.log(form)
+  }
+  editTreatementHistory(pid){
+    console.log(pid);
+    this.bgloid=pid;
+  }
+  editTreatementHistoryForm=new FormGroup({
+    modifyBy:new FormControl(sessionStorage.getItem('MID')),
+    PresentHistory:new FormControl(''),
+    PastHistory:new FormControl('')
+  })
+  editTreatementHistorySubmit(form){
+    form.id=this.bgloid;
+    console.log(form)
+  }
+  fmloid=1;
+  editFamilyHistory(pid){
+    console.log(pid);
+    this.fmloid=pid;
+  }
+
 }
 
