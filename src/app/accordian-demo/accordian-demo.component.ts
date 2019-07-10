@@ -52,6 +52,22 @@ export class AccordianDemoComponent implements OnInit {
   //     this.PerpetuatingFactorsPresentvar=""
   //   }
   // };
+  VarCheckPAOtherMovements;
+  CheckPAOtherMovements(u){
+    if(u=="Present"){
+      this.VarCheckPAOtherMovements="";
+    }else{
+      this.VarCheckPAOtherMovements=1;
+    }
+  }
+  VarCheckPAOtherCatatonicPhenomenonMovements;
+  CheckPAOtherCatatonicPhenomenonMovements(u){
+    if(u=="Present"){
+      this.VarCheckPAOtherCatatonicPhenomenonMovements="";
+    }else{
+      this.VarCheckPAOtherCatatonicPhenomenonMovements=1;
+    }
+  }
   uploadFamilyTree(event){
     const file = event.target.files[0];
     console.log(file);

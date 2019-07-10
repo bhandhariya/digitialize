@@ -592,13 +592,17 @@
                     <td>
                         <mat-radio-group formControlName="OtherMovements" aria-label="Select an option">
                           
-                            <mat-radio-button value="Absent">Absent</mat-radio-button>
-                            <mat-radio-button value="Mannerisms">Mannerisms</mat-radio-button>
-                            <mat-radio-button value="Streotypes">Streotypes</mat-radio-button>
-                            <mat-radio-button value="Tremors">Tremors</mat-radio-button>
-                            <mat-radio-button value="EPS">EPS</mat-radio-button>
-                            <mat-radio-button value="Preseveration">Preseveration</mat-radio-button>
+                            <mat-radio-button *ngIf="!VarCheckPAOtherMovements;else OtherMovementsPresent" (click)="CheckPAOtherMovements(GeneralAppearanceAttitudeBehaviourForm.OtherMovements)"  value="Absent">Absent</mat-radio-button>
+                            <mat-radio-button *ngIf="!VarCheckPAOtherMovements" (click)="CheckPAOtherMovements(GeneralAppearanceAttitudeBehaviourForm.OtherMovements)" value="Present">Present</mat-radio-button>
                             
+                         <ng-template #OtherMovementsPresent>
+                          <mat-radio-button value="Mannerisms">Mannerisms</mat-radio-button>
+                          <mat-radio-button value="Streotypes">Streotypes</mat-radio-button>
+                          <mat-radio-button value="Tremors">Tremors</mat-radio-button>
+                          <mat-radio-button value="EPS">EPS</mat-radio-button>
+                          <mat-radio-button value="Preseveration">Preseveration</mat-radio-button>
+                         
+                         </ng-template>
                          
   
                         </mat-radio-group>
@@ -612,14 +616,18 @@
                         <mat-radio-group formControlName="otherCatatolicPhemenon" aria-label="Select an option">
                           
                          
-                            <mat-radio-button value="Automatic Obedience">Automatic Obedience</mat-radio-button>
-                            <mat-radio-button value="Negativism">Negativism</mat-radio-button>
-                            <mat-radio-button value="Excessive Cooperation">Excessive Cooperation</mat-radio-button>
-                            <mat-radio-button value="Waxy Flexibility">Waxy Flexibility</mat-radio-button>
-                            <mat-radio-button value="Echoproxia">Echoproxia</mat-radio-button>
-                            <mat-radio-button value="Echolalia">Echolalia</mat-radio-button>
-                            <mat-radio-button value="Absent">Absent</mat-radio-button>
-                         
+                            
+                          <mat-radio-button *ngIf="!VarCheckPAOtherCatatonicPhenomenonMovements;else OtherCatatonicMovementsPresent" (click)="CheckPAOtherCatatonicPhenomenonMovements(GeneralAppearanceAttitudeBehaviourForm.otherCatatolicPhemenon)"  value="Absent">Absent</mat-radio-button>
+                          <mat-radio-button *ngIf="!VarCheckPAOtherCatatonicPhenomenonMovements" (click)="CheckPAOtherCatatonicPhenomenonMovements(GeneralAppearanceAttitudeBehaviourForm.otherCatatolicPhemenon)" value="Present">Present</mat-radio-button>
+                            <ng-template #OtherCatatonicMovementsPresent>
+                              
+                              <mat-radio-button value="Automatic Obedience">Automatic Obedience</mat-radio-button>
+                              <mat-radio-button value="Negativism">Negativism</mat-radio-button>
+                              <mat-radio-button value="Excessive Cooperation">Excessive Cooperation</mat-radio-button>
+                              <mat-radio-button value="Waxy Flexibility">Waxy Flexibility</mat-radio-button>
+                              <mat-radio-button value="Echoproxia">Echoproxia</mat-radio-button>
+                              <mat-radio-button value="Echolalia">Echolalia</mat-radio-button>
+                             </ng-template>
   
                         </mat-radio-group>
                     </td>
