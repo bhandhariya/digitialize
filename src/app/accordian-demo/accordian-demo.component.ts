@@ -68,6 +68,11 @@ export class AccordianDemoComponent implements OnInit {
       this.VarCheckPAOtherCatatonicPhenomenonMovements=1;
     }
   }
+  varPsychomotorActivity='raja';
+  changeIncreasePsychomotorActivity(){
+    this.varPsychomotorActivity=""
+
+  }
   uploadFamilyTree(event){
     const file = event.target.files[0];
     console.log(file);
@@ -659,6 +664,7 @@ submmited: boolean = false;
       ArithmeticAbility: new FormControl(''),
       ArithmeticAbilityCheck: new FormControl(''),
       Abstraction: new FormControl(''),
+      LevelOFAbstraction:new FormControl(''),
       InterpretationofProverb: new FormControl(''),
       SimilaritiesbetweenPairedObject: new FormControl(''),
       DIsSimilaritiesbetweenPairedObject: new FormControl(''),

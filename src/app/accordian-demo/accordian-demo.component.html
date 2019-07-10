@@ -649,9 +649,14 @@
                       <mat-radio-group formControlName="PsychomotorActivity" aria-label="Select an option">
                           
                          
-                        <mat-radio-button value="Normal">Normal</mat-radio-button>
-                        <mat-radio-button value="Increased">Increased</mat-radio-button>
-                        <mat-radio-button value="Decreased">Decreased</mat-radio-button>
+                        <mat-radio-button *ngIf="varPsychomotorActivity;else editttvarPsychomotorActivity" value="Normal">Normal</mat-radio-button>
+                        <mat-radio-button *ngIf="varPsychomotorActivity" (click)="changeIncreasePsychomotorActivity()" value="Increased">Increased</mat-radio-button>
+                        <mat-radio-button *ngIf="varPsychomotorActivity" value="Decreased">Decreased</mat-radio-button>
+                     <ng-template #editttvarPsychomotorActivity>
+                      <mat-radio-button value="Restlessness">Restlessness</mat-radio-button>
+                      <mat-radio-button value="Agilation">Agilation</mat-radio-button>
+                      <mat-radio-button value="Excitement">Excitement</mat-radio-button>
+                     </ng-template>
                      
 
                     </mat-radio-group>
@@ -687,8 +692,8 @@
                           
                          
                             <mat-radio-button value="Normal">Normal</mat-radio-button>
-                            <mat-radio-button value="Delayed">Delayed</mat-radio-button>
-                            <mat-radio-button value="Shortened">Shortened</mat-radio-button>
+                            <mat-radio-button value="Increased">Increased</mat-radio-button>
+                            <mat-radio-button value="Decreased">Decreased</mat-radio-button>
                             <mat-radio-button value="Difficult to Assess">Difficult to Assess</mat-radio-button>
                          
     
@@ -701,18 +706,20 @@
                     <td>
                         <mat-radio-group formControlName="Speed" aria-label="Select an option">
                           
-                         
+                          <mat-radio-button value="Normal">Normal</mat-radio-button>
                             <mat-radio-button value="Adequate">Adequate</mat-radio-button>
                             <mat-radio-button value="Inadequate">Inadequate</mat-radio-button>
+                          <mat-radio-button value="Slow">Slow</mat-radio-button>
+                          <mat-radio-button value="Rapid">Rapid</mat-radio-button>
                             <mat-radio-button value="Overtly Clean">Overtly Clean</mat-radio-button>
-                 
+                            <mat-radio-button value="Not Clear">Not Clear</mat-radio-button>
                          
   
                         </mat-radio-group>
                     </td>
                   </tr>
 
-                  <tr>
+                  <!-- <tr>
                     <td scope="row">Level of Consciousness</td>
                     <td>
                         <mat-radio-group formControlName="LevelofConsciousnessinSpeech" aria-label="Select an option">
@@ -726,7 +733,7 @@
   
                         </mat-radio-group>
                     </td>
-                  </tr>
+                  </tr> -->
 
                   <tr>
                     <td scope="row">Output</td>
@@ -906,6 +913,7 @@
                          
                               
                               <mat-radio-button value="Congruent">Congruent</mat-radio-button>
+                              <mat-radio-button value="Communable">Communable</mat-radio-button>
                               <mat-radio-button value="Incongruent">Incongruent</mat-radio-button>
                            
     
@@ -1664,6 +1672,25 @@
                           <mat-radio-button value="Concrete">Impaired</mat-radio-button>
                           <mat-radio-button value="Mental Arithmetic">Mental Arithmetic</mat-radio-button>
                           <mat-radio-button value="Written Sums">Written Sums</mat-radio-button>
+                     
+                      
+
+                      </mat-radio-group>
+                   
+                  </td>
+                  
+                </tr>
+
+                <tr>
+                  <td scope="row">Level of Abstraction</td>
+                  <td>
+                      <mat-radio-group formControlName="LevelOFAbstraction" aria-label="Select an option">
+                                                      
+                                                    
+                          <mat-radio-button value="Concreate level">Concreate level</mat-radio-button>
+                          <mat-radio-button value="Functional level">Functional level</mat-radio-button>
+                          <mat-radio-button value="Conceptual level">Conceptual level</mat-radio-button>
+                          
                      
                       
 
