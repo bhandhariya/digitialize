@@ -96,7 +96,7 @@
             {{item.creationDate | date}}
           </td>
           <td>
-            <input type="button" value="Edit" class="btn btn-danger"  (click)="editPresentHistory(item._id)" >
+            <input type="button" value="Edit" class="btn btn-danger"  (click)="editPresentHistory(item._id)">
           </td>
         </tr>
         
@@ -183,7 +183,7 @@
     <label for="">Psychatric History </label>
     <textarea class="form-control" formControlName="PsychatricHistory"  name="" id="" rows="3"></textarea>
     <input type="button" value="Save" class="btn btn-success" (click)="pastEditHistoryFormSubmit(pastEditHistoryForm.value)"  > 
-    <input type="button" value="Cancle" class="btn btn-danger" (click)="CancleForm()" >
+    <input type="button" value="Cancle" class="btn btn-danger" (click)="CancleForm()">
   </div>
 </ng-template>
 
@@ -213,7 +213,7 @@
             {{item.creationDate | date}}
           </td>
           <td>
-            <input type="button" value="edit" class="btn btn-danger"  (click)="editTreatementHistory(item._id)"  >
+            <input type="button" value="Edit" class="btn btn-danger"  (click)="editTreatementHistory(item._id)"  >
           </td>
         </tr>
         
@@ -234,7 +234,7 @@
 <ng-template #familyHistory>
   <h1>Family History</h1>
   <table class="table table-hover table-inverse" *ngFor="let item of FamilyHistory;let i=index" >
-    <thead class="thead-inverse">
+    <thead class="thead-inverse" *ngIf="item._id!=bgloid;else familyHistoryEdit">
       <tr>
         <th>SN</th>
         <th>Family History of Mental illness or Drug Addiction</th>
@@ -271,14 +271,29 @@
       </tbody>
   </table>
 </ng-template>
-
+<ng-template #familyHistoryEdit>
+  <div class="form-group" [formGroup]="FamilyEditHistoryForm"  >
+    <label for="">mentalHistory</label>
+   <textarea class="form-control" formControlName="mentalHistory"   name="" id=""></textarea> 
+  <!--  <input type="text" name="" id="" class="form-control"  formControlName="mentalHistory" >-->
+    <label for="">environHistory</label>
+    <textarea class="form-control" formControlName="environHistory"  name="" id="" rows="4"></textarea>
+    <label for="">attitudeHistory </label>
+    <textarea class="form-control" formControlName="attitudeHistory"  name="" id="" rows="4"></textarea>
+    <label for=""> livingHistory</label>
+    <textarea class="form-control" formControlName="livingHistory"  name="" id="" rows="4"></textarea>
+    
+    <input type="button" value="Save" class="btn btn-success" (click)="editPersonalHistorySubmit(FamilyEditHistoryForm.value)"  > 
+    <input type="button" value="Cancle" class="btn btn-danger" (click)="CancleForm()" >
+  </div>
+</ng-template>
 
 
 
 <ng-template #personalHistory>
-  <h1>History of Mode of intake</h1>
-  <table class="table table-hover table-inverse">
-    <thead class="thead-inverse">
+  <h1>Personal History</h1>
+  <table class="table table-hover table-inverse"  *ngFor="let item of PersonalHistory;let i=index" >
+    <thead class="thead-inverse" *ngIf="item._id!=bgloid;else personalHistoryEdit">
       <tr>
         <th>SN</th>
         <th>BirthHistory</th>
@@ -293,12 +308,13 @@
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of PersonalHistory;let i=index">
+        <tr>
           <td scope="row">{{i+1}}</td>
           <td>
             {{item.BirthHistory}}
           </td>
           <td>
+            
             {{item.DevelopmentHistory}}
           </td>
           <td>
@@ -320,18 +336,40 @@
             {{item.creationDate | date}}
           </td>
           <td>
-            <input type="button" value="click" class="btn btn-danger" >
+            <input type="button" value="Edit" class="btn btn-danger"  (click)="editPersonalHistory(item._id)" >
           </td>
         </tr>
         
       </tbody>
   </table>
 </ng-template>
+<ng-template #personalHistoryEdit>
+  <div class="form-group" [formGroup]="editTreatementHistoryForm"  >
+    <label for="">BirthHistory </label>
+    <textarea class="form-control" formControlName="BirthHistory"  name="" id="" rows="3"></textarea>
+    <label for="">DevelopmentHistory</label>
+    <textarea class="form-control" formControlName="DevelopmentHistory"  name="" id="" rows="3"></textarea>
+    <label for="">EducationHistory History</label>
+    <textarea class="form-control" formControlName="EducationHistory"  name="" id="" rows="3"></textarea>
+    <label for="">ImmunizationHistory</label>
+    <textarea class="form-control" formControlName="ImmunizationHistory"  name="" id="" rows="3"></textarea>
+    <label for="">MarritalandSexualHistory</label>
+    <textarea class="form-control" formControlName="MarritalandSexualHistory"  name="" id="" rows="3"></textarea>
+    <label for="">MenstrualandobstetricHistory</label>
+    <textarea class="form-control" formControlName="MenstrualandobstetricHistory"  name="" id="" rows="3"></textarea>
+    
+    <label for="">OccupationHistory</label>
+    <textarea class="form-control" formControlName="OccupationHistory"  name="" id="" rows="3"></textarea>
+
+    <input type="button" value="Save" class="btn btn-success" (click)="editPersonalHistorySubmit(PersonalEditHistoryForm.value)"> 
+    <input type="button" value="Cancle" class="btn btn-danger" (click)="CancleForm()" >
+  </div>
+</ng-template>
 
 <ng-template #substanceHistory>
-  <h1>History of Mode of intake</h1>
-  <table class="table table-hover table-inverse">
-    <thead class="thead-inverse">
+  <h1>Substance History</h1>
+  <table class="table table-hover table-inverse" *ngFor="let item of SubstanceHistory;let i=index">
+    <thead class="thead-inverse" *ngIf="item._id!=bgloid;else substancehistory">
       <tr>
         <th>SN</th>
         <th>History of choise of Substance</th>
@@ -344,7 +382,7 @@
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of SubstanceHistory;let i=index">
+        <tr>
           <td scope="row">{{i+1}}</td>
           <td>
             {{item.HistoryOfChoiseOfSubstance}}
@@ -366,18 +404,36 @@
             {{item.creationDate | date}}
           </td>
           <td>
-            <input type="button" value="click" class="btn btn-danger" >
+            <input type="button" value="Edit" class="btn btn-danger" (click)=" substanceHistoryEdit(item._id)">
           </td>
         </tr>
         
       </tbody>
   </table>
 </ng-template>
+<ng-template #substancehistory>
+  <div class="form-group" [formGroup]="substanceHistoryEditForm"  >
+    <label for="">HistoryOfChoiseOfSubstance </label>
+    <textarea class="form-control" formControlName="HistoryOfChoiseOfSubstance"  name="" id="" rows="3"></textarea>
+    <label for="">HistoryOfTotalDurationOfUse</label>
+    <textarea class="form-control" formControlName="HistoryOfTotalDurationOfUse"  name="" id="" rows="3"></textarea>
+    <label for="">HistoryOfDurationOfRegularUse</label>
+    <textarea class="form-control" formControlName="HistoryOfDurationOfRegularUse"  name="" id="" rows="3"></textarea>
+    <label for="">HistoryOfDailyIntake</label>
+    <textarea class="form-control" formControlName="HistoryOfDailyIntake"  name="" id="" rows="3"></textarea>
+    <label for="">HistoryOfLastIntakeOfDrug</label>
+    <textarea class="form-control" formControlName="HistoryOfLastIntakeOfDrug"  name="" id="" rows="3"></textarea>
+    
+    
+    <input type="button" value="Save" class="btn btn-success" (click)="editsubstanceHistorySubmit(substanceHistoryEditForm.value)"  > 
+    <input type="button" value="Cancle" class="btn btn-danger" (click)="CancleForm()" >
+  </div>
+</ng-template>
 
 <ng-template #legalHistory>
-  <h1>History of Mode of intake</h1>
-  <table class="table table-hover table-inverse">
-    <thead class="thead-inverse">
+  <h1>Legal History</h1>
+  <table class="table table-hover table-inverse" *ngFor="let item of LegalHistory;let i=index">
+    <thead class="thead-inverse" *ngIf="item._id!=bgloid;else legalhistory">
       <tr>
         <th>SN</th>
         <th>H/o Homicide/Suicide Attempts If yes, specify the number of attempt and method.</th>
@@ -386,8 +442,8 @@
         <th>Options</th>
       </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of LegalHistory;let i=index">
+      <tbody *ngIf="item._id!=bgloid">
+        <tr >
           <td scope="row">{{i+1}}</td>
           <td>
             {{item.HomicideAttempt}}
@@ -399,10 +455,23 @@
             {{item.creationDate | date}}
           </td>
           <td>
-            <input type="button" value="click" class="btn btn-danger" >
+            <input type="button" value="Edit" class="btn btn-danger" (click)="legalHistoryEdit(item._id)" >
           </td>
         </tr>
         
       </tbody>
   </table>
+</ng-template>
+<ng-template #legalhistory>
+  <div class="form-group" [formGroup]="LegalEditHistoryForm"  >
+    <label for="">HomicideAttempt </label>
+    <textarea class="form-control" formControlName="HomicideAttempt"  name="" id="" rows="3"></textarea>
+    <label for="">preMorbidpersonality</label>
+    <textarea class="form-control" formControlName="preMorbidpersonality"  name="" id="" rows="3"></textarea>
+    
+    
+    
+    <input type="button" value="Save" class="btn btn-success" (click)="LegalHistoryEditSubmit(LegalEditHistoryForm.value)"> 
+    <input type="button" value="Cancle" class="btn btn-danger" (click)="CancleForm()" >
+  </div>
 </ng-template>

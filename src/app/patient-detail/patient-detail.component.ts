@@ -153,11 +153,91 @@ export class  PatientDetailComponent implements OnInit {
     form.id=this.bgloid;
     console.log(form)
   }
-  fmloid=1;
+  //fmloid=1;
   editFamilyHistory(pid){
     console.log(pid);
-    this.fmloid=pid;
+    this.bgloid=pid;
   }
+  FamilyEditHistoryForm=new FormGroup({
+    // id:new FormControl(this.bgloid),
+    modifyBy:new FormControl(sessionStorage.getItem('MID')),
+    mentalHistory:new FormControl(''),
+    environHistory:new FormControl(''),
+    attitudeHistory:new FormControl(''),
+    livingHistory:new FormControl('')
+  })
+  editFamilyHistorySubmit(form){
+    form.id=this.bgloid;
+    console.log(form)
+  }
+
+
+
+  
+  editPersonalHistory(pid){
+      console.log(pid);
+      this.bgloid=pid;
+
+  }
+  editPersonalHistorySubmit(form){
+    form.id=this.bgloid;
+    console.log(form)
+  }
+  PersonalEditHistoryForm=new FormGroup({
+    modifyBy:new FormControl(sessionStorage.getItem('MID')),
+    BirthHistory:new FormControl(''),
+    DevelopmentHistory:new FormControl(''),
+    EducationHistory:new FormControl(''),
+    ImmunizationHistory:new FormControl(''),
+    MarritalandSexualHistory:new FormControl(''),
+    MenstrualandobstetricHistory:new FormControl(''),
+    OccupationHistory:new FormControl(''),
+
+
+  })
+  
+  substanceHistoryEdit(pid){
+    console.log(pid);
+    this.bgloid=pid;
+  }
+ 
+  editsubstanceHistorySubmit(form){
+    form.id=this.bgloid;
+    console.log(form)
+  }
+  SubstaceEditHistoryForm=new FormGroup({
+    modifyBy:new FormControl(sessionStorage.getItem('MID')),
+    HistoryOfChoiseOfSubstance:new FormControl(''),
+    HistoryOfTotalDurationOfUse:new FormControl(''),
+    HistoryOfDurationOfRegularUse:new FormControl(''),
+    HistoryOfDailyIntake:new FormControl(''),
+    HistoryOfLastIntakeOfDrug:new FormControl('')
+   
+
+
+  })
+  legalHistoryEdit(pid){
+    console.log(pid);
+    this.bgloid=pid;
+  }
+ 
+  LegalEditHistoryForm=new FormGroup({
+    modifyBy:new FormControl(sessionStorage.getItem('MID')),
+    HomicideAttempt:new FormControl(''),
+    preMorbidpersonality:new FormControl(''),
+   
+   
+
+
+  })
+ 
+  LegalHistoryEditSubmit(form){
+    form.id=this.bgloid;
+    console.log(form)
+  }
+ 
+
+
 
 }
 
