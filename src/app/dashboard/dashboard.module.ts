@@ -34,6 +34,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ProfileComponent } from './profile/profile.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import {
   MatDatepickerModule,
@@ -120,6 +121,8 @@ const AppRoutes: Routes = [
     MatRadioModule,MatDialogModule,NumberModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCheckboxModule,
+    
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
   providers :[
