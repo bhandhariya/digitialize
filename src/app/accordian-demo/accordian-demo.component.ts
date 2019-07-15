@@ -83,6 +83,14 @@ export class AccordianDemoComponent implements OnInit {
       this.VarCheckPAOtherCatatonicPhenomenonMovements=1;
     }
   }
+  VarOtherPsychomotor;
+  CheckVarOtherPsychomotor(u){
+    if(u=="Present"){
+      this.VarOtherPsychomotor="";
+    }else{
+      this.VarOtherPsychomotor=1;
+    }
+  }
   varPsychomotorActivity='raja';
   changeIncreasePsychomotorActivity(){
     this.varPsychomotorActivity=""

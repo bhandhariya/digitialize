@@ -592,8 +592,8 @@
                     <td>
                         <mat-radio-group formControlName="OtherMovements" aria-label="Select an option">
                           
-                            <mat-radio-button *ngIf="!VarCheckPAOtherMovements;else OtherMovementsPresent" (click)="CheckPAOtherMovements(GeneralAppearanceAttitudeBehaviourForm.OtherMovements)"  value="Absent">Absent</mat-radio-button>
-                            <mat-radio-button *ngIf="!VarCheckPAOtherMovements" (click)="CheckPAOtherMovements(GeneralAppearanceAttitudeBehaviourForm.OtherMovements)" value="Present">Present</mat-radio-button>
+                            <mat-radio-button *ngIf="!VarCheckPAOtherMovements"  value="Absent">Absent</mat-radio-button>
+                            <mat-radio-button *ngIf="!VarCheckPAOtherMovements;else OtherMovementsPresent" (click)="CheckPAOtherMovements(GeneralAppearanceAttitudeBehaviourForm.OtherMovements)" value="Present">Present</mat-radio-button>
                             
                          <ng-template #OtherMovementsPresent>
                           <mat-radio-button value="Mannerisms">Mannerisms</mat-radio-button>
@@ -617,8 +617,8 @@
                           
                          
                             
-                          <mat-radio-button *ngIf="!VarCheckPAOtherCatatonicPhenomenonMovements;else OtherCatatonicMovementsPresent" (click)="CheckPAOtherCatatonicPhenomenonMovements(GeneralAppearanceAttitudeBehaviourForm.otherCatatolicPhemenon)"  value="Absent">Absent</mat-radio-button>
-                          <mat-radio-button *ngIf="!VarCheckPAOtherCatatonicPhenomenonMovements" (click)="CheckPAOtherCatatonicPhenomenonMovements(GeneralAppearanceAttitudeBehaviourForm.otherCatatolicPhemenon)" value="Present">Present</mat-radio-button>
+                          <mat-radio-button *ngIf="!VarCheckPAOtherCatatonicPhenomenonMovements"   value="Absent">Absent</mat-radio-button>
+                          <mat-radio-button *ngIf="!VarCheckPAOtherCatatonicPhenomenonMovements;else OtherCatatonicMovementsPresent" (click)="CheckPAOtherCatatonicPhenomenonMovements(GeneralAppearanceAttitudeBehaviourForm.otherCatatolicPhemenon)" value="Present">Present</mat-radio-button>
                             <ng-template #OtherCatatonicMovementsPresent>
                               
                               <mat-radio-button value="Automatic Obedience">Automatic Obedience</mat-radio-button>
@@ -850,12 +850,18 @@
                     <td>
                         <mat-radio-group formControlName="Other" aria-label="Select an option">
                           
-                         
-                            <mat-radio-button value="Rhyming">Rhyming</mat-radio-button>
+                          <mat-radio-button *ngIf="!VarOtherPsychomotor"   value="Absent">Absent</mat-radio-button>
+                          <mat-radio-button *ngIf="!VarOtherPsychomotor;else OtherPsychomotorActivity" (click)="CheckVarOtherPsychomotor(PsychomotorActivitySpeechForm.Other)" value="Present">Present</mat-radio-button>
+                            <ng-template #OtherPsychomotorActivity>
+                              
+                              <mat-radio-button value="Rhyming">Rhyming</mat-radio-button>
                             <mat-radio-button value="Punning">Punning</mat-radio-button>
                             <mat-radio-button value="Echolalia">Echolalia</mat-radio-button>
                             <mat-radio-button value="Preservation">Preservation</mat-radio-button>
                             <mat-radio-button value="Neologism">Neologism</mat-radio-button>
+                             </ng-template>
+                         
+                           
                          
   
                         </mat-radio-group>
