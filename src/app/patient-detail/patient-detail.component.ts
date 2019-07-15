@@ -82,7 +82,8 @@ export class  PatientDetailComponent implements OnInit {
   
   openHistory(templateRef,id){
     let dialogRef = this.dialog.open(templateRef, {
-      width: '50%',
+      width: '90%',
+      height:'90%',
      data: { id:id }
   });
 
@@ -125,7 +126,15 @@ export class  PatientDetailComponent implements OnInit {
   })
   presentEditHistoryFormSubmit(form){
     form.id=this.bgloid;
-    console.log(form)
+    console.log(form);
+    this.http.post('http://localhost:3000/api/pat/editPresentHistory',form).subscribe(r=>{
+      if(r){
+        Swal.fire('Patient History Edited SuccessFully')
+        window.location.reload();
+        
+      }
+    })
+    
   }
   editPastHistory(pid){
     console.log(pid);
@@ -138,7 +147,15 @@ export class  PatientDetailComponent implements OnInit {
   })
   pastEditHistoryFormSubmit(form){
     form.id=this.bgloid;
+    
     console.log(form)
+    this.http.post('http://localhost:3000/api/pat/editPastHistory',form).subscribe(r=>{
+      if(r){
+        Swal.fire('Patient History Edited SuccessFully')
+        window.location.reload();
+        
+      }
+    })
   }
   editTreatementHistory(pid){
     console.log(pid);
@@ -152,12 +169,122 @@ export class  PatientDetailComponent implements OnInit {
   editTreatementHistorySubmit(form){
     form.id=this.bgloid;
     console.log(form)
+    this.http.post('http://localhost:3000/api/pat/editTreatementHistory',form).subscribe(r=>{
+      if(r){
+        Swal.fire('Patient History Edited SuccessFully')
+        window.location.reload();
+        
+      }
+    })
   }
-  fmloid=1;
+
   editFamilyHistory(pid){
     console.log(pid);
-    this.fmloid=pid;
+    this.bgloid=pid;
   }
+  FamilyEditHistoryForm=new FormGroup({
+    modifyBy:new FormControl(sessionStorage.getItem('MID')),
+    mentalHistory:new FormControl(''),
+    environHistory:new FormControl(''),
+    attitudeHistory:new FormControl(''),
+    livingHistory:new FormControl('')
+  })
+  editFamilyHistorySubmit(form){
+    form.id=this.bgloid;
+    console.log(form)
+    this.http.post('http://localhost:3000/api/pat/editFamilyHistoryHistory',form).subscribe(r=>{
+      if(r){
+        Swal.fire('Patient History Edited SuccessFully')
+        window.location.reload();
+        
+      }
+    })
+  }
+  editPersonalHistory(pid){
+    console.log(pid);
+    this.bgloid=pid;
+
+}
+
+PersonalEditHistoryForm=new FormGroup({
+  modifyBy:new FormControl(sessionStorage.getItem('MID')),
+  BirthHistory:new FormControl(''),
+  DevelopmentHistory:new FormControl(''),
+  EducationHistory:new FormControl(''),
+  ImmunizationHistory:new FormControl(''),
+  MarritalHistory:new FormControl(''),
+  SexualHistory:new FormControl(''),
+  MenstrualandobstetricHistory:new FormControl(''),
+  OccupationHistory:new FormControl(''),
+
+
+})
+editPersonalHistorySubmit(form){
+  form.id=this.bgloid;
+  console.log(form)
+  this.http.post('http://localhost:3000/api/pat/editPersonalHistory',form).subscribe(r=>{
+    if(r){
+      Swal.fire('Patient History Edited SuccessFully')
+      window.location.reload();
+      
+    }
+  })
+}
+
+substanceHistoryEdit(pid){
+  console.log(pid);
+  this.bgloid=pid;
+}
+
+
+SubstaceEditHistoryForm=new FormGroup({
+  modifyBy:new FormControl(sessionStorage.getItem('MID')),
+  HistoryOfChoiseOfSubstance:new FormControl(''),
+  HistoryOfTotalDurationOfUse:new FormControl(''),
+  HistoryOfDurationOfRegularUse:new FormControl(''),
+  HistoryOfDailyIntake:new FormControl(''),
+  HistoryOfLastIntakeOfDrug:new FormControl('')
+ 
+
+
+})
+editsubstanceHistorySubmit(form){
+  form.id=this.bgloid;
+  console.log(form)
+  this.http.post('http://localhost:3000/api/pat/editsubstanceHistory',form).subscribe(r=>{
+    if(r){
+      Swal.fire('Patient History Edited SuccessFully')
+      window.location.reload();
+      
+    }
+  })
+}
+legalHistoryEdit(pid){
+  console.log(pid);
+  this.bgloid=pid;
+}
+
+LegalEditHistoryForm=new FormGroup({
+  modifyBy:new FormControl(sessionStorage.getItem('MID')),
+  HomicideAttempt:new FormControl(''),
+  preMorbidpersonality:new FormControl(''),
+ 
+ 
+
+
+})
+
+LegalHistoryEditSubmit(form){
+  form.id=this.bgloid;
+  console.log(form)
+  this.http.post('http://localhost:3000/api/pat/editLegalHistory',form).subscribe(r=>{
+    if(r){
+      Swal.fire('Patient History Edited SuccessFully')
+      window.location.reload();
+      
+    }
+  })
+}
 
 }
 
