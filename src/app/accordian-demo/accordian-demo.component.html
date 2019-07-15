@@ -974,36 +974,23 @@
                 <tr>
                   <td scope="row">Stream</td>
                   <td>
-                      <mat-radio-group formControlName="Stream" aria-label="Select an option">
-                          
-                         
-                          <mat-radio-button value="Normal">Normal</mat-radio-button>
-                          <mat-radio-button value="Circumstantial">Circumstantial</mat-radio-button>
-                          <mat-radio-button value="Tengential">Tengential</mat-radio-button>
-                          <mat-radio-button value="Flight of ideas">Flight of ideas</mat-radio-button>
-                          <mat-radio-button value="Abnormal">Abnormal</mat-radio-button>
-                       
+                    <label  *ngFor="let order of Streamorders; let i = index">
+                      <input type="checkbox" (change)="streamChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label>
 
-                      </mat-radio-group>
                   </td>
                   
                 </tr>
                 <tr>
                   <td scope="row">Form</td>
                   <td>
-                      <mat-radio-group formControlName="Form" aria-label="Select an option">
-                          
-                         
-                          <mat-radio-button value="Adequate">Adequate</mat-radio-button>
-                          <mat-radio-button value="Inadequate">Inadequate</mat-radio-button>
-                          <mat-radio-button value="Omission">Omission</mat-radio-button>
-                          <mat-radio-button value="Fusion">Fusion</mat-radio-button>
-                          <mat-radio-button value="Derailment">Derailment</mat-radio-button>
-                          <mat-radio-button value="Substitution">Substitution</mat-radio-button>
+                     
+                      <label  *ngFor="let order of Formorders; let i = index">
+                        <input type="checkbox" (change)="onChange(order.name, $event.target.checked)" > 
+                        {{order.name}}
+                      </label>
 
-                       
-
-                      </mat-radio-group>
                   </td>
                   
                 </tr>
@@ -1021,18 +1008,10 @@
                 <tr>
                   <td></td>
                   <td>
-                      <mat-radio-group formControlName="ThoughtContent" aria-label="Select an option">
-                          
-                         
-                          <mat-radio-button value="Idea">Idea</mat-radio-button>
-                          <mat-radio-button value="Over Valued Ideas">Over Valued Ideas</mat-radio-button>
-                          <mat-radio-button value="Delusion">Delusion</mat-radio-button>
-                          <mat-radio-button value="Somatic Proccupation">Somatic Proccupation</mat-radio-button>
-                          <mat-radio-button value="Sucidal Ideation">Sucidal Ideationg</mat-radio-button>
-                          <mat-radio-button value="Depressive Cognition">Depressive Cognition</mat-radio-button>
-                       
-
-                      </mat-radio-group>
+                    <label  *ngFor="let order of ThoughtContentOrder; let i = index">
+                      <input type="checkbox" (change)="ThoughtContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label>
                   </td>
                 </tr>
                 <tr>
@@ -1047,75 +1026,35 @@
               <tbody>
                 <tr>
                   <td scope="row">
-                      <mat-radio-group formControlName="First" aria-label="Select an option">
-                          
-                         
-                          <mat-radio-button value="Worthlessness">Worthlessness</mat-radio-button>
-                          <mat-radio-button value="Hopelessness">Helpnessness</mat-radio-button>
-                          <mat-radio-button value="Helpnessness">Helpnessness</mat-radio-button>
-                          <mat-radio-button value="Guilt">Guilt</mat-radio-button>
-                          <mat-radio-button value="Ill Health">Ill Health</mat-radio-button>
-                          <mat-radio-button value="Poverty">Poverty</mat-radio-button>
-                       
-
-                      </mat-radio-group>                  </td>
+                    <label  *ngFor="let order of FirstThoughtContentOrder; let i = index">
+                      <input type="checkbox" (change)="FirstThoughtContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label>               
+                     </td>
                   <td>
-                      <mat-radio-group formControlName="Second" aria-label="Select an option">
-                          
-                         
-                          <mat-radio-button value="Nihilistic">Nihilistic</mat-radio-button>
-                          <mat-radio-button value="Hypocondrical">Hypocondrical</mat-radio-button>
-                          <mat-radio-button value="Death Wish">Brought using Physical force</mat-radio-button>
-                          <mat-radio-button value="Sucidial Ideas">Sucidial Ideas</mat-radio-button>
-                          <mat-radio-button value="Grandiose Ability and Indentity">Grandiose Ability and Indentity</mat-radio-button>
-                        
-                       
-
-                      </mat-radio-group>         
+                    <label  *ngFor="let order of SecondThoughtContentOrder; let i = index">
+                      <input type="checkbox" (change)="SecondThoughtContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label>          
                   </td>
                   <td>
-                      <mat-radio-group formControlName="Third" aria-label="Select an option">
-                          
-                          <mat-radio-button value="Reference">Reference</mat-radio-button>
-                          <mat-radio-button value="Control">Control</mat-radio-button>
-                          <mat-radio-button value="Influence">Influence</mat-radio-button>
-                          <mat-radio-button value="Persecution">Persecution</mat-radio-button>
-                          <mat-radio-button value="Bodily Change">Bodily Change</mat-radio-button>
-                          <mat-radio-button value="Waddling">Bizarre</mat-radio-button>
-                      </mat-radio-group>
+                    <label  *ngFor="let order of ThirdThoughtContentOrder; let i = index">
+                      <input type="checkbox" (change)="ThirdThoughtContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label> 
                      
                   </td>
                   <td>
-                      <mat-radio-group formControlName="Fourth" aria-label="Select an option">
-                          
-                         
-                          <mat-radio-button value="Fentastic Delusion">Fentastic Delusion</mat-radio-button>
-                          <mat-radio-button value="Delusional Memory">Delusional Memory</mat-radio-button>
-                          <mat-radio-button value="Delusional Confabulation">Delusional Confabulation</mat-radio-button>
-                       
-
-                      </mat-radio-group>
+                    <label  *ngFor="let order of FourthThoughtContentOrder; let i = index">
+                      <input type="checkbox" (change)="FourthThoughtContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label> 
                   </td>
                   <td>
-                      <mat-radio-group formControlName="Fifth" aria-label="Select an option">
-                          
-                         
-                          <mat-radio-button value="Single">Single</mat-radio-button>
-                          <mat-radio-button value="Multiple">Multiple</mat-radio-button>
-                          <mat-radio-button value="Simple">Simple</mat-radio-button>
-                          <mat-radio-button value="Elaborate">Elaborate</mat-radio-button>
-                          <mat-radio-button value="Systematized">Systematized</mat-radio-button>
-                          <mat-radio-button value="Non-Systematized">Non-Systematized</mat-radio-button>
-                          <mat-radio-button value="Mood Congruent">Mood Congruent</mat-radio-button>
-                          <mat-radio-button value="Incongruent">Incongruent</mat-radio-button>
-                          <mat-radio-button value="Degree of Distress">Degree of Distress</mat-radio-button>
-                          <mat-radio-button value="Interference With Work">Interference With Work</mat-radio-button>
-                          <mat-radio-button value="Reaction to Phenomenon">Reaction to Phenomenon</mat-radio-button>
-                          <mat-radio-button value="Primary Delusion">Primary Delusion</mat-radio-button>
-                          <mat-radio-button value="Secondry Delusion">Secondry Delusion</mat-radio-button>
-                       
-
-                      </mat-radio-group>
+                    <label  *ngFor="let order of FifthThoughtContentOrder; let i = index">
+                      <input type="checkbox" (change)="FifthThoughtContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label> 
                      
                   </td>
                 </tr>
@@ -1144,18 +1083,10 @@
                 <tr>
                   <td scope="row">Obsession</td>
                   <td>
-                      <mat-radio-group formControlName="Obsession" aria-label="Select an option">
-                          
-                         
-                          <mat-radio-button value="Thought">Thought</mat-radio-button>
-                          <mat-radio-button value="Doubt">Doubt</mat-radio-button>
-                          <mat-radio-button value="Impluse Stepping">Impluse Stepping</mat-radio-button>
-                          <mat-radio-button value="Image">Image</mat-radio-button>
-                          <mat-radio-button value="Rumination">Rumination</mat-radio-button>
-                          <mat-radio-button value="Absent">Absent</mat-radio-button>
-                       
-
-                      </mat-radio-group>
+                    <label  *ngFor="let order of ObsessionContentOrder; let i = index">
+                      <input type="checkbox" (change)="ObsessionContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label> 
                      
                   </td>
                   
@@ -1163,16 +1094,10 @@
                 <tr>
                     <td scope="row">Compulsion</td>
                     <td>
-                        <mat-radio-group formControlName="Complusion" aria-label="Select an option">
-                          
-                         
-                            <mat-radio-button value="Yielding">Yielding</mat-radio-button>
-                            <mat-radio-button value="Controlling">Controlling</mat-radio-button>
-                            <mat-radio-button value="Cognitive Compulsion">Cognitive Compulsion</mat-radio-button>
-                            
-                         
-  
-                        </mat-radio-group>
+                      <label  *ngFor="let order of CompulsionContentOrder; let i = index">
+                        <input type="checkbox" (change)="CompulsionContentChange(order.name, $event.target.checked)" > 
+                        {{order.name}}
+                      </label> 
                     </td>
                     
                   </tr>
@@ -1190,16 +1115,10 @@
                 <tr>
                   <td scope="row">Thought Alienation Phenomenon</td>
                   <td>
-                      <mat-radio-group formControlName="ThoughtAlienationPhenomenon" aria-label="Select an option">
-                          
-                         
-                          <mat-radio-button value="Thought Insertion">Thought Insertion</mat-radio-button>
-                          <mat-radio-button value="Withdrawal">Withdrawal</mat-radio-button>
-                          <mat-radio-button value="Thought Broadcast">Thought Broadcast</mat-radio-button>
-                          <mat-radio-button value="Thought Commentry">Thought Commentry</mat-radio-button>
-                       
-
-                      </mat-radio-group>
+                    <label  *ngFor="let order of ThoughtAlienationPhenomenonContentOrder; let i = index">
+                      <input type="checkbox" (change)="ThoughtAlienationPhenomenonContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label>
                       
                   </td>
                   
@@ -1229,33 +1148,20 @@
                   <tr>
                     
                     <td>
-                        <mat-radio-group formControlName="Perception1" aria-label="Select an option">
-                          
-                         
-                            <mat-radio-button value="Hallucination">Hallucination</mat-radio-button>
-                            <mat-radio-button value="Pseudo Hallucination/Illusion">Pseudo Hallucination/Illusion</mat-radio-button>
-                            
-                         
-  
-                        </mat-radio-group>
+                      <label  *ngFor="let order of Perception1ContentOrder; let i = index">
+                        <input type="checkbox" (change)="Perception1ContentChange(order.name, $event.target.checked)" > 
+                        {{order.name}}
+                      </label>
                     </td>
                     
                   </tr>
                   <tr>
                      
                       <td>
-                          <mat-radio-group formControlName="Perception2" aria-label="Select an option">
-                          
-                         
-                              <mat-radio-button value="Auditory">Auditory</mat-radio-button>
-                              <mat-radio-button value="Visual">Visual</mat-radio-button>
-                              <mat-radio-button value="Olfactory">Olfactory</mat-radio-button>
-                              <mat-radio-button value="Gustatory">Gustatory</mat-radio-button>
-                              <mat-radio-button value="Tactile">Tactile</mat-radio-button>
-                              <mat-radio-button value="Somatic">Somatic</mat-radio-button>
-                           
-    
-                          </mat-radio-group>
+                        <label  *ngFor="let order of Perception2ContentOrder; let i = index">
+                          <input type="checkbox" (change)="Perception2ContentChange(order.name, $event.target.checked)" > 
+                          {{order.name}}
+                        </label>
                       </td>
                       
                     </tr>
@@ -1263,15 +1169,10 @@
                    
                    <td>
                    
-                      <mat-radio-group formControlName="Perception3" aria-label="Select an option">
-                          
-                         
-                          <mat-radio-button value="Depersonalization">Depersonalization</mat-radio-button>
-                          <mat-radio-button value="Derelization">Derelization</mat-radio-button>
-                          <mat-radio-button value="Illusion">Illusion</mat-radio-button>
-                       
-
-                      </mat-radio-group>
+                    <label  *ngFor="let order of Perception3ContentOrder; let i = index">
+                      <input type="checkbox" (change)="Perception3ContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label>
                    </td>
                  </tr>
                  <tr>
@@ -1372,19 +1273,10 @@
                       <td>Time
                       </td>
                       <td>
-                          <mat-radio-group formControlName="OrientationTime" aria-label="Select an option">
-                                                            
-                                                          
-                              <mat-radio-button value="Approximate Time">Approximate Time</mat-radio-button>
-                              <mat-radio-button value="Day-Night">Day-Night</mat-radio-button>
-                              <mat-radio-button value="Date">Date</mat-radio-button>
-                              <mat-radio-button value="Day">Day</mat-radio-button>
-                              <mat-radio-button value="Month">Month</mat-radio-button>
-                              <mat-radio-button value="Year">Year</mat-radio-button>
-                              
-                          
-
-                          </mat-radio-group>
+                        <label  *ngFor="let order of OrientationTimeContentOrder; let i = index">
+                          <input type="checkbox" (change)="OrientationTimeContentChange(order.name, $event.target.checked)" > 
+                          {{order.name}}
+                        </label>
                          
                       </td>
                       <td>
@@ -1403,14 +1295,10 @@
                         <td>Place
                         </td>
                         <td>
-                            <mat-radio-group formControlName="OrientationPlace" aria-label="Select an option">
-                                                            
-                                                          
-                            
-                                <mat-radio-button value="Kind of Place">Kind of Place</mat-radio-button>
-                                <mat-radio-button value="Area">Area</mat-radio-button>
-                                <mat-radio-button value="City">City</mat-radio-button>
-                              </mat-radio-group>
+                          <label  *ngFor="let order of OrientationPlaceContentOrder; let i = index">
+                            <input type="checkbox" (change)="OrientationPlaceContentChange(order.name, $event.target.checked)" > 
+                            {{order.name}}
+                          </label>
                            
                         </td>
                         <td>
@@ -1429,15 +1317,10 @@
                           <td>Person
                           </td>
                           <td>
-                              <mat-radio-group formControlName="OrientationPerson" aria-label="Select an option">
-                                                            
-                                                          
-                            
-                               
-                                  <mat-radio-button value="Self">Self</mat-radio-button>
-                                  <mat-radio-button value="Close Associates">Close Associates</mat-radio-button>
-                                  <mat-radio-button value="Other Staf">Other Staf</mat-radio-button>
-                                </mat-radio-group>
+                            <label  *ngFor="let order of OrientationPersonContentOrder; let i = index">
+                              <input type="checkbox" (change)="OrientationPersonContentChange(order.name, $event.target.checked)" > 
+                              {{order.name}}
+                            </label>
                             
                              
                           </td>
@@ -1556,15 +1439,10 @@
                 <tr>
                   <td scope="row">Comprehension</td>
                   <td>
-                      <mat-radio-group formControlName="IntelligenceComprehension" aria-label="Select an option">
-                                                      
-                                                    
-                          <mat-radio-button value="Simple Commands">Simple Commands</mat-radio-button>
-                          <mat-radio-button value="Complex Commands">Complex Commands</mat-radio-button>
-                     
-                      
-
-                      </mat-radio-group>
+                    <label  *ngFor="let order of IntelligenceComprehensionContentOrder; let i = index">
+                      <input type="checkbox" (change)="IntelligenceComprehensionContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label>
                    
                   </td>
                   <td>
@@ -1583,16 +1461,10 @@
                 <tr>
                   <td scope="row">Vocabulary</td>
                   <td>
-                      <mat-radio-group formControlName="IntelligenceVocabulary" aria-label="Select an option">
-                                                      
-                                                    
-                          <mat-radio-button value="Common Object">Impaired</mat-radio-button>
-                          <mat-radio-button value="Uncommon Object">Uncommon Object</mat-radio-button>
-                          <mat-radio-button value="Part of Object">Part of Object</mat-radio-button>
-                     
-                      
-
-                      </mat-radio-group>
+                    <label  *ngFor="let order of IntelligenceVocabularyContentOrder; let i = index">
+                      <input type="checkbox" (change)="IntelligenceVocabularyContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label>
                    
                   </td>
                   <td>
@@ -1611,16 +1483,10 @@
                 <tr>
                   <td scope="row">General Fund of Information</td>
                   <td>
-                      <mat-radio-group formControlName="GeneralFundofInformation" aria-label="Select an option">
-                                                      
-                                                    
-                          <mat-radio-button value="Name of the President of India">Name of the President of India</mat-radio-button>
-                          <mat-radio-button value="Currunt Affairs">Currunt Affairs</mat-radio-button>
-                          <mat-radio-button value="Name of the Common State Capital">Name of the Common State Capital</mat-radio-button>
-                     
-                      
-
-                      </mat-radio-group>
+                    <label  *ngFor="let order of GeneralFundofInformationContentOrder; let i = index">
+                      <input type="checkbox" (change)="GeneralFundofInformationContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label>
                    
                   </td>
                   <td>
@@ -1639,15 +1505,10 @@
                 <tr>
                   <td scope="row">Arithmetic Ability</td>
                   <td>
-                      <mat-radio-group formControlName="ArithmeticAbility" aria-label="Select an option">
-                                                      
-                                                    
-                          <mat-radio-button value="Mental Arithmetic">Mental Arithmetic</mat-radio-button>
-                          <mat-radio-button value="Written Sums">Written Sums</mat-radio-button>
-                     
-                      
-
-                      </mat-radio-group>
+                    <label  *ngFor="let order of ArithmeticAbilityContentOrder; let i = index">
+                      <input type="checkbox" (change)="ArithmeticAbilityContentChange(order.name, $event.target.checked)" > 
+                      {{order.name}}
+                    </label>
                    
                   </td>
                   <td>
@@ -1899,13 +1760,10 @@
                 </td>
                
                 <td>
-                    <mat-radio-group formControlName="GPEBuilt" aria-label="Select an option">
-                        <mat-radio-button value="Average">Average</mat-radio-button>
-                        <mat-radio-button value="Lean">Lean</mat-radio-button>
-                        <mat-radio-button value="Obese">Obese</mat-radio-button>
-                        <mat-radio-button value="Tall">Tall</mat-radio-button>
-                        <mat-radio-button value="Dwarf">Dwarf</mat-radio-button>
-                    </mat-radio-group> 
+                  <label  *ngFor="let order of GPEBuiltContentOrder; let i = index">
+                    <input type="checkbox" (change)="GPEBuiltContentChange(order.name, $event.target.checked)" > 
+                    {{order.name}}
+                  </label>
                 
                 </td>
               </tr>
@@ -1917,15 +1775,10 @@
                 </td>
                
                 <td>
-                    <mat-radio-group formControlName="GPEInspection" aria-label="Select an option">
-                        <mat-radio-button value="Normal">Normal</mat-radio-button>
-                        <mat-radio-button value="Pallor">Pallor</mat-radio-button>
-                        <mat-radio-button value="Icterus">Icterus</mat-radio-button>
-                        <mat-radio-button value="Cyanosis">Cyanosis</mat-radio-button>
-                        <mat-radio-button value="Clubbing">Clubbing</mat-radio-button>
-                        <mat-radio-button value="Abnormal Swelling">Abnormal Swelling</mat-radio-button>
-                        <mat-radio-button value="Edema">Edema</mat-radio-button>
-                    </mat-radio-group> 
+                  <label  *ngFor="let order of GPEInspectionContentOrder; let i = index">
+                    <input type="checkbox" (change)="GPEInspectionContentChange(order.name, $event.target.checked)" > 
+                    {{order.name}}
+                  </label> 
               
                 </td>
               </tr>

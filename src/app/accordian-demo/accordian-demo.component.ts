@@ -1,6 +1,6 @@
 import { Component, OnInit,Inject, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2'
@@ -12,6 +12,21 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./accordian-demo.component.css']
 })
 export class AccordianDemoComponent implements OnInit {
+  form:FormGroup;
+  Streamorders=[
+    {id:'Normal',name:'Normal'},
+    {id:'Circumstantial',name:'Circumstantial'},
+    {id:'Tengential',name:'Tengential'},
+    {id:'Abnormal',name:'Abnormal'}
+  ];
+  Formorders=[
+    {id:'Adequate',name:'Adequate'},
+    {id:'Inadequate',name:'Inadequate'},
+    {id:'Omission',name:'Omission'},
+    {id:'Fusion',name:'Fusion'},
+    {id:'Derailment',name:'Derailment'},
+    {id:'Substitution',name:'Substitution'}
+  ]
   PredisposingFactorsPresentvar;
   PredisposingFactorsPresent(u){
     if(u.PredisposingFactors=="Present"){
@@ -159,7 +174,518 @@ submmited: boolean = false;
         showWeekNumbers: false,
         dateInputFormat: 'MM/DD/YYYY'
       });
+     
+   
    }
+   
+
+  
+  myForm = this.fb.group({
+    useremail: this.fb.array([])
+  });
+  streamchekForm= this.fb.group({
+    useremail: this.fb.array([])
+  });
+  thoughtContentcheckForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  onChange(name:string, isChecked: boolean) {
+    const emailFormArray = <FormArray>this.myForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.ThoughtContentForm.get('Form').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+  streamChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.streamchekForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.ThoughtContentForm.get('Stream').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+  ThoughtContentOrder=[
+    {id:'Normal',name:'Idea'},
+    {id:'Circumstantial',name:'Over Valued Ideas'},
+    {id:'Tengential',name:'Delusion'},
+    {id:'Abnormal',name:'Somatic Proccupation'},
+    {id:'Tengential',name:'Sucidal Ideation'},
+    {id:'Abnormal',name:'Depressive Cognition'}
+  ];
+  ThoughtContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.thoughtContentcheckForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.ThoughtContentForm.get('ThoughtContent').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+  FirstThoughtContentOrder=[
+    {id:'Worthlessness',name:'Worthlessness'},
+    {id:'Hopelessness',name:'Hopelessness'},
+    {id:'Helpnessness',name:'Helpnessness'},
+    {id:'Guilt',name:'Guilt'},
+    {id:'Ill Health',name:'Ill Health'},
+    {id:'Poverty',name:'Poverty'}
+  ];
+  FirstThoughtContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  FirstThoughtContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.FirstThoughtContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.ThoughtContentForm.get('First').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+  SecondThoughtContentOrder=[
+    {id:'Nihilistic',name:'Nihilistic'},
+    {id:'Hypocondrical',name:'Hypocondrical'},
+    {id:'Death Wish',name:'Death Wish'},
+    {id:'Sucidial Ideas',name:'Sucidial Ideas'},
+    {id:'Grandiose Ability and Indentity',name:'Grandiose Ability and Indentity'}
+  ];
+  SecondThoughtContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  SecondThoughtContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.SecondThoughtContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.ThoughtContentForm.get('Second').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+  
+  ThirdThoughtContentOrder=[
+    {id:'Nihilistic',name:'Reference'},
+    {id:'Hypocondrical',name:'Control'},
+    {id:'Death Wish',name:'Influence'},
+    {id:'Sucidial Ideas',name:'Persecution'},
+    {id:'Grandiose Ability and Indentity',name:'Bodily Change'},
+    {id:'',name:'Bizarre'},
+    {id:'',name:'Religious'},
+  ];
+  ThirdThoughtContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  ThirdThoughtContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.ThirdThoughtContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.ThoughtContentForm.get('Third').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  FourthThoughtContentOrder=[
+    {id:'Nihilistic',name:'Fentastic Delusion'},
+    {id:'Hypocondrical',name:'Delusional Memory'},
+    {id:'Death Wish',name:'Delusional Confabulation'}
+  ];
+  FourthThoughtContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  FourthThoughtContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.FourthThoughtContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.ThoughtContentForm.get('Fourth').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  FifthThoughtContentOrder=[
+    {id:'Nihilistic',name:'Single'},
+    {id:'Hypocondrical',name:'Multiple'},
+    {id:'Death Wish',name:'Simple'},
+    {id:'Nihilistic',name:'Elaborate'},
+    {id:'Hypocondrical',name:'Systematized'},
+    {id:'Death Wish',name:'Non-Systematized'},
+    {id:'Nihilistic',name:'Mood Congruent'},
+    {id:'Hypocondrical',name:'Incongruent'},
+    {id:'Death Wish',name:'Degree of Distress'},
+    {id:'Nihilistic',name:'Interference With Work'},
+    {id:'Hypocondrical',name:'Reaction to Phenomenon'},
+    {id:'Death Wish',name:'Primary Delusion'},
+    {id:'Death Wish',name:'Secondry Delusion'},
+  ];
+  FifthThoughtContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  FifthThoughtContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.FifthThoughtContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.ThoughtContentForm.get('Fifth').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+  ObsessionContentOrder=[
+    {id:'Nihilistic',name:'Thought'},
+    {id:'Hypocondrical',name:'Doubt'},
+    {id:'Death Wish',name:'Impluse Stepping'},
+    {id:'Nihilistic',name:'Image'},
+    {id:'Hypocondrical',name:'Rumination'},
+    {id:'Death Wish',name:'Absent'}
+  ];
+  ObsessionContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  ObsessionContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.ObsessionContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.PossessionForm.get('Obsession').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  CompulsionContentOrder=[
+    {id:'Nihilistic',name:'Yielding'},
+    {id:'Hypocondrical',name:'Controlling'},
+    {id:'Death Wish',name:'Cognitive Compulsion'}
+  ];
+  CompulsionContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  CompulsionContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.CompulsionContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.PossessionForm.get('Complusion').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  ThoughtAlienationPhenomenonContentOrder=[
+    {id:'Nihilistic',name:'Thought Insertion'},
+    {id:'Hypocondrical',name:'Withdrawal'},
+    {id:'Death Wish',name:'Thought Broadcast'},
+    {id:'Death Wish',name:'Thought Commentry'}
+  ];
+  ThoughtAlienationPhenomenonContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  ThoughtAlienationPhenomenonContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.ThoughtAlienationPhenomenonContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.PossessionForm.get('ThoughtAlienationPhenomenon').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+
+  Perception1ContentOrder=[
+    {id:'Nihilistic',name:'Pseudo Hallucination/Illusion'},
+    {id:'Hypocondrical',name:'Hallucination'}
+  ];
+  Perception1ContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  Perception1ContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.Perception1ContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.PerceptionForm.get('Perception1').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  Perception2ContentOrder=[
+    {id:'Nihilistic',name:'Auditory'},
+    {id:'Hypocondrical',name:'Visual'},
+    {id:'Nihilistic',name:'Olfactory'},
+    {id:'Hypocondrical',name:'Gustatory'},
+    {id:'Nihilistic',name:'Tactile'},
+    {id:'Hypocondrical',name:'Somatic'},
+  ];
+  Perception2ContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  Perception2ContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.Perception2ContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.PerceptionForm.get('Perception2').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  Perception3ContentOrder=[
+    {id:'Nihilistic',name:'Depersonalization'},
+    {id:'Hypocondrical',name:'Derelization'},
+    {id:'Hypocondrical',name:'Illusion'}
+  ];
+  Perception3ContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  Perception3ContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.Perception3ContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.PerceptionForm.get('Perception3').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+
+  OrientationTimeContentOrder=[
+    {id:'Nihilistic',name:'Approximate Time'},
+    {id:'Hypocondrical',name:'Day-Night'},
+    {id:'Hypocondrical',name:'Date'},
+    {id:'Nihilistic',name:'Day'},
+    {id:'Hypocondrical',name:'Month'},
+    {id:'Hypocondrical',name:'Year'},
+  ];
+  OrientationTimeContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  OrientationTimeContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.OrientationTimeContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.CognitiveFunctionForm.get('OrientationTime').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  OrientationPlaceContentOrder=[
+    {id:'Nihilistic',name:'Kind of Place'},
+    {id:'Hypocondrical',name:'Area'},
+    {id:'Hypocondrical',name:'City'},
+  ];
+  OrientationPlaceContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  OrientationPlaceContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.OrientationPlaceContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.CognitiveFunctionForm.get('OrientationPlace').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+
+  OrientationPersonContentOrder=[
+    {id:'Nihilistic',name:'Self'},
+    {id:'Hypocondrical',name:'Close Associates'},
+    {id:'Hypocondrical',name:'Other Staf'},
+  ];
+  OrientationPersonContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  OrientationPersonContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.OrientationPersonContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.CognitiveFunctionForm.get('OrientationPerson').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  IntelligenceComprehensionContentOrder=[
+    {id:'Nihilistic',name:'Simple Commands'},
+    {id:'Hypocondrical',name:'Complex Commands'}
+  ];
+  IntelligenceComprehensionContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  IntelligenceComprehensionContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.IntelligenceComprehensionContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.IntelligenceForm.get('IntelligenceComprehension').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  IntelligenceVocabularyContentOrder=[
+    {id:'Nihilistic',name:'Common Object'},
+    {id:'Hypocondrical',name:'Uncommon Object'},
+    {id:'Hypocondrical',name:'Part of Object'}
+  ];
+  IntelligenceVocabularyContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  IntelligenceVocabularyContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.IntelligenceVocabularyContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.IntelligenceForm.get('IntelligenceVocabulary').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  GeneralFundofInformationContentOrder=[
+    {id:'Nihilistic',name:'Name of the President of India'},
+    {id:'Hypocondrical',name:'Currunt Affairs'},
+    {id:'Hypocondrical',name:'Name of the Common State Capital'}
+  ];
+  GeneralFundofInformationContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  GeneralFundofInformationContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.GeneralFundofInformationContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.IntelligenceForm.get('GeneralFundofInformation').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  ArithmeticAbilityContentOrder=[
+    {id:'Nihilistic',name:'Mental Arithmetic'},
+    {id:'Hypocondrical',name:'Written Sums'}
+  ];
+  ArithmeticAbilityContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  ArithmeticAbilityContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.ArithmeticAbilityContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.IntelligenceForm.get('ArithmeticAbility').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  GPEBuiltContentOrder=[
+    {id:'Nihilistic',name:'Average'},
+    {id:'Hypocondrical',name:'Lean'},
+    {id:'Nihilistic',name:'Obese'},
+    {id:'Hypocondrical',name:'Tall'},
+    {id:'Nihilistic',name:'Dwarf'}
+  ];
+  GPEBuiltContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  GPEBuiltContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.GPEBuiltContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.GeneralPhysicalExaminationForm.get('GPEBuilt').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
+  GPEInspectionContentOrder=[
+    {id:'Nihilistic',name:'Normal'},
+    {id:'Hypocondrical',name:'Pallor'},
+    {id:'Nihilistic',name:'Icterus'},
+    {id:'Hypocondrical',name:'Cyanosis'},
+    {id:'Nihilistic',name:'Clubbing'},
+    {id:'Hypocondrical',name:'Abnormal Swelling'},
+    {id:'Nihilistic',name:'Edema'}
+  ];
+  GPEInspectionContentForm=this.fb.group({
+    useremail: this.fb.array([])
+  });
+  GPEInspectionContentChange(name:string, isChecked: boolean){
+    const emailFormArray = <FormArray>this.GPEInspectionContentForm.controls.useremail;
+  
+    if(isChecked) {
+      emailFormArray.push(new FormControl(name));
+      console.log(emailFormArray.value)
+      this.GeneralPhysicalExaminationForm.get('GPEInspection').setValue(emailFormArray.value)
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == name)
+      emailFormArray.removeAt(index);
+    }
+  }
+
 
   ngOnInit() {
     this.arout.paramMap.subscribe(e=>{
@@ -495,10 +1021,7 @@ submmited: boolean = false;
      this.PsychomotorActivitySpeechForm.reset();
       
   }
-
-
-  
-  AffectForm= new FormGroup({
+ AffectForm= new FormGroup({
       id: new FormControl(''),
       Subjective: new FormControl(''),
       Objectivetext: new FormControl(''),
