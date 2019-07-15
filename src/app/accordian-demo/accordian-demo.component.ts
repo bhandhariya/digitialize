@@ -1118,8 +1118,8 @@ submmited: boolean = false;
     form.id=this.id;
     form.createdBy=sessionStorage.getItem('MID');
     console.log(form);
-    Swal.fire({type: 'error',title: 'In Developement',showConfirmButton: false,timer: 1000});
-    // this.http.post('https://digitalapp001.herokuapp.com/api/pat/addPerception',form).subscribe(this.addPerceptionCB)
+    // Swal.fire({type: 'error',title: 'In Developement',showConfirmButton: false,timer: 1000});
+     this.http.post('https://digitalapp001.herokuapp.com/api/pat/test',form).subscribe(this.addPerceptionCB)
   }
  
   addPerceptionCB=(dt)=>{
