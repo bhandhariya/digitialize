@@ -18,13 +18,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
   deleteDB(){
-    this.http.get('https://digitalapp001.herokuapp.com/api/pat/deleteAllDB').subscribe(this.cb)
+    this.http.get('/api/pat/deleteAllDB').subscribe(this.cb)
   }
   cb=(dt)=>{
     console.log(dt)
   }
   getTotalPatients(){
-    this.http.get('https://digitalapp001.herokuapp.com/api/pat/getPatientCount').subscribe(this.cb21)
+    this.http.get('/api/pat/getPatientCount').subscribe(this.cb21)
   }
   cb21=(dt)=>{
     console.log(dt);
@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
   }
   downloadALL(){
  
-    this.http.get('https://digitalapp001.herokuapp.com/api/pat/getall').subscribe(this.excelcb)
+    this.http.get('/api/pat/getall').subscribe(this.excelcb)
   }
   excelcb=(dt)=>{
     console.log(dt);

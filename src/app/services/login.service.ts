@@ -33,7 +33,7 @@ export class LoginService{
                 uid:user.uid,
                 email:user.email
               }
-              this.http.post('https://digitalapp001.herokuapp.com/api/users/login',obj).subscribe(this.cb)
+              this.http.post('/api/users/login',obj).subscribe(this.cb)
             }
            
           }).catch(function(){

@@ -19,7 +19,7 @@ export class  PatientDetailComponent implements OnInit {
 
   constructor(private http:HttpClient,private aroute:ActivatedRoute,private router:Router,public dialog: MatDialog) { }
   Patient;id;
-  url="https://digitalapp001.herokuapp.com"
+  url=""
   ngOnInit() {
 
     // this.aroute.paramMap.subscribe(e=>{
@@ -34,7 +34,7 @@ export class  PatientDetailComponent implements OnInit {
   }
   getAllData(){
    
-    this.http.get('https://digitalapp001.herokuapp.com/api/pat/getall').subscribe(this.cb)
+    this.http.get('/api/pat/getall').subscribe(this.cb)
   }
   cb=(dt)=>{
     this.Patient=dt;
@@ -87,7 +87,7 @@ export class  PatientDetailComponent implements OnInit {
      data: { id:id }
   });
 
-  this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',{id:id}).subscribe(this.historyCallback)
+  this.http.post('/api/pat/alldata',{id:id}).subscribe(this.historyCallback)
   }
 
   PresentHistory
@@ -127,7 +127,7 @@ export class  PatientDetailComponent implements OnInit {
   presentEditHistoryFormSubmit(form){
     form.id=this.bgloid;
     console.log(form);
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/editPresentHistory',form).subscribe(r=>{
+    this.http.post('/api/pat/editPresentHistory',form).subscribe(r=>{
       if(r){
         Swal.fire('Patient History Edited SuccessFully')
         window.location.reload();
@@ -149,7 +149,7 @@ export class  PatientDetailComponent implements OnInit {
     form.id=this.bgloid;
     
     console.log(form)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/editPastHistory',form).subscribe(r=>{
+    this.http.post('/api/pat/editPastHistory',form).subscribe(r=>{
       if(r){
         Swal.fire('Patient History Edited SuccessFully')
         window.location.reload();
@@ -169,7 +169,7 @@ export class  PatientDetailComponent implements OnInit {
   editTreatementHistorySubmit(form){
     form.id=this.bgloid;
     console.log(form)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/editTreatementHistory',form).subscribe(r=>{
+    this.http.post('/api/pat/editTreatementHistory',form).subscribe(r=>{
       if(r){
         Swal.fire('Patient History Edited SuccessFully')
         window.location.reload();
@@ -192,7 +192,7 @@ export class  PatientDetailComponent implements OnInit {
   editFamilyHistorySubmit(form){
     form.id=this.bgloid;
     console.log(form)
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/editFamilyHistoryHistory',form).subscribe(r=>{
+    this.http.post('/api/pat/editFamilyHistoryHistory',form).subscribe(r=>{
       if(r){
         Swal.fire('Patient History Edited SuccessFully')
         window.location.reload();
@@ -222,7 +222,7 @@ PersonalEditHistoryForm=new FormGroup({
 editPersonalHistorySubmit(form){
   form.id=this.bgloid;
   console.log(form)
-  this.http.post('https://digitalapp001.herokuapp.com/api/pat/editPersonalHistory',form).subscribe(r=>{
+  this.http.post('/api/pat/editPersonalHistory',form).subscribe(r=>{
     if(r){
       Swal.fire('Patient History Edited SuccessFully')
       window.location.reload();
@@ -251,7 +251,7 @@ SubstaceEditHistoryForm=new FormGroup({
 editsubstanceHistorySubmit(form){
   form.id=this.bgloid;
   console.log(form)
-  this.http.post('https://digitalapp001.herokuapp.com/api/pat/editsubstanceHistory',form).subscribe(r=>{
+  this.http.post('/api/pat/editsubstanceHistory',form).subscribe(r=>{
     if(r){
       Swal.fire('Patient History Edited SuccessFully')
       window.location.reload();
@@ -277,7 +277,7 @@ LegalEditHistoryForm=new FormGroup({
 LegalHistoryEditSubmit(form){
   form.id=this.bgloid;
   console.log(form)
-  this.http.post('https://digitalapp001.herokuapp.com/api/pat/editLegalHistory',form).subscribe(r=>{
+  this.http.post('/api/pat/editLegalHistory',form).subscribe(r=>{
     if(r){
       Swal.fire('Patient History Edited SuccessFully')
       window.location.reload();

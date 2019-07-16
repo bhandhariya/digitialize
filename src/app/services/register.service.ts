@@ -41,7 +41,7 @@ export class RegisterService {
                
               }
               
-             this.http.post('https://digitalapp001.herokuapp.com/api/users/register',obj).subscribe(this.cb)
+             this.http.post('/api/users/register',obj).subscribe(this.cb)
             })
        
             

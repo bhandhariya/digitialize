@@ -47,7 +47,7 @@ export class SecondComponent implements OnInit {
     console.log(this.familyForm.value)
     if(this.familyForm.valid){
       console.log(this.familyForm.value)
-       this.http.post('https://digitalapp001.herokuapp.com/api/pat/addFamilyData',this.familyForm.value).subscribe(this.addFamilyDataCB)
+       this.http.post('/api/pat/addFamilyData',this.familyForm.value).subscribe(this.addFamilyDataCB)
     }else{
       Swal.fire('Please fill required Fields')
     }

@@ -12,11 +12,11 @@ import 'jspdf-autotable';
   styleUrls: ['./patient-table.component.css']
 })
 export class PatientTableComponent implements OnInit {
-url="https://digitalapp001.herokuapp.com";
+url="";
   constructor(private http:HttpClient,private router:Router) { }
   Patient;
   ngOnInit() {
-    this.http.get('https://digitalapp001.herokuapp.com/api/pat/getall').subscribe(this.cb)
+    this.http.get('/api/pat/getall').subscribe(this.cb)
   }
   cb=(dt)=>{
     this.Patient=dt;
@@ -36,7 +36,7 @@ url="https://digitalapp001.herokuapp.com";
       id:id
     }
     
-    this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.excelcb)
+    this.http.post('/api/pat/alldata',obj).subscribe(this.excelcb)
   }
 excelcb=(dt)=>{
   console.log(dt);

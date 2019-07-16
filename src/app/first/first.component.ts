@@ -60,7 +60,7 @@ formErrors = {
     this.profileForm.get('cretatedBy').setValue(sessionStorage.getItem('MID'));
     if(this.profileForm.valid){
            console.log(this.profileForm.value);
-          this.http.post('https://digitalapp001.herokuapp.com/api/pat/create',this.profileForm.value).subscribe(this.createCB)
+          this.http.post('/api/pat/create',this.profileForm.value).subscribe(this.createCB)
            
     }else{
     

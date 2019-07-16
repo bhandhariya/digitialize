@@ -41,7 +41,7 @@ getPatientData(){
   var obj={
     id:this.id
   }
-  this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb)
+  this.http.post('/api/pat/alldata',obj).subscribe(this.cb)
 }
 cb=r=>{
   this.dataSource=r;
@@ -84,7 +84,7 @@ cancle(){
 //       id:this.data.id
 //     }
 //     console.log(obj)
-//      this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb)
+//      this.http.post('/api/pat/alldata',obj).subscribe(this.cb)
 //   }
 //   dataSource;
 //   cb=(dt)=>{
@@ -115,7 +115,7 @@ cancle(){
 //       id:this.data.id
 //     }
 //     console.log(obj)
-//      this.http.post('https://digitalapp001.herokuapp.com/api/pat/alldata',obj).subscribe(this.cb)
+//      this.http.post('/api/pat/alldata',obj).subscribe(this.cb)
 //   }
 //   illness;
 //   dataSource;
