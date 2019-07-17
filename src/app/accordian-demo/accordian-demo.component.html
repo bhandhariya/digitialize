@@ -921,6 +921,7 @@
                               <mat-radio-button value="Congruent">Congruent</mat-radio-button>
                               <mat-radio-button value="Communable">Communable</mat-radio-button>
                               <mat-radio-button value="Incongruent">Incongruent</mat-radio-button>
+                              <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
                            
     
                           </mat-radio-group>
@@ -1121,10 +1122,18 @@
                 <tr>
                   <td scope="row">Thought Alienation Phenomenon</td>
                   <td>
-                    <label  *ngFor="let order of ThoughtAlienationPhenomenonContentOrder; let i = index">
-                      <input type="checkbox" (change)="ThoughtAlienationPhenomenonContentChange(order.name, $event.target.checked)" > 
-                      {{order.name}}
-                    </label>
+                    <mat-radio-group formControlName="ThoughtAlienationPhenomenon"  aria-label="Select an option">
+                          
+                      <mat-radio-button  *ngIf="!varthoughtalienatioPhenomenonPresentC" value="Absent">Absent</mat-radio-button>
+                      <mat-radio-button *ngIf="!varthoughtalienatioPhenomenonPresentC;else thoughtalienatioPhenomenonPresent" (click)="thoughtalienatioPhenomenonPresentChange()" value="Present">Present</mat-radio-button>
+                                 
+                  </mat-radio-group>
+                    <ng-template #thoughtalienatioPhenomenonPresent>
+                      <label  *ngFor="let order of ThoughtAlienationPhenomenonContentOrder; let i = index">
+                        <input type="checkbox" (change)="ThoughtAlienationPhenomenonContentChange(order.name, $event.target.checked)" > 
+                        {{order.name}}
+                      </label>
+                    </ng-template>
                       
                   </td>
                   
@@ -1345,15 +1354,23 @@
                   </tbody>
               </table>
               <h2>Memory</h2>
-              <table class="table table-inverse table-inverse table-responsive">
+              <table class="table table-hover table-inverse">
+                <thead class="thead-inverse">
+                  <tr>
+                    
+                    <th>After 5 Minutes</th>
+                    <th>After 10 Minutes</th>
+                  </tr>
+                  </thead>
                   <tbody>
                     <tr>
-                      <td>Immediate
-                        <input   formControlName="Memory" class="form-control" id="" placeholder="Immediate Memory" >
+                      
+                      <td>
+                        <textarea formControlName="RecentMemoryAfter5Mint" class="form-control" placeholder="Recent Immediat Memory after 5 Minutes Memory" ></textarea>
                       </td>
-                    
-                      </tr>
-                  
+                      <td><textarea formControlName="RecentMemoryAfter10Mint" class="form-control"  placeholder="Recent Immediat Memory after 10 Minutes Memory" ></textarea></td>
+                    </tr>
+                   
                   </tbody>
               </table>
               <h2>Recent Verbal Recall</h2>

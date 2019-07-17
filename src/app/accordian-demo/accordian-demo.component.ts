@@ -96,6 +96,10 @@ export class AccordianDemoComponent implements OnInit {
     this.varPsychomotorActivity=""
 
   }
+  varthoughtalienatioPhenomenonPresentC;
+  thoughtalienatioPhenomenonPresentChange(){
+    this.varthoughtalienatioPhenomenonPresentC="raja"
+  }
   uploadFamilyTree(event){
     const file = event.target.files[0];
     console.log(file);
@@ -1154,7 +1158,8 @@ submmited: boolean = false;
     OrientationPlaceCheck: new FormControl(''),
     OrientationPerson: new FormControl(''),
     OrientationPersonCheck: new FormControl(''),
-    Memory: new FormControl(''),
+    RecentMemoryAfter5Mint: new FormControl(''),
+    RecentMemoryAfter10Mint:new FormControl(''),
     RecentVerbalRecall3ObjAfter5Minut: new FormControl(''),
     RecentVerbalRecall3ObjAfter10Minut: new FormControl(''),
     RecentVerbalRecall5ObjAfter5Minut: new FormControl(''),
